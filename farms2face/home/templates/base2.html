@@ -1,0 +1,24 @@
+{% extends "common.html" %}
+
+{% block htmlhead %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css"
+  href="{% static 'home/base.css' %}" />
+<script type="text/javascript"
+  src="{% static 'home/base.js' %}"></script>
+
+  {% block basehead %}
+  {% endblock %}
+
+{% endblock %}
+
+{% block commonbody %}
+  {% include "header.html" %}
+
+  {% block basebody %}
+  {% endblock %}
+
+  {% include "footer2.html" %}
+
+{% endblock %}

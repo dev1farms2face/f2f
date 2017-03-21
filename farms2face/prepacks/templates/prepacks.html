@@ -1,0 +1,152 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'prepacks/prepacks.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'prepacks/prepacks.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="results-panel">
+  <img class="presenting" src="{% static 'prepacks/images/presenting.png' %}" alt="" />
+  <div class="first-match">
+      <div class="bottle-panel">
+        <img class="bottle"
+             src="{% static 'prepacks/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+        <p class="name">Mango Infusion</p>
+      </div>
+      <div class="details-panel">
+        <p class="made-with">Made with</p>
+        <div class="ingredients-panel">
+          <div class="ingredient" id="i1">
+            <img src="{% static 'prepacks/images/apples.jpg' %}" alt="" />
+            <p class="name">APPLES</p>
+            <p class="helper-text">Helps your skin breathe</p>
+          </div>
+          <div class="ingredient" id="i2">
+            <img src="{% static 'prepacks/images/avocado.png' %}" alt="" />
+            <p class="name">AVOCADO</p>
+            <p class="helper-text">Gives your skin depth</p>
+          </div>
+          <div class="ingredient" id="i3">
+            <img src="{% static 'prepacks/images/honey.jpg' %}" alt="" />
+            <p class="name">HONEY</p>
+            <p class="helper-text">Brightens up your skin</p>
+          </div>
+        </div>
+        <div class="learn-more-panel">
+          <p> <i>Learn more</i> about how these ingredients will help you</p>
+        </div>
+        <div class="purchase-panel">
+          <p class="button a-la-carte">BUY A-LA-CARTE</p>
+          <p class="or">- or -</p>
+          <p class="button subscribe">SUBSCRIBE</p>
+        </div>
+      </div>
+  </div>
+  <p class="how-to-use">how to use our face masks</p>
+  <div class="how-to-use-panel">
+    <div class="step one">
+      <img src="{% static 'prepacks/images/How_to_wash_badge_1.png' %}" alt="" />
+      <p>Clean your face</p>
+    </div>
+    <div class="step two">
+      <img src="{% static 'prepacks/images/How_to_wash_badge_2.png' %}" alt="" />
+      <p>Apply for 10 mins</p>
+    </div>
+    <div class="step three">
+      <img src="{% static 'prepacks/images/How_to_wash_badge_3.png' %}" alt="" />
+      <p>Wash it off</p>
+    </div>
+  </div>
+  <p class="hear-other">Hear what other people had to say about this facemask</p>
+  <div class="review-panel">
+    <p class="header">39 people rated it an average of 4.6</p>
+    <div class="review">
+      <img class="profile" src="{% static 'prepacks/images/10286985_10202895233560816_8859614772393923562_o.png' %}" alt="" />
+      <div class="details">
+        <div class="rating">
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star empty"></div>
+        </div>
+        <p class="title">Best moisturizer for combination skin!</p>
+        <p class="sub-title">By Sudha Bhat on Mar 13, 2017</p>
+        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
+      </div>
+    </div>
+    <div class="review">
+      <img class="profile" src="{% static 'prepacks/images/13769617_10153996554223743_3342089982155892689_n.png' %}" alt="" />
+      <div class="details">
+        <div class="rating">
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+        </div>
+        <p class="title">Changed my life!</p>
+        <p class="sub-title">By Hambir Chavan on Feb 21, 2017</p>
+        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
+      </div>
+    </div>
+    <div class="review">
+      <img class="profile" src="{% static 'prepacks/images/13599796_10153948991218743_8463291712287361785_n.png' %}" alt="" />
+      <div class="details">
+        <div class="rating">
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star full"></div>
+          <div class="star empty"></div>
+        </div>
+        <p class="title">Worked wonders for me, but...</p>
+        <p class="sub-title">By Nilotpal Sensarkar on Jan 19, 2017</p>
+        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
+      </div>
+    </div>
+  </div>
+  <p class="see-more">SEE MORE</p>
+  <img class="browse_more" src="{% static 'prepacks/images/browse_more.png' %}" alt="" />
+  <div class="other-panel">
+    <div class="second match">
+      <img class="bottle"
+           src="{% static 'prepacks/images/160125_MMU_COOLINGWATER_CAPON.png' %}" alt="" />
+      <p class="name">Mango Infusion</p>
+      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
+      <div class="purchase-panel">
+        <p class="button a-la-carte">BUY A-LA-CARTE</p>
+        <p class="or">- or -</p>
+        <p class="button subscribe">SUBSCRIBE</p>
+      </div>
+    </div>
+    <div class="third match">
+      <img class="bottle"
+           src="{% static 'prepacks/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
+      <p class="name">Pulp Fiction</p>
+      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
+      <div class="purchase-panel">
+        <p class="button a-la-carte">BUY A-LA-CARTE</p>
+        <p class="or">- or -</p>
+        <p class="button subscribe">SUBSCRIBE</p>
+      </div>
+    </div>
+    <div class="third match">
+      <img class="bottle"
+           src="{% static 'prepacks/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
+      <p class="name">Pulp Fiction</p>
+      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
+      <div class="purchase-panel">
+        <p class="button a-la-carte">BUY A-LA-CARTE</p>
+        <p class="or">- or -</p>
+        <p class="button subscribe">SUBSCRIBE</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

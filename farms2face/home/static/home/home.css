@@ -1,0 +1,238 @@
+div.panel-1, div.panel-3 {
+        text-align:center;
+}
+
+                             /* ~~~ DO YOU KNOW WHAT YOUR SKIN NEEDS? ~~~ */
+
+
+#woman-main-bg-panel {
+        background-image: url('images/woman_profile_banner_1.png');
+        //background-attachment: fixed;
+        position: relative;
+        height:570px;
+        width:100%;
+}
+div.woman-main-bg-panel-override {
+        background-color:#e6e7e8;
+        border-width:0px;
+}
+img.lets-find-out-bg {
+        top: 185px;
+        left: 950px;
+        width: 200px;
+        position: absolute;
+        cursor: pointer;
+        border-radius: 100%;
+}
+img.lets-find-out-fg {
+        top: 200px;
+        left: 950px;
+        width: 200px;
+        position: absolute;
+        cursor: pointer;
+        border-radius: 100%;
+}
+img.lets-find-out-fg:hover {
+        background-color: #eafffe;
+}
+
+
+                                   /* ~~~ HOW DOES IT WORK? ~~~ */
+
+
+.panel-2 {
+        display:inline-block;
+        background-image: url('images/How_does_it_work_banner_background.png');
+        position: absolute;
+        top: 620px;
+        height:911px;
+        width:1440px;
+        z-index: 1000;
+}
+#how-panel {
+        width: 1080px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+}
+img.how-does {
+        padding-left: 90px;
+        padding-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+}
+div.badge-panel {
+        position: relative;
+        margin-top: 10px; 
+}
+div.badge-1-panel {
+        position: absolute;
+        left: 120px;
+}
+div.badge-2-panel {
+        position: absolute;
+        top: 185px;
+        left: 350px;
+}
+div.badge-3-panel {
+        position: absolute;
+        right: 290px;
+}
+div.badge-4-panel {
+        position: absolute;
+        top: 220px;
+        right: 50px;
+}
+#badge-1-container, #badge-2-container, #badge-3-container, #badge-4-container {
+        display:inline-block;
+        height:186px;
+        width:186px;
+}
+badge-1-container-override, badge-2-container-override, badge-3-container-override, badge-4-container-override {
+        border-width:0px;
+}
+img.badge-1, img.badge-2, img.badge-3, img.badge-4 {
+        height:100.00%;
+        min-width:100%;
+        width:100.00%;
+}
+p.badge-text {
+        font-family: 'HelveticaNeue-Light', sans-serif;
+        font-size: 20px;
+        color: #555555;
+        font-weight: 100;
+}
+p.badge-button {
+        font-family: 'HelveticaNeue-Light', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: white;
+        background-color: #88a470;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        cursor: pointer;
+        text-align: center;
+}
+
+p.badge-button:hover {
+        background-color: #555555;
+}
+p.badge-1-text {
+        margin-left: 20px;
+}
+p.badge-1-test {
+        margin-left: 20px;
+}
+p.badge-2-text {
+        margin-top: 5px;
+        margin-left: 20px;
+}
+p.badge-3-buy {
+        width: 110px;
+}
+p.badge-3-text {
+        margin-top: 5px;
+        text-align: center;
+}
+p.badge-3-subscribe {
+        width: 80px;
+}
+p.badge-4-text {
+        margin-top: 5px;
+        margin-left: 20px;
+        text-align: center;
+        width: 150px;
+}
+
+
+                                   /* ~~~ FEATURED COLLECTION ~~~ */
+
+
+.panel-3 {
+        margin-top: 720px;
+        margin-bottom: -80px;
+}
+#featured-panel {
+        display:block;
+        background-color: transparent;
+        position: absolute: 1500px;
+        background-image: url('images/Featured_Collection_banner_background.jpg');
+        background-attachment: fixed;
+        height:900px;
+        width: 100%;
+        position: relative;
+}
+#featured-collection {
+        display:inline-block;
+        position: absolute;
+        top: 255px;
+        left: 180px;
+        width: 400px;
+        height: 700px;
+}
+//p.featured-collection-text {
+        //src: url('fonts/AMATICSC-REGULAR_0.TFF');
+        //font-family: 'AMATICSC-REGULAR_0';
+        //font-size: 50px;
+//}
+img.featured-collection-txt {
+        position: absolute;
+        top: 10px;
+        left: 60px;
+        width: 350px;
+}
+img.shop-now-bg {
+        position: absolute;
+        top: 230px;
+        left: 170px;
+        width: 150px;
+}
+img.shop-now-fg {
+        position: absolute;
+        top: 245px;
+        left: 175px;
+        width: 140px;
+        cursor: pointer;
+        border-radius: 100%;
+}
+img.shop-now-fg:hover {
+        background-color: #eafffe;
+}
+#collections {
+        top: 150px;
+        left: 650px;
+        position: absolute;
+        display:block;
+        width: 700px;
+        height: 500px;
+}
+#collections div.item {
+        display:inline-block;
+        width: 200px;
+        margin-top: 35px;
+}
+#collections img.bottle {
+        display: inline-block;
+        font-size: 0;
+        height:203px;
+        width:122px;
+}
+#collections p.name {
+        font-family: 'HelveticaNeue-Light', sans-serif;
+        font-size: 12px;
+        color: white;
+        font-weight: 100;
+}
+#collections p.price {
+        font-family: 'HelveticaNeue', sans-serif;
+        font-size: 10px;
+        color: white;
+        font-weight: 800;
+}

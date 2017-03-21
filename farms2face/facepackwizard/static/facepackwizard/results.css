@@ -1,0 +1,366 @@
+.results-panel {
+        display: block;
+        margin-top: 40px;
+        width: 100%;
+        margin-bottom: 100px;
+        text-align: center;
+        padding-bottom: 100px;
+}
+
+@font-face {
+        font-family: 'Selima';
+        src: url("fonts/Selima.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue-UltraLight';
+        src: url("fonts/HelveticaNeue-UltraLigExt.otf") format("opentype");
+}
+
+p.your-best-match {
+        font-family: 'Selima';
+        font-size: 72px;
+        color: #88a470;
+        margin-top: 30px;    
+        text-align: center;
+}
+
+div.first-match {
+        display: table;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.first-match img.bottle {
+        display: table-cell;
+        width: 150px;
+        vertical-align: top;
+}
+
+div.first-match div.details-panel {
+        padding-top: 30px;
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+}
+
+div.first-match div.details-panel p.made-with {
+        font-family: "HelveticaNeue-UltraLight";
+        font-size: 20px;
+        transform: scaleX(0.9);
+        text-align: left;
+        margin-left: -12px;
+}
+
+div.first-match div.ingredients-panel {
+        display: block;
+        text-align: left;
+}
+
+div.first-match div.ingredient {
+        display: inline-block;
+}
+
+div.first-match div.ingredient img {
+        width: 90px;
+}
+
+div.first-match div.ingredient p.name {
+        font-family: "HelveticaNeue";
+        font-size: 8px;
+        font-weight: bold;
+        text-align: center;
+}
+
+div.first-match div.ingredient p.helper-text {
+        font-family: "HelveticaNeue-Light";
+        font-size: 12px;
+        width: 90px;
+        text-align: center;
+}
+
+div.first-match div.learn-more-panel {
+        background-image: url('images/Brush_Button.png');
+        display: inline-block;
+        background-size: 100%;
+        width: 400px;
+        height: 80px;
+        text-align: left;
+        margin-left: -10px;
+}
+
+div.first-match div.learn-more-panel p {
+        font-size: 12px;
+        margin-top: 25px;
+        margin-left: 10px;
+        display: inline-block;	
+        width: 200px;
+        height: 50px;
+        color: white;
+        font-family: "HelveticaNeue-UltraLight";
+        transform: scaleX(0.9);
+        cursor: pointer;
+}
+
+div.first-match div.purchase-panel {
+        display: table;
+        text-align: left;
+}
+
+div.first-match div.purchase-panel p.or  {
+        display: table-cell;
+        font-family: "HelveticaNeue-Light";
+        font-size: 14px;
+        vertical-align: middle;
+        padding: 0 15px 0 15px; 
+}
+
+div.first-match div.purchase-panel p.button  {
+        display: table-cell;
+        color: white;
+        font-family: "HelveticaNeue-Light";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        height: 20px;
+        vertical-align: middle;
+        padding: 2px 5px 2px 5px;
+        letter-spacing: 2px;
+        cursor: pointer;
+}
+
+div.first-match div.purchase-panel p.button:hover {
+        background-color: #777777;
+}
+
+p.other-header {
+        text-align: center;
+        margin-top: 50px;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        color: #88a470;
+        font-size: 60px;
+        margin-bottom: 20px;
+}
+
+div.other-panel {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.other-panel .match {
+        display: table-cell;
+        text-align: center;
+        width: 250px;
+}
+
+div.other-panel .match img.bottle {
+        width: 150px;
+}
+
+div.other-panel .match p.name {
+        font-family: "HelveticaNeue-UltraLight";
+        font-size: 18px;
+        transform: scaleX(0.9);
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+}
+
+div.other-panel .match p.description {
+        font-family: "HelveticaNeue-UltraLight";
+        font-size: 12px;
+        transform: scaleX(0.8);
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+}
+
+div.other-panel .match div.purchase-panel {
+}
+
+div.other-panel .match div.purchase-panel p.button {
+        display: inline-block;
+        color: white;
+        font-family: "HelveticaNeue-Light";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        height: 15px;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 6px 8px 3px 8px;
+}
+
+div.other-panel .match div.purchase-panel p.button:hover {
+        background-color: #777777;
+}
+
+div.other-panel .match div.purchase-panel p.or {
+        font-family: "HelveticaNeue-Light";
+        font-size: 14px;
+        padding: 5px 0 5px 0; 
+}
+
+p.how-to-use, p.hear-other {
+        text-align: center;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        color: #88a470;
+        font-size: 60px;
+        margin-top: 70px;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.how-to-use-panel {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.how-to-use-panel div.step {
+        display: table-cell;
+        padding-left: 30px; 
+        padding-right: 30px; 
+}
+
+div.how-to-use-panel div.step img {
+        width: 200px;
+}
+
+div.how-to-use-panel div.step p {
+        text-align: center;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-top: 10px;
+}
+
+div.review-panel {
+        display: block;
+        text-align: center;
+        position : relative;
+}
+
+div.review-panel:after {
+        content  : "";
+        position : absolute;
+        z-index  : 1;
+        bottom   : 0;
+        left     : 0;
+        pointer-events   : none;
+        background-image : linear-gradient(to bottom, 
+                          rgba(255,255,255, 0), 
+                          rgba(255,255,255, 1) 90%);
+        width    : 100%;
+        height   : 4em;
+}
+
+div.review-panel p.header {
+        text-align: center;
+        font-family: "HelveticaNeue-Light", sans-serif;
+        font-size: 24px;
+        font-weight: 100;
+        margin-top: -30px;
+        margin-bottom: 30px;
+}
+
+div.review-panel div.review {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        width: 450px;
+        margin-bottom: 30px;
+} 
+
+div.review-panel div.review img.profile {
+        display: table-cell;
+        vertical-align: top;
+        width: 60px;
+        text-align: right;
+}
+
+div.review-panel div.review div.details {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+}
+
+div.review-panel div.review div.rating {
+        display: block;
+        margin-bottom: 10px;
+        margin-left: 18px;
+}
+
+div.review-panel div.review div.star {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+}
+
+div.review-panel div.review div.full {
+        background-image: url('images/star_full.png');
+}
+
+div.review-panel div.review div.empty {
+        background-image: url('images/star_empty.png');
+}
+
+div.review-panel div.review p.title {
+        display: block;
+        text-align: left;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-left: auto;
+}
+
+div.review-panel div.review p.sub-title {
+        text-align: left;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1px;
+}
+
+div.review-panel div.review p.details {
+        text-align: left;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 12px;
+        font-weight: 800;
+        margin-top: 10px;
+        letter-spacing: 1px;
+}
+
+div.results-panel p.see-more {
+        display: inline-block;
+        color: white;
+        font-family: "HelveticaNeue-Light";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        height: 15px;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 6px 8px 3px 8px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.results-panel p.see-more:hover {
+        background-color: #999999;
+}

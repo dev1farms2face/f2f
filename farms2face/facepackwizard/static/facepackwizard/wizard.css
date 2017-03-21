@@ -1,0 +1,239 @@
+div.gif-panel {
+        background-image: url('images/Arundhati_Animation.gif');
+        text-align:center;
+        background-size: 100% 100%;
+        height: 600px;
+}
+
+@font-face {
+        font-family: 'Selima';
+        src: url("fonts/Selima.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue-UltraLight';
+        src: url("fonts/HelveticaNeue-UltraLigExt.otf") format("opentype");
+}
+
+p.text-top {
+        font-family: 'Selima';
+        font-size: 72px;
+        color: #88a470;
+        margin-top: 30px;
+}
+
+p.text-bottom {
+        font-family: 'HelveticaNeue-UltraLight', sans-serif;
+        transform: scaleX(0.8);
+        font-weight: 100;
+        font-size: 80px;
+        color: #88a470;
+        margin-top: -30px;
+}
+
+p.test-button {
+        color: white;
+        font-size: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-family: 'HelveticaNeue-UltraLight', sans-serif;
+        letter-spacing: 4px;
+        border: solid 1px white;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        background-color: #88a470;
+        cursor: pointer;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        /* ...and now for the proper property */
+        transition:.2s;
+}
+
+p.test-button:hover {
+        color: black;
+        border-color: #88a470;
+        background-color: #f8fff2;
+        font-weight: bold;
+}
+
+div.wizard-panel {
+        background-image: url('images/How_does_it_work_banner_background.png') ;
+	width: 100%;
+        padding-top: 200px;
+        padding-bottom: 100px;
+        background-color: transparent;
+        margin-top: -100px;
+}
+
+div.question-panel {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-left: 1px solid #cadbbc;
+        border-right: 1px solid #cadbbc;
+        width: 80%;
+        height: 750px;
+}
+
+div.index-top {
+        display: block;
+        text-align:center;
+}
+
+p.dash {
+        display: inline-block;
+	background-color: #ce9a2b;
+        height: 1px;
+        min-width: 150px;
+        margin-left: 10px;
+        margin-right: 20px;
+        vertical-align: middle;
+        margin-bottom: 30px;
+}
+
+p.index {
+        display: inline-block;
+        color: #88a470;
+	font-family: 'Selima';
+	font-size: 72px;        
+        font-weight: italic;
+}
+
+p.question {
+        font-family: 'HelveticaNeue-UltraLight', sans-serif;
+        transform: scaleX(0.8);
+        font-weight: 100;
+        font-size: 50px;
+        color: black;
+        text-align: center;
+}
+
+div.options {
+        display: table;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.question-panel div.option-panel {
+        display: inline-block;
+        text-align: center;
+        padding-bottom: 20px;
+        vertical-align: top;
+}
+
+div.question-panel div.option {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        word-wrap: break-word;
+        width: 100px;
+        min-width: 100px;
+        padding: 0 30px 0 30px;
+        height: 140px;
+        font-family: 'HelveticaNeue-UltraLight', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        /* ...and now for the proper property */
+        transition:.3s;
+}
+
+div.question-panel div.option-footer {
+        font-family: 'HelveticaNeue Light', sans-serif;
+        font-size: 12px;
+        text-align: center;
+        color: #999999;
+        max-width: 150px;
+}
+
+div.question-panel div.option-1 {
+        background-image: url('images/option_1.png') ;
+}
+div.question-panel div.option-2 {
+        background-image: url('images/option_2.png') ;
+}
+div.question-panel div.option-3 {
+        background-image: url('images/option_3.png') ;
+}
+div.question-panel div.option-4 {
+        background-image: url('images/option_4.png') ;
+}
+.enableHover div.question-panel div.option:hover {
+        background-image: url('images/option_selected.png') !important ;
+        color: white;
+}
+div.question-panel .option-selected {
+        background-image: url('images/option_selected.png') !important ;
+        color: white;
+}
+div.question-panel .why {
+        text-align: center;
+        font-family: 'HelveticaNeue-Light', sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+        color: #ce9a2b;
+        cursor: default;
+}
+div.question-panel .hr {
+        display: none;
+	background-color: #ffde99;
+        height: 1px;
+        width: 50%;
+        vertical-align: middle;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2px;
+        
+}
+div.question-panel .why-footer {
+        display: none;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        color: #BBBBBB;
+        padding-top: 2px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+}
+p.show-matches {
+        display: block;
+        width: 300px;
+        text-align: center;
+        margin-top: -150px;
+        margin-bottom: 200px;
+      	margin-left: auto; 
+      	margin-right: auto; 
+        border: solid 1px #ce9a2b;
+        padding: 10px 30px 10px 30px;
+        font-family: 'HelveticaNeue-Light', sans-serif;
+        letter-spacing: 7px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #ce9a2b;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        -moz-transition:.5s;
+        -webkit-transition:.5s;
+        /* ...and now for the proper property */
+        transition:.4s;
+}
+p.show-matches:hover {
+        background-color: #ce9a2b;
+        color: white;
+        border-color: #ce9a2b;
+}
