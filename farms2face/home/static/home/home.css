@@ -135,14 +135,15 @@ p.badge-2-text {
         margin-left: 20px;
 }
 p.badge-3-buy {
-        width: 110px;
+        text-align: center;
 }
 p.badge-3-text {
         margin-top: 5px;
         text-align: center;
 }
 p.badge-3-subscribe {
-        width: 80px;
+        margin-top: 10px;
+        text-align: center;
 }
 p.badge-4-text {
         margin-top: 5px;
