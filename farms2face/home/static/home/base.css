@@ -79,6 +79,7 @@ label.title-link:hover {
 
 #footer-panel {
         background-image: url('images/Footer_banner_background.png');
+        background-size: 100% 100%;
         position: relative;
         min-width: 100%;
         width: 100%;

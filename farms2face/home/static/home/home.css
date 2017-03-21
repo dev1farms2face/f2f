@@ -43,10 +43,11 @@ img.lets-find-out-fg:hover {
 .panel-2 {
         display:inline-block;
         background-image: url('images/How_does_it_work_banner_background.png');
+        background-size: 100% 100%;
         position: absolute;
         top: 620px;
         height:911px;
-        width:1440px;
+        width: 100%;
         z-index: 1000;
 }
 #how-panel {
@@ -163,8 +164,8 @@ p.badge-4-text {
 #featured-panel {
         display:block;
         background-color: transparent;
-        position: absolute: 1500px;
         background-image: url('images/Featured_Collection_banner_background.jpg');
+        background-size: 100% 100%;
         background-attachment: fixed;
         height:900px;
         width: 100%;
