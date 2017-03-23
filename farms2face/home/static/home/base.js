@@ -25,7 +25,7 @@ $(document).ready(function(){
         });
     }
     if (window.location.href.indexOf("/shop/") >= 0) {
-        $("html, body").animate({ scrollTop: $('#featured-panel').offset().top+75 });
+        $("html, body").animate({ scrollTop: $('#featured-panel').offset().top+35 });
     }
 });
 

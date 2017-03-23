@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
-#from .models import SkinType, SkinConcern, Ingredient, Base, MixingAgent, Recipe, PrePack
-from .models import SkinType, SkinConcern, Ingredient, Base, MixingAgent, Recipe 
+from .models import SkinType, SkinConcern, Ingredient, Base, MixingAgent, Recipe, Option, Question, Questionnaire
 import json
 import random
 import pdb
@@ -9,8 +8,33 @@ import pdb
 # Create your views here.
 
 def wizard(request):
-    #skin_types_all = get_list_or_404(SkinType)
-    return render(request, "wizard.html", {})
+    data = [] 
+    for q in Question.objects.all():
+        multiple = ''
+        options = [{'name':   o['option__name'],
+                   'id':      o['option__id'], 
+                   'helper':  o['option__helper']} for o in \
+                   Questionnaire.objects.filter(question=q).\
+                   values('option__name','option__id',
+                   'option__helper')]
+        if q.id == 7:
+            options = [{'name': s.name, 
+                        'id': s.id, 
+                        'helper': s.helper} for s in \
+                        SkinType.objects.all()] 
+        if q.id == 8:
+            multiple = 'multiple'
+            options = [{'name': s.name, 
+                        'id': s.id} for s in \
+                        SkinConcern.objects.all()] 
+        data.append({ 
+              'id'       : q.id,
+              'name'     : q.name,
+              'why'      : q.why,
+              'multiple' : multiple,
+              'options'  : options
+        })
+    return render(request, "wizard.html", { 'questions': data })
 
 def results(request):
     return render(request, "results.html", {})

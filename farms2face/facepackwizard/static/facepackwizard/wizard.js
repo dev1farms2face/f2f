@@ -9,8 +9,11 @@ $(document).ready(function(){
     }, 1000);
     $('div.wizard-panel').on({
         'mouseenter': function() {
-                $(this).siblings('.hr').stop().animate({width:'toggle'},200,function() {
-                    $(this).siblings('.why-footer').stop().fadeIn();
+                hr = $(this).siblings('.hr');
+                hr.stop().animate({width:'toggle'},200,function() {
+                    why = $(this).siblings('.why-footer');
+                    why.stop().fadeIn();
+                    hr.css('width',why.width()+"px");
                 });
             },
         'mouseleave': function() {
