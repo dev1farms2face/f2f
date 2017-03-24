@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 import facepackwizard.views
 import home.views
 
@@ -31,8 +33,7 @@ urlpatterns = [
     url(r'^login/', home.views.login_user, name='login'),
     url(r'^logout/', home.views.logout_user, name='logout'),
     url(r'^cart/', home.views.cart, name='cart'),
-    url(r'^get_skinconcern_list/', facepackwizard.views.get_skinconcern_list),
-    url(r'^post_facepacks/', facepackwizard.views.post_facepacks),
+    url(r'^post_wizard_submit/', facepackwizard.views.wizard_submit),
     url(r'^post_add_cart/', home.views.post_add_cart),
     url(r'^post_remove_cart/', home.views.post_remove_cart),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

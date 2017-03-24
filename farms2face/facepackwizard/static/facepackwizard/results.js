@@ -8,4 +8,7 @@ $(document).ready(function(){
             }
         }
     }, '.see-more');
+    $('.learn-more-panel').click(function(){
+        $('div.first-match table.summary').fadeToggle('slow');
+    });
 });

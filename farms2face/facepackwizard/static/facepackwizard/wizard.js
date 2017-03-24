@@ -1,3 +1,4 @@
+var submit_url="/post_wizard_submit/"
 $(document).ready(function(){
     setTimeout(
         function() {
@@ -54,6 +55,7 @@ $(document).ready(function(){
             //$(this).parent().parent().find('.option').removeClass('option-selected');
             next_q = curr_q.next();
             curr_q.nextAll('.question-panel').hide();
+            $('.show-matches').hide();
             next_q.find('.option').removeClass('option-selected');
             next_q.find('.hr').hide();
             next_q.find('.how-footer').hide();
@@ -65,12 +67,48 @@ $(document).ready(function(){
             }
         }
     }, '.option');
+    var gather_questionnaire = function() {
+        questionnaire = [];
+        $('.wizard-panel').find('.question-panel').each(function(){
+            options = [];
+            $(this).find('.option-selected').each(function(){
+                options.push($(this).attr('id'));
+            });
+            questionnaire.push({
+                'id': $(this).attr('id'),
+                'options': options 
+            });
+        });
+        return questionnaire;
+    }
+    var submit_wizard = function(questionnaire) {
+        $.ajax({
+            url: submit_url,
+            type: 'POST',
+            dataType: "json",
+            data: {
+                'csrfmiddlewaretoken': $("[name='csrfmiddlewaretoken']").attr('value'),
+                'data' : JSON.stringify(questionnaire)
+            },
+            success: function(data) {
+                get_params = $.param(data);
+                window.location = "/wizard/results?"+get_params;
+            },
+            failure: function(data) {
+                alert("Error: Please contact sysadmin");
+            },
+            error: function(data) {
+                alert("Error: Please contact sysadmin");
+            }
+        })
+    }
+
     var show_matches = function() {
         $('.show-matches').fadeIn();
     };
     $('.wizard-panel').on({
         'click': function() {
-            window.location = "/wizard/results";
+            submit_wizard(gather_questionnaire());
         }
     }, '.show-matches');
 });

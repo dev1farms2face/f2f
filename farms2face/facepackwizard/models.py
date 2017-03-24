@@ -23,33 +23,36 @@ class Questionnaire(models.Model):
     def __str__(self):
         return self.question.name+" "+self.option.name
 
-class SkinType(models.Model):
-    name = models.CharField(max_length=1000)
-    helper = models.CharField(max_length=1000, blank=True, null=True)
-    def __str__(self):
-        return self.name
+class SkinType(Option):
+    pass
 
-class SkinConcern(models.Model):
-    name = models.CharField(max_length=1000)
-    def __str__(self):
-        return self.name
+class SkinConcern(Option):
+    pass
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=1000)
+    helper = models.CharField(max_length=1000, blank=True, null=True)
+    image = models.FileField(upload_to='images/ingredients/')
     def __str__(self):
         return self.name
 
+
 class Base(models.Model):
     name = models.CharField(max_length=1000)
+    helper = models.CharField(max_length=1000, blank=True, null=True)
     skin_type = models.ForeignKey(SkinType, null=True, 
                                   on_delete=models.CASCADE)
+    image = models.FileField(upload_to='images/base/')
     def __str__(self):
         return self.name+"_"+self.skin_type.name
 
 class MixingAgent(models.Model):
     name = models.CharField(max_length=1000)
+    helper = models.CharField(max_length=1000, blank=True, null=True)
     skin_type = models.ForeignKey(SkinType, null=True, 
       				  on_delete=models.CASCADE)
+    image = models.FileField(upload_to='images/mixing_agents/')
     def __str__(self):
         return self.name+"_"+self.skin_type.name
 
@@ -61,11 +64,13 @@ class Recipe(models.Model):
     def __str__(self):
         return self.skin_type.name+"__"+self.skin_concern.name+\
 	       "__"+self.mandatory_ingredient.name
+
 class FacePack(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     in_cart = models.BooleanField(default=False)
     quantity = models.IntegerField(default=1)
     createdte = models.DateTimeField(default=timezone.now, blank=True)
+    is_active = models.BooleanField(default=False)
     def __str__(self):
         return self.user.first_name+" "+self.in_cart
     def __unicode__(self):

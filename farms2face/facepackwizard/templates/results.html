@@ -8,49 +8,77 @@
   <script type="text/javascript"
     src="{% static 'facepackwizard/results.js' %}"></script>
 {% endblock %}
-
 {% block basebody %}
+<script type="text/javascript"> 
+   var recipes = "{{ recipes }}";
+   var base = "{{ base }}";
+   var mixing_agent = "{{ mixing_agent }}";
+   var option1 = "{{ option1 }}";
+   var option2 = "{{ option2 }}";
+</script>
 <div class="results-panel">
   <p class="your-best-match">Your Best Match</p>
   <div class="first-match">
+    <div class="top">
       <img class="bottle"
            src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
       <div class="details-panel">
         <p class="made-with">Made with</p>
         <div class="ingredients-panel">
-          <div class="ingredient" id="i1">
-            <img src="{% static 'facepackwizard/images/apples.jpg' %}" alt="" />
-            <p class="name">APPLES</p>
-            <p class="helper-text">Helps your skin breathe</p>
+          {% for r in recipes %}
+          <div class="ingredient" id="{{ r.i_id }}">
+            <img src="/images/{{ r.i_image }}" alt="" />
+            <p class="name">{{ r.i_name|upper }}</p>
+            <p class="helper-text">{{ r.i_helper }}</p>
           </div>
-          <div class="ingredient" id="i2">
-            <img src="{% static 'facepackwizard/images/avocado.png' %}" alt="" />
-            <p class="name">AVOCADO</p>
-            <p class="helper-text">Gives your skin depth</p>
-          </div>
-          <div class="ingredient" id="i3">
-            <img src="{% static 'facepackwizard/images/honey.jpg' %}" alt="" />
-            <p class="name">HONEY</p>
-            <p class="helper-text">Brightens up your skin</p>
-          </div>
-        </div>
-        <div class="learn-more-panel">
-          <p> <i>Learn more</i> about how these ingredients will help you</p>
-        </div>
-        <div class="purchase-panel">
-          <p class="button a-la-carte">BUY A-LA-CARTE</p>
-          <p class="or">- or -</p>
-          <p class="button subscribe">SUBSCRIBE</p>
+          {% endfor %}
         </div>
       </div>
+    </div>
+    <div class="learn-more-panel">
+      <p><i>Learn more</i> about ingredients</p>
+    </div>
+    <table class="summary">
+      <tr class="ingr base">
+        <td class="header">BASE</td>
+        <td class="middle"><img src="/images/{{ base.image }}" alt="" /></td>
+        <td class="right">
+          <p class="name">{{ base.name|upper }}</p>
+          <p class="helper">{{ base.helper }}</p>
+        </td>
+      </tr>
+      <tr class="ingr mixing-agent">
+        <td class="header">MIXING AGENT</td>
+        <td class="middle"><img src="/images/{{ mixing_agent.image }}" alt="" /></td>
+        <td class="right">
+          <p class="name">{{ mixing_agent.name|upper }}</p>
+          <p class="helper">{{ mixing_agent.helper }}</p>
+        </td>
+      </tr>
+      {% for r in recipes %}
+      <tr class="ingr recipe">
+        <td class="header">INGREDIENT_{{forloop.counter}}</td>
+        <td class="middle"><img src="/images/{{ r.i_image }}" alt="" /></td>
+        <td class="right">
+          <p class="name">{{ r.i_name|upper }}</p>
+          <p class="helper">{{ r.i_helper }}</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="purchase-panel">
+      <p class="button a-la-carte">BUY A-LA-CARTE</p>
+      <p class="or">- or -</p>
+      <p class="button subscribe">SUBSCRIBE</p>
+    </div>
   </div>
   <p class="other-header">You also matched with</p>
   <div class="other-panel">
     <div class="second match">
       <img class="bottle"
            src="{% static 'facepackwizard/images/160125_MMU_COOLINGWATER_CAPON.png' %}" alt="" />
-      <p class="name">Mango Infusion</p>
-      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
+      <p class="name" id="{{ option1.id }}">Option-1 { +{{option1.name}} }</p>
+      <p class="description">{{ option1.helper }}<br><br>{{ option1.str }}<br>Base: {{ base.name }}<br>Mixing Agent: {{ mixing_agent.name }}</p>
       <div class="purchase-panel">
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
         <p class="or">- or -</p>
@@ -60,8 +88,8 @@
     <div class="third match">
       <img class="bottle"
            src="{% static 'facepackwizard/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
-      <p class="name">Pulp Fiction</p>
-      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
+      <p class="name" id="{{ option2.id }}">Option-2 { +{{option2.name}} }</p>
+      <p class="description">{{ option2.helper }}<br><br>{{ option2.str }}<br>Base: {{ base.name }}<br>Mixing Agent: {{ mixing_agent.name }}</p>
       <div class="purchase-panel">
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
         <p class="or">- or -</p>
@@ -77,11 +105,15 @@
     </div>
     <div class="step two">
       <img src="{% static 'facepackwizard/images/How_to_wash_badge_2.png' %}" alt="" />
-      <p>Apply for 10 mins</p>
+      <p>Mix powdered face mask with mixing agent provided to get a paste like consistency and apply</p>
     </div>
     <div class="step three">
+      <img src="{% static 'facepackwizard/images/How_to_wash_badge_2.png' %}" alt="" />
+      <p>Keep for 10 minutes</p>
+    </div>
+    <div class="step four">
       <img src="{% static 'facepackwizard/images/How_to_wash_badge_3.png' %}" alt="" />
-      <p>Wash it off</p>
+      <p>Wash off for a glowing skin and moisturize as usual</p>
     </div>
   </div>
   <p class="hear-other">Hear what other people had to say about this facemask</p>
