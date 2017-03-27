@@ -1,124 +1,154 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from facepackwizard.models import Purchases, CustomPack, Recipe, MixingAgent, FacePack, PrePack, Base, Ingredient
+from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack
+from cart.models import Cart
+from userregistration.views import init_user_login
+from django.template.context import RequestContext
+from django.shortcuts import render_to_response
 import pdb
 import json
 import random
 
 # Create your views here.
 
-def main(request):
-    data = {'cart_size':0}
-    if request.user.id:
-        user_id = request.user.id
-        first_name = request.user.first_name
-        cart_size = FacePack.objects.filter(user=request.user, 
-                                              in_cart=True).count()
-        data = {
-            'first_name': first_name,
-            'user_id': user_id,
-            'cart_size': cart_size
-        } 
-    return render(request, "main.html", {'data': data})
+def get_name_if_valid_user(request):
+    if request and request.user:
+        user = request.user
+        if not user.is_anonymous() and not user.username.startswith("anon_"):
+            return user.first_name
 
-def cart(request):
-    return render(request, "cart.html",
-                  {'cart': get_facepacks_user_cart(request.user)})
+def cart_size(request):
+    init_user_login(request)
+    return request.user.cart_set.count()
 
 def home(request):
-    return render(request, "home.html",
-                  {'data': {}})
+    data = {
+        'cart_size' : cart_size(request),
+        'valid_user': get_name_if_valid_user(request)
+    }
+    return render(request, "home.html", data)
+
+def login_page(request):
+    data = {
+        'user': request.user,
+        'valid_user': get_name_if_valid_user(request),
+        'cart_size' : cart_size(request)
+    }                      
+    request.session['next'] = request.GET.get('next')
+    return render(request, "login.html",  data) 
 
 def login_user(request):
     json_response = {}
+    next = request.session['next']
     if request.is_ajax():
         data = json.loads(request.POST['data'])
         email = data['email'] 
         password = data['password']
-        user = authenticate(username=email, password=password)
-        if user and user.is_active:
-            login(request, user)
+        current_user = request.user
+        new_user = authenticate(username=email, password=password)
+        # Migrate any 'anon_xxx' user data to a valid user. Note that this
+        # does NOT imply that user.is_anonymous is True. In latter case
+        # there is no migration needed anyway. eg: valid user logs in initially.
+        if current_user.username.startswith("anon_"):
+            for related_objects in \
+                [getattr(current_user, x.name+'_set').all() for x in \
+                current_user._meta.related_objects if hasattr(current_user, x.name+'_set')]:
+                for obj in related_objects:
+                    obj.user = new_user
+                    obj.save()
+            current_user.delete()
+        if new_user and new_user.is_active:
+            login(request, new_user)
             json_response['success'] = True
-            json_response['first_name'] = user.first_name
+            json_response['first_name'] = new_user.first_name
+            json_response['email'] = new_user.email
+            json_response['next'] = next
         else:
             json_response['success'] = False
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
 def logout_user(request):
-    if request.is_ajax():
-        logout(request)
-    return HttpResponse(json.dumps({}, ensure_ascii=False))
-
-def get_facepacks_user_cart(user):
-    facepack_user_cart_data = [] 
-    for f in FacePack.objects.filter(user=user, in_cart=True):
-        if len(f.custompack_set.all()) > 0:
-            c_set = f.custompack_set.all()
-            recipes = [c.recipe.mandatory_ingredient for c in c_set]
-            base = c_set[0].base
-            mixing_agent = c_set[0].mixing_agent
-            facepack_name_list = [x.name for x in [base]+[mixing_agent]+recipes]
-            facepack_name = " + ".join(facepack_name_list)
-            if c.optional_ingredient:
-                facepack_name_list.append(c.optional_ingredient.name) 
-            facepack_user_cart_data.append({
-                'id': str(f.id),
-                'qty': str(f.quantity),
-                'cost': str(random.randrange(13,20)+0.99),
-                'name': facepack_name 
-            })
-        elif len(f.prepack_set.all()) > 0:
-            p_set = f.prepack_set.all()
-            ingredients = " + ".join([p.ingredient.name for p in p_set])
-            facepack_name = p_set[0].name+" { "+ingredients+" }"
-            facepack_user_cart_data.append({
-                'id': str(f.id),
-                'qty': str(f.quantity),
-                'cost': str(random.randrange(13,20)+0.99),
-                'name': facepack_name 
-            })
-    return facepack_user_cart_data
+    next = request.GET.get('next')
+    logout(request)
+    data = { 'valid_user': get_name_if_valid_user(request),
+             'cart_size' : cart_size(request) }
+    return redirect(next, data)
 
 def post_add_cart(request):
     json_response = { 'success': False }
     if request.method == 'POST':
+        init_user_login(request)
         user = request.user
         data = json.loads(request.POST['data'])
-        recipe_ids = map(int, data['recipe_ids'].split())
-        base_id = int(data['base_id']) 
-        mixing_agent_id = int(data['mixing_agent_id'])
-        optional_id = int(data['optional_id'])
+        recipe1_id = int(data['r1_id'])
+        recipe2_id = int(data['r2_id'])
+        recipe3_id = int(data['r3_id'])
+        base_id = int(data['b_id']) 
+        mixing_agent_id = int(data['m_id'])
+        optional_id = int(data['o_id']) if 'o_id' in data and len(data['o_id']) > 0 else None
 
-        facepack = FacePack()
-        facepack.user = user
-        facepack.in_cart = True
-        facepack.save()
-        for recipe in Recipe.objects.filter(id__in=recipe_ids):
-            custom_pack = CustomPack()
-            custom_pack.facepack = facepack
-            custom_pack.recipe = recipe
-            if optional_id > 0:
-                custom_pack.optional_ingredient = Ingredient.objects.get(id=optional_id)
-            custom_pack.base = Base.objects.get(id=base_id)
-            custom_pack.mixing_agent = MixingAgent.objects.get(id=mixing_agent_id)
-            custom_pack.save()
+	optional_ing = None
+        if optional_id:
+            optional_ing = Ingredient.objects.get(pk=optional_id)
+
+        # Create FP name
+        fp_name = "CFP_%03d%03d%03d" % (recipe1_id, recipe2_id, recipe3_id)
+        if optional_id:
+            fp_name += "%03d" % optional_id
+        else:
+            fp_name += "000"
+
+        fp = FacePack()
+        fp.base = Base.objects.get(pk=base_id)
+        fp.mixing_agent = MixingAgent.objects.get(pk=mixing_agent_id)
+        fp.price = str(random.randrange(13,30)+0.99)
+        fp.name = fp_name
+        fp.save()
+
+	cfp1 = CustomFacePack()
+        cfp1.recipe = Recipe.objects.get(pk=recipe1_id)
+        cfp1.optional_ingredient = optional_ing
+        cfp1.facepack = fp
+        cfp1.user = user
+        cfp1.save()
+
+	cfp2 = CustomFacePack()
+        cfp2.recipe = Recipe.objects.get(pk=recipe2_id)
+        cfp2.optional_ingredient = optional_ing
+        cfp2.facepack = fp
+        cfp2.user = user
+        cfp2.save()
+
+	cfp3 = CustomFacePack()
+        cfp3.recipe = Recipe.objects.get(pk=recipe3_id)
+        cfp3.optional_ingredient = optional_ing
+        cfp3.facepack = fp
+        cfp3.user = user
+        cfp3.save()
+
+        c = Cart()
+        c.item = fp
+        c.user = user
+        c.save()
+
         json_response['success'] = True 
-        json_response['facepack_id'] = facepack.id 
-        json_response['cart_size'] = FacePack.objects.filter(user=user, 
-                                              in_cart=True).count()
+        json_response['facepack_id'] = fp.id 
+        json_response['cart_size'] = cart_size(request)
+    print json_response
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
 def post_remove_cart(request):
     json_response = { 'success': False }
     if request.method == 'POST':
+        init_user_login(request)
         user = request.user
         data = json.loads(request.POST['data'])
         facepack_id = int(data['facepack_id'])
         facepack = FacePack.objects.get(id=facepack_id)
-        if facepack.user == user:
+        # Check if indeed cart item remove operation is done by intended user
+        if facepack.cart_set.all()[0].user == user:
             facepack.delete()
-        json_response['success'] = True
-        json_response['cart_size'] = FacePack.objects.filter(user=user, 
-                                              in_cart=True).count()
+            json_response['success'] = True
+        json_response['cart_size'] = user.cart_set.count()
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))

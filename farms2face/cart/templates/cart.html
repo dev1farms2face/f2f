@@ -1,0 +1,104 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'cart/cart.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'cart/cart.js' %}"></script>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block basebody %}
+<div class="cart-panel">
+  <table class="main">
+    <tr>
+      <td>
+        <p class="header">Your Cart</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="bottom-panel">
+          <div class="left-panel">
+            <table class="item-panel">
+              {% if cart_items %}
+              {% for c in cart_items %}
+              <tr class="item" id="{{ c.id }}" item-id="{{ c.item_id }}">
+                <td class="image-cell">
+                  <img class="bottle"
+                       src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+                </td>
+                <td class="ingredient-cell">
+                  <p class="made-with">{{ c.name }} Made With</p>
+                  <div class="ingredient-panel">
+                    {% for m in c.mandatory %}
+                    <div class="ingredient-item">
+                      <img src="/images/{{ m.image }}" alt="" />
+                      <p class="name">{{ m.name|upper}}</p>
+                    </div>
+                    {% endfor %}
+                    {% if c.optional %}
+                    <div class="ingredient-item">
+                      <img src="/images/{{ c.optional.image }}" alt="" />
+                      <p class="name">{{ c.optional.name|upper }}</p>
+                    </div>
+                    {% endif %}
+                  </div>
+                </td>
+                <td class="quantity">
+                  <img class="up"
+                       src="{% static 'cart/images/up-arrow.jpg' %}" alt="" />
+                  <p>QTY: {{ c.quantity }}</p>
+                  <img class="down"
+                       src="{% static 'cart/images/down-arrow.jpg' %}" alt="" />
+                </td>
+                <td class="price-cell">
+                  <p class="price">{{ c.price }}</p>
+                  <p class="remove">REMOVE</p>
+                </td> 
+              </tr>
+              {% endfor %}
+              {% else %}
+              <div class="empty-cart">
+                <i>... is Empty. Start Shopping!</i>
+              </div>
+              {% endif %}
+            </table>
+          </div>
+          {% if cart_items %}
+          <div class="checkout-panel">
+            <div class="subtotal-panel">
+              <p class="name">Subtotal:</p>
+              <p class="value">{{ subtotal }}</p>
+            </div>
+            <div class="shipping-panel">
+              <p class="name">Shipping:</p>
+              <select>
+                  {% for s in shipping_items %}
+                  {% if s.id == shipping_id %}
+                  <option value="{{ s.id }}" selected="selected">{{ s.type }}</option>
+                  {% else %}
+                  <option value="{{ s.id }}">{{ s.type }}</option>
+                  {% endif %}
+                  {% endfor %}
+              </select>
+              <p class="cost">{{ shipping_cost }}</p>
+            </div>
+            <p class="helper">{{ shipping_helper }}</p>
+            <p class="promo">Apply Promo Code or Gift Card</p>
+            <hr>
+            <div class="total-panel">
+              <p class="name">Total Before Tax:</p>
+              <p class="value">{{ total }}</p>
+            </div>
+            <p class="checkout">CHECKOUT</p>
+          </div>
+          {% endif %}
+        </div> 
+      </td>
+    </tr>
+  </table>
+</div>
+{% endblock %}

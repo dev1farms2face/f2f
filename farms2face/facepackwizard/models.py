@@ -29,78 +29,15 @@ class SkinType(Option):
 class SkinConcern(Option):
     pass
 
-
-class Ingredient(models.Model):
-    name = models.CharField(max_length=1000)
-    helper = models.CharField(max_length=1000, blank=True, null=True)
-    image = models.FileField(upload_to='images/ingredients/')
+class QuestionnaireUserData(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    createdte = models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return self.name
+        return str(self.id)+" "+str(self.user)
 
-
-class Base(models.Model):
-    name = models.CharField(max_length=1000)
-    helper = models.CharField(max_length=1000, blank=True, null=True)
-    skin_type = models.ForeignKey(SkinType, null=True, 
-                                  on_delete=models.CASCADE)
-    image = models.FileField(upload_to='images/base/')
+class QuestionnaireEntry(models.Model):
+    wizard = models.ForeignKey(QuestionnaireUserData, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    option = models.ForeignKey(Option, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name+"_"+self.skin_type.name
-
-class MixingAgent(models.Model):
-    name = models.CharField(max_length=1000)
-    helper = models.CharField(max_length=1000, blank=True, null=True)
-    skin_type = models.ForeignKey(SkinType, null=True, 
-      				  on_delete=models.CASCADE)
-    image = models.FileField(upload_to='images/mixing_agents/')
-    def __str__(self):
-        return self.name+"_"+self.skin_type.name
-
-class Recipe(models.Model):
-    skin_type = models.ForeignKey(SkinType, on_delete=models.CASCADE)
-    skin_concern = models.ForeignKey(SkinConcern, on_delete=models.CASCADE)
-    mandatory_ingredient = models.ForeignKey(Ingredient, 
-				             on_delete=models.CASCADE)
-    def __str__(self):
-        return self.skin_type.name+"__"+self.skin_concern.name+\
-	       "__"+self.mandatory_ingredient.name
-
-class FacePack(models.Model):
-    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    in_cart = models.BooleanField(default=False)
-    quantity = models.IntegerField(default=1)
-    createdte = models.DateTimeField(default=timezone.now, blank=True)
-    is_active = models.BooleanField(default=False)
-    def __str__(self):
-        return self.user.first_name+" "+self.in_cart
-    def __unicode__(self):
-        return unicode(self.in_cart) or u''
-
-class CustomPack(models.Model):
-    facepack = models.ForeignKey(FacePack, null=True, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    optional_ingredient = models.ForeignKey(Ingredient, 
-                                            blank=True, null=True, 
-                                            on_delete=models.CASCADE)
-    base = models.ForeignKey(Base, on_delete=models.CASCADE)
-    mixing_agent = models.ForeignKey(MixingAgent, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.facepack
-    def __unicode__(self):
-        return unicode(self.facepack) or u''
-
-class PrePack(models.Model):
-    facepack = models.ForeignKey(FacePack, on_delete=models.CASCADE)
-    name = models.CharField(max_length=1000)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.name
-    def __unicode__(self):
-        return unicode(self.facepack) or u''
-
-class Purchases(models.Model):
-    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    transaction_id = models.BigIntegerField()
-    facepack = models.ForeignKey(FacePack, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.transaction_id
+        return str(self.wizard.id)+" "+str(self.question)+" "+str(self.option)

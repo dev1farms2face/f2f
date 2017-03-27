@@ -1,0 +1,86 @@
+div.login-panel {
+    display: block;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    width: 300px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 80px 80px 80px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.1);
+}
+
+div.login-panel p.header {
+    font-family: "Helvetica-Light";
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+div.login-panel input {
+    display: table-cell;
+    vertical-align: top;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    height: 30px;
+    width: 80%;
+    color: #CCC;
+    margin-left: 10px;
+}
+
+div.login-panel input.valid {
+    color: black;
+}
+
+div.login-panel div.email-panel {
+    border: 1px solid #BBBBBB;
+    padding: 5px 10px 5px 10px;
+}
+
+div.login-panel div.password-panel {
+    border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 5px 10px 5px 10px;
+}
+
+div.login-panel img {
+    width: 20px;
+    padding-top: 7px;
+}
+
+div.login-panel p.or {
+    display: block;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: "Helvetica-Light";
+}
+
+div.login-panel img.fb {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+div.login-panel p.login-submit {
+    font-family: "Helvetica-Light";
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 14px;
+    background-color: #88a470; 
+    background-color: #88a470; 
+    color: white;
+    text-align: center;
+    padding: 15px 40px 15px 40px;
+    cursor: pointer;
+}

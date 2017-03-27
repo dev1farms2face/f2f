@@ -10,11 +10,19 @@
 {% endblock %}
 {% block basebody %}
 <script type="text/javascript"> 
-   var recipes = "{{ recipes }}";
-   var base = "{{ base }}";
+   var r1_id = "{{ r1_id }}";
+   var r2_id = "{{ r2_id }}";
+   var r3_id = "{{ r3_id }}";
+   var b_id = "{{ b_id }}";
+   var m_id = "{{ m_id }}";
+   var o1_id = "{{ o1_id }}";
+   var o2_id = "{{ o2_id }}";
    var mixing_agent = "{{ mixing_agent }}";
    var option1 = "{{ option1 }}";
    var option2 = "{{ option2 }}";
+   var fp1 = "{{ fp1 }}";
+   var fp2 = "{{ fp2 }}";
+   var fp3 = "{{ fp3 }}";
 </script>
 <div class="results-panel">
   <p class="your-best-match">Your Best Match</p>
@@ -67,7 +75,11 @@
       {% endfor %}
     </table>
     <div class="purchase-panel">
+      {% if fp1 %}
+      <p class="button a-la-carte buy-clicked" facepack_id="{{ fp1 }}">ADDED TO CART</p>
+      {% else %}
       <p class="button a-la-carte">BUY A-LA-CARTE</p>
+      {% endif %}
       <p class="or">- or -</p>
       <p class="button subscribe">SUBSCRIBE</p>
     </div>
@@ -80,7 +92,11 @@
       <p class="name" id="{{ option1.id }}">Option-1 { +{{option1.name}} }</p>
       <p class="description">{{ option1.helper }}<br><br>{{ option1.str }}<br>Base: {{ base.name }}<br>Mixing Agent: {{ mixing_agent.name }}</p>
       <div class="purchase-panel">
+        {% if fp2 %}
+        <p class="button a-la-carte buy-clicked" facepack_id="{{ fp2 }}">ADDED TO CART</p>
+        {% else %}
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
+        {% endif %}
         <p class="or">- or -</p>
         <p class="button subscribe">SUBSCRIBE</p>
       </div>
@@ -91,7 +107,11 @@
       <p class="name" id="{{ option2.id }}">Option-2 { +{{option2.name}} }</p>
       <p class="description">{{ option2.helper }}<br><br>{{ option2.str }}<br>Base: {{ base.name }}<br>Mixing Agent: {{ mixing_agent.name }}</p>
       <div class="purchase-panel">
+        {% if fp3 %}
+        <p class="button a-la-carte buy-clicked" facepack_id="{{ fp3 }}">ADDED TO CART</p>
+        {% else %}
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
+        {% endif %}
         <p class="or">- or -</p>
         <p class="button subscribe">SUBSCRIBE</p>
       </div>

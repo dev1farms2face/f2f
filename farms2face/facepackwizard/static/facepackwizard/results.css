@@ -190,6 +190,7 @@ div.first-match div.purchase-panel p.button  {
         font-size: 9px;
         font-weight: bold;
         background-color: #88a470;
+        border: 1px solid #88a470;
         height: 20px;
         vertical-align: middle;
         padding: 2px 5px 2px 5px;
@@ -197,8 +198,14 @@ div.first-match div.purchase-panel p.button  {
         cursor: pointer;
 }
 
+div.first-match div.purchase-panel p.button.buy-clicked  {
+        color: #88a470;
+        border: 1px solid #88a470;
+        background-color: white;
+}
+
 div.first-match div.purchase-panel p.button:hover {
-        background-color: #777777;
+        //background-color: #777777;
 }
 
 p.other-header {
@@ -259,6 +266,7 @@ div.other-panel .match div.purchase-panel p.button {
         font-size: 9px;
         font-weight: bold;
         background-color: #88a470;
+        border: 1px solid #88a470;
         height: 15px;
         vertical-align: middle;
         letter-spacing: 2px;
@@ -266,8 +274,14 @@ div.other-panel .match div.purchase-panel p.button {
         padding: 6px 8px 3px 8px;
 }
 
+div.other-panel .match div.purchase-panel p.button.buy-clicked  {
+        color: #88a470;
+        border: 1px solid #88a470;
+        background-color: white;
+}
+
 div.other-panel .match div.purchase-panel p.button:hover {
-        background-color: #777777;
+        //background-color: #777777;
 }
 
 div.other-panel .match div.purchase-panel p.or {

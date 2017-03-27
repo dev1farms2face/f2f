@@ -15,6 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SESSION_SAVE_EVERY_REQUEST = True
+
+SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -22,15 +25,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fpit^azx93lk^w6vq=o245=3%p%@yw+pr&x)^hmpo5p2w!%b1x'
 
+SOCIAL_AUTH_FACEBOOK_KEY = '114214335784895'
+SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f' 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['www.rajiv.com']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'social.apps.django_app.default',
     'home.apps.HomeConfig',
     'payments.apps.PaymentsConfig',
     'facepackwizard.apps.FacepackwizardConfig',
@@ -38,6 +44,7 @@ INSTALLED_APPS = [
     'subscriptions.apps.SubscriptionsConfig',
     'userlogs.apps.UserlogsConfig',
     'userregistration.apps.UserregistrationConfig',
+    'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    #'social.backends.facebook.FacebookOAuth2',
+    #'social.backends.google.GoogleOAuth2',
+    #'social.backends.twitter.TwitterOAuth',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGIN_REDIRECT_URL = '/home/'
 
 ROOT_URLCONF = 'farms2face.urls'
 
@@ -69,6 +86,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },

@@ -1,6 +1,18 @@
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 import json
+import pdb
+
+def init_user_login(request):
+    # If not valid user, create anonymous user based on session key
+    if request.user.is_anonymous():
+        session = request.session
+        if not session.session_key:
+            request.session.create()
+        u = User(username="anon_"+request.session.session_key)
+        u.save()
+        login(request, u)
 
 def register(request):
     json_response = { 'success': False }
