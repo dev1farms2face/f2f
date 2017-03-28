@@ -24,8 +24,9 @@
   </div>
   <p class="login-submit">LOG IN</p>
   <p class="or">Or</p>
-  <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+  <a href="{% url 'social:begin' 'facebook' %}?next={{ next }}">
     <img class="fb"
          src="{% static 'home/images/fp1.png' %}" alt="" />
+  </a>
 </div>
 {% endblock %}

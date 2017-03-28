@@ -31,6 +31,7 @@ def wizard(request):
         })
     return render(request, "wizard.html", 
                                { 'questions': data, 
+                                 'cart_size': cart_size(request),
                                  'valid_user': get_name_if_valid_user(request) })
 
 def wizard_submit(request):

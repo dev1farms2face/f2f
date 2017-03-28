@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack
 from cart.models import Cart
@@ -15,12 +16,12 @@ import random
 def get_name_if_valid_user(request):
     if request and request.user:
         user = request.user
-        if not user.is_anonymous() and not user.username.startswith("anon_"):
+        if not user.is_anonymous():
             return user.first_name
 
 def cart_size(request):
-    init_user_login(request)
-    return request.user.cart_set.count()
+    #init_user_login(request)
+    return request.user.cart_set.count() if hasattr(request.user, 'cart_set') else 0
 
 def home(request):
     data = {
@@ -33,39 +34,89 @@ def login_page(request):
     data = {
         'user': request.user,
         'valid_user': get_name_if_valid_user(request),
-        'cart_size' : cart_size(request)
+        'cart_size' : cart_size(request),
+        'next': request.GET.get('next')
     }                      
     request.session['next'] = request.GET.get('next')
     return render(request, "login.html",  data) 
+
+def migrate_user(old_user, new_user):
+    for related_objects in \
+        [getattr(old_user, x.name+'_set').all() for x in \
+        old_user._meta.related_objects if hasattr(old_user, x.name+'_set')]:
+        for obj in related_objects:
+            obj.user = new_user
+            obj.save()
+
+def social_user(backend, uid, user=None, *args, **kwargs):
+    '''OVERRIDED: It will logout the current user
+    instead of raise an exception '''
+
+    provider = backend.name
+    social = backend.strategy.storage.user.get_social_auth(provider, uid)
+    if social:
+        #pdb.set_trace()
+        if user and social.user != user:
+            #print "!!! social user logging out and relogging in !!!"
+            #migrate_user(user, social.user)
+            #user = social.user
+            logout(backend.strategy.request)
+            #msg = 'This {0} account is already in use.'.format(provider)
+            #raise AuthAlreadyAssociated(backend, msg)
+        elif not user:
+            user = social.user
+    return {'social': social,
+            'user': user,
+            'is_new': user is None,
+            'new_association': False}
+
+def rename_social_anon_user(backend, uid, user=None, *args, **kwargs):
+    if user and user.username.startswith('anon_'):
+        objs = User.objects.filter(email=user.email)
+        if len(objs) > 1:
+            orig = User.objects.get(email=user.email, username=user.email)
+            migrate_user(user, orig)
+            user.delete()
+            user = orig
+        user.username = user.email
+        user.save()
+    provider = backend.name
+    social = backend.strategy.storage.user.get_social_auth(provider, uid)
+    return {'social': social,
+            'user': user,
+            'is_new': user is None,
+            'new_association': False}
 
 def login_user(request):
     json_response = {}
     next = request.session['next']
     if request.is_ajax():
         data = json.loads(request.POST['data'])
-        email = data['email'] 
-        password = data['password']
+        social = data['social'] if 'social' in data else None
         current_user = request.user
-        new_user = authenticate(username=email, password=password)
-        # Migrate any 'anon_xxx' user data to a valid user. Note that this
-        # does NOT imply that user.is_anonymous is True. In latter case
-        # there is no migration needed anyway. eg: valid user logs in initially.
-        if current_user.username.startswith("anon_"):
-            for related_objects in \
-                [getattr(current_user, x.name+'_set').all() for x in \
-                current_user._meta.related_objects if hasattr(current_user, x.name+'_set')]:
-                for obj in related_objects:
-                    obj.user = new_user
-                    obj.save()
-            current_user.delete()
-        if new_user and new_user.is_active:
-            login(request, new_user)
+        if social == 'fb': 
+            social_login_url = "/login/facebook/?next=%s" % next
             json_response['success'] = True
-            json_response['first_name'] = new_user.first_name
-            json_response['email'] = new_user.email
-            json_response['next'] = next
+            json_response['first_name'] = ""
+            json_response['next'] = social_login_url
         else:
-            json_response['success'] = False
+            email = data['email'] 
+            password = data['password']
+            new_user = authenticate(username=email, password=password)
+            # Migrate any 'anon_xxx' user data to a valid user. Note that this
+            # does NOT imply that user.is_anonymous is True. In latter case
+            # there is no migration needed anyway. eg: valid user logs in initially.
+            if current_user.username.startswith("anon_"):
+                migrate_user(current_user, new_user)
+                current_user.delete()
+            if new_user and new_user.is_active:
+                login(request, new_user)
+                json_response['success'] = True
+                json_response['first_name'] = new_user.first_name
+                json_response['email'] = new_user.email
+                json_response['next'] = next
+            else:
+                json_response['success'] = False
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
 def logout_user(request):
@@ -73,7 +124,7 @@ def logout_user(request):
     logout(request)
     data = { 'valid_user': get_name_if_valid_user(request),
              'cart_size' : cart_size(request) }
-    return redirect(next, data)
+    return redirect('/signin/', data)
 
 def post_add_cart(request):
     json_response = { 'success': False }

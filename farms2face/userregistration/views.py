@@ -1,10 +1,14 @@
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from social_django.models import UserSocialAuth
 import json
 import pdb
 
 def init_user_login(request):
+    # If social login then return
+    if not request.user.is_anonymous() and UserSocialAuth.objects.filter(user=request.user).count > 0:
+        return
     # If not valid user, create anonymous user based on session key
     if request.user.is_anonymous():
         session = request.session
@@ -12,6 +16,7 @@ def init_user_login(request):
             request.session.create()
         u = User(username="anon_"+request.session.session_key)
         u.save()
+        u.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request, u)
 
 def register(request):

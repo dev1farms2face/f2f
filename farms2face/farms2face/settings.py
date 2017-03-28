@@ -31,7 +31,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.rajiv.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com']
 
 # Application definition
 
@@ -55,10 +55,10 @@ INSTALLED_APPS = [
 
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    #'social.backends.facebook.FacebookOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
     #'social.backends.google.GoogleOAuth2',
     #'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 MIDDLEWARE = [
@@ -71,7 +71,31 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOGIN_REDIRECT_URL = '/home/'
+SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.9'
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+LOGIN_REDIRECT_URL = 'http://www.rajiv.com:8000/home/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_USER_FIELDS = ['email', 'username']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,name,email', 
+}
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    # Path to your overrided method
+    # You can set any other valid path.
+    'home.views.social_user',
+    'social.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'home.views.rename_social_anon_user',
+)
 
 ROOT_URLCONF = 'farms2face.urls'
 
@@ -110,6 +134,18 @@ DATABASES = {
     }
 }
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'txciggy$farms2face',
+        'USER': 'txciggy',
+        'PASSWORD': 'farms2face',
+        'HOST': 'txciggy.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -148,8 +184,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
 MEDIA_ROOT = '/usr/local/projects/farms2face/files/'
- 
 MEDIA_URL = '/images/'
+
+"""
+STATIC_ROOT = '/home/txciggy/f2f/farms2face/static/'
+STATIC_URL = '/static/'
+MEDIA_ROOT = '/home/txciggy/f2f/farms2face/files' 
+MEDIA_URL = '/images/'   
+"""
 

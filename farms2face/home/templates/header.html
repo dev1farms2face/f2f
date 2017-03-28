@@ -17,7 +17,7 @@
     </a>
     {% if valid_user %}
     <a href="/logout/?next={{ request.path }}">
-      <label class='title-link' id='user'>Welcome {{ valid_user }}!</label>
+      <label class='title-link' id='user'>Hello {{ valid_user }}!</label>
     </a>
     <label class='title-link' id='my-account'>MY ACCOUNT</label>
     {% else %}

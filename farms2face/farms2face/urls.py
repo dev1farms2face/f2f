@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import logout
 import facepackwizard.views
 import home.views
 import cart.views
@@ -36,6 +37,7 @@ urlpatterns = [
     url(r'^signin/', home.views.login_page, name='login'),
     url(r'^post_login_user/', home.views.login_user, name='login'),
     url(r'^logout/', home.views.logout_user, name='logout'),
+    #url(r'^logout/$', logout, {'next_page': '/signin'}, name='logout'),
     url(r'^post_update_cart_quantity/', cart.views.update_quantity),
     url(r'^post_wizard_submit/', facepackwizard.views.wizard_submit),
     url(r'^post_add_cart/', home.views.post_add_cart),
