@@ -23,6 +23,14 @@ class Base(models.Model):
     def __str__(self):
         return self.name+"_"+self.skin_type.name
 
+class SkinTypeIngredient(models.Model):
+    skin_type = models.ForeignKey('facepackwizard.SkinType', 
+                                  on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, 
+				  on_delete=models.CASCADE)
+    def __str__(self):
+        return self.skin_type.name+"_"+self.ingredient.name
+
 class MixingAgent(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)

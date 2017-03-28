@@ -2,7 +2,7 @@ from django.shortcuts import render, get_list_or_404
 
 from django.http import HttpResponse
 from .models import SkinType, SkinConcern, Option, Question, Questionnaire, QuestionnaireUserData, QuestionnaireEntry
-from home.models import Ingredient, Base, MixingAgent, Recipe, FacePack, CustomFacePack
+from home.models import Ingredient, Base, MixingAgent, Recipe, FacePack, CustomFacePack, SkinTypeIngredient
 from django.contrib.auth.models import User
 from cart.models import Cart
 from userregistration.views import init_user_login
@@ -58,8 +58,9 @@ def wizard_submit(request):
                 skinConcerns = SkinConcern.objects.filter(id__in=d['options'])
         recipes = Recipe.objects.filter(skin_type=skinType, skin_concern__in=skinConcerns)
         recipes_ing = [r.mandatory_ingredient for r in recipes]
-        optional_ingr1 = random.choice([x for x in Ingredient.objects.all() if x not in recipes_ing])
-        optional_ingr2 = random.choice([x for x in Ingredient.objects.all() \
+        skin_type_ingredients = Ingredient.objects.filter(id__in=SkinTypeIngredient.objects.filter(skin_type=skinType).values('ingredient'))
+        optional_ingr1 = random.choice([x for x in skin_type_ingredients if x not in recipes_ing])
+        optional_ingr2 = random.choice([x for x in skin_type_ingredients \
                                         if x not in recipes_ing and x != optional_ingr1])
         base = random.choice(Base.objects.filter(skin_type=skinType))
         mixing_agent = random.choice(MixingAgent.objects.filter(skin_type=skinType))

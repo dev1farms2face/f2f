@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Ingredient, Base, MixingAgent, Recipe, FacePack, CustomFacePack, PrePack, Item
+from .models import *
 
 admin.site.register(Ingredient)
 admin.site.register(Base)
@@ -10,3 +10,4 @@ admin.site.register(FacePack)
 admin.site.register(CustomFacePack)
 admin.site.register(PrePack)
 admin.site.register(Item)
+admin.site.register(SkinTypeIngredient)
