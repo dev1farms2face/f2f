@@ -1,0 +1,44 @@
+{% extends "myaccount.html" %}
+
+{% block myaccount-content %}
+<p class="title">SKIN PROFILE STATS</p>
+<table class="skin-profile account details-panel">
+  <tr>
+    <td class="skin-type">
+      <p class="label">Skin Type:</p>
+      <p class="value">{{ skin_type }}</p>
+    </td>
+    <td class="skin-routine">
+      <p class="label">Morning Skin Routine:</p>
+      <p class="value">{{ skin_routine_morning }}</p>
+    </td>
+  </tr>
+    <td class="skin-concern">
+      <p class="label">Skin Concern #1:</p>
+      <p class="value">{{ skin_concern_1 }}</p>
+    </td>
+    <td class="skin-routine">
+      <p class="label">Evening Skin Routine:</p>
+      <p class="value">{{ skin_routine_evening }}</p>
+    </td>
+  </tr>
+    <td class="skin-concern">
+      <p class="label">Skin Concern #2:</p>
+      <p class="value">{{ skin_concern_2 }}</p>
+    </td>
+    <td class="sunscreen">
+      <p class="label">Sunscreen Frequency:</p>
+      <p class="value">{{ sunscreen }}</p>
+    </td>
+  </tr>
+    <td class="skin-concern">
+      <p class="label">Skin Concern #3:</p>
+      <p class="value">{{ skin_concern_3 }}</p>
+    </td>
+    <td class="environment">
+      <p class="label">Current Environment:</p>
+      <p class="value">{{ environment }}</p>
+    </td>
+  </tr>
+</table>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "myaccount.html" %}
+
+{% load static %}
+
+{% block myaccount-content %}
+<p class="title">ORDER HISTORY</p>
+{% if orders %}
+<table class="order-history">
+  <tr>
+    <th class="sno">SNo.</th>
+    <th class="date">Date</th>
+    <th class="item">Item</th>
+    <th class="price">Price</th>
+    <th class="type">Type</th>
+    <th class="quantity">Qty</th>
+    <th class="shipping-cost">Shipping</th>
+    <th class="total">Total</th>
+  </tr>
+  {% for p in orders %}
+  <tr>
+    {% if p.first %}
+    <td class="first sno">{{ p.sno }}</td>
+    <td class="first date">{{ p.date }}</td>
+    <td class="first item">
+      <div class="image-cell">
+        <img class="bottle"
+             src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+      </div>
+      <div class="ingredient-cell">
+        <p class="made-with">Made With:</p>
+        <div class="ingredient-panel">
+          {% for m in p.mandatory %}
+          <div class="ingredient-item">
+            <img src="/images/{{ m.image }}" alt="" />
+            <p class="name">{{ m.name|upper}}</p>
+          </div>
+          {% endfor %}
+          {% if c.optional %}
+          <div class="ingredient-item">
+            <img src="/images/{{ p.optional.image }}" alt="" />
+            <p class="name">{{ p.optional.name|upper }}</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <p class="uuid">UUID# {{ p.name }}</p>
+    </td>
+    <td class="first price">{{ p.price }}</td>
+    {% if p.type == "buy" %}
+    <td class="first type">A-LA-CARTE</td>
+    {% elif p.type == "subscribe" %}
+    <td class="first type">SUBSCRIBED</td>
+    {% endif %}
+    <td class="first quantity">{{ p.quantity }}</td>
+    <td class="first shipping-type">{{ p.shipping_cost }}<br><label class="shipping">{{ p.shipping_type }}</label></td>
+    <td class="first total"><b>{{ p.total }}</b></td>
+    {% else %}
+    <td class="sno"></td>
+    <td class="date"></td>
+    <td class="item">
+      <div class="image-cell">
+        <img class="bottle"
+             src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+      </div>
+      <div class="ingredient-cell">
+        <p class="made-with">Made With:</p>
+        <div class="ingredient-panel">
+          {% for m in p.mandatory %}
+          <div class="ingredient-item">
+            <img src="/images/{{ m.image }}" alt="" />
+            <p class="name">{{ m.name|upper}}</p>
+          </div>
+          {% endfor %}
+          {% if p.optional %}
+          <div class="ingredient-item">
+            <img src="/images/{{ p.optional.image }}" alt="" />
+            <p class="name">{{ p.optional.name|upper }}</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <p class="uuid">UUID# {{ p.name }}</p>
+    </td>
+    <td class="price">{{ p.price }}</td>
+    {% if p.type == "buy" %}
+    <td class="type">A-LA-CARTE</td>
+    {% elif p.type == "subscribe" %}
+    <td class="type">SUBSCRIBED</td>
+    {% endif %}
+    <td class="quantity">{{ p.quantity }}</td>
+    <td class="shipping-type"></td>
+    <td class="total"></td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="no">No order history to display</p>
+{% endif %}
+{% endblock %}

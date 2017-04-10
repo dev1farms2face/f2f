@@ -1,0 +1,528 @@
+div.myaccount-panel {
+    display: table;
+    min-height: 400px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+    margin-left: 100px;
+}
+
+div.myaccount-panel div.menu-panel {
+    display: table-cell;
+    text-align: left;
+    padding-left: 20px;
+    height: 600px;
+    min-width: 300px;
+}
+
+div.myaccount-panel div.content-panel {
+    display: table-cell;
+    min-height: 400px;
+    padding-left: 90px;
+    text-align: left;
+    vertical-align: top;
+}
+
+div.myaccount-panel div.photo {
+    display: table;
+    margin-left: 50px;
+}
+
+div.myaccount-panel div.photo img {
+    display: table-cell;
+    width: 150px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+div.myaccount-panel div.photo label {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    font-family: "HelveticaNeue-Light", sans-serif;
+    font-size: 12px;
+    color: #AAA;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+div.myaccount-panel div.photo label:hover {
+    color: #444;
+}
+
+div.myaccount-panel div.menu-panel p {
+    display: block;
+    padding: 15px 60px 15px 5px;;
+    font-family: 'HelveticaNeue-Light', sans-serif;
+    letter-spacing: 3px;
+    font-size: 16px;
+    transform: scaleX(0.8);
+    color: #888;
+    border-top: solid 1px #DDD;
+    cursor: pointer;
+    -o-transition:.4s;
+    -ms-transition:.4s;
+    -moz-transition:.4s;
+    -webkit-transition:.4s;
+    /* ...and now for the proper property */
+    transition:.4s;
+}
+
+div.myaccount-panel div.menu-panel p:hover {
+    color: #444;
+    background-color: #EEE;
+}
+
+div.myaccount-panel div.menu-panel p.selected {
+    color: #444;
+    background-color: #EEE;
+}
+
+div.myaccount-panel div.content-panel p.title {
+    font-family: "HelveticaNeue-UltraLight";
+    font-size: 18px;
+    letter-spacing: 4px;
+    padding-bottom: 20px;
+}
+
+/** ACCOUNT-DETAILS **/
+
+div.myaccount-panel div.content-panel table.account.details-panel {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 30px;
+}
+
+div.myaccount-panel div.content-panel table.account.details-panel td {
+    white-space: nowrap;
+    padding-bottom: 40px;
+    padding-right: 30px;
+}
+
+div.myaccount-panel div.content-panel table.account.details-panel td p.label {
+    display: inline-block;
+    font-family: "HelveticaNeue-Light";
+    font-size: 16px;
+    color: #777;
+    min-width: 120px; 
+}
+
+div.myaccount-panel div.content-panel table.account.details-panel td p.value {
+    display: inline-block;
+    text-align: right;
+    margin-left: 20px;
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    color: #88a470;
+}
+
+div.myaccount-panel div.content-panel table.account.details-panel td input.value {
+    display: inline-block;
+    text-align: left;
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    color: #88a470;
+    border: 0px;
+    border-bottom: 1px solid #FFF;
+    padding-bottom: 3px;
+    width: 250px;
+}
+
+
+div.myaccount-panel div.content-panel table.account.details-panel td input.value:focus {
+    color: #444;
+    outline: none; 
+    border-bottom: 1px solid #db3f4c;
+}
+
+div.myaccount-panel div.content-panel table.account.details-panel td input.value.dirty {
+    color: #db3f4c;
+}
+
+div.myaccount-panel div.content-panel div.button-panel {
+    display: block;
+    width: 100%;
+}
+
+div.myaccount-panel div.content-panel p.button {
+    display: inline-block;
+    background-color: #88a470;
+    color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 10px 20px 10px 20px;
+    font-family: "HelveticaNeue-Light";
+    font-size: 12px;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    min-width: 100px;
+    cursor: pointer;
+    text-align: center;
+    -o-transition:.4s;
+    -ms-transition:.4s;
+    -moz-transition:.4s;
+    -webkit-transition:.4s;
+    /* ...and now for the proper property */
+    transition:.4s;
+}
+
+div.myaccount-panel div.content-panel p.button:hover {
+    background-color: #777;
+}
+
+
+div.myaccount-panel div.content-panel div.button-panel p.save {
+    display: none;
+    background-color: #db3f4c;
+}
+
+div.myaccount-panel div.content-panel div.button-panel p.cancel {
+    display: none;
+    background-color: #db3f4c;
+}
+
+
+/**********************  ORDER HISTORY  ********************/
+
+
+div.myaccount-panel div.content-panel table.order-history {
+    font-size: 12px;
+    text-align: left;
+    font-family: "HelveticaNeue-UltraLight";
+    border-collapse: collapse;
+    color: #444;
+}
+
+div.myaccount-panel div.content-panel table.order-history th {
+    vertical-align: top;
+    white-space: nowrap;
+    color: #687a58;
+}
+
+div.myaccount-panel div.content-panel table.order-history td {
+    padding: 10px 20px 0px 0px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+div.myaccount-panel div.content-panel table.order-history td.first {
+    rorder-top: 1px solid #DDD;
+}
+
+div.myaccount-panel div.content-panel table.order-history td.item {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+div.myaccount-panel div.content-panel table.order-history td.date {
+   transform: scaleX(0.8);
+   -webkit-transform-origin-x: 0;
+}
+
+div.myaccount-panel div.content-panel table.order-history td label.shipping {
+   font-size: 10px;
+   width: 50px;
+   font-family: "HelveticaNeue-Light";
+   transform: scaleX(0.7);
+   color: #777;
+   text-align: left;
+}
+
+
+div.myaccount-panel div.content-panel table.order-history div.image-cell {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 10px;
+    width: 220px;
+}
+
+div.myaccount-panel div.content-panel table.order-history img.bottle {
+    width: 60px;
+}
+
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell p.made-with {
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    color: #88a470;
+    transform: scaleX(0.7);
+    -webkit-transform-origin-x: 0;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+div.myaccount-panel div.content-panel table.order-history p.uuid {
+    display: block;
+    font-family: "HelveticaNeue-Light";
+    font-size: 8px;
+    width: 100%;
+    text-align: left;
+    color: #888;
+    padding-left: 15px;
+    letter-spacing: 2px;
+    margin-top: -4px;
+}
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel {
+    display: table;
+    margin-top: 10px;
+}
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item {
+   display: table-cell;
+   width: 50px;
+}
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item img {
+   display: table-cell;
+   text-align: left;
+   width: 40px;
+}
+
+div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item p {
+   display: table-cell;
+   font-size: 9px;
+   white-space: normal;
+   font-family: "HelveticaNeue-Light";
+   font-weight: bold;
+   transform: scaleX(0.7);
+   letter-spacing: 1px;
+   color: #777;
+   text-align: left;
+   padding-bottom: 8px;
+}
+
+div.myaccount-panel div.content-panel table.order-history td.type {
+   color: #777;
+   font-size: 12px;
+   font-family: "HelveticaNeue-Light";
+   transform: scaleX(0.8);
+   -webkit-transform-origin-x: 0;
+}
+
+div.myaccount-panel div.content-panel table.order-history td.quantity {
+   color: #777;
+   font-size: 12px;
+   font-family: "HelveticaNeue-Light";
+   transform: scaleX(0.8);
+   -webkit-transform-origin-x: 0;
+}
+
+
+/**********************  SUBSCRIPTION ********************/
+
+div.myaccount-panel p.never { 
+   font-size: 42px;
+   font-family:"Selima", sans-serif;
+   color: #88a470;
+   font-weight:normal; 
+   width: 100%;
+   text-align: center;
+   margin-top: 20px;
+   margin-bottom: 50px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel {
+    font-size: 12px;
+    text-align: left;
+    font-family: "HelveticaNeue-UltraLight";
+    border-collapse: collapse;
+    color: #444;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel th {
+    vertical-align: top;
+    white-space: nowrap;
+    color: #687a58;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td {
+    padding: 20px 20px 30px 0px;
+    vertical-align: top;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-top: 1px solid #DDD;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.item {
+    margin-bottom: 20px;
+    margin-left: -10px;
+    max-width: 250px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ship-date {
+   font-family: "HelveticaNeue-Light";
+   color: #777;
+   font-size: 12px;
+   letter-spacing: 1px;
+   font-weight: bold;
+   display: block;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ship-date p {
+   display: inline-block;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ship-date input {
+   display: inline-block;
+   outline: none;
+   border: none;
+   color: #88a470;
+   cursor: pointer;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ship-date input:hover {
+   color: #444;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel p.cancel-subscription {
+   font-size: 10px;
+   color: #88a470;
+   font-family: "HelveticaNeue-Light";
+   -webkit-transform-origin-x: 0;
+   margin-top: 10px;
+   cursor: pointer;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel p.cancel-subscription:hover {
+   color: #777;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td label.shipping {
+   font-size: 10px;
+   width: 50px;
+   font-family: "HelveticaNeue-Light";
+   transform: scaleX(0.7);
+   color: #777;
+   text-align: left;
+}
+
+
+div.myaccount-panel div.content-panel table.subscription-panel div.image-cell {
+    display: table-cell;
+    vertical-align: top;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell {
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 20px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel img.bottle {
+    width: 60px;
+}
+
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell p.made-with {
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    color: #88a470;
+    transform: scaleX(0.7);
+    -webkit-transform-origin-x: 0;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel p.name {
+    font-family: "HelveticaNeue-Light";
+    font-size: 8px;
+    width: 100%;
+    text-align: left;
+    color: #888;
+    letter-spacing: 2px;
+    margin-top: -4px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel {
+    display: table;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item {
+   display: table-cell;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item p {
+   font-size: 9px;
+   white-space: normal;
+   width: 50px;
+   font-family: "HelveticaNeue-Light";
+   font-weight: bold;
+   transform: scaleX(0.8);
+   color: #000;
+   text-align: left;
+   padding-bottom: 8px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item img {
+   text-align: left;
+   width: 40px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.type {
+   color: #777;
+   font-size: 12px;
+   font-family: "HelveticaNeue-Light";
+   letter-spacing: 1px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.quantity {
+   color: #000;
+   font-size: 12px;
+   font-family: "HelveticaNeue-Light";
+   font-weight: bold;
+}
+div.myaccount-panel div.content-panel table.subscription-panel td.cost {
+   font-family: "HelveticaNeue-Light";
+   font-weight: bold;
+}
+div.myaccount-panel div.content-panel table.subscription-panel td.total {
+   font-family: "HelveticaNeue-Light";
+   font-weight: bold;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.type {
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.type select {
+    width: 190px;
+    height: 30px;
+    font-size: 12px;
+    color: #000;
+    outline: none;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.type option {
+    font-size: 12px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.quantity .helper {
+   color: #999;
+   font-size: 10px;
+   font-family: "HelveticaNeue-Light";
+}
+div.myaccount-panel div.content-panel table.subscription-panel td.cost .helper{
+   color: #999;
+   font-size: 10px;
+   font-family: "HelveticaNeue-Light";
+}
+div.myaccount-panel div.content-panel table.subscription-panel td.total .helper {
+   color: #ff4167;
+   font-size: 10px;
+   font-family: "HelveticaNeue-Light";
+}
+
+p.no {
+   font-family: "HelveticaNeue-UltraLight";
+   font-style: italic;
+   color: #999;
+   font-size: 18px;
+}

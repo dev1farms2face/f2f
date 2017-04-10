@@ -1,0 +1,81 @@
+{% extends "myaccount.html" %}
+
+{% load static %}
+
+{% block myaccount-content %}
+<p class="title">MY SUBSCRIPTIONS</p>
+<p class="never">Never run out!</p>
+{% if subscriptions %}
+<table class="subscription-panel">
+  <tr>
+    <th class="sno">SNo.</th>
+    <th class="item">Item</th>
+    <th class="type">Type</th>
+    <th class="quantity">Qty</th>
+    <th class="cost">Cost</th>
+    <th class="total">Monthly Total</th>
+  </tr>
+  {% for p in subscriptions %}
+  <tr id="{{ p.id }}" url="{{ url_update_ph }}">
+    <td class="sno">{{ forloop.counter }}</td>
+    <td class="item">
+      <div class="ship-date">
+        <p>Ships next on:</p>
+        <input class="datepicker" orig="{{ p.ship_date }}" value="{{ p.ship_date }}"/>
+      </div>
+      <div class="item-cell">
+        <div class="image-cell">
+          <img class="bottle"
+               src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+        </div>
+        <div class="ingredient-cell">
+          <p class="made-with">Made With:</p>
+          <div class="ingredient-panel">
+            {% for m in p.mandatory %}
+            <div class="ingredient-item">
+              <img src="/images/{{ m.image }}" alt="" />
+              <p class="name">{{ m.name|upper}}</p>
+            </div>
+            {% endfor %}
+            {% if p.optional %}
+            <div class="ingredient-item">
+              <img src="/images/{{ p.optional.image }}" alt="" />
+              <p class="name">{{ p.optional.name|upper }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <p class="name">UUID# {{ p.name }}</p>
+        <p class="cancel-subscription">Cancel Subscription</p>
+      </div>
+    </td>
+    <td class="type">
+      <select>
+        {% if p.quantity.amount == 4 %}
+        <option selected="selected" value="4">Regular care (4 applications)</option>
+        <option value="8">Intense care (8 applications)</option>
+        {% elif p.quantity.amount == 8 %}
+        <option value="4">Regular care (4 applications)</option>
+        <option value="8" selected="selected">Intense care (8 applications)</option>
+        {% endif %}
+      </select>
+    </td>
+    <td class="quantity">
+      <p class="amount">{{ p.quantity.amount }}</p>
+      <p class="helper">{{ p.quantity.helper }}</p>
+    </td>
+    <td class="cost">
+      <p class="amount">{{ p.cost.amount }}</p>
+      <p class="helper">{{ p.cost.helper }}</p>
+    </td>
+    <td class="total">
+      <p class="amount">{{ p.total.amount }}</p>
+      <p class="helper">{{ p.total.helper }}</p>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="no">No subscriptions to display</p>
+{% endif %}
+{% endblock %}

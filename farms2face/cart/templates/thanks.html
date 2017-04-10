@@ -1,0 +1,17 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'cart/cart.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'cart/cart.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="thanks-panel">
+  <p class="thanks">Thank you for your patronage. Your facepack(s) will be shipping soon!</p>
+  <p class="thanks">Track your order <a href="/myaccount/order-history">here</a></p>
+</div>
+{% endblock %}

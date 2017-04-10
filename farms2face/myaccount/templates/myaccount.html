@@ -1,0 +1,40 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'myaccount/myaccount.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'myaccount/myaccount.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'myaccount/simpleUpload.min.js' %}"></script>
+{% endblock %}
+
+{% load make_label %}
+
+{% block basebody %}
+<div class="myaccount-panel">
+  <div class="menu-panel">
+    <div class="photo" url="{{ photo_upload_url }}">
+      <img src="/images/{{ valid_user.picture }}" alt="" />
+      <input id="upload" type="file" style="display:none"/>
+      <label>Update Photo</label>
+    </div>
+    {% for opt in options %}
+    <a href="/myaccount/{{ opt }}">
+    {% if opt == selected %}
+      <p class="{{ opt }} selected">{{ opt | make_label }}</p>
+    {% else %}
+      <p class="{{ opt }}">{{ opt | make_label }}</p>
+    {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  <div class="content-panel">
+  {% block myaccount-content %}
+  {% endblock %}
+  </div>
+</div>
+{% endblock %}
+
