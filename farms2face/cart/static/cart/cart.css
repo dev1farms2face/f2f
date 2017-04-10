@@ -48,47 +48,134 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td {
     padding-bottom: 20px;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.image-cell {
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell {
+    display: table-cell;
+    vertical-align: top;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.image-cell img.bottle {
+div.cart-panel div.bottom-panel table.item-panel tr.item div.image-cell {
+    display: table-cell;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item div.image-cell img.bottle {
     vertical-alignment: top;
     width: 60px;
     margin-right: 10px;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell {
-}
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell p.made-with {
-    width: 100%;
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell p.made-with {
     font-family: "HelveticaNeue-UltraLight";
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: 15px;
     text-align: left;
+    transform: scaleX(0.7);
+    padding-left: 2px;
+    padding-top: 20px;
+    -webkit-transform-origin-x: 0;
+    color: #88a470;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell div.ingredient-panel {
-    width: 300px;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell div.ingredient-panel div.ingredient-item {
-    display: inline-block;
-    float: left;
-    width: 50px;
-    margin-right: 15px;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
+div.cart-panel div.bottom-panel table.item-panel tr.item td.item-cell p.uuid {
+    display: block;
     font-family: "HelveticaNeue-Light";
     font-size: 8px;
-    font-weight: bold;
-    text-align: center;
+    width: 100%;
+    text-align: left;
+    color: #888;
+    padding-left: 15px;
+    letter-spacing: 2px;
+    margin-top: -4px;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item td.ingredient-cell div.ingredient-panel div.ingredient-item img {
+
+
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel {
+    display: table-cell;
+    margin-top: 10px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item {
+    display: table-cell;
+    width: 60px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
+    font-family: "HelveticaNeue-Light";
+    font-size: 9px;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-bottom: 15px;
+    transform: scaleX(0.7);
+    width: 100%;
+    margin-left: -5px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item img {
     display: block;
     width: 45px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
+    vertical-align: top;
+    padding-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
+    font-family: "HelveticaNeue";
+    font-weight: bold;
+    width: 110px;
+    height: 30px;
+    font-size: 14px;
+    color: #444;
+    outline: none;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
+    font-size: 12px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type p {
+    font-family: "HelveticaNeue-Light";
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #78876a;
+    padding-left: 2px;
+    margin-top: 5px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
+    padding-left: 30px;
+    vertical-align: top;
+    padding-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
+    font-family: "HelveticaNeue";
+    font-weight: bold;
+    width: 190px;
+    height: 30px;
+    font-size: 14px;
+    color: #444;
+    outline: none;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
+    font-size: 12px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency p {
+    font-family: "HelveticaNeue-Light";
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #78876a;
+    padding-left: 2px;
+    margin-top: 5px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
@@ -98,13 +185,13 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
     font-family: "HelveticaNeue-Light";
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 5px;
     min-width: 100px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity img {
-    width: 13px;
+    width: 11px;
     cursor: pointer;
 }
 
@@ -121,7 +208,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove {
-    text-align: center;
+    text-align: right;
     color: #88a470;
     width: 50px;
     margin-top: 3px;
@@ -130,6 +217,19 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove 
     font-size: 10px;
     font-weight: bold;
     cursor: pointer;
+    float: right;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack {
+    text-align: right;
+    color: #777;
+    width: 50px;
+    margin-top: 3px;
+    margin-bbottom: -3px;
+    letter-spacing: 1px;
+    font-family: "HelveticaNeue-Light";
+    font-size: 8px;
+    font-weight: bold;
     float: right;
 }
 
@@ -243,4 +343,21 @@ div.cart-panel div.bottom-panel div.checkout-panel p.checkout {
     padding: 5px 10px 5px 10px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+div.thanks-panel {
+    display: block;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 300px;
+}
+
+div.thanks-panel p.thanks {
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+    font-family: "HelveticaNeue-UltraLight";
+    letter-spacing: 2px;
+    color: #88a470;
+    font-size: 30px;
 }

@@ -6,7 +6,8 @@ from home.models import Ingredient, Base, MixingAgent, Recipe, FacePack, CustomF
 from django.contrib.auth.models import User
 from cart.models import Cart
 from userregistration.views import init_user_login
-from home.views import cart_size, get_name_if_valid_user
+from home.views import cart_size, get_valid_user_data
+from django.db.models import Q
 import json
 import random
 import pdb
@@ -32,7 +33,7 @@ def wizard(request):
     return render(request, "wizard.html", 
                                { 'questions': data, 
                                  'cart_size': cart_size(request),
-                                 'valid_user': get_name_if_valid_user(request) })
+                                 'valid_user': get_valid_user_data(request) })
 
 def wizard_submit(request):
     json_response = { 'success': False }
@@ -63,6 +64,23 @@ def wizard_submit(request):
         optional_ingr2 = random.choice([x for x in skin_type_ingredients \
                                         if x not in recipes_ing and x != optional_ingr1])
         base = random.choice(Base.objects.filter(skin_type=skinType))
+        """
+        Base conditions:
+        1. French green clay cannot be used for people with skin concern "Sensitive
+           and irritated by harsh ingredients"
+        2. For skin combination oily and skin concern " sensitive and irritated by
+           harsh ingredients" :  always use white kaolin clay
+        3. For skin combination dry and skin concern " sensitive and irritated by 
+           harsh ingredients" :  always use white goat milk powder
+        """
+        if SkinConcern.objects.get(name__contains="Sensitive") in skinConcerns:
+            if skinType.name == 'Oily':
+                base = Base.objects.get(name__contains='White Kaolin Clay')
+            elif skinType.name == 'Dry':
+                base = Base.objects.get(name__contains='Goat Milk')
+            else:
+                base = random.choice(Base.objects.filter(skin_type=skinType)\
+                             .filter(~Q(pk=Base.objects.get(name__contains='French').id)))
         mixing_agent = random.choice(MixingAgent.objects.filter(skin_type=skinType))
         json_response = {
             'base'	   : str(base.id),
@@ -83,6 +101,7 @@ def results(request):
         mixing_agent = MixingAgent.objects.get(pk=request.GET.get('mixing_agent'))
         option1 = Ingredient.objects.get(pk=request.GET.get('option_1'))
         option2 = Ingredient.objects.get(pk=request.GET.get('option_2'))
+        essential_oils = Ingredient.objects.get(name__contains="Essential Oils")
         r1 = recipes[0]
         r2 = recipes[1]
         r3 = recipes[2]
@@ -99,6 +118,12 @@ def results(request):
                 'name': mixing_agent.name,
                 'image': mixing_agent.image,
                 'helper': mixing_agent.helper 
+            },
+            'essential_oils': {
+                'id': essential_oils.id,
+                'name': essential_oils.name,
+                'image': essential_oils.image,
+                'helper': essential_oils.helper 
             },
             'option1': {
                 'id': option1.id,
@@ -143,12 +168,16 @@ def results(request):
                 if sorted([r['recipe_id'] for r in CustomFacePack.objects.filter(facepack=fp).values('recipe_id')]) == sorted(recipe_ids) and user.cart_set.filter(item=fp).count() > 0:
                     # FP1 check
                     optional_ingr_set = set([c.optional_ingredient_id for c in CustomFacePack.objects.filter(facepack=fp)])
+                    cart_type = user.cart_set.get(item=fp).type
                     if None in optional_ingr_set:
                         data['fp1'] = fp.id
+                        data['fp1_type'] = cart_type
                     elif option1.id in optional_ingr_set:
                         data['fp2'] = fp.id
+                        data['fp2_type'] = cart_type
                     elif option2.id in optional_ingr_set:
                         data['fp3'] = fp.id
+                        data['fp3_type'] = cart_type
 	data['cart_size'] = cart_size(request)
-        data['valid_user'] = get_name_if_valid_user(request)
+        data['valid_user'] = get_valid_user_data(request)
         return render(request, "results.html", data)

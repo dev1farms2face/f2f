@@ -26,7 +26,6 @@ $(document).ready(function(){
                 'data' : JSON.stringify({
                     'email': email,
                     'password': password,
-                    'social': 'fb',
                 })
             },
             success: function(data) {

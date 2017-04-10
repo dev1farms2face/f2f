@@ -7,7 +7,6 @@
     href="{% static 'cart/cart.css' %}" />
   <script type="text/javascript"
     src="{% static 'cart/cart.js' %}"></script>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block basebody %}
@@ -26,27 +25,45 @@
               {% if cart_items %}
               {% for c in cart_items %}
               <tr class="item" id="{{ c.id }}" item-id="{{ c.item_id }}">
-                <td class="image-cell">
-                  <img class="bottle"
-                       src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-                </td>
-                <td class="ingredient-cell">
-                  <p class="made-with">{{ c.name }} Made With</p>
-                  <div class="ingredient-panel">
-                    {% for m in c.mandatory %}
-                    <div class="ingredient-item">
-                      <img src="/images/{{ m.image }}" alt="" />
-                      <p class="name">{{ m.name|upper}}</p>
-                    </div>
-                    {% endfor %}
-                    {% if c.optional %}
-                    <div class="ingredient-item">
-                      <img src="/images/{{ c.optional.image }}" alt="" />
-                      <p class="name">{{ c.optional.name|upper }}</p>
-                    </div>
-                    {% endif %}
+                <td class="item-cell">
+                  <div class="image-cell">
+                    <img class="bottle"
+                         src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
                   </div>
+                  <div class="ingredient-cell">
+                    <p class="made-with">Made With</p>
+                    <div class="ingredient-panel">
+                      {% for m in c.mandatory %}
+                      <div class="ingredient-item">
+                        <img src="/images/{{ m.image }}" alt="" />
+                        <p class="name">{{ m.name|upper}}</p>
+                      </div>
+                      {% endfor %}
+                      {% if c.optional %}
+                      <div class="ingredient-item">
+                        <img src="/images/{{ c.optional.image }}" alt="" />
+                        <p class="name">{{ c.optional.name|upper }}</p>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <p class="uuid">UUID# {{ c.name }}</p>
                 </td>
+                <td class="type">
+                  <select>
+                    {% if c.type == "buy" %}
+                    <option value="buy" selected="selected">Just this once</option>
+                    <option value="subscribe">Never run out</option>
+                    {% elif c.type == "subscribe" %}
+                    <option value="buy">Just this once</option>
+                    <option value="subscribe" selected="selected">Never run out</option>
+                    {% endif %}
+                  </select>
+                  {% if c.type == "buy" %}
+                  <p>Save with Auto Delivery</p>
+                  {% endif %}
+                </td>
+                {% if c.type == "buy" %}   
                 <td class="quantity">
                   <img class="up"
                        src="{% static 'cart/images/up-arrow.jpg' %}" alt="" />
@@ -54,8 +71,29 @@
                   <img class="down"
                        src="{% static 'cart/images/down-arrow.jpg' %}" alt="" />
                 </td>
+                {% elif c.type == "subscribe" %}
+                <td class="frequency">
+                  <select>
+                    {% if c.quantity == 4 %}
+                    <option selected="selected" value="4">Regular care (4 applications)</option>
+                    <option value="8">Intense care (8 applications)</option>
+                    {% elif c.quantity == 8 %}
+                    <option value="4">Regular care (4 applications)</option>
+                    <option value="8" selected="selected">Intense care (8 applications)</option>
+                    {% endif %}
+                  </select>
+                  {% if c.quantity == 4 %}
+                  <p>once every 4 weeks</p>
+                  {% elif c.quantity == 8 %}
+                  <p>twice every 4 weeks</p>
+                  {% endif %}
+                </td>
+                {% endif %}
                 <td class="price-cell">
                   <p class="price">{{ c.price }}</p>
+                  {% if c.type == "subscribe" %}
+                  <p class="perpack">PER PACK</p><br>
+                  {% endif %}
                   <p class="remove">REMOVE</p>
                 </td> 
               </tr>

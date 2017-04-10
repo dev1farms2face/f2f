@@ -21,6 +21,7 @@ from django.contrib.auth.views import logout
 import facepackwizard.views
 import home.views
 import cart.views
+import myaccount.views
 
 admin.autodiscover()
 
@@ -38,10 +39,23 @@ urlpatterns = [
     url(r'^post_login_user/', home.views.login_user, name='login'),
     url(r'^logout/', home.views.logout_user, name='logout'),
     #url(r'^logout/$', logout, {'next_page': '/signin'}, name='logout'),
+    url(r'^post_update_cart_type/', cart.views.update_type),
     url(r'^post_update_cart_quantity/', cart.views.update_quantity),
     url(r'^post_wizard_submit/', facepackwizard.views.wizard_submit),
     url(r'^post_add_cart/', home.views.post_add_cart),
     url(r'^post_remove_cart/', home.views.post_remove_cart),
+    url(r'^post_checkout/', cart.views.checkout),
+    url(r'^post_save_myaccount_details/', myaccount.views.save_myaccount_details),
+    url(r'^post_save_shipping_address/', myaccount.views.save_shipping_address),
+    url(r'^post_update_shipping_address/', myaccount.views.update_shipping_address),
+    url(r'^post_delete_shipping_address/', myaccount.views.delete_shipping_address),
+    url(r'^post_save_paymenttype/', myaccount.views.save_paymenttype),
+    url(r'^post_delete_paymenttype/', myaccount.views.delete_paymenttype),
+    url(r'^post_photo_upload/', myaccount.views.photo_upload),
+    url(r'^post_update_ph/', myaccount.views.update_ph),
+    url(r'^thanks/', cart.views.thanks),
+    url(r'^myaccount/$', myaccount.views.view_myaccount),
+    url(r'^myaccount/(?P<option>[^/]+)/$', myaccount.views.view_myaccount),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

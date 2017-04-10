@@ -19,6 +19,8 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
+SESSION_COOKIE_AGE = 10 * 60 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
     'subscriptions.apps.SubscriptionsConfig',
     'userlogs.apps.UserlogsConfig',
     'userregistration.apps.UserregistrationConfig',
+    'myaccount.apps.MyaccountConfig',
     'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -100,6 +103,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
     'home.views.rename_social_anon_user',
+    'home.views.save_profile_picture',
 )
 
 ROOT_URLCONF = 'farms2face.urls'

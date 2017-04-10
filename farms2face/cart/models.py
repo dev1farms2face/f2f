@@ -9,6 +9,7 @@ from django.utils import timezone
 class Cart(models.Model):
     user = models.ForeignKey(User)
     item = models.ForeignKey('home.Item', on_delete=models.CASCADE)
+    type = models.CharField(max_length=10, default="buy")
     quantity = models.IntegerField(default=1)
     createdte = models.DateTimeField(default=timezone.now)
     def __str__(self):

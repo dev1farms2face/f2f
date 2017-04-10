@@ -1,3 +1,28 @@
+@font-face {
+        font-family: 'HelveticaNeue-UltraLight';
+        src: url("fonts/HelveticaNeue-UltraLigExt.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue-Light';
+        src: url("fonts/HelveticaNeue-Light.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'Helvetica-Light';
+        src: url("fonts/HelveticaNeue-Light.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue';
+        src: url("fonts/HelveticaNeue.ttf") format("truetype");
+}
+
+@font-face {
+        font-family: 'Selima';
+        src: url("fonts/Selima.otf") format("opentype");
+}
+
 a {
         text-decoration: none !important;
 }
@@ -62,6 +87,55 @@ label.title-link {
         letter-spacing: 2px;
         cursor: pointer;
 }
+
+div.title-welcome {
+        float: right;
+        display:block;
+        height:90px;
+        color: #777777;
+        orphans:1;
+        page-break-after:auto;
+        page-break-before:auto;
+        text-align:left;
+        text-decoration:none;
+        text-indent:0;
+        widows:1;
+        font-style:normal;
+        font-variant:normal;
+        line-height:1.2;
+        margin-bottom:0;
+        margin-left:10px;
+        margin-right:60px;
+        margin-top:67px;
+        letter-spacing: 2px;
+        width: 200px;
+        white-space: nowrap;
+}
+div.title-welcome label {
+        vertical-align: top;
+        font-family:"Helvetica Neue", sans-serif;
+        font-family:"Selima", sans-serif;
+        text-align:left;
+        text-decoration:none;
+        text-indent:0;
+        font-size: 20px;
+        color: #999999;
+}
+div.title-welcome p {
+        display:inline-block;
+        vertical-align: top;
+        font-size: 22px;
+        font-family:"Selima", sans-serif;
+        color: #ce9a2b;
+        font-weight:normal;
+}
+div.title-welcome img {
+        vertical-align: top;
+        width: 42px;
+        height: 42px;
+        margin-top: -13px;
+        border-radius: 100%;
+}
 div.cart {
         background-image: url('images/shopping-cart-1.png');
         background-size: 100% 100%;
@@ -78,7 +152,7 @@ div.cart p {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
-        font-family: 'HelveticaNeue', sans-serif;
+        font-family: 'HelveticaNeue Light', sans-serif;
         color: #444444;
         color: #ce9a2b;
         font-size: 16px;

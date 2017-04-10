@@ -6,34 +6,34 @@ div.panel-1, div.panel-3 {
 
 
 #woman-main-bg-panel {
-        display: inline-block;
-        background-image: url('images/woman_profile_banner_1.png');
-        position: relative;
+        display: block;
+        background: transparent;
         width:100%;
-        height: 755px;
+        height: 700px;
 }
 div.woman-main-bg-panel-override {
         background-color:#e6e7e8;
         border-width:0px;
 }
-img.lets-find-out-bg {
+div.lets-find-out {
+        display: block;
         top: 185px;
         left: 950px;
-        width: 200px;
+        width: 170px;
+        height: 170px;
         position: absolute;
         cursor: pointer;
         border-radius: 100%;
+        background-image: url('images/lets-find-out-normal.png');
+        -o-transition:.3s;
+        -ms-transition:.3s;
+        -moz-transition:.3s;
+        -webkit-transition:.3s;
+        /* ...and now for the proper property */
+        transition:.3s;
 }
-img.lets-find-out-fg {
-        top: 200px;
-        left: 950px;
-        width: 200px;
-        position: absolute;
-        cursor: pointer;
-        border-radius: 100%;
-}
-img.lets-find-out-fg:hover {
-        background-color: #eafffe;
+div.lets-find-out:hover {
+        background-image: url('images/lets-find-out-hover.png');
 }
 
 
@@ -161,11 +161,7 @@ p.badge-4-text {
         margin-bottom: -80px;
 }
 #featured-panel {
-        display:block;
         background-color: transparent;
-        background-image: url('images/Featured_Collection_banner_background.jpg');
-        background-size: 100% 100%;
-        background-attachment: fixed;
         height:840px;
         width: 100%;
         position: relative;
@@ -204,7 +200,7 @@ img.shop-now-fg {
         border-radius: 100%;
 }
 img.shop-now-fg:hover {
-        background-color: #eafffe;
+        //background-color: #eafffe;
 }
 #collections {
         top: 150px;

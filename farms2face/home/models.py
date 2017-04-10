@@ -55,7 +55,7 @@ class Item(models.Model):
     helper = models.CharField(max_length=1000, blank=True)
     createdte = models.DateTimeField(default=timezone.now)
     def __str__(self):
-        return str(self.id)
+        return str(self.id)+" "+self.name
 
 class FacePack(Item):
     base = models.ForeignKey(Base, on_delete=models.CASCADE)

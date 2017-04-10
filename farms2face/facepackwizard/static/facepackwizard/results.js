@@ -2,6 +2,20 @@ var url_add_fp_to_cart = "/post_add_cart/"
 var url_remove_fp_from_cart = "/post_remove_cart/"
 
 $(document).ready(function(){
+    var d = new Date();
+    // Reload page on back button
+    d.getTime();
+    if (jQuery('#reloadValue').val().length == 0)
+    {
+        jQuery('#reloadValue').val(d);
+        jQuery('body').show();
+    }
+    else
+    {
+        jQuery('#reloadValue').val('');
+        location.reload();
+    }
+    // ^ Reload page logic ends.
     $('.results-panel').on({
         'click': function() {
             if ($('.review:last') != undefined) {
@@ -23,6 +37,8 @@ $(document).ready(function(){
         }else if ( button.parent().parent().hasClass('third')) {
             o_id = o2_id;
         }
+        type = button.attr('type');
+        fp_id = button.siblings('p.buy-clicked').attr('facepack_id');
         $.ajax({ 
             url: url_add_fp_to_cart,
             type: 'POST',
@@ -36,13 +52,12 @@ $(document).ready(function(){
                     'b_id' : b_id,
                     'm_id' : m_id,
                     'o_id' : o_id,
+                    'type' : type, 
+                    'fp_id' : fp_id, 
                 })
             },
             success: function(data) {
-                $('#title-panel div.cart p').html(data['cart_size']);
-                button.attr('facepack_id', data['facepack_id']);
-            	button.addClass('buy-clicked'); 
-                button.html("ADDED TO CART");
+                location.reload();
             },
             failure: function(data) {
                 alert("Error: Please contact sysadmin");
@@ -65,10 +80,7 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                $('#title-panel div.cart p').html(data['cart_size']);
-                button.attr('facepack_id', '');
-            	button.removeClass('buy-clicked'); 
-                button.html("BUY A-LA-CARTE");
+                location.reload();
             },
             failure: function(data) {
                 alert("Error: Please contact sysadmin");
@@ -78,7 +90,7 @@ $(document).ready(function(){
             }
         })
     }
-    $('div.purchase-panel .a-la-carte').click(function(){
+    $('div.purchase-panel .button').click(function(){
         if($(this).hasClass('buy-clicked')) {
             removeFromCart($(this));
         }else{
