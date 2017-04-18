@@ -38,11 +38,18 @@ div.panel-0, div.panel-4 {
         text-align:center;
 }
 
+div.panel-00 {
+    position: fixed;
+    background-color: white;
+    z-index: 9999;
+    width: 100%;
+}
+
                                   /* ~~~ TITLE ~~~ */
 #title-panel {
-        display:inline-block;
+        display:table;
         height:111px;
-        width:1240px;
+        width: 100%;
 }
 div.title-panel-override {
         border-width:0px;
@@ -51,7 +58,7 @@ img.logo-main {
         padding-top: 7px;
         padding-left: 120px;
         float: left;
-        display:inline-block;
+        display:table-cell;
         height:90px;
         width:90px;
         cursor: pointer;
@@ -61,10 +68,16 @@ img.logo-title {
         width: 200px;
         padding-top: 55px;
         cursor: pointer;
+        display:table-cell;
+}
+#title-panel div.link-panel {
+        display: table;
+        min-width: 500px;
+        float: right;
 }
 label.title-link {
         float: right;
-        display:inline-block;
+        display:table-cell;
         height:90px;
         font-size: 12px;
         font-family:"Helvetica Neue", sans-serif;
@@ -181,18 +194,19 @@ label.title-link:hover {
         width: 100%;
         height: 350px;
         margin-top: -150px;
+        display: block;
+        text-align: left;
 }
 .footer-panel-2 {
         background-image: url('images/Footer_banner_background_green.png') !important;
 }
 #footer-panel div.left {
         display: inline-block;
-        position: absolute;
-        top: 100px; 
-        left: 250px;
-        width: 300px;
-        height: 210px;
+        position: relative;
         cursor: pointer;
+        margin-top: 100px;
+        margin-left: 200px;
+        float: left;
 }
 #footer-panel img.logo {
         position: absolute;
@@ -208,11 +222,11 @@ label.title-link:hover {
 }
 #footer-panel div.right {
         display: inline-block;
-        position: absolute;
-        top: 100px; 
-        right: 200px;
         width: 400px;
         padding-top: 25px;
+        float: right;
+        margin-top: 100px;
+        margin-right: 100px;
 }
 #footer-panel div.col {
         display: table-cell;

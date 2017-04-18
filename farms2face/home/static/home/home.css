@@ -6,22 +6,23 @@ div.panel-1, div.panel-3 {
 
 
 #woman-main-bg-panel {
-        display: block;
+        display: table;
         background: transparent;
         width:100%;
         height: 700px;
+        text-align: right;
 }
 div.woman-main-bg-panel-override {
         background-color:#e6e7e8;
         border-width:0px;
 }
 div.lets-find-out {
-        display: block;
-        top: 185px;
-        left: 950px;
+        display: table-cell;
+        float: right;
+        margin-top: 100px;
+        margin-right: 150px;
         width: 170px;
         height: 170px;
-        position: absolute;
         cursor: pointer;
         border-radius: 100%;
         background-image: url('images/lets-find-out-normal.png');
@@ -41,7 +42,7 @@ div.lets-find-out:hover {
 
 
 .panel-2 {
-        display:inline-block;
+        display:block;
         background-image: url('images/How_does_it_work_banner_background.png');
         background-size: 100% 100%;
         position: absolute;
@@ -49,11 +50,9 @@ div.lets-find-out:hover {
         height:911px;
         width: 100%;
         z-index: 1000;
+        text-align: center;
 }
 #how-panel {
-        width: 1080px;
-        margin-left: auto;
-        margin-right: auto;
 }
 img.how-does {
         padding-left: 90px;
@@ -62,8 +61,13 @@ img.how-does {
         margin-right: auto;
 }
 div.badge-panel {
-        position: relative;
+        display:inline-block;
         margin-top: 10px; 
+}
+div.badge-container {
+        position: relative;
+        display: table;
+        background-color: red;
 }
 div.badge-1-panel {
         position: absolute;
@@ -76,12 +80,12 @@ div.badge-2-panel {
 }
 div.badge-3-panel {
         position: absolute;
-        right: 290px;
+        left: 560px;
 }
 div.badge-4-panel {
         position: absolute;
         top: 220px;
-        right: 50px;
+        left: 790px;
 }
 #badge-1-container, #badge-2-container, #badge-3-container, #badge-4-container {
         display:inline-block;
@@ -103,6 +107,7 @@ p.badge-text {
         font-weight: 100;
 }
 p.badge-button {
+        display: inline-block;
         font-family: 'HelveticaNeue-Light', sans-serif;
         font-size: 12px;
         font-weight: 400;
@@ -110,9 +115,8 @@ p.badge-button {
         color: white;
         background-color: #88a470;
         width: 100px;
+        margin-left: 50px;
         margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
         padding-left: 4px;
         padding-right: 4px;
         padding-top: 2px;
@@ -164,54 +168,39 @@ p.badge-4-text {
         background-color: transparent;
         height:840px;
         width: 100%;
-        position: relative;
+        display: table;
 }
 #featured-collection {
-        display:inline-block;
-        position: absolute;
-        top: 255px;
-        left: 180px;
-        width: 400px;
+        display:table-cell;
+        vertical-align: middle;
+        max-width: 400px;
         height: 700px;
+        margin-top: 250px;
+        padding-left: 50px;
 }
-//p.featured-collection-text {
-        //src: url('fonts/AMATICSC-REGULAR_0.TFF');
-        //font-family: 'AMATICSC-REGULAR_0';
-        //font-size: 50px;
-//}
 img.featured-collection-txt {
-        position: absolute;
-        top: 10px;
-        left: 60px;
+        display: block;
         width: 350px;
+        margin-left: auto;
+        margin-right: auto;
 }
-img.shop-now-bg {
-        position: absolute;
-        top: 230px;
-        left: 170px;
+img.shop-now {
+        display: block;
         width: 150px;
-}
-img.shop-now-fg {
-        position: absolute;
-        top: 245px;
-        left: 175px;
-        width: 140px;
         cursor: pointer;
-        border-radius: 100%;
-}
-img.shop-now-fg:hover {
-        //background-color: #eafffe;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-right: auto;
 }
 #collections {
-        top: 150px;
-        left: 650px;
-        position: absolute;
-        display:block;
+        display:table-cell;
+        vertical-align: middle;
         width: 700px;
         height: 500px;
 }
 #collections div.item {
-        display:inline-block;
+        display:table-cell;
         width: 200px;
         margin-top: 35px;
 }
