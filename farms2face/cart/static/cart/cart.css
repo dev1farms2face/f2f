@@ -46,23 +46,13 @@ div.cart-panel div.bottom-panel table.item-panel tr.item {
 div.cart-panel div.bottom-panel table.item-panel tr.item td {
     border-top: 2px solid #88a470;
     padding-bottom: 20px;
+    padding-right: 20px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell {
     display: table-cell;
     vertical-align: top;
 }
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.image-cell {
-    display: table-cell;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.image-cell img.bottle {
-    vertical-alignment: top;
-    width: 60px;
-    margin-right: 10px;
-}
-
 
 div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell p.made-with {
     font-family: "HelveticaNeue-UltraLight";
@@ -75,48 +65,6 @@ div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell p.m
     color: #88a470;
     letter-spacing: 2px;
     font-weight: bold;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item td.item-cell p.uuid {
-    display: block;
-    font-family: "HelveticaNeue-Light";
-    font-size: 8px;
-    width: 100%;
-    text-align: left;
-    color: #888;
-    padding-left: 15px;
-    letter-spacing: 2px;
-    margin-top: -4px;
-}
-
-
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel {
-    display: table-cell;
-    margin-top: 10px;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item {
-    display: table-cell;
-    width: 60px;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
-    font-family: "HelveticaNeue-Light";
-    font-size: 9px;
-    font-weight: bold;
-    text-align: left;
-    letter-spacing: 1px;
-    text-align: left;
-    padding-bottom: 15px;
-    transform: scaleX(0.7);
-    width: 100%;
-    margin-left: -5px;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell div.ingredient-panel div.ingredient-item img {
-    display: block;
-    width: 45px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
@@ -132,6 +80,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
     font-size: 14px;
     color: #444;
     outline: none;
+    margin-top: 13px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
@@ -162,6 +111,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
     font-size: 14px;
     color: #444;
     outline: none;
+    margin-top: 13px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
@@ -334,7 +284,7 @@ div.cart-panel div.bottom-panel div.checkout-panel div.total-panel p.value{
     float: right;
 }
 
-div.cart-panel div.bottom-panel div.checkout-panel p.checkout {
+div.cart-panel div.bottom-panel div.checkout-panel button.checkout {
     font-size: 12px;
     letter-spacing: 2px;
     background-color: #88a470;
@@ -343,6 +293,7 @@ div.cart-panel div.bottom-panel div.checkout-panel p.checkout {
     padding: 5px 10px 5px 10px;
     border-radius: 3px;
     cursor: pointer;
+    width: 100%;
 }
 
 div.thanks-panel {

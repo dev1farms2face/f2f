@@ -107,6 +107,7 @@ def view_cart(request):
         'shipping_helper' : shipping.helper,
         'subtotal'        : '$'+str(subtotal),
         'total'           : '$'+str(subtotal+shipping.cost) ,
+        'total_cents'     : (subtotal+shipping.cost)*100,
         'valid_user'      : get_valid_user_data(request),
     }
     return render(request, "cart.html", data)

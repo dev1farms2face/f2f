@@ -22,28 +22,8 @@
     <td class="first sno">{{ p.sno }}</td>
     <td class="first date">{{ p.date }}</td>
     <td class="first item">
-      <div class="image-cell">
-        <img class="bottle"
-             src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-      </div>
-      <div class="ingredient-cell">
-        <p class="made-with">Made With:</p>
-        <div class="ingredient-panel">
-          {% for m in p.mandatory %}
-          <div class="ingredient-item">
-            <img src="/images/{{ m.image }}" alt="" />
-            <p class="name">{{ m.name|upper}}</p>
-          </div>
-          {% endfor %}
-          {% if c.optional %}
-          <div class="ingredient-item">
-            <img src="/images/{{ p.optional.image }}" alt="" />
-            <p class="name">{{ p.optional.name|upper }}</p>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-      <p class="uuid">UUID# {{ p.name }}</p>
+      {% load common_tags %}
+      {% facepack_display p.item.id %}
     </td>
     <td class="first price">{{ p.price }}</td>
     {% if p.type == "buy" %}

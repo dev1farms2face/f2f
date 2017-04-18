@@ -281,7 +281,7 @@ def view_myaccount(request, option=None):
         if hasattr(request.user, 'profile'):
             up = request.user.profile
             data['gender'] = up.gender or ""
-	    data['birthday'] = up.birth_date.strftime("%b %d, %Y") or ""
+	    data['birthday'] = (up.birth_date and up.birth_date.strftime("%b %d, %Y")) or ""
             data['subscription'] = up.subscription or "No"
     elif option == 'skin-profile':
         data.update(skin_profile) 
@@ -320,6 +320,7 @@ def view_myaccount(request, option=None):
                                      'name'  : optional.name,
                                      'image' : optional.image,
                                     } if optional else "" ,
+                        'item': ph.item,
                     }) 
         data['orders'] = orders
     elif option == 'shipping-&-payments':
@@ -406,6 +407,7 @@ def view_myaccount(request, option=None):
                                          'name'  : optional.name,
                                          'image' : optional.image,
                                         } if optional else "" ,
+                            'item': ph.item,
                         }) 
         data['subscriptions'] = subscriptions
         data['url_update_ph'] = '/post_update_ph/'

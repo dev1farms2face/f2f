@@ -26,28 +26,8 @@
               {% for c in cart_items %}
               <tr class="item" id="{{ c.id }}" item-id="{{ c.item_id }}">
                 <td class="item-cell">
-                  <div class="image-cell">
-                    <img class="bottle"
-                         src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-                  </div>
-                  <div class="ingredient-cell">
-                    <p class="made-with">Made With</p>
-                    <div class="ingredient-panel">
-                      {% for m in c.mandatory %}
-                      <div class="ingredient-item">
-                        <img src="/images/{{ m.image }}" alt="" />
-                        <p class="name">{{ m.name|upper}}</p>
-                      </div>
-                      {% endfor %}
-                      {% if c.optional %}
-                      <div class="ingredient-item">
-                        <img src="/images/{{ c.optional.image }}" alt="" />
-                        <p class="name">{{ c.optional.name|upper }}</p>
-                      </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                  <p class="uuid">UUID# {{ c.name }}</p>
+                  {% load common_tags %}
+                  {% facepack_display c.item_id %}   
                 </td>
                 <td class="type">
                   <select>
@@ -131,7 +111,36 @@
               <p class="name">Total Before Tax:</p>
               <p class="value">{{ total }}</p>
             </div>
-            <p class="checkout">CHECKOUT</p>
+            <div class="stripe">
+              <script src="https://checkout.stripe.com/checkout.js"></script>
+              <button class="checkout" id="customButton">CHECKOUT</button>
+              <script>
+              var handler = StripeCheckout.configure({
+                key: 'pk_test_WdsUtCCQawInpPTGTLF2pfJi',
+                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                locale: 'auto',
+                zipCode: 'true',
+                token: function(token) {
+                  checkout();
+                  // You can access the token ID with `token.id`.
+                  // Get the token ID to your server-side code for use.
+                }
+              });
+              document.getElementById('customButton').addEventListener('click', function(e) {
+                // Open Checkout with further options:
+                handler.open({
+                  name: 'Farms2Face',
+                  description: 'Payment Details',
+                  amount: {{ total_cents }}
+                });
+                e.preventDefault();
+              });
+              // Close Checkout on page navigation:
+              window.addEventListener('popstate', function() {
+                handler.close();
+              });
+              </script>
+            </div>
           </div>
           {% endif %}
         </div> 

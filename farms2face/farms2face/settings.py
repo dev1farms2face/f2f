@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 
@@ -81,7 +82,6 @@ MIDDLEWARE = [
 
 SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.9'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
-LOGIN_REDIRECT_URL = 'http://www.rajiv.com:8000/home/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_USER_FIELDS = ['email', 'username']

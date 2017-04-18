@@ -2,6 +2,7 @@ var url_remove_fp_from_cart = "/post_remove_cart/"
 var url_update_cart_quantity = "/post_update_cart_quantity/"
 var url_update_cart_type = "/post_update_cart_type/"
 var url_checkout = "/post_checkout/"
+var checkout = undefined;
 
 $(document).ready(function(){
     $('div.cart-panel').on({
@@ -11,7 +12,7 @@ $(document).ready(function(){
                 removeFromCart(item);
         }
     }, 'p.remove');
-    var checkout = function() {
+    checkout = function() {
         // POST cart remove to server
         $.ajax({
             url: url_checkout,

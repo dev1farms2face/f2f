@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css"
+  href="{% static 'home/facepack.css' %}" />
+<script type="text/javascript"
+  src="{% static 'home/facepack.js' %}"></script>
+<div class="image-cell">
+  <img class="bottle"
+       src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+</div>
+<div class="ingredient-cell">
+  <p class="made-with">Made With</p>
+  <div class="ingredient-panel">
+    {% for m in item.mandatory %}
+    <div class="ingredient-item">
+      <img src="/images/{{ m.image }}" alt="" />
+      <p class="name">{{ m.name|upper}}</p>
+    </div>
+    {% endfor %}
+    {% if item.optional %}
+    <div class="ingredient-item">
+      <img src="/images/{{ item.optional.image }}" alt="" />
+      <p class="name">{{ item.optional.name|upper }}</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+<p class="uuid">UUID# {{ item.name }}</p>

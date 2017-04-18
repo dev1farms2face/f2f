@@ -1,0 +1,27 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css"
+  href="{% static 'home/how_to_use.css' %}" />
+<script type="text/javascript"
+  src="{% static 'home/how_to_use.js' %}"></script>
+
+<p class="how-to-use">how to use our face masks</p>
+<div class="how-to-use-panel">
+  <div class="step one">
+    <img src="{% static 'home/images/badge1.jpg' %}" alt="" />
+    <p>Clean your face</p>
+  </div>
+  <div class="step two">
+    <img src="{% static 'home/images/badge2.jpg' %}" alt="" />
+    <p>Mix powdered face mask with mixing agent provided to get a paste like consistency and apply</p>
+  </div>
+  <div class="step three">
+    <img src="{% static 'home/images/badge3.jpg' %}" alt="" />
+    <p>Keep for 10 minutes</p>
+  </div>
+  <div class="step four">
+    <img src="{% static 'home/images/badge4.jpg' %}" alt="" />
+    <p>Wash off for a glowing skin and moisturize as usual</p>
+  </div>
+</div>
+

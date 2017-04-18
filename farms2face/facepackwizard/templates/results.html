@@ -149,25 +149,7 @@
       </div>
     </div>
   </div>
-  <p class="how-to-use">how to use our face masks</p>
-  <div class="how-to-use-panel">
-    <div class="step one">
-      <img src="{% static 'facepackwizard/images/How_to_wash_badge_1.png' %}" alt="" />
-      <p>Clean your face</p>
-    </div>
-    <div class="step two">
-      <img src="{% static 'facepackwizard/images/How_to_wash_badge_2.png' %}" alt="" />
-      <p>Mix powdered face mask with mixing agent provided to get a paste like consistency and apply</p>
-    </div>
-    <div class="step three">
-      <img src="{% static 'facepackwizard/images/How_to_wash_badge_2.png' %}" alt="" />
-      <p>Keep for 10 minutes</p>
-    </div>
-    <div class="step four">
-      <img src="{% static 'facepackwizard/images/How_to_wash_badge_3.png' %}" alt="" />
-      <p>Wash off for a glowing skin and moisturize as usual</p>
-    </div>
-  </div>
+  {% include "how_to_use.html" %}
   <p class="hear-other">Hear what other people had to say about this facemask</p>
   <div class="review-panel">
     <p class="header">39 people rated it an average of 4.6</p>

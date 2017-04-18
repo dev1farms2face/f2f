@@ -214,6 +214,7 @@ div.myaccount-panel div.content-panel table.order-history td.item {
     margin-bottom: 20px;
     margin-top: -10px;
     margin-left: -10px;
+    margin-right: 20px;
 }
 
 div.myaccount-panel div.content-panel table.order-history td.date {
@@ -228,75 +229,6 @@ div.myaccount-panel div.content-panel table.order-history td label.shipping {
    transform: scaleX(0.7);
    color: #777;
    text-align: left;
-}
-
-
-div.myaccount-panel div.content-panel table.order-history div.image-cell {
-    display: inline-block;
-    vertical-align: top;
-}
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 10px;
-    width: 220px;
-}
-
-div.myaccount-panel div.content-panel table.order-history img.bottle {
-    width: 60px;
-}
-
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell p.made-with {
-    font-size: 14px;
-    width: 100%;
-    text-align: left;
-    color: #88a470;
-    transform: scaleX(0.7);
-    -webkit-transform-origin-x: 0;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-div.myaccount-panel div.content-panel table.order-history p.uuid {
-    display: block;
-    font-family: "HelveticaNeue-Light";
-    font-size: 8px;
-    width: 100%;
-    text-align: left;
-    color: #888;
-    padding-left: 15px;
-    letter-spacing: 2px;
-    margin-top: -4px;
-}
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel {
-    display: table;
-    margin-top: 10px;
-}
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item {
-   display: table-cell;
-   width: 50px;
-}
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item img {
-   display: table-cell;
-   text-align: left;
-   width: 40px;
-}
-
-div.myaccount-panel div.content-panel table.order-history div.ingredient-cell div.ingredient-panel div.ingredient-item p {
-   display: table-cell;
-   font-size: 9px;
-   white-space: normal;
-   font-family: "HelveticaNeue-Light";
-   font-weight: bold;
-   transform: scaleX(0.7);
-   letter-spacing: 1px;
-   color: #777;
-   text-align: left;
-   padding-bottom: 8px;
 }
 
 div.myaccount-panel div.content-panel table.order-history td.type {
@@ -354,7 +286,10 @@ div.myaccount-panel div.content-panel table.subscription-panel td {
 div.myaccount-panel div.content-panel table.subscription-panel td.item {
     margin-bottom: 20px;
     margin-left: -10px;
-    max-width: 250px;
+}
+
+div.myaccount-panel div.content-panel table.subscription-panel td.item div.item-cell {
+   display: table-cell;
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel div.ship-date {
@@ -404,34 +339,6 @@ div.myaccount-panel div.content-panel table.subscription-panel td label.shipping
    text-align: left;
 }
 
-
-div.myaccount-panel div.content-panel table.subscription-panel div.image-cell {
-    display: table-cell;
-    vertical-align: top;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell {
-    display: table-cell;
-    vertical-align: top;
-    padding-top: 20px;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel img.bottle {
-    width: 60px;
-}
-
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell p.made-with {
-    font-size: 14px;
-    width: 100%;
-    text-align: left;
-    color: #88a470;
-    transform: scaleX(0.7);
-    -webkit-transform-origin-x: 0;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
 div.myaccount-panel div.content-panel table.subscription-panel p.name {
     font-family: "HelveticaNeue-Light";
     font-size: 8px;
@@ -440,31 +347,6 @@ div.myaccount-panel div.content-panel table.subscription-panel p.name {
     color: #888;
     letter-spacing: 2px;
     margin-top: -4px;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel {
-    display: table;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item {
-   display: table-cell;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item p {
-   font-size: 9px;
-   white-space: normal;
-   width: 50px;
-   font-family: "HelveticaNeue-Light";
-   font-weight: bold;
-   transform: scaleX(0.8);
-   color: #000;
-   text-align: left;
-   padding-bottom: 8px;
-}
-
-div.myaccount-panel div.content-panel table.subscription-panel div.ingredient-cell div.ingredient-panel div.ingredient-item img {
-   text-align: left;
-   width: 40px;
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel td.type {

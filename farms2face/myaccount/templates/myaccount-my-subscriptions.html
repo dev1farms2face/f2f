@@ -24,29 +24,8 @@
         <input class="datepicker" orig="{{ p.ship_date }}" value="{{ p.ship_date }}"/>
       </div>
       <div class="item-cell">
-        <div class="image-cell">
-          <img class="bottle"
-               src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-        </div>
-        <div class="ingredient-cell">
-          <p class="made-with">Made With:</p>
-          <div class="ingredient-panel">
-            {% for m in p.mandatory %}
-            <div class="ingredient-item">
-              <img src="/images/{{ m.image }}" alt="" />
-              <p class="name">{{ m.name|upper}}</p>
-            </div>
-            {% endfor %}
-            {% if p.optional %}
-            <div class="ingredient-item">
-              <img src="/images/{{ p.optional.image }}" alt="" />
-              <p class="name">{{ p.optional.name|upper }}</p>
-            </div>
-            {% endif %}
-          </div>
-        </div>
-        <p class="name">UUID# {{ p.name }}</p>
-        <p class="cancel-subscription">Cancel Subscription</p>
+        {% load common_tags %}
+        {% facepack_display p.item.id %}
       </div>
     </td>
     <td class="type">
