@@ -57,7 +57,7 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                location.reload();
+                location.href="/cart/";
             },
             failure: function(data) {
                 alert("Error: Please contact sysadmin");

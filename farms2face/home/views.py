@@ -38,16 +38,17 @@ def home(request):
     }
     return render(request, "home.html", data)
 
-def login_page(request):
+def login_page(request, new=False):
     data = {
         'cart_size' : cart_size(request),
         'valid_user': get_valid_user_data(request)
     }
-    if not request.user and request.user.username.startswith("anon_") and\
-      get_valid_user_data(request):
-        return render(request, "home.html", data)
+    if not request.user.username.startswith("anon_") and request.user and get_valid_user_data(request):
+        return redirect('/myaccount/account-details/', data)
     data['user'] = request.user
     data['next'] = request.GET.get('next')
+    if new:
+        data['new_user'] = True
     request.session['next'] = request.GET.get('next')
     return render(request, "login.html",  data) 
 
@@ -121,10 +122,21 @@ def save_profile_picture(strategy, backend, user, response, details,
 
 def login_user(request):
     json_response = {}
-    next = request.session['next']
+    next = request.session['next'] if 'next' in request.session else None
+    next = next or '/myaccount/account-details/'
     if request.is_ajax():
         data = json.loads(request.POST['data'])
         social = data['social'] if 'social' in data else None
+        new = data['new'] if 'new' in data else None
+        # If new user then create user first and assign to request user
+        if new:
+            if User.objects.filter(email=data['email']).count() == 0:
+                u = User()
+                u.email = data['email']
+                u.username = data['email']
+                u.set_password(data['password'])
+                u.save()
+                request.user = u
         current_user = request.user
         if social == 'fb': 
             social_login_url = "/login/facebook/?next=%s" % next

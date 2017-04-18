@@ -134,11 +134,12 @@ div.first-match table.summary tr.ingr > td {
 }
 
 div.first-match table.summary tr.ingr td.header {
-        font-family: "HelveticaNeue-UltraLight";
+        font-family: "HelveticaNeue-Light";
         font-size: 14px;
         letter-spacing: 2px;
         vertical-align: middle;
         text-align: left;
+        color: #88a470;
 }
 
 div.first-match table.summary tr.ingr td.middle {

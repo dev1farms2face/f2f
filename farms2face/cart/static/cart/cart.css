@@ -131,6 +131,8 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency p {
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
     min-width: 100px;
     text-align: center;
+    vertical-align: top;
+    padding-top: 30px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
@@ -148,6 +150,8 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity img {
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell {
     min-width: 100px;
     text-align: right;
+    vertical-align: top;
+    padding-top: 40px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
@@ -188,6 +192,11 @@ div.cart-panel div.empty-cart {
     color: #999;
     margin-top: 20px;
     font-size: 20px;
+    cursor: pointer;
+}
+
+a:visited {
+    color: #777;
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel {

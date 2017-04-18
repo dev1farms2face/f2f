@@ -7,11 +7,20 @@
     href="{% static 'home/login.css' %}" />
   <script type="text/javascript"
     src="{% static 'home/login.js' %}"></script>
+  {% if new_user %}
+  <script type="text/javascript">
+  var new_user = true;
+  </script>
+  {% endif %}
 {% endblock %}
 
 {% block basebody %}
 <div class="login-panel">
+  {% if new_user %}
+  <p class="header">New to Farms2Face?</p>
+  {% else %}
   <p class="header">Log In</p>
+  {% endif %}
   <div class="email-panel">
     <img class="email-icon"
          src="{% static 'home/images/email-icon.png' %}" alt="" />
@@ -22,11 +31,28 @@
          src="{% static 'home/images/password-icon.png' %}" alt="" />
     <input class="password" orig="Password" value="Password" type="password"/>
   </div>
+  {% if new_user %}
+  <p class="login-submit">SIGN UP</p>
+  {% else %}
   <p class="login-submit">LOG IN</p>
+  {% endif %}
   <p class="or">Or</p>
   <a href="{% url 'social:begin' 'facebook' %}?next={{ next }}">
     <img class="fb"
          src="{% static 'home/images/fp1.png' %}" alt="" />
   </a>
+  <hr>
+  {% if new_user %}
+  <a href="/signin/">
+    <p class="helper">Already a Farms2Face member? Log In</p>
+  </a>
+  {% else %}
+  <a href="/signin/new">
+    <p class="helper">New to Farms2Face? Sign Up</p>
+  </a>
+  <a href="/signin/">
+    <p class="helper forgot">Forgot your password?</p>
+  </a>
+  {% endif %}
 </div>
 {% endblock %}

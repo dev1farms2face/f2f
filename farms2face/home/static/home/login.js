@@ -1,4 +1,5 @@
 var url_login="/post_login_user/"
+var new_user = false;
 
 $(document).ready(function(){
     $('div.login-panel input').focus(function(){
@@ -26,6 +27,7 @@ $(document).ready(function(){
                 'data' : JSON.stringify({
                     'email': email,
                     'password': password,
+                    'new': new_user,
                 })
             },
             success: function(data) {

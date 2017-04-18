@@ -10,6 +10,7 @@ from django.contrib.contenttypes.models import ContentType
 class Ingredient(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)
+    description = models.CharField(max_length=2000, blank=True, null=True)
     image = models.FileField(upload_to='images/ingredients/')
     def __str__(self):
         return self.name

@@ -64,7 +64,7 @@ div.login-panel p.or {
 
 div.login-panel img.fb {
     display: block;
-    width: 60%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -83,4 +83,24 @@ div.login-panel p.login-submit {
     text-align: center;
     padding: 15px 40px 15px 40px;
     cursor: pointer;
+}
+
+hr {
+    border: 1px solid #DDD;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+div.login-panel p.helper {
+    width: 100%;
+    text-align: center;
+    font-family: "Helvetica";
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #999;
+}
+
+div.login-panel p.helper:hover {
+    color: #000;
 }
