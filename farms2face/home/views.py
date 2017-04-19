@@ -67,12 +67,14 @@ def social_user(backend, uid, user=None, *args, **kwargs):
     provider = backend.name
     social = backend.strategy.storage.user.get_social_auth(provider, uid)
     if social:
-        #pdb.set_trace()
         if user and social.user != user:
             #print "!!! social user logging out and relogging in !!!"
             #migrate_user(user, social.user)
             #user = social.user
             logout(backend.strategy.request)
+            #magic, yes magic
+            social.user.backend = "social.backends.facebook.FacebookOAuth2"
+            login(backend.strategy.request, social.user)
             #msg = 'This {0} account is already in use.'.format(provider)
             #raise AuthAlreadyAssociated(backend, msg)
         elif not user:
