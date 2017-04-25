@@ -1,11 +1,11 @@
 div.cart-panel {
-    display: block;
+    display: table;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     width: 100%;
     min-height: 400px;
-    margin-top: 50px;
+    padding-top: 120px;
     margin-bottom: 200px;
 }
 
@@ -25,7 +25,6 @@ div.cart-panel p.header {
 
 div.cart-panel div.bottom-panel {
     display: block;
-    min-width: 300px;
     min-height: 300px;
 }
 
@@ -46,7 +45,6 @@ div.cart-panel div.bottom-panel table.item-panel tr.item {
 div.cart-panel div.bottom-panel table.item-panel tr.item td {
     border-top: 2px solid #88a470;
     padding-bottom: 20px;
-    padding-right: 20px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell {
@@ -75,12 +73,11 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
     font-family: "HelveticaNeue";
     font-weight: bold;
-    width: 110px;
-    height: 30px;
-    font-size: 14px;
+    height: 20px;
+    font-size: 11px;
     color: #444;
     outline: none;
-    margin-top: 13px;
+    margin-top: 30px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
@@ -89,7 +86,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type p {
     font-family: "HelveticaNeue-Light";
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     text-align: left;
     color: #78876a;
@@ -106,12 +103,11 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
     font-family: "HelveticaNeue";
     font-weight: bold;
-    width: 190px;
-    height: 30px;
-    font-size: 14px;
+    height: 20px;
+    font-size: 11px;
     color: #444;
     outline: none;
-    margin-top: 13px;
+    margin-top: 30px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
@@ -132,43 +128,40 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
     min-width: 100px;
     text-align: center;
     vertical-align: top;
-    padding-top: 30px;
+    padding-top: 50px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
     font-family: "HelveticaNeue-Light";
-    font-size: 12px;
-    margin-bottom: 5px;
+    font-size: 10px;
     min-width: 100px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity img {
-    width: 11px;
+    width: 9px;
     cursor: pointer;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell {
-    min-width: 100px;
+    padding-left: 10px;
     text-align: right;
-    vertical-align: top;
-    padding-top: 40px;
+    vertical-align: middle;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Helvetica";
     font-size: 12px;
     font-weight: bold;
     margin-right: 2px;
+    margin-top: -15px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove {
     text-align: right;
     color: #88a470;
     width: 50px;
-    margin-top: 3px;
-    letter-spacing: 1px;
     font-family: "HelveticaNeue-Light";
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     cursor: pointer;
     float: right;
@@ -179,8 +172,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack
     color: #777;
     width: 50px;
     margin-top: 3px;
-    margin-bbottom: -3px;
-    letter-spacing: 1px;
+    margin-bottom: -3px;
     font-family: "HelveticaNeue-Light";
     font-size: 8px;
     font-weight: bold;
@@ -308,16 +300,25 @@ div.cart-panel div.bottom-panel div.checkout-panel button.checkout {
 div.thanks-panel {
     display: block;
     width: 100%;
-    margin-top: 100px;
+    padding-top: 150px;
     margin-bottom: 300px;
 }
 
 div.thanks-panel p.thanks {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: center;
     font-family: "HelveticaNeue-UltraLight";
     letter-spacing: 2px;
     color: #88a470;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.thanks-panel p.thanks a { 
+    color: #ce9a2b;
+}
+
+div.thanks-panel p.thanks a:hover {
+    color: purple;
 }

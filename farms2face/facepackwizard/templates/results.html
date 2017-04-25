@@ -52,7 +52,7 @@
         <td class="middle"><img src="/images/{{ base.image }}" alt="" /></td>
         <td class="right">
           <p class="name">{{ base.name|upper }}</p>
-          <p class="helper">{{ base.helper }}</p>
+          <p class="helper">{{ base.description }}</p>
         </td>
       </tr>
       {% for r in recipes %}
@@ -61,7 +61,7 @@
         <td class="middle"><img src="/images/{{ r.i_image }}" alt="" /></td>
         <td class="right">
           <p class="name">{{ r.i_name|upper }}</p>
-          <p class="helper">{{ r.i_helper }}</p>
+          <p class="helper">{{ r.i_description }}</p>
         </td>
       </tr>
       {% endfor %}
@@ -70,7 +70,7 @@
         <td class="middle"><img src="/images/{{ mixing_agent.image }}" alt="" /></td>
         <td class="right">
           <p class="name">{{ mixing_agent.name|upper }}</p>
-          <p class="helper">{{ mixing_agent.helper }}</p>
+          <p class="helper">{{ mixing_agent.description }}</p>
         </td>
       </tr>
       <tr class="ingr essential-oils">
@@ -78,7 +78,7 @@
         <td class="middle"><img src="/images/{{ essential_oils.image }}" alt="" /></td>
         <td class="right">
           <p class="name">{{ essential_oils.name|upper }}</p>
-          <p class="helper">{{ essential_oils.helper }}</p>
+          <p class="helper">{{ essential_oils.description }}</p>
         </td>
       </tr>
     </table>

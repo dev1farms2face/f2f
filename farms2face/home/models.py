@@ -18,6 +18,7 @@ class Ingredient(models.Model):
 class Base(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)
+    description = models.CharField(max_length=2000, blank=True, null=True)
     skin_type = models.ForeignKey('facepackwizard.SkinType', 
                                   on_delete=models.CASCADE)
     image = models.FileField(upload_to='images/base/')
@@ -35,6 +36,7 @@ class SkinTypeIngredient(models.Model):
 class MixingAgent(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)
+    description = models.CharField(max_length=2000, blank=True, null=True)
     skin_type = models.ForeignKey('facepackwizard.SkinType', null=True, 
       				  on_delete=models.CASCADE)
     image = models.FileField(upload_to='images/mixing_agents/')

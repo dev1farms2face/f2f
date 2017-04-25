@@ -19,7 +19,7 @@ div.woman-main-bg-panel-override {
 div.lets-find-out {
         display: table-cell;
         float: right;
-        margin-top: 100px;
+        margin-top: 250px;
         margin-right: 150px;
         width: 170px;
         height: 170px;
@@ -46,8 +46,8 @@ div.lets-find-out:hover {
         background-image: url('images/How_does_it_work_banner_background.png');
         background-size: 100% 100%;
         position: absolute;
-        top: 650px;
-        height:911px;
+        top: 600px;
+        height:811px;
         width: 100%;
         z-index: 1000;
         text-align: center;

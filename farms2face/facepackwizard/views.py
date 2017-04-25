@@ -111,25 +111,29 @@ def results(request):
                 'id': base.id,
                 'name': base.name,
                 'image': base.image,
-                'helper': base.helper 
+                'helper': base.helper,
+                'description': base.description, 
             },
             'mixing_agent': {
                 'id': mixing_agent.id,
                 'name': mixing_agent.name,
                 'image': mixing_agent.image,
-                'helper': mixing_agent.helper 
+                'helper': mixing_agent.helper,
+                'description': mixing_agent.description, 
             },
             'essential_oils': {
                 'id': essential_oils.id,
                 'name': essential_oils.name,
                 'image': essential_oils.image,
-                'helper': essential_oils.helper 
+                'helper': essential_oils.helper,
+                'description': essential_oils.description,
             },
             'option1': {
                 'id': option1.id,
                 'name': option1.name,
                 'image': option1.image,
                 'helper': option1.helper,
+                'description': option1.description,
                 'str': '{ '+" , ".join([r.mandatory_ingredient.name for r in recipes]+[option1.name])+' }'
             },
             'option2': {
@@ -137,6 +141,7 @@ def results(request):
                 'name': option2.name,
                 'image': option2.image,
                 'helper': option2.helper,
+                'description': option2.description,
                 'str': '{ '+" , ".join([r.mandatory_ingredient.name for r in recipes]+[option2.name])+' }'
             },
             'recipes': [{
@@ -144,7 +149,8 @@ def results(request):
                 'i_id': r.mandatory_ingredient.id,
                 'i_name': r.mandatory_ingredient.name,
                 'i_image': r.mandatory_ingredient.image,
-                'i_helper': r.mandatory_ingredient.helper 
+                'i_helper': r.mandatory_ingredient.helper,
+                'i_description': r.mandatory_ingredient.description,
             } for r in recipes],
             'b_id': base.id,
             'm_id': mixing_agent.id,

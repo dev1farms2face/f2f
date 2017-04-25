@@ -38,7 +38,7 @@ div.panel-0, div.panel-4 {
         text-align:center;
 }
 
-div.panel-00 {
+div.panel-0 {
     position: fixed;
     background-color: white;
     z-index: 9999;
@@ -48,8 +48,9 @@ div.panel-00 {
                                   /* ~~~ TITLE ~~~ */
 #title-panel {
         display:table;
-        height:111px;
-        width: 100%;
+        width: 80%;
+        padding-left: 50px;
+        padding-bottom: 10px;
 }
 div.title-panel-override {
         border-width:0px;
@@ -59,26 +60,22 @@ img.logo-main {
         padding-left: 120px;
         float: left;
         display:table-cell;
-        height:90px;
-        width:90px;
+        height:60px;
+        width:60px;
         cursor: pointer;
 }
 img.logo-title {
         float: left;
-        width: 200px;
-        padding-top: 55px;
+        width: 140px;
+        padding-top: 30px;
         cursor: pointer;
         display:table-cell;
 }
 #title-panel div.link-panel {
-        display: table;
-        min-width: 500px;
         float: right;
 }
 label.title-link {
         float: right;
-        display:table-cell;
-        height:90px;
         font-size: 12px;
         font-family:"Helvetica Neue", sans-serif;
         color: #777777;
@@ -94,17 +91,16 @@ label.title-link {
         font-variant:normal;
         font-weight:bold;
         line-height:1.2;
-        margin-bottom:0;
+        margin-bottom:0px;
         margin-right:30px;
-        margin-top:73px;
-        letter-spacing: 2px;
+        margin-top:35px;
+        letter-spacing: 1px;
         cursor: pointer;
 }
 
 div.title-welcome {
         float: right;
         display:block;
-        height:90px;
         color: #777777;
         orphans:1;
         page-break-after:auto;
@@ -119,7 +115,7 @@ div.title-welcome {
         margin-bottom:0;
         margin-left:10px;
         margin-right:60px;
-        margin-top:67px;
+        margin-top:30px;
         letter-spacing: 2px;
         width: 200px;
         white-space: nowrap;
@@ -153,11 +149,11 @@ div.cart {
         background-image: url('images/shopping-cart-1.png');
         background-size: 100% 100%;
         display: table;
-        margin-top:45px;
+        margin-top:20px;
         margin-right:50px;
         margin-left:-20px;
-        width:50px;
-        height: 50px;
+        width:35px;
+        height: 35px;
 	float: right;
         cursor: pointer;
 }
@@ -168,10 +164,10 @@ div.cart p {
         font-family: 'HelveticaNeue Light', sans-serif;
         color: #444444;
         color: #ce9a2b;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
         padding-top: 10px;
-        padding-right: 5px;
+        padding-right: 3px;
 }
 label.title-link:hover {
         text-decoration: underline;
