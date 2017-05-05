@@ -136,9 +136,8 @@ div.other-panel .match img.bottle {
 }
 
 div.other-panel .match p.name {
-        font-family: "HelveticaNeue-UltraLight";
-        font-size: 18px;
-        transform: scaleX(0.9);
+        font-family: 'amaticsc';
+        font-size: 25px;
         text-align: center;
         margin-bottom: 10px;
         font-weight: bold;

@@ -30,6 +30,9 @@ SECRET_KEY = 'fpit^azx93lk^w6vq=o245=3%p%@yw+pr&x)^hmpo5p2w!%b1x'
 SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
 SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
 
+# Stripe API KEY
+STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -54,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 
@@ -76,7 +80,6 @@ MIDDLEWARE = [
 
 SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.9'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
-LOGIN_REDIRECT_URL = 'http://www.rajiv.com:8000/home/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_USER_FIELDS = ['email', 'username']
@@ -99,6 +102,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
     'home.views.rename_social_anon_user',
     'home.views.save_profile_picture',
+    'home.views.redirect_next',
 )
 
 ROOT_URLCONF = 'farms2face.urls'
