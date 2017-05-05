@@ -216,8 +216,8 @@ p.show-matches {
         display: block;
         width: 300px;
         text-align: center;
-        margin-top: -150px;
-        margin-bottom: 200px;
+        margin-top: 100px;
+        margin-bottom: 400px;
       	margin-left: auto; 
       	margin-right: auto; 
         border: solid 1px #ce9a2b;

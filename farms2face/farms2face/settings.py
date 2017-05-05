@@ -35,6 +35,9 @@ SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
 SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
 """
 
+# Stripe API KEY
+STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -104,6 +107,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
     'home.views.rename_social_anon_user',
     'home.views.save_profile_picture',
+    'home.views.redirect_next',
 )
 
 ROOT_URLCONF = 'farms2face.urls'

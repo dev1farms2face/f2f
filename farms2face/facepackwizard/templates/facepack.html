@@ -6,7 +6,7 @@
   src="{% static 'home/facepack.js' %}"></script>
 <div class="image-cell">
   <img class="bottle"
-       src="{% static 'facepackwizard/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
+       src="{% static 'facepackwizard/images/bottle_'|add:item.type|add:'.jpg' %}" alt="" />
 </div>
 <div class="ingredient-cell">
   <p class="made-with">Made With</p>

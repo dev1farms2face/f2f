@@ -12,98 +12,47 @@
 {% block basebody %}
 <div class="results-panel">
   <img class="presenting" src="{% static 'prepacks/images/presenting.png' %}" alt="" />
-  <div class="first-match">
-      <div class="bottle-panel">
-        <img class="bottle"
-             src="{% static 'prepacks/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-      </div>
-      <div class="details-panel">
-        <p class="made-with">Made with</p>
-        <div class="ingredients-panel">
-          <div class="ingredient" id="i1">
-            <img src="{% static 'prepacks/images/apples.jpg' %}" alt="" />
-            <p class="name">APPLES</p>
-            <p class="helper-text">Helps your skin breathe</p>
-          </div>
-          <div class="ingredient" id="i2">
-            <img src="{% static 'prepacks/images/avocado.png' %}" alt="" />
-            <p class="name">AVOCADO</p>
-            <p class="helper-text">Gives your skin depth</p>
-          </div>
-          <div class="ingredient" id="i3">
-            <img src="{% static 'prepacks/images/honey.jpg' %}" alt="" />
-            <p class="name">HONEY</p>
-            <p class="helper-text">Brightens up your skin</p>
-          </div>
-        </div>
-        <div class="learn-more-panel">
-          <p> <i>Learn more</i> about how these ingredients will help you</p>
-        </div>
-        <div class="purchase-panel">
-          <p class="button a-la-carte">BUY A-LA-CARTE</p>
+  <div class="prepack-featured">
+    <img class="sack"
+         src="{% static 'prepacks/images/F2F_feat_AllStarAcne.png' %}" alt="" />
+    <div class="description">
+      <br>
+      <p class="name">All-Star Ayurveda</p>
+      <p class="details">
+        Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus. Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus
+      </p>
+      <br>
+      <p class="made-with">Made with</p>
+      <p class="details">
+        Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus. Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus
+      </p>
+      <div class="purchase-panel">
+        {% if fp %}
+          {% if fp_type == "buy" %}
+          <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ fp }}">ADDED TO CART</p>
           <p class="or">- or -</p>
-          <p class="button subscribe">SUBSCRIBE</p>
-        </div>
+          <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+          {% elif fp_type == "subscribe" %}
+          <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+          <p class="or">- or -</p>
+          <p class="button subscribe buy-clicked" type="subscribe" facepack_id="{{ fp }}">SUBSCRIBED TO CART</p>
+          {% endif %}
+        {% else %}
+        <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+        <p class="or">- or -</p>
+        <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+        {% endif %}
       </div>
+    </div>
   </div>
   {% include "how_to_use.html" %}
-  <p class="hear-other">Hear what other people had to say about this facemask</p>
-  <div class="review-panel">
-    <p class="header">39 people rated it an average of 4.6</p>
-    <div class="review">
-      <img class="profile" src="{% static 'prepacks/images/10286985_10202895233560816_8859614772393923562_o.png' %}" alt="" />
-      <div class="details">
-        <div class="rating">
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star empty"></div>
-        </div>
-        <p class="title">Best moisturizer for combination skin!</p>
-        <p class="sub-title">By Sudha Bhat on Mar 13, 2017</p>
-        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
-      </div>
-    </div>
-    <div class="review">
-      <img class="profile" src="{% static 'prepacks/images/13769617_10153996554223743_3342089982155892689_n.png' %}" alt="" />
-      <div class="details">
-        <div class="rating">
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-        </div>
-        <p class="title">Changed my life!</p>
-        <p class="sub-title">By Hambir Chavan on Feb 21, 2017</p>
-        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
-      </div>
-    </div>
-    <div class="review">
-      <img class="profile" src="{% static 'prepacks/images/13599796_10153948991218743_8463291712287361785_n.png' %}" alt="" />
-      <div class="details">
-        <div class="rating">
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star full"></div>
-          <div class="star empty"></div>
-        </div>
-        <p class="title">Worked wonders for me, but...</p>
-        <p class="sub-title">By Nilotpal Sensarkar on Jan 19, 2017</p>
-        <p class="details">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci. ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci...</p>
-      </div>
-    </div>
-  </div>
-  <p class="see-more">SEE MORE</p>
+  {% include "review.html" %}
   <img class="browse_more" src="{% static 'prepacks/images/browse_more.png' %}" alt="" />
   <div class="other-panel">
     <div class="second match">
       <img class="bottle"
-           src="{% static 'prepacks/images/160125_MMU_COOLINGWATER_CAPON.png' %}" alt="" />
-      <p class="name">Mango Infusion</p>
+           src="{% static 'prepacks/images/F2F_feat_SkinGarlic.png' %}" alt="" />
+      <p class="name">Skintillating Garlic</p>
       <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
       <div class="purchase-panel">
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
@@ -113,8 +62,8 @@
     </div>
     <div class="third match">
       <img class="bottle"
-           src="{% static 'prepacks/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
-      <p class="name">Pulp Fiction</p>
+           src="{% static 'prepacks/images/F2F_feat_VeryBerry.png' %}" alt="" />
+      <p class="name">Very Berry</p>
       <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
       <div class="purchase-panel">
         <p class="button a-la-carte">BUY A-LA-CARTE</p>
@@ -124,8 +73,8 @@
     </div>
     <div class="third match">
       <img class="bottle"
-           src="{% static 'prepacks/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
-      <p class="name">Pulp Fiction</p>
+           src="{% static 'prepacks/images/F2F_feat_ProteinHigh.png' %}" alt="" />
+      <p class="name">Protein High</p>
       <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
       <div class="purchase-panel">
         <p class="button a-la-carte">BUY A-LA-CARTE</p>

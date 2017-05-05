@@ -25,9 +25,6 @@ $(document).ready(function(){
             }
         }
     }, '.see-more');
-    $('.learn-more-panel').click(function(){
-        $('div.first-match table.summary').fadeToggle('slow');
-    });
     var addToCart = function(button) {
         // POST registration data to server
         // Check which button is clicked and add o_id accordingly for fp1, fp2 or fp3

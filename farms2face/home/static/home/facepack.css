@@ -4,8 +4,9 @@ div.image-cell {
 
 div.image-cell img.bottle {
     vertical-alignment: top;
-    width: 90px;
+    width: 100px;
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 div.ingredient-cell {
@@ -21,7 +22,7 @@ div.ingredient-cell p.made-with {
     padding-left: 2px;
     padding-top: 20px;
     -webkit-transform-origin-x: 0;
-    color: #88a470;
+    color: #4e704f;
     letter-spacing: 2px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -30,31 +31,32 @@ div.ingredient-cell p.made-with {
 div.ingredient-cell div.ingredient-panel {
     display: table-cell;
     margin-top: 10px;
+    padding-right: 20px;
 }
 
 div.ingredient-cell div.ingredient-panel div.ingredient-item {
     display: table-cell;
     width: 60px;
+    padding-right: 10px;
 }
 
 div.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
     font-family: "HelveticaNeue-Light";
     font-size: 9px;
+    transform: scaleX(0.9);
     font-weight: bold;
     text-align: left;
     letter-spacing: 1px;
-    text-align: left;
+    text-align: center;
     padding-bottom: 20px;
-    transform: scaleX(0.9);
     max-width: 90px;
     white-space: normal;
-    color: #666;
     margin-top: 10px;
 }
 
 div.ingredient-cell div.ingredient-panel div.ingredient-item img {
     display: block;
-    width: 45px;
+    width: 70px;
 }
 
 p.uuid {
@@ -64,7 +66,6 @@ p.uuid {
     width: 100%;
     text-align: left;
     color: #888;
-    padding-left: 15px;
     letter-spacing: 2px;
 }
 

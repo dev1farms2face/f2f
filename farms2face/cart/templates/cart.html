@@ -15,6 +15,9 @@
     <tr>
       <td>
         <p class="header">Your Cart</p>
+        <script type="text/javascript">
+          var is_anonymous =  "{{ is_anonymous }}";
+        </script>
       </td>
     </tr>
     <tr>
@@ -80,9 +83,7 @@
               {% endfor %}
               {% else %}
               <div class="empty-cart">
-                <a href="/home/">
-                  <i>... is Empty. Start Shopping!</i>
-                </a>
+                  ... is Empty. <a href="/home">Start Shopping!</a>
               </div>
               {% endif %}
             </table>
@@ -117,22 +118,30 @@
               <script src="https://checkout.stripe.com/checkout.js"></script>
               <button class="checkout" id="customButton">CHECKOUT</button>
               <script>
-              var handler = StripeCheckout.configure({
+                var handler = StripeCheckout.configure({
                 key: 'pk_test_WdsUtCCQawInpPTGTLF2pfJi',
-                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                image: "{% static 'home/images/F2F_logo_img_colour.png' %}",
                 locale: 'auto',
                 zipCode: 'true',
-                token: function(token) {
-                  checkout();
+                billingAddress: 'true',
+                shippingAddress: 'true',
+                token: function(token, args) {
+                  checkout(token.id, args);
                   // You can access the token ID with `token.id`.
                   // Get the token ID to your server-side code for use.
                 }
               });
               document.getElementById('customButton').addEventListener('click', function(e) {
+                if (is_anonymous=="True") {
+                  window.location = "/signin/new?next=/cart/";
+                  return;
+                }
                 // Open Checkout with further options:
                 handler.open({
                   name: 'Farms2Face',
                   description: 'Payment Details',
+                  billingAddress: 'true',
+                  shippingAddress: 'true',
                   amount: {{ total_cents }}
                 });
                 e.preventDefault();

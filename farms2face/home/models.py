@@ -33,6 +33,14 @@ class SkinTypeIngredient(models.Model):
     def __str__(self):
         return self.skin_type.name+"_"+self.ingredient.name
 
+class SkinTypeConcernIngredient(models.Model):
+    skin_type = models.ForeignKey('facepackwizard.SkinType', on_delete=models.CASCADE)
+    skin_concern = models.ForeignKey('facepackwizard.SkinConcern', on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.skin_type.name+"__"+self.skin_concern.name+\
+	       "__"+self.ingredient.name
+
 class MixingAgent(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)
@@ -70,13 +78,13 @@ class FacePack(Item):
 
 class CustomFacePack(models.Model):
     facepack = models.ForeignKey(FacePack, on_delete=models.CASCADE)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, null=True)
     optional_ingredient = models.ForeignKey(Ingredient, 
                                             blank=True, null=True, 
                                             on_delete=models.CASCADE)
     user = models.ForeignKey(User)
     def __str__(self):
-        return self.facepack
+        return str(self.facepack)
     def __unicode__(self):
         return unicode(self.facepack) or u''
 

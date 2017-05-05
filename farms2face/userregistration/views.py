@@ -7,7 +7,7 @@ import pdb
 
 def init_user_login(request):
     # If social login then return
-    if not request.user.is_anonymous() and UserSocialAuth.objects.filter(user=request.user).count > 0:
+    if not request.user.is_anonymous() and UserSocialAuth.objects.filter(user=request.user).count() > 0:
         return
     # If not valid user, create anonymous user based on session key
     if request.user.is_anonymous():

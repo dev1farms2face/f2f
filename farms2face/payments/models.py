@@ -32,10 +32,20 @@ class PaymentType(models.Model):
     zipcode = models.CharField(max_length=50, blank=True)
     primary = models.BooleanField(default=False)
     def __str__(self):
-        return str(self.user)+" "+self.name+" "+str(self.primary)
+        return str(self.user)+" "+str(self.primary)
 
 class PayPal(PaymentType):
     pass
+
+class Stripe(PaymentType):
+    customer_id = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
+    created =  models.CharField(max_length=20)
+    owner_name = models.CharField(max_length=100, blank=True)
+    number = models.CharField(max_length=16, blank=True)
+    expiry = models.DateField(blank=True)
+    def __str__(self):
+        return self.customer_id
 
 class CreditCard(PaymentType):
     type = models.CharField(max_length=50)

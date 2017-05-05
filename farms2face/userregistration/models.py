@@ -31,4 +31,4 @@ class ShippingAddress(models.Model):
     phone_number = models.CharField(max_length=20, validators=[phone_regex], blank=True) # validators should be a list
     primary = models.BooleanField(default=False)
     def __str__(self):
-        return str(self.profile)+" "+str(self.primary)+" "+self.first_name+" "+str(street1)
+        return str(self.profile)+" "+str(self.primary)+" "+self.first_name+" "+str(self.street1)

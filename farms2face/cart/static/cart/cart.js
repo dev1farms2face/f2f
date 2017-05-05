@@ -12,8 +12,10 @@ $(document).ready(function(){
                 removeFromCart(item);
         }
     }, 'p.remove');
-    checkout = function() {
+    checkout = function(token_id, args) {
         // POST cart remove to server
+        if( is_anonymous == "True" )
+            window.location = "/signin/new?next=/cart/";
         $.ajax({
             url: url_checkout,
             type: 'POST',
@@ -22,6 +24,19 @@ $(document).ready(function(){
                 'csrfmiddlewaretoken': $("[name='csrfmiddlewaretoken']").attr('value'),
                 'data' : JSON.stringify({
                     'shipping_id': $('div.cart-panel div.shipping-panel select').val(),
+                    'token_id': token_id,
+                    'b_name': args.billing_name,
+                    'b_addr1': args.billing_address_line1,
+                    'b_zip': args.billing_address_zip,
+                    'b_city': args.billing_address_city,
+                    'b_state': args.billing_address_state,
+                    'b_country': args.billing_address_country,
+                    's_name': args.shipping_name,
+                    's_addr1': args.shipping_address_line1,
+                    's_zip': args.shipping_address_zip,
+                    's_city': args.shipping_address_city,
+                    's_state': args.shipping_address_state,
+                    's_country': args.shipping_address_country,
                 })
             },
             success: function(data) {

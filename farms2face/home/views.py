@@ -71,10 +71,14 @@ def social_user(backend, uid, user=None, *args, **kwargs):
             #print "!!! social user logging out and relogging in !!!"
             #migrate_user(user, social.user)
             #user = social.user
+            req = backend.strategy.request
+            next = req.session['next'] if 'next' in req.session else None
             logout(backend.strategy.request)
             #magic, yes magic
             social.user.backend = "social.backends.facebook.FacebookOAuth2"
             login(backend.strategy.request, social.user)
+            if next:
+                backend.strategy.request.session['next'] = next
             #msg = 'This {0} account is already in use.'.format(provider)
             #raise AuthAlreadyAssociated(backend, msg)
         elif not user:
@@ -121,6 +125,20 @@ def save_profile_picture(strategy, backend, user, response, details,
             profile.picture.save('{0}_social.jpg'.format(user.email),
                                    ContentFile(response.content))
             profile.save()
+
+def redirect_next(strategy, backend, user, response, details,
+                         is_new=False,*args,**kwargs):
+    req = backend.strategy.request
+    data = {
+        'cart_size' : cart_size(req),
+        'valid_user': get_valid_user_data(req)
+    }
+    next = req.session['next'] if 'next' in req.session else None
+    return;
+    if next:
+        if next == 'None':
+            next = "/home/"
+        return redirect(next, data)
 
 def login_user(request):
     json_response = {}
@@ -184,11 +202,9 @@ def post_add_cart(request):
         base_id = int(data['b_id']) 
         mixing_agent_id = int(data['m_id'])
         cart_type = data['type']
-        optional_id = int(data['o_id']) if 'o_id' in data and len(data['o_id']) > 0 else None
-
-	optional_ing = None
-        if optional_id:
-            optional_ing = Ingredient.objects.get(pk=optional_id)
+        o1_id = int(data['o1_id']) if 'o1_id' in data and len(data['o1_id']) > 0 else None
+        o2_id = int(data['o2_id']) if 'o2_id' in data and len(data['o2_id']) > 0 else None
+        o3_id = int(data['o3_id']) if 'o3_id' in data and len(data['o3_id']) > 0 else None
 
         fp_id = data.get('fp_id', None)
         if fp_id:
@@ -203,8 +219,8 @@ def post_add_cart(request):
         else:
             # Create FP name
             fp_name = "CFP_%03d%03d%03d" % (recipe1_id, recipe2_id, recipe3_id)
-            if optional_id:
-                fp_name += "%03d" % optional_id
+            if o1_id and o2_id and o3_id:
+                fp_name += "111"
             else:
                 fp_name += "000"
     
@@ -217,23 +233,23 @@ def post_add_cart(request):
             fp.name = fp_name
             fp.save()
     
-    	    cfp1 = CustomFacePack()
+            cfp1 = CustomFacePack()
             cfp1.recipe = Recipe.objects.get(pk=recipe1_id)
-            cfp1.optional_ingredient = optional_ing
+            cfp1.optional_ingredient = Ingredient.objects.get(pk=o1_id) if o1_id else None
             cfp1.facepack = fp
             cfp1.user = user
             cfp1.save()
     
-    	    cfp2 = CustomFacePack()
+            cfp2 = CustomFacePack()
             cfp2.recipe = Recipe.objects.get(pk=recipe2_id)
-            cfp2.optional_ingredient = optional_ing
+            cfp2.optional_ingredient = Ingredient.objects.get(pk=o2_id) if o2_id else None
             cfp2.facepack = fp
             cfp2.user = user
             cfp2.save()
     
-    	    cfp3 = CustomFacePack()
+            cfp3 = CustomFacePack()
             cfp3.recipe = Recipe.objects.get(pk=recipe3_id)
-            cfp3.optional_ingredient = optional_ing
+            cfp3.optional_ingredient = Ingredient.objects.get(pk=o3_id) if o3_id else None
             cfp3.facepack = fp
             cfp3.user = user
             cfp3.save()

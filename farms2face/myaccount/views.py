@@ -281,7 +281,7 @@ def view_myaccount(request, option=None):
         if hasattr(request.user, 'profile'):
             up = request.user.profile
             data['gender'] = up.gender or ""
-	    data['birthday'] = (up.birth_date and up.birth_date.strftime("%b %d, %Y")) or ""
+            data['birthday'] = (up.birth_date and up.birth_date.strftime("%b %d, %Y")) or ""
             data['subscription'] = up.subscription or "No"
     elif option == 'skin-profile':
         data.update(skin_profile) 
@@ -292,15 +292,14 @@ def view_myaccount(request, option=None):
             for i,py in enumerate(user.payment_set.all().order_by('createdte')):
                 for j,ph in enumerate(py.purchasehistory_set.all()):
                     mandatory = []
-                    optional = None
                     for cfp in CustomFacePack.objects.filter(facepack=ph.item):
+                        ing = cfp.optional_ingredient if cfp.optional_ingredient else cfp.recipe.mandatory_ingredient
                         mandatory.append({
-                            'name'   : cfp.recipe.mandatory_ingredient.name,
-                            'id'     : cfp.recipe.mandatory_ingredient.id,
+                            'name'   : ing.name,
+                            'id'     : ing.id,
                             'r_id'   : cfp.recipe.id,
-                            'image'  : cfp.recipe.mandatory_ingredient.image,
+                            'image'  : ing.image,
                         })
-                        optional = cfp.optional_ingredient
                     fp = FacePack.objects.get(pk=ph.item_id)
                     orders.append({
                         'sno': i+1,
@@ -316,10 +315,6 @@ def view_myaccount(request, option=None):
                         'type': ph.type,
                         'mixing_agent': fp.mixing_agent.name,
                         'mandatory': mandatory,
-                        'optional': {
-                                     'name'  : optional.name,
-                                     'image' : optional.image,
-                                    } if optional else "" ,
                         'item': ph.item,
                     }) 
         data['orders'] = orders
@@ -343,7 +338,7 @@ def view_myaccount(request, option=None):
         data['shipping'] = shipping
         paymenttypes = []
         for pt in request.user.paymenttype_set.all():
-            cc = CreditCard.objects.get(pk=pt.id)
+            cc = Stripe.objects.get(pk=pt.id)
             paymenttypes.append({
                 'first_name': " ".join(cc.owner_name.split()[0:-1]) if cc.owner_name.split() else "",
                 'last_name': cc.owner_name.split()[-1] if cc.owner_name.split() else "",
@@ -373,15 +368,14 @@ def view_myaccount(request, option=None):
                 for j,ph in enumerate(py.purchasehistory_set.all()):
                     if ph.type == "subscribe":
                         mandatory = []
-                        optional = None
                         for cfp in CustomFacePack.objects.filter(facepack=ph.item):
+                            ing = cfp.optional_ingredient if cfp.optional_ingredient else cfp.recipe.mandatory_ingredient
                             mandatory.append({
-                                'name'   : cfp.recipe.mandatory_ingredient.name,
-                                'id'     : cfp.recipe.mandatory_ingredient.id,
+                                'name'   : ing.name,
+                                'id'     : ing.id,
                                 'r_id'   : cfp.recipe.id,
-                                'image'  : cfp.recipe.mandatory_ingredient.image,
+                                'image'  : ing.image,
                             })
-                            optional = cfp.optional_ingredient
                         fp = FacePack.objects.get(pk=ph.item_id)
                         subscriptions.append({
                             'sno': i+1,
@@ -403,10 +397,6 @@ def view_myaccount(request, option=None):
                             'base': fp.base.name,
                             'mixing_agent': fp.mixing_agent.name,
                             'mandatory': mandatory,
-                            'optional': {
-                                         'name'  : optional.name,
-                                         'image' : optional.image,
-                                        } if optional else "" ,
                             'item': ph.item,
                         }) 
         data['subscriptions'] = subscriptions

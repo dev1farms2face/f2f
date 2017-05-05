@@ -26,6 +26,7 @@ div.cart-panel p.header {
 div.cart-panel div.bottom-panel {
     display: block;
     min-height: 300px;
+    white-space: nowrap;
 }
 
 div.cart-panel div.bottom-panel div.left-panel {
@@ -47,31 +48,13 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td {
     padding-bottom: 20px;
 }
 
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell {
-    display: table-cell;
-    vertical-align: top;
-}
-
-div.cart-panel div.bottom-panel table.item-panel tr.item div.ingredient-cell p.made-with {
-    font-family: "HelveticaNeue-UltraLight";
-    font-size: 15px;
-    text-align: left;
-    transform: scaleX(0.7);
-    padding-left: 2px;
-    padding-top: 20px;
-    -webkit-transform-origin-x: 0;
-    color: #88a470;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
     vertical-align: top;
     padding-top: 30px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
-    font-family: "HelveticaNeue";
+    font-family: "HelveticaNeue-Light";
     font-weight: bold;
     height: 20px;
     font-size: 11px;
@@ -101,7 +84,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
-    font-family: "HelveticaNeue";
+    font-family: "HelveticaNeue-Light";
     font-weight: bold;
     height: 20px;
     font-size: 11px;
@@ -180,10 +163,14 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack
 }
 
 div.cart-panel div.empty-cart {
-    font-family: "HelveticaNeue-UltraLight";
+    font-family: "HelveticaNeue-Light";
     color: #999;
     margin-top: 20px;
     font-size: 20px;
+}
+
+div.cart-panel div.empty-cart a {
+    color: #ce9a2b;
     cursor: pointer;
 }
 
@@ -240,7 +227,7 @@ div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel select{
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel option{
-    font-family: "Helvetica-Light";
+    font-family: "HelveticaNeue-Light";
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel p.cost{
@@ -254,6 +241,7 @@ div.cart-panel div.bottom-panel div.checkout-panel p.helper {
     width: 100%;
     text-align: left;
     margin-top: 20px;
+    white-space: normal;
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel p.promo {

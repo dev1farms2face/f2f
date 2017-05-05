@@ -47,32 +47,40 @@ div.panel-0 {
 
                                   /* ~~~ TITLE ~~~ */
 #title-panel {
-        display:table;
-        width: 80%;
+        display: inline-block;
+        min-width: 80%;
         padding-left: 50px;
         padding-bottom: 10px;
+        white-space: nowrap;
 }
 div.title-panel-override {
         border-width:0px;
 }
-img.logo-main {
-        padding-top: 7px;
-        padding-left: 120px;
+#title-panel div.logo-panel {
+        display: table-cell;
         float: left;
+}
+
+img.logo-main {
         display:table-cell;
+        padding-top: 7px;
         height:60px;
         width:60px;
         cursor: pointer;
+        display: inline-block;
 }
 img.logo-title {
-        float: left;
         width: 140px;
         padding-top: 30px;
+        padding-bottom: 10px;
         cursor: pointer;
         display:table-cell;
+        display: inline-block;
 }
 #title-panel div.link-panel {
+        display: table-cell;
         float: right;
+        margin-right: 100px;
 }
 label.title-link {
         float: right;
@@ -149,11 +157,10 @@ div.cart {
         background-image: url('images/shopping-cart-1.png');
         background-size: 100% 100%;
         display: table;
-        margin-top:20px;
-        margin-right:50px;
+        margin-top:14px;
         margin-left:-20px;
-        width:35px;
-        height: 35px;
+        width:45px;
+        height: 45px;
 	float: right;
         cursor: pointer;
 }
@@ -187,10 +194,7 @@ label.title-link:hover {
         background-size: 100% 100%;
         position: relative;
         min-width: 100%;
-        width: 100%;
         height: 350px;
-        margin-top: -150px;
-        display: block;
         text-align: left;
 }
 .footer-panel-2 {

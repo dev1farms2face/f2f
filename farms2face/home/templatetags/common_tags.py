@@ -7,15 +7,17 @@ register = template.Library()
 @register.inclusion_tag('facepack.html')
 def facepack_display(item_id):
     mandatory = []
-    optional = None
+    type = "primary"
     for cfp in CustomFacePack.objects.filter(facepack=item_id):
+        ing = cfp.optional_ingredient if cfp.optional_ingredient else cfp.recipe.mandatory_ingredient
         mandatory.append({
-            'name'   : cfp.recipe.mandatory_ingredient.name,
-            'id'     : cfp.recipe.mandatory_ingredient.id,
+            'name'   : ing.name,
+            'id'     : ing.id,
             'r_id'   : cfp.recipe.id,
-            'image'  : cfp.recipe.mandatory_ingredient.image,
+            'image'  : ing.image,
         })
-        optional = cfp.optional_ingredient
+        if cfp.optional_ingredient:
+            type = "secondary"
     fp = FacePack.objects.get(pk=item_id)
     res = {
       'item_id'      : item_id,
@@ -23,9 +25,6 @@ def facepack_display(item_id):
       'mandatory'    : mandatory,
       'base'         : fp.base.name,
       'mixing_agent' : fp.mixing_agent.name,
-      'optional'     : { 
-                         'name'  : optional.name,
-                         'image' : optional.image,
-                       } if optional else "" ,
+      'type'         : type,
     }
     return {'item': res }

@@ -1,0 +1,213 @@
+div.facepack-match {
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20px;
+}
+
+div.facepack-match div.top {
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.facepack-match img.bottle {
+        display: inline-block;
+        width: 220px;
+        padding-right: 10px;
+}
+
+div.facepack-match div.details-panel {
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+}
+
+div.facepack-match div.details-panel p.made-with {
+        font-family: "HelveticaNeue-Light";
+        color: black;
+        font-size: 20px;
+        transform: scaleX(0.9);
+        letter-spacing: 2px;
+        text-align: left;
+        margin-bottom: 10px;
+}
+
+div.facepack-match div.ingredients-panel {
+        display: block;
+        text-align: left;
+        padding-left: 10px;
+}
+
+div.facepack-match div.ingredient {
+        vertical-align: top; 
+        margin-right: 20px;
+        display: inline-block;
+}
+
+div.facepack-match div.ingredient img {
+        width: 90px;
+}
+
+div.facepack-match div.ingredient p.name {
+        font-family: "Helvetica";
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 5px;
+}
+
+div.facepack-match div.ingredient p.helper-text {
+        color: #666;
+        font-family: "HelveticaNeue-Light";
+        font-size: 10px;
+        width: 90px;
+        text-align: center;
+}
+
+div.facepack-match div.learn-more-panel {
+        background-image: url('images/Brush_Button.png');
+        display: inline-block;
+        background-size: 100% 100%;
+        width: 110%;
+        height: 60px;
+        text-align: left;
+        margin-top: 10px;
+}
+
+div.facepack-match div.learn-more-panel p {
+        font-size: 12px;
+        margin-top: 15px;
+        margin-left: 10px;
+        letter-spacing: 1px;
+        display: inline-block;	
+        width: 350px;
+        height: 50px;
+        color: white;
+        font-family: "HelveticaNeue-UltraLight";
+        transform: scaleX(0.9);
+        cursor: pointer;
+}
+
+div.facepack-match table.summary {
+       display: none;
+       padding: 10px;
+       margin-top: 50px;
+       border-spacing: 20px;
+       margin-left: auto;
+       margin-right: auto;
+       border-top: 1px solid #DDD;
+       border-bottom: 1px solid #DDD;
+       border-radius: 6px;
+}
+
+div.facepack-match table.summary td.heading {
+        font-family: "HelveticaNeue-Light";
+        font-size: 18px;
+        letter-spacing: 2px;
+        color: #ce9a2b;
+}
+
+div.facepack-match table.summary td.footer p.hide-summary {
+        color: white;
+        font-family: "HelveticaNeue-Light";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        padding: 3px 5px 3px 5px;
+        letter-spacing: 2px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        cursor: pointer;
+}
+
+div.facepack-match table.summary tr.ingr {
+        text-align: center;
+        border: 1px solid;
+}
+
+div.facepack-match table.summary tr.ingr > td {
+        padding-bottom: 50px;
+}
+
+div.facepack-match table.summary tr.ingr td.header {
+        font-family: "HelveticaNeue-Light";
+        font-size: 14px;
+        letter-spacing: 2px;
+        vertical-align: middle;
+        text-align: left;
+        color: #88a470;
+}
+
+div.facepack-match table.summary tr.ingr td.middle {
+        vertical-align: middle;
+}
+div.facepack-match table.summary tr.ingr img {
+        width: 100px;
+}
+
+div.facepack-match table.summary tr.ingr td.right {
+        vertical-align: middle;
+        width: 300px;
+}
+
+div.facepack-match table.summary tr.ingr td.right p.name {
+        text-align: left;
+        font-family: "HelveticaNeue-Light";
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 10px;
+}
+
+
+div.facepack-match table.summary tr.ingr td.right p.helper {
+        font-family: "HelveticaNeue-Light";
+        font-size: 12px;
+        text-align: left;
+}
+
+div.facepack-match div.purchase-panel {
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        margin-top: 10px;
+}
+
+div.facepack-match div.purchase-panel p.or  {
+        display: table-cell;
+        font-family: "HelveticaNeue-Light";
+        font-size: 14px;
+        vertical-align: middle;
+        padding: 0 15px 0 15px; 
+}
+
+div.facepack-match p.button  {
+        display: table-cell;
+        color: white;
+        font-family: "HelveticaNeue-Light";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        padding: 1px 5px 1px 5px;
+        letter-spacing: 2px;
+        cursor: pointer;
+}
+
+div.facepack-match p.button.buy-clicked  {
+        color: #88a470;
+        border: 1px solid #88a470;
+        background-color: white;
+}
+
+div.facepack-match p.button:hover {
+        //background-color: #777777;
+}
