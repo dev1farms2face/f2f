@@ -12,20 +12,15 @@
 {% block basebody %}
 <div class="results-panel">
   <img class="presenting" src="{% static 'prepacks/images/presenting.png' %}" alt="" />
-  <div class="prepack-featured">
-    <img class="sack"
-         src="{% static 'prepacks/images/F2F_feat_AllStarAcne.png' %}" alt="" />
+  <div class="prepack-featured item" id="{{ p.id }}">
+    <img class="sack" src="/images/{{ p.image }}" alt="" />
     <div class="description">
       <br>
-      <p class="name">All-Star Ayurveda</p>
-      <p class="details">
-        Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus. Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus
-      </p>
+      <p class="name">{{ p.name }}</p>
+      <p class="details">{{ p.description }} </p>
       <br>
       <p class="made-with">Made with</p>
-      <p class="details">
-        Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus. Acepratur mod estem sam, tessinullo in rectat volorum volo dolendelique incte sam que nullesc imolorpos ut min earchillacea si sunt lit debisti verum sum, sus eum doluptur, in nus et id est, ut experum non providebis premped quamus
-      </p>
+      <p class="details">{{ p.made_with }}</p>
       <div class="purchase-panel">
         {% if fp %}
           {% if fp_type == "buy" %}
@@ -49,39 +44,39 @@
   {% include "review.html" %}
   <img class="browse_more" src="{% static 'prepacks/images/browse_more.png' %}" alt="" />
   <div class="other-panel">
-    <div class="second match">
-      <img class="bottle"
-           src="{% static 'prepacks/images/F2F_feat_SkinGarlic.png' %}" alt="" />
-      <p class="name">Skintillating Garlic</p>
-      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
-      <div class="purchase-panel">
-        <p class="button a-la-carte">BUY A-LA-CARTE</p>
-        <p class="or">- or -</p>
-        <p class="button subscribe">SUBSCRIBE</p>
+    <img class="featured-left arrow" 
+         src="{% static 'home/images/left-arrow.png' %}" alt="" />
+    <div class="prepacks">
+      {% for f in prepacks %}
+      <div class="item" id="{{ f.facepack.id }}">
+        <a href='/prepacks/{{ f.facepack.id }}/'>
+        <img class="bottle" src="/images/{{ f.facepack.image }}" alt="" />
+        <p class="name">{{ f.facepack.name }}</p>
+        <p class="description">{{ f.facepack.helper }}</p>
+        </a>
+        <div class="purchase-panel">
+          {% if f.cart_type %}
+            {% if f.cart_type == "buy" %}
+            <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ f.facepack.id }}">ADDED TO CART</p>
+            <p class="or">- or -</p>
+            <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+            {% elif f.cart_type == "subscribe" %}
+            <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+            <p class="or">- or -</p>
+            <p class="button subscribe buy-clicked" type="subscribe" facepack_id="{{ f.facepack.id }}">SUBSCRIBED TO CART</p>
+            {% endif %}
+          {% else %}
+          <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+          <p class="or">- or -</p>
+          <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+          {% endif %}
+        </div>
       </div>
+      {% endfor %}
     </div>
-    <div class="third match">
-      <img class="bottle"
-           src="{% static 'prepacks/images/F2F_feat_VeryBerry.png' %}" alt="" />
-      <p class="name">Very Berry</p>
-      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
-      <div class="purchase-panel">
-        <p class="button a-la-carte">BUY A-LA-CARTE</p>
-        <p class="or">- or -</p>
-        <p class="button subscribe">SUBSCRIBE</p>
-      </div>
-    </div>
-    <div class="third match">
-      <img class="bottle"
-           src="{% static 'prepacks/images/F2F_feat_ProteinHigh.png' %}" alt="" />
-      <p class="name">Protein High</p>
-      <p class="description">Pa endam quamusa ndusapit quam ressi nobissit re cusanis verferf erspidis ipsa nihillum sinihil lorrum res et venduci.</p>
-      <div class="purchase-panel">
-        <p class="button a-la-carte">BUY A-LA-CARTE</p>
-        <p class="or">- or -</p>
-        <p class="button subscribe">SUBSCRIBE</p>
-      </div>
-    </div>
+    <img class="featured-right arrow"
+         src="{% static 'home/images/right-arrow.png' %}" alt="" />
   </div>
 </div>
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />
 {% endblock %}

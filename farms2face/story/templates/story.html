@@ -1,0 +1,56 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <script type="text/javascript"
+    src="{% static 'home/parallax.min.js' %}"></script>
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'story/story.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'story/story.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="story-panel">
+  <div class="title-panel" imgSrc="/images/{{ title.image }}">
+    <p>{{ title.title }}</p>
+  </div>
+  <div class="details-panel">
+    <div class="section-1">
+      <p class="title">{{ section_1.title }}</p>
+      <img src="/images/{{ section_1.image }}" alt="" />
+      <p class="description">{{ section_1.description }}</p>
+    </div>
+    <div class="section-2">
+      <img src="/images/{{ section_2.image }}" alt="" />
+      <div class="right">
+        <p class="title">{{ section_2.title }}</p>
+        <p class="description">{{ section_2.description }}</p>
+      </div>
+    </div> 
+    <div class="section-3">
+      <p class="title">{{ section_3.title }}</p>
+      <img src="/images/{{ section_3.image }}" alt="" />
+      <p class="description">{{ section_3.description }}</p>
+    </div>
+    <div class="section-4">
+      <div class="left">
+        <p class="title">{{ section_4.title }}</p>
+        <p class="description">{{ section_4.description }}</p>
+        <br>
+        <p class="description">{{ section_4.description2 }}</p>
+      </div>
+      <img src="/images/{{ section_4.image }}" alt="" />
+    </div>
+    <div class="section-5">
+      <img src="/images/{{ section_5.image }}" alt="" />
+      <p class="description">{{ section_5.description }}</p>
+    </div>
+    <div class="section-6">
+      <p class="title">{{ section_6.title }}</p>
+      <p class="description">{{ section_6.description }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

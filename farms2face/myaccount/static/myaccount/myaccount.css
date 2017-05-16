@@ -128,6 +128,12 @@ div.myaccount-panel div.content-panel table.account.details-panel td input.value
     width: 200px;
 }
 
+div.myaccount-panel div.content-panel table.account.details-panel td img.pen {
+    width: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
 
 div.myaccount-panel div.content-panel table.account.details-panel td input.value:focus {
     color: #444;

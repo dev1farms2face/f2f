@@ -71,26 +71,28 @@ div.badge-container {
 }
 div.badge-1-panel {
         position: absolute;
+        top: 40px;
         left: 120px;
 }
 div.badge-2-panel {
         position: absolute;
-        top: 185px;
-        left: 350px;
+        top: 145px;
+        left: 370px;
 }
 div.badge-3-panel {
         position: absolute;
-        left: 560px;
+        top: 40px;
+        left: 610px;
 }
 div.badge-4-panel {
         position: absolute;
-        top: 220px;
-        left: 790px;
+        top: 145px;
+        left: 850px;
 }
 #badge-1-container, #badge-2-container, #badge-3-container, #badge-4-container {
         display:inline-block;
-        height:186px;
-        width:186px;
+        height:156px;
+        width:156px;
 }
 badge-1-container-override, badge-2-container-override, badge-3-container-override, badge-4-container-override {
         border-width:0px;
@@ -102,32 +104,14 @@ img.badge-1, img.badge-2, img.badge-3, img.badge-4 {
 }
 p.badge-text {
         font-family: 'HelveticaNeue-Light', sans-serif;
-        font-size: 20px;
+        font-size: 12px;
         color: #555555;
         font-weight: 100;
+        text-align: left;
 }
-p.badge-button {
-        display: inline-block;
-        font-family: 'HelveticaNeue-Light', sans-serif;
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        color: white;
-        background-color: #88a470;
-        width: 100px;
-        margin-left: 50px;
-        margin-top: 10px;
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        cursor: pointer;
-        text-align: center;
-}
-
-p.badge-button:hover {
-        background-color: #555555;
-}
+p.badge-text span.orange {
+        color: #ce9a2b;
+} 
 p.badge-1-text {
         margin-left: 20px;
 }
@@ -143,7 +127,7 @@ p.badge-3-buy {
 }
 p.badge-3-text {
         margin-top: 5px;
-        text-align: center;
+        text-align: left;
 }
 p.badge-3-subscribe {
         margin-top: 10px;
@@ -152,8 +136,15 @@ p.badge-3-subscribe {
 p.badge-4-text {
         margin-top: 5px;
         margin-left: 20px;
-        text-align: center;
+        text-align: left;
         width: 150px;
+}
+
+p.personal {
+        font-family: "Selima";
+        color: #627254;
+        font-size: 16px;
+        margin-top: 10px;
 }
 
 
@@ -168,47 +159,55 @@ p.badge-4-text {
         background-color: transparent;
         height:840px;
         width: 100%;
-        display: table;
+        padding-bottom: 80px;
 }
 #featured-collection {
-        display:table-cell;
         vertical-align: middle;
-        max-width: 400px;
-        height: 700px;
         margin-top: 250px;
-        padding-left: 50px;
+        padding-bottom: 50px;
 }
 img.featured-collection-txt {
-        display: block;
         width: 350px;
-        margin-left: auto;
-        margin-right: auto;
+        text-align: center;
+        margin-top: 150px;
 }
-img.shop-now {
-        display: block;
-        width: 150px;
-        cursor: pointer;
-        margin-left: auto;
-        margin-right: auto;
+p.shop-now {
         margin-top: 20px;
-        margin-right: auto;
+        text-align: center;
+        font-family: "Selima";
+        color: #fff;
+        font-size: 56px;
 }
 #collections {
-        display:table-cell;
-        vertical-align: middle;
-        width: 700px;
-        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 80%;
+}
+#collections img.arrow {
+        width: 30px;
+        margin-bottom: 100px; 
+        cursor: pointer;
+}
+#collections div.prepacks {
+        display: inline-block;
+        white-space:nowrap;
+        #overflow-x: hidden;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 720px;
 }
 #collections div.item {
         display:table-cell;
         width: 200px;
         margin-top: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
 }
 #collections img.bottle {
         display: inline-block;
-        font-size: 0;
-        height:203px;
-        width:122px;
+        width:185px;
 }
 #collections p.name {
         font-family: 'HelveticaNeue-Light', sans-serif;
@@ -217,7 +216,7 @@ img.shop-now {
         font-weight: 100;
 }
 #collections p.price {
-        font-family: 'HelveticaNeue', sans-serif;
+        font-family: 'HelveticaNeue-Bold', sans-serif;
         font-size: 10px;
         color: white;
         font-weight: 800;

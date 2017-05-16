@@ -30,33 +30,29 @@
           <div id="badge-1-container" class="badge-1-container-override">
             <img class="badge-1" 
                  src="{% static 'home/images/How_to_wash_badge_1.png' %}" alt="" />
-            <p class="badge-text badge-1-text">Find out which Face Mask suits your skin</p>
-            <a href='/wizard/'>
-              <p class="badge-1-test badge-button">TAKE THE QUIZ</p>
-            </a>
+            <p class="badge-text badge-1-text"><span class="orange">Find your customized face mask.</span> Our propiretary algorithm will create a precise creation for your skin.</p>
+            <p class="personal">Because it's Personal!</p>
           </div>
         </div>
         <div class="badge-2-panel">
           <div id="badge-2-container" class="badge-2-container-override">
             <img class="badge-2" 
                  src="{% static 'home/images/How_badge_2.png' %}" alt="" />
-            <p class="badge-text badge-2-text">Choose the Face Mask routine that suits you best</p>
+            <p class="badge-text badge-2-text"><span class="orange">Buy ala carte or never run out.</span> Choose the face mask routine that suits you best.</p>
           </div>
         </div>
         <div class="badge-3-panel">
           <div id="badge-3-container" class="badge-3-container-override">
             <img class="badge-3" 
                  src="{% static 'home/images/How_badge_3.png' %}" alt="" />
-            <p class="badge-text badge-3-buy">Buy a-la-carte</p>
-            <p class="badge-text badge-3-text">- or -</p>
-            <p class="badge-text badge-3-subscribe">Subscribe</p>
+            <p class="badge-text badge-3-text"><span class="orange">Celebrate your beautiful self.</span> Share a photo with firends and family using #myF2F and leave a review to help other men and women find their perfect, personalized mask.</p>
           </div>
         </div>
         <div class="badge-4-panel">
           <div id="badge-4-container" class="badge-4-container-override">
             <img class="badge-4" 
                  src="{% static 'home/images/How_badge_4.png' %}" alt="" />
-            <p class="badge-text badge-4-text">Repeat for a Glowing skin!</p>
+            <p class="badge-text badge-4-text"><span class="orange">Repeat for a glowing skin.</span> Your skin will thank you for the luxury of pure, natural and organic creations hand made exclusively for you</p>
           </div>
         </div>
       </div>
@@ -69,49 +65,25 @@
     <div id="featured-collection" class="featured-collection-override">
       <img class="featured-collection-txt" 
            src="{% static 'home/images/featured_collection_text.png' %}" alt="" />
-      <a href="/prepacks/">
-        <img class="shop-now" 
-             src="{% static 'home/images/shop_now.png' %}" alt="" />
-      </a>
+      <p class="shop-now">Shop Now</p>
     </div>
     <div id="collections" class="collections-override">
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/1MMU_MATTEBRONZER_CAPON_NEWCAP.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
+      <img class="featured-left arrow" 
+           src="{% static 'home/images/left-arrow.png' %}" alt="" />
+      <div class="prepacks">
+        {% for p in prepacks %}
+        <a href='/prepacks/{{ p.id }}/'>
+        <div class="item">
+          <img class="bottle" 
+          <img class="bottle" src="/images/{{ p.image }}" alt="" />
+          <p class="name">{{ p.name }}</p>
+          <p class="price">${{ p.price }}</p> 
+        </div>
+        </a>
+        {% endfor %}
       </div>
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/160125_MMU_COOLINGWATER_CAPON.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
-      </div>
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/160125_MMU_HYDRATINGOIL_CAPON1-655x1024.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
-      </div>
-      <br>
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/160126_MMU_LIP_CHEEK_PERK_CAPON-655x1024.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
-      </div>
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/160126_MMU_ROLLANDBLOT_FRONT_90-655x1024.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
-      </div>
-      <div class="item">
-        <img class="bottle" 
-             src="{% static 'home/images/Blur-Stick-cap-655x1024.png' %}" alt="" />
-        <p class="name">Mango Infusion</p>
-        <p class="price">$25</p> 
-      </div>
+      <img class="featured-right arrow" 
+           src="{% static 'home/images/right-arrow.png' %}" alt="" />
     </div>
   </div>
 </div>

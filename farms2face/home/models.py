@@ -71,8 +71,11 @@ class Item(models.Model):
 class FacePack(Item):
     base = models.ForeignKey(Base, on_delete=models.CASCADE)
     mixing_agent = models.ForeignKey(MixingAgent, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='images/prepacks/', null=True)
+    made_with = models.CharField(max_length=5000, null=True, blank=True)
+    description = models.CharField(max_length=5000, null=True, blank=True)
     def __str__(self):
-        return str(self.id)+" "+str(self.base)+" "+str(self.mixing_agent)
+        return str(self.name)+" "+str(self.base)+" "+str(self.mixing_agent)
     def __unicode__(self):
         return unicode(self.id) or u''
 
@@ -92,6 +95,6 @@ class PrePack(models.Model):
     facepack = models.ForeignKey(FacePack, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name
+        return str(self.facepack)
     def __unicode__(self):
         return unicode(self.facepack) or u''

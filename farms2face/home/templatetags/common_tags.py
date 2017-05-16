@@ -25,6 +25,8 @@ def facepack_display(item_id):
       'mandatory'    : mandatory,
       'base'         : fp.base.name,
       'mixing_agent' : fp.mixing_agent.name,
+      'image'        : fp.image,
       'type'         : type,
     }
+    print(res)
     return {'item': res }

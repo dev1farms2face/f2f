@@ -67,6 +67,9 @@ $(document).ready(function(){
             onSelect: function() {
                 $('.datepicker').blur();
             }});
+    $('table.account.details-panel img.pen').click(function(){
+        $(this).prev('input.value').focus();
+    });
     $('table.account.details-panel input.value')
         .on('blur', function(){
             $(this).removeClass('dirty');

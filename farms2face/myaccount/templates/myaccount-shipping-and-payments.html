@@ -42,7 +42,7 @@
       </div>
       <div class="links">
         <p class="link edit" url="{{ url_update_shipping_address }}" >edit</p>
-        {% if not sh.primary %}
+        {% if not sh.primaryy %}
         <p class="link delete" url="{{ url_delete_shipping_address }}" >delete</p>
         {% endif %}
       </div>
@@ -98,7 +98,7 @@
    <p class="button cancel">CANCEL</p>
    <p class="button save">SAVE</p>
   </div>
-  <p class="button new-address">ADD A NEW SHIPPING ADDRESS</p>
+  <p class="button new-address" style="display:none">ADD A NEW SHIPPING ADDRESS</p>
 </div>
 {% if shipping %}
 <div class="payments">
@@ -210,7 +210,7 @@
       <p class="button save" style="display:none" url="{{ url_save_paymenttype }}">SAVE</p>
     </div>
   </div>
-  <p class="button new-payment">ADD A NEW PAYMENT METHOD</p>
+  <p class="button new-payment" style="display:none">ADD A NEW PAYMENT METHOD</p>
 {% endif %}
 </div>
 {% endblock %}

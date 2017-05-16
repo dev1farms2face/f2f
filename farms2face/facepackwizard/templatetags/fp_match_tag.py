@@ -18,15 +18,10 @@ def facepack_match(context, data):
     if cart_size(request) > 0:
         for fp in FacePack.objects.filter(base__id=data['b_id'], mixing_agent__id=data['m_id']):
             if sorted([r['recipe_id'] for r in CustomFacePack.objects.filter(facepack=fp).values('recipe_id')]) == sorted([data['r1_id'], data['r2_id'], data['r3_id']]) and request.user.cart_set.filter(item=fp).count() > 0:
-                print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 optional_ingr_set = set([c.optional_ingredient_id for c in CustomFacePack.objects.filter(facepack=fp)])
                 cart_type = request.user.cart_set.get(item=fp).type
                 if (data['type'] == "primary" and None in optional_ingr_set)\
                   or (data['type'] == "secondary" and set(data['o_ids']) == optional_ingr_set):
                     data['fp'] = fp.id
                     data['fp_type'] = cart_type
-                print("FP:",data['type'],data['fp'] if 'fp' in data else None, optional_ingr_set, set(data['o_ids']))
-            #print(sorted([r['recipe_id'] for r in CustomFacePack.objects.filter(facepack=fp).values('recipe_id')]))
-            #print(sorted([data['r1_id'], data['r2_id'], data['r3_id']]))
-            #print(request.user.cart_set.filter(item=fp).count())
     return data

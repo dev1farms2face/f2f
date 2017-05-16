@@ -4,7 +4,7 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack
+from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack
 from cart.models import Cart
 from userregistration.views import init_user_login
 from userregistration.models import *
@@ -34,7 +34,8 @@ def cart_size(request):
 def home(request):
     data = {
         'cart_size' : cart_size(request),
-        'valid_user': get_valid_user_data(request)
+        'valid_user': get_valid_user_data(request),
+        'prepacks': [p.facepack for p in PrePack.objects.all()],
     }
     return render(request, "home.html", data)
 
@@ -196,18 +197,11 @@ def post_add_cart(request):
         init_user_login(request)
         user = request.user
         data = json.loads(request.POST['data'])
-        recipe1_id = int(data['r1_id'])
-        recipe2_id = int(data['r2_id'])
-        recipe3_id = int(data['r3_id'])
-        base_id = int(data['b_id']) 
-        mixing_agent_id = int(data['m_id'])
-        cart_type = data['type']
-        o1_id = int(data['o1_id']) if 'o1_id' in data and len(data['o1_id']) > 0 else None
-        o2_id = int(data['o2_id']) if 'o2_id' in data and len(data['o2_id']) > 0 else None
-        o3_id = int(data['o3_id']) if 'o3_id' in data and len(data['o3_id']) > 0 else None
-
         fp_id = data.get('fp_id', None)
-        if fp_id:
+        fp_type = data.get('fp_type', None)
+        cart_type = data.get('type', None)
+        fp = None
+        if fp_id and user.cart_set.filter(item_id=fp_id).count() > 0:
             # Cart / FP already exists. Just save new cart type state
             c = user.cart_set.get(item_id=fp_id)
             c.type = cart_type
@@ -217,43 +211,59 @@ def post_add_cart(request):
                 c.quantity=4
             c.save()
         else:
-            # Create FP name
-            fp_name = "CFP_%03d%03d%03d" % (recipe1_id, recipe2_id, recipe3_id)
-            if o1_id and o2_id and o3_id:
-                fp_name += "111"
+            if fp_type == "prepack":
+                # Prepack
+                fp = PrePack.objects.get(facepack_id=fp_id).facepack
             else:
-                fp_name += "000"
-    
-            fp = FacePack()
-            fp.base = Base.objects.get(pk=base_id)
-            fp.mixing_agent = MixingAgent.objects.get(pk=mixing_agent_id)
-            fp.price = str(random.randrange(13,30)+0.99)
-            fp_name += "%03d" % fp.base.id
-            fp_name += "%03d" % fp.mixing_agent.id
-            fp.name = fp_name
-            fp.save()
-    
-            cfp1 = CustomFacePack()
-            cfp1.recipe = Recipe.objects.get(pk=recipe1_id)
-            cfp1.optional_ingredient = Ingredient.objects.get(pk=o1_id) if o1_id else None
-            cfp1.facepack = fp
-            cfp1.user = user
-            cfp1.save()
-    
-            cfp2 = CustomFacePack()
-            cfp2.recipe = Recipe.objects.get(pk=recipe2_id)
-            cfp2.optional_ingredient = Ingredient.objects.get(pk=o2_id) if o2_id else None
-            cfp2.facepack = fp
-            cfp2.user = user
-            cfp2.save()
-    
-            cfp3 = CustomFacePack()
-            cfp3.recipe = Recipe.objects.get(pk=recipe3_id)
-            cfp3.optional_ingredient = Ingredient.objects.get(pk=o3_id) if o3_id else None
-            cfp3.facepack = fp
-            cfp3.user = user
-            cfp3.save()
-    
+                # Custom Facepack
+                fp = FacePack()
+
+                recipe1_id = int(data['r1_id'])
+                recipe2_id = int(data['r2_id'])
+                recipe3_id = int(data['r3_id'])
+                base_id = int(data['b_id']) 
+                mixing_agent_id = int(data['m_id'])
+                o1_id = int(data['o1_id']) if 'o1_id' in data and len(data['o1_id']) > 0 else None
+                o2_id = int(data['o2_id']) if 'o2_id' in data and len(data['o2_id']) > 0 else None
+                o3_id = int(data['o3_id']) if 'o3_id' in data and len(data['o3_id']) > 0 else None
+
+                # Create FP name
+                fp_name = "CFP_%03d%03d%03d" % (recipe1_id, recipe2_id, recipe3_id)
+                if o1_id and o2_id and o3_id:
+                    fp_name += "111"
+                else:
+                    fp_name += "000"
+        
+
+                fp.base = Base.objects.get(pk=base_id)
+                fp.mixing_agent = MixingAgent.objects.get(pk=mixing_agent_id)
+                fp.price = str(random.randrange(13,30)+0.99)
+                fp_name += "%03d" % fp.base.id
+                fp_name += "%03d" % fp.mixing_agent.id
+                fp.name = fp_name
+                fp.save()
+        
+                cfp1 = CustomFacePack()
+                cfp1.recipe = Recipe.objects.get(pk=recipe1_id)
+                cfp1.optional_ingredient = Ingredient.objects.get(pk=o1_id) if o1_id else None
+                cfp1.facepack = fp
+                cfp1.user = user
+                cfp1.save()
+        
+                cfp2 = CustomFacePack()
+                cfp2.recipe = Recipe.objects.get(pk=recipe2_id)
+                cfp2.optional_ingredient = Ingredient.objects.get(pk=o2_id) if o2_id else None
+                cfp2.facepack = fp
+                cfp2.user = user
+                cfp2.save()
+        
+                cfp3 = CustomFacePack()
+                cfp3.recipe = Recipe.objects.get(pk=recipe3_id)
+                cfp3.optional_ingredient = Ingredient.objects.get(pk=o3_id) if o3_id else None
+                cfp3.facepack = fp
+                cfp3.user = user
+                cfp3.save()
+        
             c = Cart()
             c.item = fp
             c.user = user
@@ -277,7 +287,10 @@ def post_remove_cart(request):
         facepack = FacePack.objects.get(id=facepack_id)
         # Check if indeed cart item remove operation is done by intended user
         if facepack.cart_set.all()[0].user == user:
-            facepack.delete()
+            if PrePack.objects.filter(facepack=facepack).count() > 0:
+                facepack.cart_set.all()[0].delete()
+            else:
+                facepack.delete()
             json_response['success'] = True
         json_response['cart_size'] = user.cart_set.count()
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))

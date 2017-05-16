@@ -6,9 +6,14 @@
   src="{% static 'home/facepack.js' %}"></script>
 <div class="image-cell">
   <img class="bottle"
-       src="{% static 'facepackwizard/images/bottle_'|add:item.type|add:'.jpg' %}" alt="" />
+       {% if item.mandatory %}
+       src="{% static 'facepackwizard/images/F2F_cart_product.png' %}" alt="" />
+       {% else %}
+       src="/images/{{ item.image }}" alt="" />
+       {% endif %}
 </div>
 <div class="ingredient-cell">
+  {% if item.mandatory %}
   <p class="made-with">Made With</p>
   <div class="ingredient-panel">
     {% for m in item.mandatory %}
@@ -24,5 +29,12 @@
     </div>
     {% endif %}
   </div>
+  {% else %}
+  <p class="prepack-name">{{ item.name }}</p>
+  {% endif %}
 </div>
+{% if item.mandatory %}
 <p class="uuid">UUID# {{ item.name }}</p>
+{% else %}
+<p class="uuid">UUID# PP_{{ item.item_id }}</p>
+{% endif %}

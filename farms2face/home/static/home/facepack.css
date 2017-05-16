@@ -6,12 +6,21 @@ div.image-cell img.bottle {
     vertical-alignment: top;
     width: 100px;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 div.ingredient-cell {
     display: table-cell;
     vertical-align: top;
+}
+
+div.ingredient-cell p.prepack-name {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Selima';
+    color: #88a470;
+    font-size: 30px;
+    margin-top: 70px;
 }
 
 div.ingredient-cell p.made-with {

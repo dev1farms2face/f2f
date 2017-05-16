@@ -1,0 +1,226 @@
+div.story-panel {
+    padding-top: 100px;
+}
+
+div.story-panel div.title-panel {
+    width: 100%;
+    background: transparent;
+    height: 650px;
+}
+
+div.story-panel div.title-panel p {
+    font-family: 'Selima';
+    font-size: 12em;
+    color: #FFF;
+    width: 100px;
+    margin-left: 13%;
+    padding-top: 5%;
+    padding-bottom: 20%;
+}
+
+div.story-panel div.details-panel {
+    background-image: url('images/How_does_it_work_banner_background.png');
+    background-size: 100%;
+    margin-top: -150px;
+    margin-bottom: -100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+}
+
+
+/*** Section-1 ***/
+
+
+
+div.story-panel div.details-panel div.section-1 {
+    padding-top: 100px;
+}
+
+div.story-panel div.details-panel div.section-1 p.title {
+    font-family:"HelveticaNeue-UltraLight", sans-serif;
+    font-size: 60px;
+    transform: scaleX(0.9);    
+    color: #88a470;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.story-panel div.details-panel div.section-1 img {
+    width: 200px;
+    margin-top: 30px;
+}
+
+
+div.story-panel div.details-panel div.section-1 p.description {
+    font-family:"HelveticaNeue-Light", sans-serif;
+    font-size: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+
+/*** Section-2 ***/
+
+
+
+div.story-panel div.details-panel div.section-2 {
+    margin-top: 100px;
+}
+
+div.story-panel div.details-panel div.section-2 img {
+    width: 250px;
+}
+
+div.story-panel div.details-panel div.section-2 div.right {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    text-align: left;
+}
+
+
+div.story-panel div.details-panel div.section-2 p.title {
+    font-family:"HelveticaNeue-UltraLight", sans-serif;
+    font-size: 40px;
+    transform: scaleX(0.9);    
+    color: #88a470;
+}
+
+div.story-panel div.details-panel div.section-2 p.description {
+    font-family:"HelveticaNeue-Light", sans-serif;
+    font-size: 20px;
+    margin-left: 5%;
+}
+
+
+/*** Section-3 ***/
+
+
+div.story-panel div.details-panel div.section-3 {
+    margin-top: 100px;
+}
+
+div.story-panel div.details-panel div.section-3 p.title {
+    font-family:"HelveticaNeue-UltraLight", sans-serif;
+    font-size: 60px;
+    transform: scaleX(0.9);    
+    color: #88a470;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.story-panel div.details-panel div.section-3 img {
+    width: 50%;
+}
+
+
+div.story-panel div.details-panel div.section-3 p.description {
+    font-family:"HelveticaNeue-Light", sans-serif;
+    font-size: 20px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+
+/*** Section-4 ***/
+
+
+
+div.story-panel div.details-panel div.section-4 {
+    margin-top: 50px;
+}
+
+div.story-panel div.details-panel div.section-4 div.left {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    text-align: left;
+}
+
+
+div.story-panel div.details-panel div.section-4 p.title {
+    font-family:"HelveticaNeue-UltraLight", sans-serif;
+    font-size: 60px;
+    transform: scaleX(0.9);    
+    color: #88a470;
+}
+
+div.story-panel div.details-panel div.section-4 p.description {
+    font-family:"HelveticaNeue-Light", sans-serif;
+    font-size: 20px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+div.story-panel div.details-panel div.section-4 img {
+    width: 330px;
+    transform: rotate(10deg);
+    margin-left: 40px;
+}
+
+/*** Section-5 ***/
+
+
+div.story-panel div.details-panel div.section-5 {
+    margin-top: 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.story-panel div.details-panel div.section-5 img {
+    width: 330px;
+}
+
+
+div.story-panel div.details-panel div.section-5 p.description {
+    display: inline-block;
+    vertical-align: top;
+    font-family:"HelveticaNeue-Light", sans-serif;
+    font-size: 20px;
+    width: 40%;
+    min-width: 300px;
+    margin-top: 30px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+
+/*** Section-6 ***/
+
+
+
+div.story-panel div.details-panel div.section-6 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+div.story-panel div.details-panel div.section-6 p.title {
+    font-family:"HelveticaNeue-UltraLight", sans-serif;
+    font-size: 40px;
+    transform: scaleX(0.9);    
+    color: #88a470;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.story-panel div.details-panel div.section-6 p.description {
+    font-family: 'Selima';
+    font-size: 50px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    color: #627254;
+}
+
