@@ -10,7 +10,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
+"""
+import os, sys
+print("__name__ =", __name__)
+print("__file__ =", __file__)
+print("os.getpid() =", os.getpid())
+print("os.getcwd() =", os.getcwd())
+print("os.curdir =", os.curdir)
+print("sys.path =", repr(sys.path))
+print("sys.modules.keys() =", repr(sys.modules.keys()))
+print("sys.modules.in('farms2face') =", 'farms2face' in sys.modules)
+if 'farms2face' in sys.modules:
+  print("sys.modules['farms2face'].__name__ =", sys.modules['farms2face'].__name__)
+  print("sys.modules['farms2face'].__file__ =", sys.modules['farms2face'].__file__)
+  print("os.environ['DJANGO_SETTINGS_MODULE'] =", os.environ.get('DJANGO_SETTINGS_MODULE', None))
+"""
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,13 +42,13 @@ SESSION_COOKIE_AGE = 10 * 60
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fpit^azx93lk^w6vq=o245=3%p%@yw+pr&x)^hmpo5p2w!%b1x'
 
+"""
 SOCIAL_AUTH_FACEBOOK_KEY = '114214335784895'
 SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f' 
-
 """
+
 SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
 SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
-"""
 
 # Stripe API KEY
 STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
@@ -41,7 +56,7 @@ STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com']
 
 # Application definition
 
@@ -137,16 +152,28 @@ WSGI_APPLICATION = 'farms2face.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'farms2face',
-	'USER': 'django',
-	'PASSWORD': 'django',
-	'HOST': '127.0.0.1',
-	'PORT': '3306',
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'farms2face',
+	    'USER': 'farms2face',
+	    'PASSWORD': 'farms2face',
+	    'HOST': '127.0.0.1',
+	    'PORT': '3306',
+        }
+    }
 
 """
 DATABASES = {
@@ -197,14 +224,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+"""
 STATIC_URL = '/static/'
 MEDIA_ROOT = '/usr/local/projects/farms2face/files/'
 MEDIA_URL = '/images/'
-
 """
-STATIC_ROOT = '/home/txciggy/f2f/farms2face/static/'
+
+STATIC_ROOT = '/home/ec2-user/farms2face/f2f/farms2face/static/'
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/home/txciggy/f2f/farms2face/files' 
+MEDIA_ROOT = '/home/ec2-user/farms2face/f2f/farms2face/files' 
 MEDIA_URL = '/images/'   
-"""
 
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
+STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "images")
+MEDIA_URL = '/images/'   
