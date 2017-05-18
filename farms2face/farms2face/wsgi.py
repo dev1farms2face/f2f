@@ -8,7 +8,17 @@ https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/
 """
 
 import os
-#import sys
+"""
+print '===== sys.path / PYTHONPATH ====='
+for k in sorted(os.environ.keys()):
+    v = os.environ[k]
+    print ('%-30s %s' % (k,v[:70]))
+
+"""
+import sys
+
+sys.path.append('/home/ec2-user/farms2face/f2f/farms2face')
+sys.path.append('/home/ec2-user/f2f/lib/python3.6/site-packages')
 
 from django.core.wsgi import get_wsgi_application
 

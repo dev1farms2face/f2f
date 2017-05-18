@@ -15,7 +15,9 @@ $(document).ready(function(){
     checkout = function(token_id, args) {
         // POST cart remove to server
         if( is_anonymous == "True" )
-            window.location = "/signin/new?next=/cart/";
+            console.log("/signin/new/?next=/cart/");
+            return;
+            //window.location = "/signin/new/?next=/cart/";
         $.ajax({
             url: url_checkout,
             type: 'POST',

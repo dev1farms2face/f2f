@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
+import os
 """
 import os, sys
 print("__name__ =", __name__)
@@ -56,7 +57,7 @@ STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com', '13.58.11.86','www.farms2face.com', 'farms2face.com']
 
 # Application definition
 
@@ -235,7 +236,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = '/home/ec2-user/farms2face/f2f/farms2face/files' 
 MEDIA_URL = '/images/'   
 
-STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "..", "www", "images")
+MEDIA_ROOT = os.path.join(BASE_DIR, "files")
 MEDIA_URL = '/images/'   

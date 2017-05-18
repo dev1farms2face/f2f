@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^cart/', include('cart.urls')),
     url(r'^register/', include('userregistration.urls')),
-    url(r'^home/$|^home/shop/', include('home.urls')),
+    url(r'^$|^home/$|^home/shop/', include('home.urls')),
     url(r'^prepacks/(?P<id>\d+)/$', include('prepacks.urls')),
     url(r'^wizard/', include('facepackwizard.urls')),
     url(r'^wizard/results/', facepackwizard.views.results),

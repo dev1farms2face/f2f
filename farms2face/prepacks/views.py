@@ -14,9 +14,10 @@ def prepacks(request, id):
              'p'         : p.facepack,
              'prepacks'  : [{
                              'facepack' : i.facepack,
-                             'cart_type': request.user.cart_set.get(item=i.facepack).type if \
-                                 request.user.cart_set.filter(item=i.facepack).count() > 0 else \
-                                 None
+                             'cart_type': request.user.cart_set.get(item=i.facepack).type \
+                                 if hasattr(request.user, 'cart_set') and \
+                                 request.user.cart_set.filter(item=i.facepack).count() > 0 \
+                                 else None
                            } for i in PrePack.objects.all() if i != p], 
     }
     if cart_size(request) > 0:
