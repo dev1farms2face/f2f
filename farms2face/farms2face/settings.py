@@ -57,7 +57,7 @@ STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com', '13.58.11.86','www.farms2face.com', 'farms2face.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com', '13.58.11.86','www.farms2face.com', 'farms2face.com', 'f2f-prod.zvb7vbrpqr.us-west-1.elasticbeanstalk.com']
 
 # Application definition
 
