@@ -89,7 +89,7 @@ img.logo-title {
 label.title-link {
         float: right;
         font-size: 12px;
-        font-family:"Helvetica Neue", sans-serif;
+        font-family:"Roboto";
         color: #777777;
         orphans:1;
         page-break-after:auto;
@@ -134,7 +134,7 @@ div.title-welcome {
 }
 div.title-welcome label {
         vertical-align: top;
-        font-family:"Helvetica Neue", sans-serif;
+        font-family:"Roboto";
         font-family:"Selima", sans-serif;
         text-align:left;
         text-decoration:none;
@@ -172,7 +172,7 @@ div.cart p {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
-        font-family: 'HelveticaNeue Light', sans-serif;
+        font-family: "Roboto";
         color: #444444;
         color: #ce9a2b;
         font-size: 14px;
@@ -237,7 +237,7 @@ label.title-link:hover {
         width: 150px;
 }
 #footer-panel p.link {
-        font-family: 'HelveticaNeue-Light', sans-serif;
+        font-family: "Roboto";
         font-size: 12px;
         color: #555555;
         font-weight: 100;

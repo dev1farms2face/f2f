@@ -57,7 +57,7 @@ STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com', '13.58.11.86','www.farms2face.com', 'farms2face.com', 'f2f-prod.zvb7vbrpqr.us-west-1.elasticbeanstalk.com','f2f-dev.us-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'txciggy.pythonanywhere.com', 'ec2-13-58-11-86.us-east-2.compute.amazonaws.com', '13.58.11.86','www.farms2face.com', 'farms2face.com', 'f2f-prod.zvb7vbrpqr.us-west-1.elasticbeanstalk.com','f2f-dev.us-west-1.elasticbeanstalk.com', '52.9.15.84']
 
 # Application definition
 
@@ -103,6 +103,7 @@ MIDDLEWARE = [
 SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.9'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/home/'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_USER_FIELDS = ['email', 'username']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
@@ -169,8 +170,8 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'farms2face',
-	    'USER': 'farms2face',
-	    'PASSWORD': 'farms2face',
+	    'USER': 'django',
+	    'PASSWORD': 'django',
 	    'HOST': '127.0.0.1',
 	    'PORT': '3306',
         }

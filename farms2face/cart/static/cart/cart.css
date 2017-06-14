@@ -18,7 +18,7 @@ div.cart-panel p.header {
     font-family: "HelveticaNeue-UltraLight";
     letter-spacing: 2px;
     color: #88a470;
-    font-size: 40px;
+    font-size: 72px;
     text-align: left;
     margin-bottom: 10px;
 }
@@ -54,7 +54,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-weight: bold;
     height: 20px;
     font-size: 11px;
@@ -68,7 +68,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type p {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 9px;
     font-weight: bold;
     text-align: left;
@@ -84,7 +84,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-weight: bold;
     height: 20px;
     font-size: 11px;
@@ -98,7 +98,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency p {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 10px;
     font-weight: bold;
     text-align: left;
@@ -115,7 +115,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 10px;
     min-width: 100px;
 }
@@ -132,7 +132,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell {
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
-    font-family: "Helvetica";
+    font-family: "Roboto";
     font-size: 12px;
     font-weight: bold;
     margin-right: 2px;
@@ -143,7 +143,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove 
     text-align: right;
     color: #88a470;
     width: 50px;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 9px;
     font-weight: bold;
     cursor: pointer;
@@ -156,14 +156,14 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack
     width: 50px;
     margin-top: 3px;
     margin-bottom: -3px;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 8px;
     font-weight: bold;
     float: right;
 }
 
 div.cart-panel div.empty-cart {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     color: #999;
     margin-top: 20px;
     font-size: 20px;
@@ -180,7 +180,7 @@ a:visited {
 
 div.cart-panel div.bottom-panel div.checkout-panel {
     font-size: 12px;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     color: #444;
     display: inline-block;
     min-width: 250px;
@@ -227,7 +227,7 @@ div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel select{
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel option{
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel p.cost{

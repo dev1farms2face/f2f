@@ -30,10 +30,7 @@ div.how-to-use-panel div.step img {
 
 div.how-to-use-panel div.step p {
         text-align: center;
-        font-family: "HelveticaNeue-UltraLight", sans-serif;
-        transform: scaleX(0.9);
-        font-size: 16px;
-        font-weight: 800;
-        letter-spacing: 2px;
+        font-family: "Roboto";
+        font-size: 20px;
         margin-top: 10px;
 }
