@@ -26,7 +26,7 @@ div.ingredient-cell p.prepack-name {
 
 div.ingredient-cell p.made-with {
     font-family: "HelveticaNeue-UltraLight";
-    font-size: 15px;
+    font-size: 20px;
     text-align: left;
     transform: scaleX(0.9);
     padding-left: 2px;
@@ -51,12 +51,12 @@ div.ingredient-cell div.ingredient-panel div.ingredient-item {
 }
 
 div.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
-    font-family: "HelveticaNeue-Light";
-    font-size: 9px;
+    font-family: "Roboto";
+    font-size: 10px;
     transform: scaleX(0.9);
     font-weight: bold;
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: 0.15em;
     text-align: center;
     padding-bottom: 20px;
     max-width: 90px;
@@ -71,11 +71,11 @@ div.ingredient-cell div.ingredient-panel div.ingredient-item img {
 
 p.uuid {
     display: block;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 8px;
     width: 100%;
     text-align: left;
-    color: #888;
+    color: #88a470;
     letter-spacing: 2px;
 }
 

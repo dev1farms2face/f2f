@@ -37,7 +37,7 @@ div.myaccount-panel div.photo label {
     display: table-cell;
     vertical-align: middle;
     padding-left: 10px;
-    font-family: "HelveticaNeue-Light", sans-serif;
+    font-family: "Roboto";
     font-size: 12px;
     color: #AAA;
     width: 50px;
@@ -52,10 +52,9 @@ div.myaccount-panel div.photo label:hover {
 div.myaccount-panel div.menu-panel p {
     display: block;
     padding: 15px 60px 15px 5px;;
-    font-family: 'HelveticaNeue-Light', sans-serif;
+    font-family: 'Roboto';
     letter-spacing: 3px;
     font-size: 16px;
-    transform: scaleX(0.8);
     color: #888;
     border-top: solid 1px #DDD;
     cursor: pointer;
@@ -78,7 +77,7 @@ div.myaccount-panel div.menu-panel p.selected {
 }
 
 div.myaccount-panel div.content-panel p.title {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     color: #666;
     font-size: 18px;
     letter-spacing: 6px;
@@ -101,7 +100,7 @@ div.myaccount-panel div.content-panel table.account.details-panel td {
 
 div.myaccount-panel div.content-panel table.account.details-panel td p.label {
     display: inline-block;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 16px;
     color: #777;
     min-width: 120px; 
@@ -111,7 +110,7 @@ div.myaccount-panel div.content-panel table.account.details-panel td p.value {
     display: inline-block;
     text-align: right;
     margin-left: 20px;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 16px;
     color: #88a470;
 }
@@ -119,7 +118,7 @@ div.myaccount-panel div.content-panel table.account.details-panel td p.value {
 div.myaccount-panel div.content-panel table.account.details-panel td input.value {
     display: inline-block;
     text-align: left;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 16px;
     color: #88a470;
     border: 0px;
@@ -157,7 +156,7 @@ div.myaccount-panel div.content-panel p.button {
     margin-top: 20px;
     margin-right: 10px;
     padding: 10px 20px 10px 20px;
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 12px;
     border-radius: 3px;
     letter-spacing: 3px;
@@ -192,9 +191,9 @@ div.myaccount-panel div.content-panel div.button-panel p.cancel {
 
 
 div.myaccount-panel div.content-panel table.order-history {
-    font-size: 12px;
+    font-size: 11px;
     text-align: left;
-    font-family: "HelveticaNeue-UltraLight";
+    font-family: "Roboto";
     border-collapse: collapse;
 }
 
@@ -202,12 +201,15 @@ div.myaccount-panel div.content-panel table.order-history th {
     vertical-align: top;
     white-space: nowrap;
     color: #687a58;
+    font-size: 12px;
+    padding-left: 10px;
 }
 
 div.myaccount-panel div.content-panel table.order-history td {
     padding: 10px 20px 0px 0px;
     vertical-align: top;
     white-space: nowrap;
+    padding-left: 10px;
 }
 
 div.myaccount-panel div.content-panel table.order-history td.first {
@@ -221,31 +223,25 @@ div.myaccount-panel div.content-panel table.order-history td.item {
 }
 
 div.myaccount-panel div.content-panel table.order-history td.date {
-   transform: scaleX(0.8);
    -webkit-transform-origin-x: 0;
 }
 
 div.myaccount-panel div.content-panel table.order-history td label.shipping {
-   font-size: 10px;
+   font-size: 11px;
    width: 50px;
-   font-family: "HelveticaNeue-Light";
-   transform: scaleX(0.7);
+   font-family: "Roboto";
    text-align: left;
 }
 
 div.myaccount-panel div.content-panel table.order-history td.type {
-   color: #777;
-   font-size: 12px;
-   font-family: "HelveticaNeue-Light";
-   transform: scaleX(0.8);
+   font-size: 11px;
+   font-family: "Roboto";
    -webkit-transform-origin-x: 0;
 }
 
 div.myaccount-panel div.content-panel table.order-history td.quantity {
-   color: #777;
-   font-size: 12px;
-   font-family: "HelveticaNeue-Light";
-   transform: scaleX(0.8);
+   font-size: 11px;
+   font-family: "Roboto";
    -webkit-transform-origin-x: 0;
 }
 
@@ -295,9 +291,9 @@ div.myaccount-panel div.content-panel table.subscription-panel td.item div.item-
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel div.ship-date {
-   font-family: "HelveticaNeue-Light";
-   color: #777;
-   font-size: 12px;
+   font-family: "Roboto";
+   font-size: 14px;
+   color: ce9a2b;
    letter-spacing: 1px;
    font-weight: bold;
    display: block;
@@ -313,6 +309,7 @@ div.myaccount-panel div.content-panel table.subscription-panel div.ship-date inp
    border: none;
    color: #88a470;
    cursor: pointer;
+   font-size: 14px;
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel div.ship-date input:hover {
@@ -322,7 +319,7 @@ div.myaccount-panel div.content-panel table.subscription-panel div.ship-date inp
 div.myaccount-panel div.content-panel table.subscription-panel p.cancel-subscription {
    font-size: 10px;
    color: #88a470;
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    -webkit-transform-origin-x: 0;
    margin-top: 10px;
    cursor: pointer;
@@ -335,18 +332,17 @@ div.myaccount-panel div.content-panel table.subscription-panel p.cancel-subscrip
 div.myaccount-panel div.content-panel table.subscription-panel td label.shipping {
    font-size: 10px;
    width: 50px;
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    transform: scaleX(0.7);
    color: #777;
    text-align: left;
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel p.name {
-    font-family: "HelveticaNeue-Light";
+    font-family: "Roboto";
     font-size: 8px;
     width: 100%;
     text-align: left;
-    color: #888;
     letter-spacing: 2px;
     margin-top: -4px;
 }
@@ -354,22 +350,22 @@ div.myaccount-panel div.content-panel table.subscription-panel p.name {
 div.myaccount-panel div.content-panel table.subscription-panel td.type {
    color: #777;
    font-size: 12px;
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    letter-spacing: 1px;
 }
 
 div.myaccount-panel div.content-panel table.subscription-panel td.quantity {
    color: #000;
    font-size: 12px;
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    font-weight: bold;
 }
 div.myaccount-panel div.content-panel table.subscription-panel td.cost {
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    font-weight: bold;
 }
 div.myaccount-panel div.content-panel table.subscription-panel td.total {
-   font-family: "HelveticaNeue-Light";
+   font-family: "Roboto";
    font-weight: bold;
 }
 
@@ -390,18 +386,15 @@ div.myaccount-panel div.content-panel table.subscription-panel td.type option {
 
 div.myaccount-panel div.content-panel table.subscription-panel td.quantity .helper {
    color: #999;
-   font-size: 10px;
-   font-family: "HelveticaNeue-Light";
+   font-size: 11px;
 }
 div.myaccount-panel div.content-panel table.subscription-panel td.cost .helper{
    color: #999;
-   font-size: 10px;
-   font-family: "HelveticaNeue-Light";
+   font-size: 11px;
 }
 div.myaccount-panel div.content-panel table.subscription-panel td.total .helper {
    color: #ff4167;
-   font-size: 10px;
-   font-family: "HelveticaNeue-Light";
+   font-size: 11px;
 }
 
 p.no {
