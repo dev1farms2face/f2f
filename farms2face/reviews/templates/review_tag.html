@@ -78,6 +78,16 @@
           </div>
           {% endfor %}
         </div>
+        <div class="rating-help" id="{{ r.review.id }}">
+          <div class="useful">
+            <img src="{% static 'reviews/images/thumbs-up.png' %}" alt="" />
+            <p>{{ r.review.useful }}</p> 
+          </div>
+          <div class="not-useful">
+            <img src="{% static 'reviews/images/thumbs-down.png' %}" alt="" />
+            <p>{{ r.review.not_useful }}</p> 
+          </div>
+        </div>
       </div>
       {% if r.is_cfp %}
       <div class="fp-image">

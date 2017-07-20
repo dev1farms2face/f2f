@@ -1,4 +1,28 @@
+var url_vote='/post_vote/';
+
 $(document).ready(function(){
+    vote = function(r_id, vote, p) {
+        $.ajax({ 
+            url: url_vote,
+            type: 'POST',
+            dataType: "json",
+            data: {
+                'csrfmiddlewaretoken': $("[name='csrfmiddlewaretoken']").attr('value'),
+                'data' : JSON.stringify({"r_id": r_id, "vote": vote})
+            },
+            success: function(data) {
+                location.reload();
+            },
+            failure: function(data) {
+                alert("Error: Please contact sysadmin");
+                location.reload();
+            },
+            error: function(data) {
+                alert("Error: Please contact sysadmin");
+                location.reload();
+            }
+        })
+    }
     $('.review-main').on({
         'click': function() {
             if ($('.review:last') != undefined) {
@@ -38,4 +62,14 @@ $(document).ready(function(){
             window.location.href = url;
         }
     }, 'select.skin-type');
+    $('div.review-panel div.review div.details div.rating-help div.useful').on({
+        'click' : function(e) {
+            vote($(this).closest('div.rating-help').attr('id'), "up", $(this).next());
+        }
+    }, 'img'); 
+    $('div.review-panel div.review div.details div.rating-help div.not-useful').on({
+        'click' : function(e) {
+            vote($(this).closest('div.rating-help').attr('id'), "down");
+        }
+    }, 'img'); 
 });

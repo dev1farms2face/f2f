@@ -22,6 +22,7 @@ import facepackwizard.views
 import home.views
 import cart.views
 import myaccount.views
+import reviews.views
 
 admin.autodiscover()
 
@@ -64,6 +65,7 @@ urlpatterns = [
     url(r'^myaccount/(?P<option>[^/]+)/$', myaccount.views.view_myaccount),
     url(r'^post_upload_review_pic/', myaccount.views.review_photo_upload),
     url(r'^post_associate_review_pic/', myaccount.views.review_uploaded_photo_associate),
+    url(r'^post_vote/', reviews.views.vote),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

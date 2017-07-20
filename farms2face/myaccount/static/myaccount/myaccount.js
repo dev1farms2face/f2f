@@ -36,7 +36,6 @@ var getReview = function(tr, r_id) {
         type: 'GET',
         success: function(data) {
             data=$.parseJSON(data);
-            console.log(data);
             $(tr).find('input.title').val(data['title']);
             $(tr).find('textarea').val(data['details']);
             $(tr).find('img.star:lt('+data['rating']+')').each(function(){
@@ -227,7 +226,6 @@ $(document).ready(function(){
           contentType: false,
           cache: false,
           success: function(result) {
-              console.log(result);
               result = $.parseJSON(result);
               if(result['success'])
                   location.reload();
@@ -253,7 +251,6 @@ $(document).ready(function(){
         if($(this).attr('orig') != $(this).val()) {
             if(confirm("Are you sure you want to reset your subscription ship-date?")) {
                 tr = $(this).closest('tr');
-                console.log($(this).val());
                 updatePh(tr.attr('id'), 'ph_date', $(this).val(), tr.attr('url'));
             }else{
                 $(this).val($(this).attr('orig'));
