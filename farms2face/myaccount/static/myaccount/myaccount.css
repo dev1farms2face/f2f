@@ -207,7 +207,7 @@ div.myaccount-panel div.content-panel table.order-history th {
 
 div.myaccount-panel div.content-panel table.order-history td {
     padding: 10px 20px 0px 0px;
-    vertical-align: top;
+    vertical-align: middle;
     white-space: nowrap;
     padding-left: 10px;
 }
@@ -245,6 +245,140 @@ div.myaccount-panel div.content-panel table.order-history td.quantity {
    -webkit-transform-origin-x: 0;
 }
 
+div.myaccount-panel div.content-panel table.order-history p.review {
+   font-size: 12px;
+   color: #ce9a2b;
+   cursor: pointer;
+   margin-top: 15px;
+}
+
+div.myaccount-panel div.content-panel table.order-history p.review:hover {
+   color: orange;
+}
+
+div.myaccount-panel div.content-panel div.review-dialog {
+   display: none;
+   min-height: 200px;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review td.review {
+   background-color: #EEE;
+   padding-bottom: 30px;
+   border-radius: 6px;
+   font-size: 12px;
+}
+
+div.myaccount-panel div.content-panel div.review-dialog textarea {
+   border:1px solid #999999;
+   margin:5px 0;
+   padding:3px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+div.myaccount-panel div.content-panel div.review-dialog textarea.empty {
+   color: #DDD;
+   font-style: italic;
+}
+
+div.myaccount-panel div.content-panel div.review-dialog input.empty {
+   color: #DDD;
+   font-style: italic;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review td.review input {
+   font-weight: bold;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review  p.error {
+   color: red;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review img.star {
+   width: 20px;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review p.rating-status {
+   font-size: 12px;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review label.upload {
+   font-size: 14px;
+   padding: 10px;
+   padding-top: 8px;
+   border: solid 1px;
+   border-radius: 4px;
+   color: #88a470;
+   padding-left: 15px;
+   cursor: pointer;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review label.upload:hover {
+   color: #ce9a2b;
+   background-color: white;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container {
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic {
+   display: inline-block;
+   border: 3px solid white;
+   border-radius: 4px;
+   width: 200px;
+   height: 250px;
+   margin-right: 10px;
+   margin-top: 10px;
+   position: relative;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic div.remove {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic div.remove p {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 12px;
+  padding: 8px 16px; 
+  cursor: pointer;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic div.remove p:hover {
+  color: #4CAF50;
+  background-color: white;
+  border: 2px solid #4CAF50;
+  transition: .5s ease;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic img.review-pic {
+   opacity: 1.0;
+   width: 200px;
+   height: 250px;
+   transition: .5s ease;
+   backface-visibility: hidden;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic img.review-pic:hover {
+   opacity: 0.3;
+}
+   
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic:hover img.review-pic {
+  opacity: 0.3;
+}
+
+div.myaccount-panel div.content-panel table.order-history tr.review div.pic-container div.pic:hover div.remove {
+  opacity: 1.0;
+}
 
 /**********************  SUBSCRIPTION ********************/
 

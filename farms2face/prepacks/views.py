@@ -11,7 +11,10 @@ def prepacks(request, id):
         p = PrePack.objects.get(facepack__id=id)
     data = { 'valid_user': get_valid_user_data(request),
              'cart_size' : cart_size(request),
-             'p'         : p.facepack,
+             'p'         : p,
+             'ing'       : [{'img': i.ingredient.image.url, 
+                             'name': i.ingredient.name} \
+                           for i in p.prepackingredients_set.all()],
              'prepacks'  : [{
                              'facepack' : i.facepack,
                              'cart_type': request.user.cart_set.get(item=i.facepack).type \

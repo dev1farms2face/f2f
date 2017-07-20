@@ -14,6 +14,7 @@
    var o3_id = "{{ o3_id }}";
    var b_id = "{{ b_id }}";
    var m_id = "{{ m_id }}";
+   var qd_id = "{{ qd_id }}";
    var mixing_agent = "{{ mixing_agent }}";
 </script>
 <div class="facepack-match" type="{{ type }}">
@@ -39,7 +40,7 @@
           {% if fp_type == "buy" %}
           <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ fp }}">ADDED TO CART</p>
           <p class="or">- or -</p>
-          <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+          <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
           {% elif fp_type == "subscribe" %}
           <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
           <p class="or">- or -</p>
@@ -48,7 +49,7 @@
         {% else %}
         <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
         <p class="or">- or -</p>
-        <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+        <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
         {% endif %}
       </div>
     </div>

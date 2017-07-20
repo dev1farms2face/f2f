@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'myaccount.apps.MyaccountConfig',
     'cart.apps.CartConfig',
     'story.apps.StoryConfig',
+    'reviews.apps.ReviewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

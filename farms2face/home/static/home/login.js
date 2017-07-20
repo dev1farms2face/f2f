@@ -17,6 +17,19 @@ $(document).ready(function(){
     var loginUser = function() {
         email = $('div.login-panel input.email').val();
         password = $('div.login-panel input.password').val();
+        if ( email == "Email" || email.trim().length == 0 || 
+            password == "Password" || password.trim().length == 0) {
+            alert("Enter valid email/password");
+            return;
+        } 
+        if(new_user) {
+            password_confirm = $('div.login-panel input.password-confirm').val();
+            if(password != password_confirm) {
+                alert("Passwords don't match, try again");
+                return;
+            }
+        }
+        console.log(new_user); 
         // POST login data to server
         $.ajax({
             url: url_login,
@@ -49,5 +62,11 @@ $(document).ready(function(){
     }
     $('div.login-panel p.login-submit').click(function(){
         loginUser();
+    });
+    $('div.login-panel').keyup(function(e){
+        if (e.which == 13) {
+            loginUser();
+            return false;
+        }
     });
 });

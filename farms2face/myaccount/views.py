@@ -5,6 +5,7 @@ from facepackwizard.models import *
 from cart.models import Cart
 from userregistration.views import init_user_login
 from home.views import cart_size, get_valid_user_data
+from reviews.models import Review, ReviewImage 
 from payments.models import *
 from decimal import *
 from userregistration.models import *
@@ -17,6 +18,43 @@ import pprint
 import re
 
 # Create your views here.
+def review_uploaded_photo_associate(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        data = request.POST
+        pic = request.FILES['pic']
+        review_id = data.get('review_id', None)
+        if pic and pic.content_type.startswith('image/'):
+            init_user_login(request)
+            user = request.user
+            if Review.objects.filter(pk=review_id).count() > 0:
+                r = Review.objects.get(pk=review_id)
+                ri = ReviewImage()
+                ri.image = pic
+                ri.review = r
+                ri.save()
+                json_response['pic_url'] = ri.image.url   
+                json_response['success'] = True   
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
+def review_photo_upload(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        data = request.POST
+        pic = request.FILES['pic']
+        if pic and pic.content_type.startswith('image/'):
+            init_user_login(request)
+            user = request.user
+            if user: 
+                ri = ReviewImage()
+                ri.image = pic
+                ri.user = user
+                ri.save()
+                json_response['pic_url'] = ri.image.url   
+                json_response['ri_id'] = ri.id  
+                json_response['success'] = True   
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
 
 def photo_upload(request):
     json_response = { 'success': False }
@@ -301,7 +339,11 @@ def view_myaccount(request, option=None):
                             'image'  : ing.image,
                         })
                     fp = FacePack.objects.get(pk=ph.item_id)
+                    review_id = None
+                    if len(fp.review_set.filter(ph__user=user).all()) > 0:
+                        review_id = fp.review_set.filter(ph__user=user).first().id;
                     orders.append({
+                        'fp_id': fp.id,
                         'sno': i+1,
                         'first': 'first' if j == 0 else '', 
                         'date': py.createdte,
@@ -316,6 +358,7 @@ def view_myaccount(request, option=None):
                         'mixing_agent': fp.mixing_agent.name,
                         'mandatory': mandatory,
                         'item': ph.item,
+                        'review': review_id,
                     }) 
         data['orders'] = orders
     elif option == 'shipping-&-payments':
@@ -403,3 +446,88 @@ def view_myaccount(request, option=None):
         data['url_update_ph'] = '/post_update_ph/'
     #pprint.pprint(data)
     return render(request, "myaccount-"+option.replace('&','and')+".html", data)
+
+def get_review(request, review_id):
+    json_response = { 'success': False }
+    if request.method == 'GET':
+        init_user_login(request)
+        user = request.user
+        if review_id and len(Review.objects.filter(id=review_id)) > 0: 
+            review = Review.objects.get(pk=review_id)
+            if review.ph.user == user:
+                json_response['success'] = True   
+                json_response['title'] = review.headline
+                json_response['details'] = review.details
+                json_response['rating'] = review.rating
+                json_response['pics'] = [{'id': i.id, 
+                                          'url': i.image.url} \
+                                        for i in review.reviewimage_set.all() if i]
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
+def save_review(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        init_user_login(request)
+        user = request.user
+        data = json.loads(request.POST['data'])
+        fp_id = data.get('fp_id', None)
+        review_id = data.get('review_id', None)
+        review_pic_ids = data.get('ri_ids', [])
+        review_title = data.get('title', "")
+        review_details = data.get('details', None)
+        review_rating = data.get('rating', None)
+        review = Review()
+        if review_id and len(Review.objects.filter(id=review_id)) > 0: 
+            review = Review.objects.get(pk=review_id)
+        fp = None
+        ph = None
+        if fp_id and hasattr(user, 'payment_set'):
+            for i,py in enumerate(user.payment_set.all().order_by('createdte')):
+                for j,ph_ in enumerate(py.purchasehistory_set.all()):
+                    if len(FacePack.objects.filter(pk=ph_.item.id)) == 1:
+                        fp = FacePack.objects.get(pk=fp_id) 
+                        ph = ph_
+                        break
+        # If facepack is associated to valid user and purchase history, then save.
+        if fp and ph:
+            review.ph = ph
+            review.fp = fp
+            review.details = review_details
+            review.headline = review_title
+            review.rating = int(review_rating) if review_rating else 0
+            review.save()
+            for ri_id in review_pic_ids:
+                if ReviewImage.objects.filter(pk=ri_id).count() > 0:
+                    ri = ReviewImage.objects.get(pk=ri_id)
+                    ri.review = review
+                    ri.save()
+            json_response['success'] = True   
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
+def delete_review(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        init_user_login(request)
+        user = request.user
+        data = json.loads(request.POST['data'])
+        fp_id = data.get('fp_id', None)
+        review_id = data.get('review_id', None)
+        if review_id and len(Review.objects.filter(id=review_id)) > 0: 
+            review = Review.objects.get(pk=review_id)
+            if review.ph.user == user:
+                review.delete()
+                json_response['success'] = True   
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
+def delete_review_pic(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        init_user_login(request)
+        user = request.user
+        data = json.loads(request.POST['data'])
+        ri_id = data.get('ri_id', None)
+        if ri_id and ReviewImage.objects.filter(id=ri_id).count() > 0: 
+            ri = ReviewImage.objects.get(pk=ri_id)
+            ri.delete()
+            json_response['success'] = True   
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))

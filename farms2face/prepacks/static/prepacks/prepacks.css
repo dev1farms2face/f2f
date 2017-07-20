@@ -46,14 +46,39 @@ div.prepack-featured div.description p.name {
         color: #88a470;
 }
 
-div.prepack-featured div.description p.made-with {
+div.prepack-featured div.description p.made-with, p.highlights, p.who {
         font-family: "Roboto";
         color: black;
         font-size: 20px;
         letter-spacing: 2px;
         text-align: left;
         margin-bottom: 10px;
+        margin-top: 10px;
         text-align: left;
+}
+
+div.prepack-featured div.description div.ing {
+        display: block;
+        width: 100%;
+        margin-bottom: 120px;
+}
+
+div.prepack-featured div.description div.ing div.pic {
+        display: inline-block;
+        float: left;
+        margin-right: 20px;
+}
+
+div.prepack-featured div.description div.ing div.pic img.ing {
+        width: 50px;
+        height: 40px;
+}
+
+div.prepack-featured div.description div.ing div.pic p.name {
+        font-size: 12px;
+        font-family: "Roboto";
+        text-align: center;
+        max-width: 50px;
 }
 
 div.prepack-featured div.description p.details {
@@ -80,15 +105,16 @@ div.prepack-featured p.button  {
         display: table-cell;
         color: white;
         font-family: "Roboto";
-        font-size: 9px;
+        font-size: 10px;
         font-weight: bold;
         background-color: #88a470;
         border: 1px solid #88a470;
         vertical-align: middle;
-        padding: 1px 5px 1px 5px;
-        letter-spacing: 2px;
+        padding: 5px 10px 5px 10px;
+        letter-spacing: 0.175em;
         cursor: pointer;
 }
+
 
 div.prepack-featured p.button.buy-clicked  {
         color: #88a470;
@@ -176,14 +202,15 @@ div.other-panel div.purchase-panel p.button {
         display: inline-block;
         color: white;
         font-family: "Roboto";
-        font-size: 9px;
+        font-size: 10px;
         font-weight: bold;
         background-color: #88a470;
+        border: 1px solid #88a470;
         height: 10px;
         vertical-align: middle;
         letter-spacing: 2px;
         cursor: pointer;
-        padding: 2px 5px 2px 5px;
+        padding: 5px 10px 5px 10px;
 }
 
 div.other-panel div.purchase-panel p.button:hover {

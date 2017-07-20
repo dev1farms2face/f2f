@@ -28,6 +28,7 @@ $(document).ready(function(){
                     'o2_id' : o2_id,
                     'o3_id' : o3_id,
                     'type' : type, 
+                    'qd_id' : qd_id, 
                     'fp_id' : fp_id, 
                 })
             },

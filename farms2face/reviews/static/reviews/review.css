@@ -1,0 +1,323 @@
+div.review-panel {
+        display: block;
+        text-align: center;
+        position : relative;
+}
+
+div.review-panel:after {
+        content  : "";
+        position : absolute;
+        z-index  : 1;
+        bottom   : 0;
+        left     : 0;
+        pointer-events   : none;
+        //background-image : linear-gradient(to bottom, 
+                          //rgba(255,255,255, 0), 
+                          //rgba(255,255,255, 1) 90%);
+        width    : 100%;
+        height   : 4em;
+}
+
+div.review-panel p.header {
+        text-align: center;
+        font-family: "Roboto";
+        font-size: 24px;
+        font-weight: 100;
+        margin-top: -30px;
+        margin-bottom: 30px;
+        display: inline-block;
+}
+
+div.review-panel div.avg-rating {
+        display: inline-block;
+        margin-bottom: 50px;
+}
+
+div.review-panel div.avg-rating p { 
+        display: inline-block;
+        font-family: "Roboto";
+        color: orange;
+        font-size: 22px;
+        margin-left: 10px;
+        margin-right: 5px;
+}
+
+div.review-panel div.avg-rating img.avg-star {
+        width: 20px;
+        height: 20px;
+}
+
+div.review-main div.filter {
+        display: block;
+        font-family: "Roboto";
+        font-size: 22px;
+        margin-left: 10px;
+        font-weight: 100;
+        margin-bottom: 30px;
+} 
+
+div.review-main div.filter p.text {
+        display: inline-block;
+        font-family: "Roboto";
+        font-size: 22px;
+        margin-left: 5px;
+        margin-right: 5px;
+}
+
+div.review-main div.filter select.skin-type {
+        //background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+        height: 30px;
+        font-family: "Roboto";
+        font-size: 22px;
+        overflow: hidden;
+        width: 120px;
+        color: #88a470;
+        font-weight: 400;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-color: #ddd;
+        text-indent: 10px;
+        text-overflow: '';
+}
+
+div.review-main div.filter select.skin-type:focus {
+        outline:0;
+}
+
+div.review-main div.filter select.skin-type option {
+        font-family: "Roboto";
+        font-weight: 100;
+        font-size: 22px;
+        margin-left: 5px;
+        margin-right: 5px;
+}
+
+div.review-panel div.review {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+} 
+
+div.review-panel div.review img.profile {
+        display: table-cell;
+        vertical-align: top;
+        width: 60px;
+        text-align: right;
+}
+
+div.review-panel div.review div.details {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+}
+div.review-panel div.review div.details {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+}
+
+div.review-panel div.review div.rating {
+        display: block;
+        margin-bottom: 10px;
+        margin-left: 18px;
+}
+
+div.review-panel div.review div.star {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+}
+
+div.review-panel div.review div.full {
+        background-image: url('images/star_full.png');
+        background-size: 100% 100%;
+}
+
+div.review-panel div.review div.empty {
+        background-image: url('images/star_empty.png');
+        background-size: 100% 100%;
+}
+
+div.review-panel div.review p.title {
+        display: block;
+        text-align: left;
+        font-family: "HelveticaNeue-Light", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-left: auto;
+        margin-bottom: 10px;
+}
+
+div.review-panel div.review p.sub-title {
+        text-align: left;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+}
+
+div.review-panel div.review p.details {
+        text-align: left;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        font-size: 14px;
+        font-weight: 800;
+        margin-top: 10px;
+        letter-spacing: 1px;
+        width: 450px;
+}
+
+div.review-panel div.review div.pic-container {
+        display: block;
+        padding-left: 15px;
+        margin-top: 10px;
+}
+
+div.review-panel div.review div.pic-container div.pic {
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+        border: 3px solid #CCC;
+        border-radius: 4px;
+}
+
+div.review-panel div.review div.pic-container div.pic img.thumbnail {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: 0.3s;
+}
+
+div.review-panel div.review div.pic-container div.pic img.thumbnail:hover {
+        opacity: 0.7;
+}
+
+div.review-panel div.review div.pic-container div.pic div.modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+div.review-panel div.review div.pic-container div.pic div.modal img.modal-content {
+        margin: auto;
+        display: block;
+        width: 70%;
+        max-width: 400px;
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+}
+
+div.review-panel div.review div.pic-container div.pic div.modal div.caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+div.review-panel div.review div.pic-container div.pic div.modal .close {
+    position: absolute;
+    top: 100px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+div.review-panel div.review div.pic-container div.pic div.modal .close:hover,
+div.review-panel div.review div.pic-container div.pic div.modal .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+div.review-panel div.review div.fp-image {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+        border-left: 1px solid #BBB;
+        padding-left: 20px;
+}
+
+div.review-panel div.review div.fp-image p.title {
+        font-family: Roboto;
+        color: #88a470;
+        margin-left: -10px;
+}
+
+div.review-main p.see-more {
+        display: inline-block;
+        color: white;
+        font-family: "Roboto";
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #88a470;
+        height: 15px;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 6px 8px 3px 8px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.review-main p.see-more:hover {
+        background-color: #999999;
+}
+
+p.no-review {
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        font-size: 26px;
+        color: #999;
+        margin-top: 50px;
+        margin-bottom: 100px;
+}
+
+p.no-review a {
+        font-size: 20px;
+        font-family: "Roboto";
+        color: #ce9a2b !important;
+        margin-left: 10px;
+}
+

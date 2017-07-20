@@ -6,6 +6,8 @@ register = template.Library()
 
 @register.inclusion_tag('facepack.html')
 def facepack_display(item_id):
+    if not item_id:
+        return
     mandatory = []
     type = "primary"
     for cfp in CustomFacePack.objects.filter(facepack=item_id):
@@ -28,5 +30,4 @@ def facepack_display(item_id):
       'image'        : fp.image,
       'type'         : type,
     }
-    print(res)
     return {'item': res }

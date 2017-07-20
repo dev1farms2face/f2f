@@ -42,7 +42,7 @@ div.login-panel div.email-panel {
     padding: 5px 10px 5px 10px;
 }
 
-div.login-panel div.password-panel {
+div.login-panel div.password-panel, div.password-confirm-panel {
     border-left: 1px solid #BBBBBB;
     border-right: 1px solid #BBBBBB;
     border-bottom: 1px solid #BBBBBB;

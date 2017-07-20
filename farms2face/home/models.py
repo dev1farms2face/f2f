@@ -86,6 +86,7 @@ class CustomFacePack(models.Model):
                                             blank=True, null=True, 
                                             on_delete=models.CASCADE)
     user = models.ForeignKey(User)
+    questionnaire = models.ForeignKey('facepackwizard.QuestionnaireUserData', on_delete=models.CASCADE, null=True)
     def __str__(self):
         return str(self.facepack)
     def __unicode__(self):
@@ -93,8 +94,19 @@ class CustomFacePack(models.Model):
 
 class PrePack(models.Model):
     facepack = models.ForeignKey(FacePack, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    highlights = models.CharField(max_length=1000, null=True, blank=True)
+    who = models.CharField(max_length=5000, null=True, blank=True)
+    made_with = models.CharField(max_length=1000, null=True, blank=True)
     def __str__(self):
         return str(self.facepack)
     def __unicode__(self):
         return unicode(self.facepack) or u''
+
+
+class PrePackIngredients(models.Model):
+    prepack = models.ForeignKey(PrePack, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.prepack)+" "+str(self.ingredient)
+    def __unicode__(self):
+        return unicode(self.prepack) or u''

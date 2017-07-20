@@ -192,12 +192,12 @@ div.facepack-match p.button  {
         display: table-cell;
         color: white;
         font-family: "Roboto";
-        font-size: 6.66px;
+        font-size: 10px;
         font-weight: bold;
         background-color: #88a470;
         border: 1px solid #88a470;
         vertical-align: middle;
-        padding: 1px 5px 1px 5px;
+        padding: 5px 10px 5px 10px;
         letter-spacing: 0.175em;
         cursor: pointer;
 }

@@ -14,10 +14,11 @@ $(document).ready(function(){
     }, 'p.remove');
     checkout = function(token_id, args) {
         // POST cart remove to server
-        if( is_anonymous == "True" )
+        if( is_anonymous == "True" ) {
             console.log("/signin/new/?next=/cart/");
             return;
             //window.location = "/signin/new/?next=/cart/";
+        }
         $.ajax({
             url: url_checkout,
             type: 'POST',

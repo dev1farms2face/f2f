@@ -90,6 +90,7 @@ def wizard_submit(request):
             'mixing_agent' : str(mixing_agent.id),
             'recipes'      : [str(r.id) for r in recipes],
             'optional'     : [str(o.id) for o in o_ids],
+            'qd'           : str(wz.id),
         } 
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
@@ -101,6 +102,8 @@ def results(request):
         o_ids = [int(x) for x in request.GET.getlist('optional[]')]
         recipes = Recipe.objects.filter(id__in=recipe_ids)
         secondary_ings = Ingredient.objects.filter(id__in=o_ids)
+        qd_id = request.GET.get('qd')
+        skin_type = request.GET.get('skin_type', None)
         base = Base.objects.get(pk=request.GET.get('base'))
         mixing_agent = MixingAgent.objects.get(pk=request.GET.get('mixing_agent'))
         #secondary_ings = [random.choice(SkinTypeConcernIngredient.objects\
@@ -154,6 +157,7 @@ def results(request):
                 'r2_id': r2.id,
                 'r3_id': r3.id,
                 'o_ids': [],
+                'qd_id': qd_id,
             },
             'second': {
                 'type': 'secondary',
@@ -203,7 +207,10 @@ def results(request):
                 'o2_id': o2.id,
                 'o3_id': o3.id,
                 'o_ids': o_ids,
+                'qd_id': qd_id,
             },
+            'qd_id': qd_id,
+            'skin_type': skin_type,
         }
         data['cart_size'] = cart_size(request)
         data['valid_user'] = get_valid_user_data(request)

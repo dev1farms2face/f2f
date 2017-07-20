@@ -12,15 +12,30 @@
 {% block basebody %}
 <div class="results-panel">
   <img class="presenting" src="{% static 'prepacks/images/presenting.png' %}" alt="" />
-  <div class="prepack-featured item" id="{{ p.id }}">
-    <img class="sack" src="/images/{{ p.image }}" alt="" />
+  <div class="prepack-featured item" id="{{ p.facepack.id }}">
+    <img class="sack" src="/images/{{ p.facepack.image }}" alt="" />
     <div class="description">
       <br>
-      <p class="name">{{ p.name }}</p>
-      <p class="details">{{ p.description }} </p>
+      <p class="name">{{ p.facepack.name }}</p>
+      <p class="details">{{ p.facepack.description }} </p>
       <br>
       <p class="made-with">Made with</p>
+      {% if ing %}
+      <div class="ing">
+      {% for i in ing %}
+        <div class="pic">
+          <img class="ing" src="{{ i.img }}" alt="{{ i.name }}" />
+          <p class="name">{{ i.name }}</p>
+        </div>
+      {% endfor %}
+      </div>
+      {% else %}
       <p class="details">{{ p.made_with }}</p>
+      {% endif %}
+      <p class="highlights">Highlights</p>
+      <p class="details">{{ p.highlights }}</p>
+      <p class="who">Who can use this?</p>
+      <p class="details">{{ p.who }}</p>
       <div class="purchase-panel">
         {% if fp %}
           {% if fp_type == "buy" %}
@@ -41,7 +56,8 @@
     </div>
   </div>
   {% include "how_to_use.html" %}
-  {% include "review.html" %}
+  {% load review_tags %}
+  {% review_tags p.facepack.id "pp" %}
   <img class="browse_more" src="{% static 'prepacks/images/browse_more.png' %}" alt="" />
   <div class="other-panel">
     <img class="featured-left arrow" 

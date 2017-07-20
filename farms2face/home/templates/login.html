@@ -32,6 +32,13 @@
     <input class="password" orig="Password" value="Password" type="password"/>
   </div>
   {% if new_user %}
+  {% if new_user %}
+  <div class="password-confirm-panel">
+    <img class="passwordemail-icon"
+         src="{% static 'home/images/password-icon.png' %}" alt="" />
+    <input class="password-confirm" orig="Password" value="Password" type="password"/>
+  </div>
+  {% endif %}
   <p class="login-submit">SIGN UP</p>
   {% else %}
   <p class="login-submit">LOG IN</p>

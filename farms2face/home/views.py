@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack
+from facepackwizard.models import QuestionnaireUserData
 from cart.models import Cart
 from userregistration.views import init_user_login
 from userregistration.models import *
@@ -15,7 +16,6 @@ import json
 import random
 
 # Create your views here.
-
 def get_valid_user_data(request):
     if request and request.user:
         user = request.user
@@ -200,6 +200,7 @@ def post_add_cart(request):
         fp_id = data.get('fp_id', None)
         fp_type = data.get('fp_type', None)
         cart_type = data.get('type', None)
+        qd_id = data.get('qd_id', None)
         fp = None
         if fp_id and user.cart_set.filter(item_id=fp_id).count() > 0:
             # Cart / FP already exists. Just save new cart type state
@@ -242,12 +243,15 @@ def post_add_cart(request):
                 fp_name += "%03d" % fp.mixing_agent.id
                 fp.name = fp_name
                 fp.save()
+
+                qd = QuestionnaireUserData.objects.get(pk=qd_id) 
         
                 cfp1 = CustomFacePack()
                 cfp1.recipe = Recipe.objects.get(pk=recipe1_id)
                 cfp1.optional_ingredient = Ingredient.objects.get(pk=o1_id) if o1_id else None
                 cfp1.facepack = fp
                 cfp1.user = user
+                cfp1.questionnaire = qd
                 cfp1.save()
         
                 cfp2 = CustomFacePack()
@@ -255,6 +259,7 @@ def post_add_cart(request):
                 cfp2.optional_ingredient = Ingredient.objects.get(pk=o2_id) if o2_id else None
                 cfp2.facepack = fp
                 cfp2.user = user
+                cfp2.questionnaire = qd
                 cfp2.save()
         
                 cfp3 = CustomFacePack()
@@ -262,6 +267,7 @@ def post_add_cart(request):
                 cfp3.optional_ingredient = Ingredient.objects.get(pk=o3_id) if o3_id else None
                 cfp3.facepack = fp
                 cfp3.user = user
+                cfp3.questionnaire = qd
                 cfp3.save()
         
             c = Cart()

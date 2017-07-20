@@ -140,6 +140,26 @@ p.badge-4-text {
         width: 150px;
 }
 
+p.button {
+        display: inline-block;
+        color: white;
+        font-family: "Roboto";
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 5px 10px 5px 10px;
+        margin-left: 10px;
+}
+
+p.button a {
+        text-decoration: none !important;
+        color: white !important;
+}
+
 p.personal {
         font-family: "Selima";
         color: #627254;

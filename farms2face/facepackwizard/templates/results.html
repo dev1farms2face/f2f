@@ -20,7 +20,8 @@
     {% facepack_match second %}
   </div>
   {% include "how_to_use.html" %}
-  {% include "review.html" %}
+  {% load review_tags %}
+  {% review_tags qd_id "cfp" skin_type %}
 </div>
 <input id="reloadValue" type="hidden" name="reloadValue" value="" />
 {% endblock %}
