@@ -15,8 +15,8 @@ div.facepack-match div.top {
 
 div.facepack-match img.bottle {
         display: inline-block;
-        width: 220px;
-        padding-right: 10px;
+        width: 190px;
+        padding-right: 70px;
 }
 
 div.facepack-match div.details-panel {
@@ -26,11 +26,11 @@ div.facepack-match div.details-panel {
 }
 
 div.facepack-match div.details-panel p.made-with {
-        font-family: "Roboto";
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
         color: black;
-        font-size: 20px;
+        font-size: 30px;
         letter-spacing: 2px;
-        text-align: left;
+        text-align: center;
         margin-bottom: 10px;
         margin-left: 20px;
 }
@@ -48,46 +48,52 @@ div.facepack-match div.ingredient {
 }
 
 div.facepack-match div.ingredient img {
-        width: 90px;
+        width: 190x;
 }
 
 div.facepack-match div.ingredient p.name {
         font-family: "Roboto";
-        font-size: 11px;
+        font-size: 16px;
         letter-spacing: 0.15em;
         font-weight: bold;
-        text-align: center;
+        text-align: left;
         margin-bottom: 5px;
-        max-width: 100px;
+        max-width: 200px;
+        height: 40px;
 }
 
 div.facepack-match div.ingredient p.helper-text {
         font-family: "Roboto";
-        font-size: 10px;
-        width: 90px;
-        text-align: center;
+        font-size: 12px;
+        width: 200px;
+        text-align: left;
 }
 
 div.facepack-match div.learn-more-panel {
         background-image: url('images/Brush_Button.png');
         display: inline-block;
         background-size: 100% 100%;
-        width: 110%;
-        height: 70px;
+        width: 66%;
+        height: 120px;
         text-align: left;
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-left: 28%;
+}
+
+div.facepack-match div.learn-more-panel:hover {
+        background-image: url('images/Brush_Button_Hover.png');
+        transition:.3s;
 }
 
 div.facepack-match div.learn-more-panel p {
         font-size: 14px;
-        margin-top: 15px;
-        margin-left: 10px;
+        margin-top: 35px;
+        margin-left: 40px;
         letter-spacing: 1px;
         display: inline-block;	
         width: 350px;
         color: white;
-        font-family: "HelveticaNeue-UltraLight";
-        transform: scaleX(0.9);
+        font-family: Roboto;
         cursor: pointer;
 }
 
@@ -113,17 +119,23 @@ div.facepack-match table.summary td.heading {
 div.facepack-match table.summary td.footer p.hide-summary {
         color: white;
         font-family: "Roboto";
-        font-size: 9px;
+        font-size: 12px;
         font-weight: bold;
         background-color: #88a470;
         border: 1px solid #88a470;
         vertical-align: middle;
-        padding: 3px 5px 3px 5px;
+        padding: 15px 20px 15px 20px;
         letter-spacing: 2px;
         margin-left: auto;
         margin-right: auto;
-        width: 100px;
+        width: 250px;
         cursor: pointer;
+}
+
+div.facepack-match table.summary td.footer p.hide-summary:hover {
+        background-color: white;
+        color: #88a470;
+        transition:.3s;
 }
 
 div.facepack-match table.summary tr.ingr {
@@ -153,7 +165,7 @@ div.facepack-match table.summary tr.ingr img {
 
 div.facepack-match table.summary tr.ingr td.right {
         vertical-align: middle;
-        width: 300px;
+        width: 400px;
 }
 
 div.facepack-match table.summary tr.ingr td.right p.name {
@@ -168,15 +180,15 @@ div.facepack-match table.summary tr.ingr td.right p.name {
 
 div.facepack-match table.summary tr.ingr td.right p.helper {
         font-family: "Roboto";
-        font-size: 11px;
+        font-size: 12px;
         text-align: left;
 }
 
 div.facepack-match div.purchase-panel {
         text-align: left;
-        margin-left: auto;
+        margin-left: 29%;
         margin-right: auto;
-        padding-left: 10px;
+        padding-left: 20px;
         margin-top: 10px;
 }
 
@@ -192,12 +204,13 @@ div.facepack-match p.button  {
         display: table-cell;
         color: white;
         font-family: "Roboto";
-        font-size: 10px;
+        font-size: 12px;
         font-weight: bold;
         background-color: #88a470;
+        border-radius: 3px;
         border: 1px solid #88a470;
         vertical-align: middle;
-        padding: 5px 10px 5px 10px;
+        padding: 10px 20px 10px 20px;
         letter-spacing: 0.175em;
         cursor: pointer;
 }
@@ -209,5 +222,7 @@ div.facepack-match p.button.buy-clicked  {
 }
 
 div.facepack-match p.button:hover {
-        //background-color: #777777;
+        background-color: white;
+        color: #88a470;
+        transition:.3s;
 }

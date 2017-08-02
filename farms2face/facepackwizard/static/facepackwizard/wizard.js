@@ -6,8 +6,8 @@ $(document).ready(function(){
             $('.question-panel:first').find('.option').removeClass('option-selected');
             $('.question-panel:first').nextAll().hide();
             $('.show-matches').hide();
-            $("html, body").animate({ scrollTop: $('.question-panel:first').offset().top-100 });
-    }, 1000);
+            $("html, body").animate({ scrollTop: $('.question-panel:first').offset().top-130 });
+    }, 10000);
     $('div.wizard-panel').on({
         'mouseenter': function() {
                 hr = $(this).siblings('.hr');
@@ -61,7 +61,7 @@ $(document).ready(function(){
             next_q.find('.how-footer').hide();
             next_q.show();
             if (next_q.is(':visible')) {
-                $("html, body").animate({ scrollTop: next_q.offset().top-100 }); 
+                $("html, body").animate({ scrollTop: next_q.offset().top-130 }); 
             } else {
                 $("html, body").animate({ scrollTop: curr_q.offset().top-100 }); 
             }

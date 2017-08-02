@@ -41,7 +41,7 @@
           {% if fp_type == "buy" %}
           <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ fp }}">ADDED TO CART</p>
           <p class="or">- or -</p>
-          <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+          <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
           {% elif fp_type == "subscribe" %}
           <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
           <p class="or">- or -</p>
@@ -50,7 +50,7 @@
         {% else %}
         <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
         <p class="or">- or -</p>
-        <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+        <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
         {% endif %}
       </div>
     </div>
@@ -75,7 +75,7 @@
             {% if f.cart_type == "buy" %}
             <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ f.facepack.id }}">ADDED TO CART</p>
             <p class="or">- or -</p>
-            <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+            <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
             {% elif f.cart_type == "subscribe" %}
             <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
             <p class="or">- or -</p>
@@ -84,7 +84,7 @@
           {% else %}
           <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
           <p class="or">- or -</p>
-          <p class="button subscribe" type="subscribe">SUBSCRIBE</p>
+          <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
           {% endif %}
         </div>
       </div>

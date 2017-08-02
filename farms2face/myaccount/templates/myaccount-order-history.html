@@ -11,7 +11,7 @@
     <th class="item">Item</th>
     <th class="price">Price</th>
     <th class="type">Type</th>
-    <th class="quantity">Qty</th>
+    <th class="quantity">Qty/Care</th>
     <th class="shipping-cost">Shipping</th>
     <th class="total">Total</th>
     <th class="date">Date</th>
@@ -32,10 +32,11 @@
     <td class="first price">{{ p.price }}</td>
     {% if p.type == "buy" %}
     <td class="first type">A-LA-CARTE</td>
-    {% elif p.type == "subscribe" %}
-    <td class="first type">SUBSCRIBED</td>
-    {% endif %}
     <td class="first quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="first type">NEVER RUN OUT</td>
+    <td class="first quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
     <td class="first shipping-type">{{ p.shipping_cost }}<br><label class="shipping">{{ p.shipping_type }}</label></td>
     <td class="first total"><b>{{ p.total }}</b></td>
     <td class="first date">{{ p.date }}</td>
@@ -53,10 +54,11 @@
     <td class="price">{{ p.price }}</td>
     {% if p.type == "buy" %}
     <td class="type">A-LA-CARTE</td>
-    {% elif p.type == "subscribe" %}
-    <td class="type">SUBSCRIBED</td>
-    {% endif %}
     <td class="quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="type">NEVER RUN OUT</td>
+    <td class="quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
     <td class="shipping-type"></td>
     <td class="total"></td>
     <td class="date"></td>

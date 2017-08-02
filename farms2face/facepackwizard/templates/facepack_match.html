@@ -19,11 +19,15 @@
 </script>
 <div class="facepack-match" type="{{ type }}">
   <div class="top">
-    <img class="bottle"
-         src="{% static 'facepackwizard/images/bottle_'|add:type|add:'.jpg' %}" alt="" />
     <div class="details-panel">
-      <p class="made-with">Made with</p>
+      {% if type == "primary" %}
+      <p class="made-with">is made with</p>
+      {% else %}
+      <p class="made-with">a facemask made with</p>
+      {% endif %}
       <div class="ingredients-panel">
+        <img class="bottle"
+             src="{% static 'facepackwizard/images/bottle_'|add:type|add:'.jpg' %}" alt="" />
         {% for r in recipes %}
         <div class="ingredient" id="{{ r.i_id }}">
           <img src="/images/{{ r.i_image }}" alt="" />

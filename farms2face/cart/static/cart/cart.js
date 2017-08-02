@@ -158,4 +158,8 @@ $(document).ready(function(){
     $('div.cart-panel table.item-panel td.frequency select').on('change', function() {
         updateQty($(this).closest('tr.item'), $(this).val());
     });
+    $('div.cart-panel table.item-panel td.type p.save-auto').on('click', function() {
+        $(this).closest('tr.item').find('td.type select').val('subscribe').change();
+    });
+    
 });

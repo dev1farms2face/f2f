@@ -4,18 +4,86 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack
+from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack, FAQ
 from facepackwizard.models import QuestionnaireUserData
 from cart.models import Cart
 from userregistration.views import init_user_login
 from userregistration.models import *
 from django.template.context import RequestContext
 from django.shortcuts import render_to_response
+from email.mime.text import MIMEText
+import smtplib
+from django.conf import settings
+from django.core.mail import send_mail
 import pdb
 import json
 import random
+import uuid
 
 # Create your views here.
+def faq(request):
+    data = {
+        'cart_size' : cart_size(request),
+        'valid_user': get_valid_user_data(request),
+        'faq'       : FAQ.objects.all(),
+    }
+    return render(request, "faq.html", data)
+
+
+def post_change_password(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        data = json.loads(request.POST['data'])
+        pwd  = data.get('password', None)
+        key  = data.get('key', None)
+        key  = uuid.UUID(key).hex
+        if key and pwd and ForgotPass.objects.filter(id=key).count() > 0:
+            fp = ForgotPass.objects.get(pk=key)
+            fp.user.set_password(pwd)
+            fp.user.save()
+            fp.delete()
+            json_response['success'] = True 
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+     
+
+def forgot_pass(request):
+    json_response = { 'success': False }
+    if request.method == 'POST':
+        data = json.loads(request.POST['data'])
+        email = data.get('email', None)
+        if User.objects.filter(email=email).count() == 1:
+            fp = ForgotPass()
+            if ForgotPass.objects.filter(user__email=email).count() > 0:
+                fp = ForgotPass.objects.get(user__email=email);
+            else:
+                fp.user = User.objects.get(email=email)
+                fp.save()
+            url = request.get_raw_uri().replace('post_','')+str(fp.id)
+            msg = 'A request to reset your farms2face account password has been received. <br>Click <a href=%s>here</a> to reset your password. <br> Alternatively copy paste this link in your browser: %s <br> Please ignore or report if you did not request this. <br><br>Sincerely,<br>Farms2Face Team' % (url, url)
+            send_mail(
+                'Reset your farms2face account password',
+                '',
+                'farms2face@gmail.com',
+                [email],
+                fail_silently=False,
+                html_message=msg,
+            )
+            #msg['Subject'] = 'Reset your farms2face account password',
+            #msg['From'] = 'no-reply@farms2face.com'
+            #msg['To'] = [email]
+            #s = smtplib.SMTP('smtp.gmail.com', '587')
+            #s.sendmail('no-reply@farms2face.com', [email], msg.as_string())
+            #s.quit
+            #server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            #server.login('farms2face', 'farms2face')
+            #server.sendmail('farms2face@gmail.com', [email], msg.as_string())
+            json_response['success'] = True 
+    return HttpResponse(json.dumps(json_response, ensure_ascii=False))
+
+def change_pass(request, key):
+    print(key)
+    return render(request, "forgot.html", {'key': key});
+
 def get_valid_user_data(request):
     if request and request.user:
         user = request.user
@@ -206,10 +274,9 @@ def post_add_cart(request):
             # Cart / FP already exists. Just save new cart type state
             c = user.cart_set.get(item_id=fp_id)
             c.type = cart_type
-            if c.type == 'buy':
-                c.quantity=1
+            c.quantity = 1
             if c.type == 'subscribe':
-                c.quantity=4
+                c.subtype='regular'
             c.save()
         else:
             if fp_type == "prepack":
@@ -238,10 +305,11 @@ def post_add_cart(request):
 
                 fp.base = Base.objects.get(pk=base_id)
                 fp.mixing_agent = MixingAgent.objects.get(pk=mixing_agent_id)
-                fp.price = str(random.randrange(13,30)+0.99)
+                #fp.price = str(random.randrange(13,30)+0.99)
                 fp_name += "%03d" % fp.base.id
                 fp_name += "%03d" % fp.mixing_agent.id
                 fp.name = fp_name
+
                 fp.save()
 
                 qd = QuestionnaireUserData.objects.get(pk=qd_id) 
@@ -275,11 +343,13 @@ def post_add_cart(request):
             c.user = user
             c.type = cart_type
             if c.type == 'buy':
-                c.quantity=1
-            if c.type == 'subscribe':
-                c.quantity=4
+                fp.price = fp.price_single
+                fp.save()
+            elif c.type == 'subscribe':
+                c.subtype = 'regular'
+                fp.price = fp.price_regular
+                fp.save()
             c.save()
-    
         json_response['success'] = True 
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 

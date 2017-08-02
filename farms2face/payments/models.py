@@ -11,6 +11,7 @@ class Shipping(models.Model):
     type = models.CharField(max_length=1000)
     cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     helper = models.CharField(max_length=1000, blank=True, null=True)
+    tracking = models.CharField(max_length=1000, blank=True, null=True)
     def __str__(self):
         return str(self.id)+" "+str(self.type)
     def get_days(self):
@@ -72,12 +73,29 @@ class PurchaseHistory(models.Model):
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
     item = models.ForeignKey('home.Item', on_delete=models.CASCADE)
     type = models.CharField(max_length=10, default="buy")
+    subtype = models.CharField(max_length=10, null=True, default=None)
     shipping = models.ForeignKey(Shipping, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ship_date = models.DateField(blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+    is_fulfilled = models.BooleanField(default=False)
     def __str__(self):
-        return str(self.payment)+" "+str(self.item)
+        fulfilled_status = "Fulfilled" if self.is_fulfilled else "Not Fulfilled"
+        fp = self.item.facepack
+        fp_name = "NA"
+        if fp.customfacepack_set.count() > 0:
+            fp_name = " , ".join([i.optional_ingredient.name \
+                      if i.optional_ingredient else \
+                      i.recipe.mandatory_ingredient.name+"* " \
+                      for i in fp.customfacepack_set.all()]) 
+            base = fp.base.name 
+            ma = fp.mixing_agent.name 
+            fp_name += ", %s (Base) , %s (MixingAgent)" % (base,ma) 
+        elif fp.prepack_set.count() == 1:
+            fp_name = fp.facepack.name
+        return fulfilled_status+" | Ordered on: "+\
+            self.payment.createdte.strftime("%B %d, %Y")+\
+            " | By: "+str(self.user)+" | FaceMask: "+fp_name+\
+            " | Tracking: "+str(self.shipping.tracking)
     def save(self, *args, **kwargs):
         if not self.ship_date:
             self.ship_date = datetime.now()+timedelta(days=(self.shipping.get_days()))

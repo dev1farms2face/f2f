@@ -43,7 +43,7 @@
                     {% endif %}
                   </select>
                   {% if c.type == "buy" %}
-                  <p>Save with Auto Delivery</p>
+                  <p class="save-auto">Save with Auto Delivery</p>
                   {% endif %}
                 </td>
                 {% if c.type == "buy" %}   
@@ -57,26 +57,19 @@
                 {% elif c.type == "subscribe" %}
                 <td class="frequency">
                   <select>
-                    {% if c.quantity == 4 %}
-                    <option selected="selected" value="4">Regular care (4 applications)</option>
-                    <option value="8">Intense care (8 applications)</option>
-                    {% elif c.quantity == 8 %}
-                    <option value="4">Regular care (4 applications)</option>
-                    <option value="8" selected="selected">Intense care (8 applications)</option>
+                    {% if c.subtype == "regular" %}
+                    <option selected="selected" value="regular">Regular care (4 applications)</option>
+                    <option value="intense">Intense care (8 applications)</option>
+                    {% elif c.subtype == "intense" %}
+                    <option value="regular">Regular care (4 applications)</option>
+                    <option value="intense" selected="selected">Intense care (8 applications)</option>
                     {% endif %}
                   </select>
-                  {% if c.quantity == 4 %}
                   <p>Delivered once every 4 weeks</p>
-                  {% elif c.quantity == 8 %}
-                  <p>Delivered twice every 4 weeks</p>
-                  {% endif %}
                 </td>
                 {% endif %}
                 <td class="price-cell">
                   <p class="price">{{ c.price }}</p>
-                  {% if c.type == "subscribe" %}
-                  <p class="perpack">PER PACK</p><br>
-                  {% endif %}
                   <p class="remove">REMOVE</p>
                 </td> 
               </tr>

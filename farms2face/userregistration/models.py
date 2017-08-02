@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+import uuid
 
 # Create your models here.
 
@@ -32,3 +33,9 @@ class ShippingAddress(models.Model):
     primary = models.BooleanField(default=False)
     def __str__(self):
         return str(self.profile)+" "+str(self.primary)+" "+self.first_name+" "+str(self.street1)
+
+class ForgotPass(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.user)+" "+str(id)

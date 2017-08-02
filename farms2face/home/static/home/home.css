@@ -187,10 +187,18 @@ p.personal {
         margin-top: 250px;
         padding-bottom: 50px;
 }
-img.featured-collection-txt {
+#featured-collection p.featured-collection-txt {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 100px;
+        font-family: 'amaticsc';
+        font-size: 120px;
+        text-align: left;
+        color: white;
         width: 350px;
         text-align: center;
-        margin-top: 150px;
+        padding-top: 170px;
 }
 p.shop-now {
         margin-top: 20px;

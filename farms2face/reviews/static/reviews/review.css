@@ -273,7 +273,17 @@ div.review-panel div.review div.pic-container div.pic div.modal .close:focus {
 
 div.review-panel div.review div.details div.rating-help {
     display: block;
-    margin-left: 15px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+div.review-panel div.review div.details div.rating-help label {
+    font-family: Roboto;
+    font-size: 11px;
+    color: #888;
+    vertical-align: middle;
+    padding-bottom: 15px;
+    display: inline-block;
 }
 
 div.review-panel div.review div.details div.rating-help div.useful, div.not-useful {

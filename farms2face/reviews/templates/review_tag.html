@@ -5,7 +5,11 @@
     href="{% static 'reviews/review.css' %}" />
   <script type="text/javascript"
     src="{% static 'reviews/review.js' %}"></script>
-  <p class="hear-other">Hear what other people had to say about this facemask</p>
+  {% if type == 'cfp' %}
+  <p class="hear-other">Hear what other people had to say about similar facemasks</p>
+  {% else %}
+  <p class="hear-other">Hear what other people had to say about this</p>
+  {% endif %}
   {% if type == 'cfp' %}
   <div class="filter">
     <p class="text">Reviews based on </p>
@@ -79,6 +83,7 @@
           {% endfor %}
         </div>
         <div class="rating-help" id="{{ r.review.id }}">
+          <label>Was this helpful?</label>
           <div class="useful">
             <img src="{% static 'reviews/images/thumbs-up.png' %}" alt="" />
             <p>{{ r.review.useful }}</p> 

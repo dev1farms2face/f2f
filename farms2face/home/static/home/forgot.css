@@ -1,0 +1,36 @@
+div.forgot-panel {
+    display: block;
+    padding: 200px 0 100px 25%;
+    width: 400px;
+}
+
+div.forgot-panel label {
+    color: #444;
+    font-family: Roboto;
+    font-size: 14px;
+    float: left;
+    height: 30px;
+    padding-top: 10px;
+}
+
+div.forgot-panel input {
+    float: right;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+}
+
+div.forgot-panel p.submit-new-password {
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 14px;
+    border: 1px solid #88a470;
+    padding: 5px 10px 5px 10px;
+    background-color: #88a470;
+    cursor: pointer;
+    color: white;
+}
+
+div.forgot-panel p.submit-new-password:hover {
+    color: #444;
+}

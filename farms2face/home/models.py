@@ -62,7 +62,10 @@ class Recipe(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=1000, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=34.00)
+    price_single = models.DecimalField(max_digits=6, decimal_places=2, default=34.00)
+    price_regular = models.DecimalField(max_digits=6, decimal_places=2, default=29.00)
+    price_intense = models.DecimalField(max_digits=6, decimal_places=2, default=48.00)
     helper = models.CharField(max_length=1000, blank=True)
     createdte = models.DateTimeField(default=timezone.now)
     def __str__(self):
@@ -110,3 +113,9 @@ class PrePackIngredients(models.Model):
         return str(self.prepack)+" "+str(self.ingredient)
     def __unicode__(self):
         return unicode(self.prepack) or u''
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=1000)
+    answer = models.CharField(max_length=4000)
+    def __str__(self):
+        return self.question+" "+self.answer[:20]+"..."

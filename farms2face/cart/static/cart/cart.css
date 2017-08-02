@@ -69,12 +69,13 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.type p {
     font-family: "Roboto";
-    font-size: 9px;
+    font-size: 12px;
     font-weight: bold;
     text-align: left;
     color: #78876a;
     padding-left: 2px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
@@ -99,7 +100,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency p {
     font-family: "Roboto";
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     text-align: left;
     color: #78876a;
@@ -116,7 +117,7 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
     font-family: "Roboto";
-    font-size: 10px;
+    font-size: 12px;
     min-width: 100px;
 }
 
@@ -128,26 +129,27 @@ div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity img {
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell {
     padding-left: 10px;
     text-align: right;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
     font-family: "Roboto";
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     margin-right: 2px;
-    margin-top: -15px;
+    margin-top: 60px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove {
     text-align: right;
-    color: #88a470;
+    color: #ce9a2b;
     width: 50px;
     font-family: "Roboto";
-    font-size: 9px;
+    font-size: 10px;
     font-weight: bold;
     cursor: pointer;
     float: right;
+    margin-top: 6px;
 }
 
 div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack {

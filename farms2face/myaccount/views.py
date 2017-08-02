@@ -355,6 +355,7 @@ def view_myaccount(request, option=None):
                         'quantity': ph.quantity,
                         'base': fp.base.name,
                         'type': ph.type,
+                        'subtype': ph.subtype or "-",
                         'mixing_agent': fp.mixing_agent.name,
                         'mandatory': mandatory,
                         'item': ph.item,

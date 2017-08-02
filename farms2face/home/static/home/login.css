@@ -106,3 +106,89 @@ div.login-panel p.helper {
 div.login-panel p.helper:hover {
     color: #000;
 }
+
+div.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+div.modal div.modal-content {
+    width: 25%;
+    font-family: "Roboto";
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px 40px 20px 40px;
+    border: 1px solid #888;
+    border-radius: 4px;
+}
+
+div.modal div.modal-content p.close {
+    text-align: right;
+    margin-top: -10px;
+    margin-right: -20px;
+    cursor: pointer;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+div.modal div.modal-content p.close:hover {
+    color: black;
+}
+
+div.modal div.modal-content p.forgot-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+div.modal div.modal-content div.email-panel {
+    border: 1px solid #BBBBBB;
+    padding: 5px 10px 5px 10px;
+}
+
+div.modal div.modal-content img.email-icon {
+    width: 20px;
+    padding-top: 7px;
+}
+
+div.modal div.modal-content input.email {
+    display: table-cell;
+    vertical-align: top;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    height: 30px;
+    width: 80%;
+    color: #CCC;
+    margin-left: 10px;
+}
+
+div.modal div.modal-content p.forgot-submit {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #777;
+}
+
+div.modal div.modal-content p.forgot-submit:hover {
+    color: black;
+}
+
+div.modal div.modal-content input.valid {
+    color: black;
+}
+
+

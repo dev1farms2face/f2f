@@ -118,6 +118,7 @@ def checkout(request):
                 ph.item = c.item
                 ph.shipping = shipping
                 ph.type = c.type
+                ph.subtype = c.subtype
                 ph.quantity = c.quantity
                 ph.save()
                 c.delete()
@@ -150,6 +151,7 @@ def view_cart(request):
             cart_items.append({
                 'id'           : c.id,
                 'type'         : c.type,
+                'subtype'      : c.subtype,
                 'item_id'      : c.item_id,
                 'name'         : fp.name,
                 'mandatory'    : mandatory,
@@ -194,9 +196,16 @@ def update_quantity(request):
                 c.quantity += 1
             if val == "down":
                 c.quantity -= 1
+            c.item.price = c.item.price_single
         elif c.type == "subscribe":
-            if val == "4" or val == "8":
-                c.quantity = int(val)
+            if val == "regular":
+                c.subtype = "regular"
+                c.item.price = c.item.price_regular
+                c.item.save()
+            elif val == "intense":
+                c.subtype = "intense"
+                c.item.price = c.item.price_intense
+                c.item.save()
         c.save()
         json_response['success'] = True
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
@@ -211,9 +220,15 @@ def update_type(request):
         c = Cart.objects.get(pk=cart_id)
         c.type = data.get('type', c.type)
         if c.type == 'buy':
+            c.subtype = None
+            c.item.price = c.item.price_single
+            c.item.save()
             c.quantity=1
         if c.type == 'subscribe':
-            c.quantity=4
+            #c.quantity=4
+            c.subtype="regular"
+            c.item.price = c.item.price_regular
+            c.item.save()
         c.save()
         json_response['success'] = True
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))

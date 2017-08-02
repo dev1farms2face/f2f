@@ -15,6 +15,9 @@
 {% endblock %}
 
 {% block basebody %}
+<script type="text/javascript">
+   var nobanner = true;
+</script>
 <div class="login-panel">
   {% if new_user %}
   <p class="header">New to Farms2Face?</p>
@@ -29,14 +32,14 @@
   <div class="password-panel">
     <img class="passwordemail-icon"
          src="{% static 'home/images/password-icon.png' %}" alt="" />
-    <input class="password" orig="Password" value="Password" type="password"/>
+    <input class="password" orig="Enter Password" value="Enter Password" type="text"/>
   </div>
   {% if new_user %}
   {% if new_user %}
   <div class="password-confirm-panel">
     <img class="passwordemail-icon"
          src="{% static 'home/images/password-icon.png' %}" alt="" />
-    <input class="password-confirm" orig="Password" value="Password" type="password"/>
+    <input class="password confirm" orig="Confirm Password" value="Confirm Password" type="text"/>
   </div>
   {% endif %}
   <p class="login-submit">SIGN UP</p>
@@ -57,9 +60,20 @@
   <a href="/signin/new">
     <p class="helper">New to Farms2Face? Sign Up</p>
   </a>
-  <a href="/signin/">
-    <p class="helper forgot">Forgot your password?</p>
-  </a>
+  <p class="helper forgot">Forgot your password?</p>
   {% endif %}
+</div>
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p class="close">&times;</p>
+    <p class="forgot-title">Enter your registered e-mail below </p>
+    <div class="email-panel">
+      <img class="email-icon"
+           src="{% static 'home/images/email-icon.png' %}" alt="" />
+      <input class="email" orig="Email" value="Email"/>
+    </div>
+    <p class="forgot-submit">Submit</p>
+  </div>
 </div>
 {% endblock %}
