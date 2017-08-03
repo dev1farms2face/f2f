@@ -19,6 +19,7 @@ import sys
 
 sys.path.append('/home/ec2-user/farms2face/f2f/farms2face')
 sys.path.append('/home/ec2-user/f2f/lib/python3.6/site-packages')
+sys.path.append('/opt/python/current/app/farms2face')
 
 from django.core.wsgi import get_wsgi_application
 
