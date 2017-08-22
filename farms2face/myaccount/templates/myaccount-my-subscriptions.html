@@ -11,7 +11,7 @@
     <th class="sno">SNo.</th>
     <th class="item">Item</th>
     <th class="type">Type</th>
-    <th class="quantity">Qty</th>
+    <th class="quantity">Qty/Care</th>
     <th class="cost">Cost</th>
     <th class="total">Monthly Total</th>
   </tr>
@@ -28,24 +28,15 @@
         {% facepack_display p.item.id %}
       </div>
     </td>
-    <td class="type">
-      <select>
-        {% if p.quantity.amount == 4 %}
-        <option selected="selected" value="4">Regular care (4 applications)</option>
-        <option value="8">Intense care (8 applications)</option>
-        {% elif p.quantity.amount == 8 %}
-        <option value="4">Regular care (4 applications)</option>
-        <option value="8" selected="selected">Intense care (8 applications)</option>
-        {% endif %}
-      </select>
-    </td>
-    <td class="quantity">
-      <p class="amount">{{ p.quantity.amount }}</p>
-      <p class="helper">{{ p.quantity.helper }}</p>
-    </td>
+    {% if p.type == "buy" %}
+    <td class="type">A-LA-CARTE</td>
+    <td class="quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="type">NEVER RUN OUT</td>
+    <td class="quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
     <td class="cost">
       <p class="amount">{{ p.cost.amount }}</p>
-      <p class="helper">{{ p.cost.helper }}</p>
     </td>
     <td class="total">
       <p class="amount">{{ p.total.amount }}</p>

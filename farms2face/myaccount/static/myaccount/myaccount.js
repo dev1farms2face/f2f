@@ -271,7 +271,7 @@ $(document).ready(function(){
             newReview.find('textarea').css('width','100%');
             newReview.find('textarea').css('height','200px');
             newReview.find('p.rating-status').css('min-height','20px');
-            newReview.find('p.submit').hide();
+            //newReview.find('p.submit').hide();
             if($(this).attr('id')) {
                 getReview(newReview, $(this).attr('id'));
                 newReview.find('p.submit').text('Update Review');
@@ -293,7 +293,7 @@ $(document).ready(function(){
                 $(this).after("<p class='error'>Cannot be more than 1000 characters</p>");
             }
             submit_button = $(this).siblings('p.submit'); 
-            if(len == 0 || len > 1000) {
+            if(len > 1000) {
                 $(this).val(this_val.substring(0,1000)); 
                 submit_button.unbind('click');
                 submit_button.hide();
@@ -353,7 +353,10 @@ $(document).ready(function(){
             review_rating = $(this).siblings('div.rating').attr('rating');
             fp_id = $(this).closest('tr').prev('tr').attr('id');
             review_id = $(this).closest('tr').prev('tr').find('p.review').attr('id');
-            if(!review_rating) {
+            if(review_title.trim().length == 0) {
+                alert('Choose valid title');
+            }
+            else if(!review_rating) {
                 alert('Choose valid rating');
             } else {
                 ri_ids = [];

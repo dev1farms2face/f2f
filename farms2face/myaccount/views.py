@@ -442,6 +442,8 @@ def view_myaccount(request, option=None):
                             'mixing_agent': fp.mixing_agent.name,
                             'mandatory': mandatory,
                             'item': ph.item,
+                            'type': ph.type,
+                            'subtype': ph.subtype or "-",
                         }) 
         data['subscriptions'] = subscriptions
         data['url_update_ph'] = '/post_update_ph/'

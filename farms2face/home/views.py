@@ -4,7 +4,7 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack, FAQ
+from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack, PrePack, FAQ, Disclaimer, Contact, Privacy
 from facepackwizard.models import QuestionnaireUserData
 from cart.models import Cart
 from userregistration.views import init_user_login
@@ -21,6 +21,33 @@ import random
 import uuid
 
 # Create your views here.
+def disclaimer(request):
+    data = {
+        'cart_size' : cart_size(request),
+        'valid_user': get_valid_user_data(request),
+        'disclaimer'       : Disclaimer.objects.all(),
+    }
+    return render(request, "disclaimer.html", data)
+
+def contactus(request):
+    data = {
+        'cart_size' : cart_size(request),
+        'valid_user': get_valid_user_data(request),
+        'contact'       : Contact.objects.all(),
+    }
+    return render(request, "contactus.html", data)
+
+def privacy(request):
+    d = {}
+    for p in Privacy.objects.all():
+        d.setdefault(p.name, []).append(p.details)
+    data = {
+        'cart_size' : cart_size(request),
+        'valid_user': get_valid_user_data(request),
+        'privacy'       : [{'name': p['name'], 'details': d[p['name']]} for p in Privacy.objects.values('name').distinct()],
+    }
+    return render(request, "privacy.html", data)
+
 def faq(request):
     data = {
         'cart_size' : cart_size(request),
@@ -59,24 +86,13 @@ def forgot_pass(request):
                 fp.user = User.objects.get(email=email)
                 fp.save()
             url = request.get_raw_uri().replace('post_','')+str(fp.id)
-            msg = 'A request to reset your farms2face account password has been received. <br>Click <a href=%s>here</a> to reset your password. <br> Alternatively copy paste this link in your browser: %s <br> Please ignore or report if you did not request this. <br><br>Sincerely,<br>Farms2Face Team' % (url, url)
-            send_mail(
-                'Reset your farms2face account password',
-                '',
-                'farms2face@gmail.com',
-                [email],
-                fail_silently=False,
-                html_message=msg,
-            )
-            #msg['Subject'] = 'Reset your farms2face account password',
-            #msg['From'] = 'no-reply@farms2face.com'
-            #msg['To'] = [email]
-            #s = smtplib.SMTP('smtp.gmail.com', '587')
-            #s.sendmail('no-reply@farms2face.com', [email], msg.as_string())
-            #s.quit
-            #server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-            #server.login('farms2face', 'farms2face')
-            #server.sendmail('farms2face@gmail.com', [email], msg.as_string())
+            msg = MIMEText(u'A request to reset your farms2face account password has been received. <br>Click <a href="%s">here</a> to reset your password. <br> Alternatively copy paste this link in your browser: %s <br> Please ignore or report if you did not request this. <br><br>Sincerely,<br>Farms2Face Team' % (url, url), 'html')
+            msg['Subject'] = 'Reset your farms2face account password'
+            msg['From'] = 'no-reply@farms2face.com'
+            msg['To'] = email
+            s = smtplib.SMTP('localhost')
+            s.sendmail('no-reply@farms2face.com', [email], msg.as_string())
+
             json_response['success'] = True 
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 

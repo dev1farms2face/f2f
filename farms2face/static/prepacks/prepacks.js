@@ -16,15 +16,6 @@ $(document).ready(function(){
         location.reload();
     }
     // ^ Reload page logic ends.
-    $('.results-panel').on({
-        'click': function() {
-            if ($('.review:last') != undefined) {
-                $('.review').each(function(){
-                    $(this).clone().insertAfter($('.review:last'));
-                });
-            }
-        }
-    }, '.see-more');
     $('div.results-panel img.featured-right.arrow').click(function(){
         var pos = $('div.results-panel div.prepacks').scrollLeft() + 290;
         $('div.results-panel div.prepacks').animate( { scrollLeft: pos }, 400, 'easeOutQuad');

@@ -7,6 +7,17 @@ $(document).ready(function(){
     if ((is_chrome)&&(is_safari)) {is_safari=false;}
     if ((is_chrome)&&(is_opera)) {is_chrome=false;}
     var speed = 0.3;
+    setTimeout(function(){ 
+        if(nobanner) return;
+        $('div.banner').slideDown(200); 
+        $('#title-panel').css('padding-top', '40px');
+    }, 3000)
+    $('div.banner').on({
+        'click': function() {
+            $(this).closest('div.banner').slideUp(100);
+            $('#title-panel').css('padding-top', '0px');
+        },
+    }, 'label.cross')
     window.updateBackground = function($els) {
         if ((is_explorer) || (is_firefox) || (is_opera)) {
             return; // too jittery;
@@ -27,5 +38,12 @@ $(document).ready(function(){
     if (window.location.href.indexOf("/shop/") >= 0) {
         $("html, body").animate({ scrollTop: $('#featured-panel').offset().top+45 });
     }
+    if (window.location.href.indexOf("/process/") >= 0) {
+        $("html, body").animate({ scrollTop: $('#how-panel').offset().top });
+    }
+    $(document).on({
+        ajaxStart: function() { $('body').addClass("loading");  },
+        ajaxStop: function() { $('body').removeClass("loading"); }    
+    });
 });
 

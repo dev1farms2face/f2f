@@ -1,13 +1,13 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css"
-  href="{% static 'home/facepack.css' %}" />
+  href="{{ item.base_url }}{% static 'home/facepack.css' %}" />
 <script type="text/javascript"
-  src="{% static 'home/facepack.js' %}"></script>
+  src="{{ item.base_url }}{% static 'home/facepack.js' %}"></script>
 <div class="image-cell">
   <img class="bottle"
        {% if item.mandatory %}
-       src="{% static 'facepackwizard/images/F2F_cart_product.png' %}" alt="" />
+       src="{{ item.base_url }}{% static 'facepackwizard/images/F2F_cart_product.png' %}" alt="" />
        {% else %}
        src="/images/{{ item.image }}" alt="" />
        {% endif %}
@@ -18,13 +18,13 @@
   <div class="ingredient-panel">
     {% for m in item.mandatory %}
     <div class="ingredient-item">
-      <img src="/images/{{ m.image }}" alt="" />
+      <img src="{{ item.base_url }}/images/{{ m.image }}" alt="" />
       <p class="name">{{ m.name|upper}}</p>
     </div>
     {% endfor %}
     {% if item.optional %}
     <div class="ingredient-item">
-      <img src="/images/{{ item.optional.image }}" alt="" />
+      <img src="{{ item.base_url }}/images/{{ item.optional.image }}" alt="" />
       <p class="name">{{ item.optional.name|upper }}</p>
     </div>
     {% endif %}

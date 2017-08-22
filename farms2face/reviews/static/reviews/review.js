@@ -45,7 +45,6 @@ $(document).ready(function(){
     $('div.review-panel div.review div.pic-container div.pic div.modal').on({
         'keyup': function(e) {
             if (e.which == 27) {
-                console.log("HHHHHHHH");
                 $(this).closest('div.modal').hide();
             }
         },

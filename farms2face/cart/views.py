@@ -12,7 +12,11 @@ import datetime
 import json
 import random
 import stripe
+import re
 import farms2face.settings as settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from home.templatetags.common_tags import facepack_display_abs
 
 
 # Create your views here.
@@ -122,6 +126,42 @@ def checkout(request):
                 ph.quantity = c.quantity
                 ph.save()
                 c.delete()
+            to_email = ph.user.email
+            from_email = 'no-reply@farms2face.com'
+            text_content = "Order Received"
+            html_content = "<h2>Order Summary:</h2>"
+            ind = 1
+            url = request.get_raw_uri().replace(request.get_full_path(),'')
+            url = "https://www.farms2face.com"
+            for ph in payment.purchasehistory_set.all():
+                html_content += "<hr>"+render_to_string('facepack_mail.html', facepack_display_abs(url, ph.item.id))
+                html_content += "<p>Type: <b>%s</b></p>" % "A-LA-CARTE" if ph.type == "buy" else "NEVER RUN OUT"
+                html_content += "<p>Qty: <b>%d</b></p>" % ph.quantity
+                html_content += "<p>Price: <b>$%0.2f</b></p>" % ph.item.price
+                html_content += "<a href='%s/admin/payments/purchasehistory/%d'>Admin link</a>" % (url, ph.id)
+                ind += 1
+            html_content += "<hr><p>Order Total: <b>$%0.2f</b></p>" % payment.total
+            sh = None
+            if ShippingAddress.objects.filter(profile=ph.user.profile, primary=True).count() == 1:
+                sh = ShippingAddress.objects.get(profile=ph.user.profile, primary=True)
+            html_content += "<hr><h3>Shipping:</h3>"
+            html_content += "<p>%s %s<br>" % (sh.first_name, sh.last_name)
+            html_content += "%s<br>" % sh.street1
+            html_content += "%s<br>" % sh.city
+            html_content += "%s<br>" % sh.state
+            html_content += "%s<br></p>" % sh.zipcode
+            html_content += "<hr><h3>You will receive an update on accurate shipping times and tracking info in the next few days</h3>"
+            html_content_admin = html_content
+            html_content = re.sub('<a.*a>','', html_content)
+            msg = EmailMultiAlternatives('Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, [to_email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+           
+            # Send email to admin with links 
+            msg = EmailMultiAlternatives('Admin - Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, 
+                  [i['email'] for i in User.objects.filter(is_superuser=True).values('email')])
+            msg.attach_alternative(html_content_admin, "text/html")
+            msg.send()
             json_response['success'] = True
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
@@ -130,7 +170,7 @@ def view_cart(request):
     data = {}
     #init_user_login(request)
     cart_items = []
-    shipping_id = int(request.GET.get('shipping')) if request.GET.get('shipping') else 1
+    shipping_id = int(request.GET.get('shipping')) if request.GET.get('shipping') else 4
     shipping = Shipping.objects.get(pk=shipping_id)
     subtotal = Decimal('0.00');
     total = Decimal('0.00');
@@ -165,6 +205,7 @@ def view_cart(request):
                 'price'        : '$'+str(c.item.price*c.quantity) if c.type == "buy" else '$'+str(c.item.price)
             })
             subtotal += c.item.price*c.quantity
+    promo_discount = sum([p.discount for p in Promo.objects.filter(active=True)])
     data = {
         'cart_size' : cart_size(request),
         'cart_items': cart_items,
@@ -174,10 +215,11 @@ def view_cart(request):
         'shipping_cost'   : '$'+str(shipping.cost),
         'shipping_helper' : shipping.helper,
         'subtotal'        : '$'+str(subtotal),
-        'total'           : '$'+str(subtotal+shipping.cost) ,
-        'total_cents'     : (subtotal+shipping.cost)*100,
+        'total'           : '$'+str(subtotal+shipping.cost-promo_discount) ,
+        'total_cents'     : (subtotal+shipping.cost-promo_discount)*100,
         'valid_user'      : get_valid_user_data(request),
         'is_anonymous'    : user.username.startswith("anon_"),
+        'promo'           : Promo.objects.filter(active=True),
     }
     return render(request, "cart.html", data)
 

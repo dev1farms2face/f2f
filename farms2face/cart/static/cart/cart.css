@@ -242,20 +242,29 @@ div.cart-panel div.bottom-panel div.checkout-panel p.helper {
     display: block;
     width: 100%;
     text-align: left;
-    margin-top: 20px;
     white-space: normal;
+    color: #888;
 }
 
-div.cart-panel div.bottom-panel div.checkout-panel p.promo {
+div.cart-panel div.bottom-panel div.checkout-panel div.promo {
+    display: block;
     font-size: 12px;
     color: #667a42;
     font-weight: bold;
-    display: block;
     width: 100%;
     letter-spacing: 1px;
     text-align: left;
-    margin-top: 20px;
-    cursor: pointer;
+    margin-top: 10px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.promo p.name {
+    display: inline-block;
+    float: left;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.promo p.discount {
+    display: inline-block;
+    float: right;
 }
 
 div.cart-panel div.bottom-panel div.checkout-panel div.total-panel{

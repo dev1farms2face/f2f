@@ -140,6 +140,26 @@ p.badge-4-text {
         width: 150px;
 }
 
+p.button {
+        display: inline-block;
+        color: white;
+        font-family: "Roboto";
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 5px 10px 5px 10px;
+        margin-left: 10px;
+}
+
+p.button a {
+        text-decoration: none !important;
+        color: white !important;
+}
+
 p.personal {
         font-family: "Selima";
         color: #627254;
@@ -167,10 +187,18 @@ p.personal {
         margin-top: 250px;
         padding-bottom: 50px;
 }
-img.featured-collection-txt {
+#featured-collection p.featured-collection-txt {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 100px;
+        font-family: 'amaticsc';
+        font-size: 120px;
+        text-align: left;
+        color: white;
         width: 350px;
         text-align: center;
-        margin-top: 150px;
+        padding-top: 170px;
 }
 p.shop-now {
         margin-top: 20px;

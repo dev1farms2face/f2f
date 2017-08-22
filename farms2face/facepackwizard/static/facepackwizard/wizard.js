@@ -7,7 +7,7 @@ $(document).ready(function(){
             $('.question-panel:first').nextAll().hide();
             $('.show-matches').hide();
             $("html, body").animate({ scrollTop: $('.question-panel:first').offset().top-130 });
-    }, 10000);
+    }, 2000);
     $('div.wizard-panel').on({
         'mouseenter': function() {
                 hr = $(this).siblings('.hr');

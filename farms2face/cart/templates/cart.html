@@ -101,7 +101,13 @@
               <p class="cost">{{ shipping_cost }}</p>
             </div>
             <p class="helper">{{ shipping_helper }}</p>
-            <!-- <p class="promo">Apply Promo Code or Gift Card</p> -->
+            {% for pr in  promo %}
+            <div class="promo">
+              <p class="name">{{ pr.name }}</p>
+              <p class="discount">-{{ pr.discount }}</p>
+            </div>
+            <br>
+            {% endfor %}
             <hr>
             <div class="total-panel">
               <p class="name">Total Before Tax:</p>

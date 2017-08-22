@@ -7,6 +7,22 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
+class Privacy(models.Model):
+    name = models.CharField(max_length=1000)
+    details = models.CharField(max_length=5000)
+    def __str__(self):
+        return self.name+" "+self.details[:20]
+
+class Contact(models.Model):
+    name = models.CharField(max_length=1000)
+    def __str__(self):
+        return self.name
+
+class Disclaimer(models.Model):
+    name = models.CharField(max_length=1000)
+    def __str__(self):
+        return self.name
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=1000)
     helper = models.CharField(max_length=1000, blank=True, null=True)

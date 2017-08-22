@@ -17,8 +17,12 @@
     <div class="description">
       <br>
       <p class="name">{{ p.facepack.name }}</p>
+      <p class="highlights">Highlights</p>
+      <p class="details">{{ p.highlights }}</p>
+      <p class="highlights">Description</p>
       <p class="details">{{ p.facepack.description }} </p>
-      <br>
+      <p class="who">Who can use this?</p>
+      <p class="details">{{ p.who }}</p>
       <p class="made-with">Made with</p>
       {% if ing %}
       <div class="ing">
@@ -32,10 +36,6 @@
       {% else %}
       <p class="details">{{ p.made_with }}</p>
       {% endif %}
-      <p class="highlights">Highlights</p>
-      <p class="details">{{ p.highlights }}</p>
-      <p class="who">Who can use this?</p>
-      <p class="details">{{ p.who }}</p>
       <div class="purchase-panel">
         {% if fp %}
           {% if fp_type == "buy" %}

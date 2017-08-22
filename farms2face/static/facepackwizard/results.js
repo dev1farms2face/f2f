@@ -16,15 +16,6 @@ $(document).ready(function(){
         location.reload();
     }
     // ^ Reload page logic ends.
-    $('.results-panel').on({
-        'click': function() {
-            if ($('.review:last') != undefined) {
-                $('.review').each(function(){
-                    $(this).clone().insertAfter($('.review:last'));
-                });
-            }
-        }
-    }, '.see-more');
     var addToCart = function(button) {
         // POST registration data to server
         // Check which button is clicked and add o_id accordingly for fp1, fp2 or fp3
@@ -51,6 +42,7 @@ $(document).ready(function(){
                     'o_id' : o_id,
                     'type' : type, 
                     'fp_id' : fp_id, 
+                    'qd_id': qd_id,
                 })
             },
             success: function(data) {
@@ -91,7 +83,9 @@ $(document).ready(function(){
         if($(this).hasClass('buy-clicked')) {
             removeFromCart($(this));
         }else{
-            addToCart($(this));
+            alert("Hi");
+            console.log("Hi");
+            //addToCart($(this));
         }
     });
 });
