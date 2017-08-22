@@ -1,0 +1,19 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'home/disclaimer.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'home/disclaimer.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="disclaimer-panel">
+  <p class="title">Disclaimer</p>
+  {% for i in disclaimer %}
+    <p class="disclaimer">{{ i }}</p>
+  {% endfor %}
+</div>
+{% endblock %}
