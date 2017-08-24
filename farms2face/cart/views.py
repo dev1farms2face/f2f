@@ -31,68 +31,98 @@ def thanks(request):
 def checkout(request):
     json_response = { 'success': False }
     if request.method == 'POST':
-        init_user_login(request)
-        user = request.user
-        data = json.loads(request.POST['data'])
-        shipping_id = data['shipping_id']
-        token_id = data['token_id']
-        token_id = "tok_visa"
-        shipping = Shipping.objects.get(pk=shipping_id)
-        # Check for valid payment option
-        if hasattr(user, 'cart_set') and shipping:
-            total = Decimal('0.00');
-            subtotal = Decimal('0.00');
-            for c in user.cart_set.all():
-                subtotal += c.item.price*c.quantity     
-            total = subtotal + shipping.cost
-            # 1. make payment
-            # Stripe charge code
-            ch = None
-            payment_type = None
-            stripe.api_key = settings.STRIPE_API_KEY
-            if hasattr(user, 'paymenttype_set') and user.paymenttype_set.count() > 0:
-                # Stripe customer already registered.
-                customer_id = user.paymenttype_set.get(user=user).stripe.customer_id
-                ch = stripe.Charge.create(
-                    amount=int(total*100),
-                    currency="usd",
-                    description="Charge for "+user.email,
-                    customer=customer_id,
-                )
-                payment_type = user.paymenttype_set.all()[0].stripe
-            else:
-                # New Stripe account, create charge
-                ch = stripe.Charge.create(
-                    amount=int(total*100),
-                    currency="usd",
-                    description="Charge for "+user.email,
-                    source = token_id
-                )
-                # Create Stripe customer object
-                cu = stripe.Customer.create(
-                    description="Customer "+user.email,
-                    email=user.email,
-                    source = token_id
-                ) 
-                # Add a local stripe payment type object
-                s = Stripe() 
-                s.customer_id = cu.id
-                s.user = user
-                s.street = data.get('b_addr1', "")
-                s.city = data.get('b_city', "")
-                s.state = data.get('b_state', "")
-                s.country = data.get('b_country', "")
-                s.zipcode = data.get('b_zip', "")
-                s.primary = True
-                s.type = ch.source.brand
-                s.created = ch.created
-                s.owner_name = data.get('b_name', "")
-                s.number = ch.source.last4
-                s.expiry = datetime.datetime.strptime(str(ch.source.exp_year)+\
-                           "-"+str(ch.source.exp_month), '%Y-%m')
-                s.save()
-                payment_type = s
-                
+        try:
+            init_user_login(request)
+            user = request.user
+            data = json.loads(request.POST['data'])
+            shipping_id = data['shipping_id']
+            token_id = data['token_id']
+            #token_id = "tok_visa"
+            shipping = Shipping.objects.get(pk=shipping_id)
+            # Check for valid payment option
+            if hasattr(user, 'cart_set') and shipping:
+                total = Decimal('0.00');
+                subtotal = Decimal('0.00');
+                for c in user.cart_set.all():
+                    subtotal += c.item.price*c.quantity     
+                total = subtotal + shipping.cost
+                # 1. make payment
+                # Stripe charge code
+                ch = None
+                payment_type = None
+                stripe.api_key = settings.STRIPE_API_KEY
+                if hasattr(user, 'paymenttype_set') and user.paymenttype_set.count() > 0:
+                    # Stripe customer already registered.
+                    customer_id = user.paymenttype_set.last().stripe.customer_id
+                    ch = stripe.Charge.create(
+                        amount=int(total*100),
+                        currency="usd",
+                        description="Charge for "+user.email,
+                        receipt_email=user.email,
+                        customer=customer_id,
+                    )
+                    payment_type = user.paymenttype_set.last().stripe
+                    exp_date = datetime.datetime.strptime(str(ch.source.exp_year)+\
+                                "-"+str(ch.source.exp_month), '%Y-%m')
+                    if ch.source.last4 != payment_type.number or exp_date != payment_type.expiry or data.get('b_zip', "") != payment_type.zipcode or data.get('b_state', "") != payment_type.state or data.get('b_city', "") != payment_type.city or data.get('b_name', "") != payment_type.owner_name or ch.source.brand != payment_type.type or data.get('b_addr1', "") != payment_type.street:
+    
+                        # Add a local stripe payment type object
+                        s = Stripe() 
+                        s.customer_id = customer_id
+                        s.user = user
+                        s.street = data.get('b_addr1', "")
+                        s.city = data.get('b_city', "")
+                        s.state = data.get('b_state', "")
+                        s.country = data.get('b_country', "")
+                        s.zipcode = data.get('b_zip', "")
+                        s.primary = True
+                        s.type = ch.source.brand
+                        s.created = ch.created
+                        s.owner_name = data.get('b_name', "")
+                        s.number = ch.source.last4
+                        s.expiry = exp_date
+                        user.paymenttype_set.all().delete()
+                        s.save()
+                        payment_type = s
+                else:
+                    # New Stripe account, create charge
+                    ch = stripe.Charge.create(
+                        amount=int(total*100),
+                        currency="usd",
+                        description="Charge for "+user.email,
+                        receipt_email=user.email,
+                        source = token_id
+                    )
+                    # Create Stripe customer object
+                    cu = stripe.Customer.create(
+                        description="Customer "+user.email,
+                        email=user.email,
+                        source = token_id
+                    ) 
+                    customer_id = cu.id
+
+                    exp_date = datetime.datetime.strptime(str(ch.source.exp_year)+\
+                                "-"+str(ch.source.exp_month), '%Y-%m')
+    
+                    # Add a local stripe payment type object
+                    s = Stripe() 
+                    s.customer_id = cu.id
+                    s.user = user
+                    s.street = data.get('b_addr1', "")
+                    s.city = data.get('b_city', "")
+                    s.state = data.get('b_state', "")
+                    s.country = data.get('b_country', "")
+                    s.zipcode = data.get('b_zip', "")
+                    s.primary = True
+                    s.type = ch.source.brand
+                    s.created = ch.created
+                    s.owner_name = data.get('b_name', "")
+                    s.number = ch.source.last4
+                    s.expiry = exp_date
+                    user.paymenttype_set.all().delete()
+                    s.save()
+                    payment_type = s
+                    
                 # make a local ShippingAddress object
                 sh = ShippingAddress()
                 sh.profile = user.profile
@@ -105,64 +135,69 @@ def checkout(request):
                 sh.state = data.get('s_state', "") 
                 sh.country = data.get('s_country', "") 
                 sh.zipcode = data.get('s_zip', "") 
-                if ShippingAddress.objects.filter(profile=user.profile, primary=True).count() == 0:
-                    sh.primary = True
-                    sh.save()
-            # Make local payment object based on above charge
-            payment = Payment()
-            payment.user = user
-            payment.type = payment_type
-            payment.total = total
-            payment.save()
-            # 2. record purchase history, while (re)moving entry from cart
-            for c in user.cart_set.all():
-                ph = PurchaseHistory()
-                ph.user = user
-                ph.payment = payment
-                ph.item = c.item
-                ph.shipping = shipping
-                ph.type = c.type
-                ph.subtype = c.subtype
-                ph.quantity = c.quantity
-                ph.save()
-                c.delete()
-            to_email = ph.user.email
-            from_email = 'no-reply@farms2face.com'
-            text_content = "Order Received"
-            html_content = "<h2>Order Summary:</h2>"
-            ind = 1
-            url = request.get_raw_uri().replace(request.get_full_path(),'')
-            url = "https://www.farms2face.com"
-            for ph in payment.purchasehistory_set.all():
-                html_content += "<hr>"+render_to_string('facepack_mail.html', facepack_display_abs(url, ph.item.id))
-                html_content += "<p>Type: <b>%s</b></p>" % "A-LA-CARTE" if ph.type == "buy" else "NEVER RUN OUT"
-                html_content += "<p>Qty: <b>%d</b></p>" % ph.quantity
-                html_content += "<p>Price: <b>$%0.2f</b></p>" % ph.item.price
-                html_content += "<a href='%s/admin/payments/purchasehistory/%d'>Admin link</a>" % (url, ph.id)
-                ind += 1
-            html_content += "<hr><p>Order Total: <b>$%0.2f</b></p>" % payment.total
-            sh = None
-            if ShippingAddress.objects.filter(profile=ph.user.profile, primary=True).count() == 1:
-                sh = ShippingAddress.objects.get(profile=ph.user.profile, primary=True)
-            html_content += "<hr><h3>Shipping:</h3>"
-            html_content += "<p>%s %s<br>" % (sh.first_name, sh.last_name)
-            html_content += "%s<br>" % sh.street1
-            html_content += "%s<br>" % sh.city
-            html_content += "%s<br>" % sh.state
-            html_content += "%s<br></p>" % sh.zipcode
-            html_content += "<hr><h3>You will receive an update on accurate shipping times and tracking info in the next few days</h3>"
-            html_content_admin = html_content
-            html_content = re.sub('<a.*a>','', html_content)
-            msg = EmailMultiAlternatives('Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, [to_email])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
-           
-            # Send email to admin with links 
-            msg = EmailMultiAlternatives('Admin - Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, 
-                  [i['email'] for i in User.objects.filter(is_superuser=True).values('email')])
-            msg.attach_alternative(html_content_admin, "text/html")
-            msg.send()
-            json_response['success'] = True
+                ShippingAddress.objects.filter(profile=user.profile).delete()
+                sh.primary = True
+                sh.save()
+
+                # Make local payment object based on above charge
+                payment = Payment()
+                payment.user = user
+                payment.type = payment_type
+                payment.total = total
+                payment.save()
+                # 2. record purchase history, while (re)moving entry from cart
+                for c in user.cart_set.all():
+                    ph = PurchaseHistory()
+                    ph.user = user
+                    ph.payment = payment
+                    ph.item = c.item
+                    ph.shipping = shipping
+                    ph.type = c.type
+                    ph.subtype = c.subtype
+                    ph.quantity = c.quantity
+                    ph.save()
+                    c.delete()
+                to_email = ph.user.email
+                from_email = 'no-reply@farms2face.com'
+                text_content = "Order Received"
+                html_content = "<h2>Order Summary:</h2>"
+                ind = 1
+                url = request.get_raw_uri().replace(request.get_full_path(),'')
+                url = "https://www.farms2face.com"
+                for ph in payment.purchasehistory_set.all():
+                    html_content += "<hr>"+render_to_string('facepack_mail.html', facepack_display_abs(url, ph.item.id))
+                    html_content += "<p>Type: <b>%s</b></p>" % "A-LA-CARTE" if ph.type == "buy" else "NEVER RUN OUT"
+                    html_content += "<p>Qty: <b>%d</b></p>" % ph.quantity
+                    html_content += "<p>Price: <b>$%0.2f</b></p>" % ph.item.price
+                    html_content += "<a href='%s/admin/payments/purchasehistory/%d'>Admin link</a>" % (url, ph.id)
+                    ind += 1
+                html_content += "<hr><p>Order Total: <b>$%0.2f</b></p>" % payment.total
+                sh = None
+                if ShippingAddress.objects.filter(profile=ph.user.profile, primary=True).count() == 1:
+                    sh = ShippingAddress.objects.get(profile=ph.user.profile, primary=True)
+                html_content += "<hr><h3>Shipping:</h3>"
+                html_content += "<p>%s %s<br>" % (sh.first_name, sh.last_name)
+                html_content += "%s<br>" % sh.street1
+                html_content += "%s<br>" % sh.city
+                html_content += "%s<br>" % sh.state
+                html_content += "%s<br></p>" % sh.zipcode
+                html_content += "<hr><h3>You will receive an update on accurate shipping times and tracking info in the next few days</h3>"
+                html_content_admin = html_content
+                html_content = re.sub('<a.*a>','', html_content)
+                msg = EmailMultiAlternatives('Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, [to_email])
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+               
+                # Send email to admin with links 
+                msg = EmailMultiAlternatives('Admin - Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, 
+                      [i['email'] for i in User.objects.filter(is_superuser=True).values('email')])
+                msg.attach_alternative(html_content_admin, "text/html")
+                msg.send()
+                json_response['success'] = True
+        except Exception as e:
+                json_response['error'] = str(e)
+                print(str(e))
+                print(json.loads(request.POST['data']))
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))
 
 

@@ -13,6 +13,7 @@ $(document).ready(function(){
         }
     }, 'p.remove');
     checkout = function(token_id, args) {
+        console.log(token_id);
         // POST cart remove to server
         if( is_anonymous == "True" ) {
             console.log("/signin/new/?next=/cart/");
@@ -43,16 +44,21 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                if(data['success'])
+                if(data['success']) {
                     window.location = "/thanks/";
-                else
+                } else {
+                    //alert("Checkout Error: "+data['error']); 
+                    alert("Error: Please contact sysadmin");
                     window.location = "/myaccount/shipping-&-payments/";
+                }
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert("Failed: "+data['error']); 
+                //alert("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert("Error: "+data['error']); 
+                //alert("Error: Please contact sysadmin");
             }
         })
     }

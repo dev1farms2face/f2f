@@ -240,7 +240,13 @@ def login_user(request):
                 u.email = data['email']
                 u.username = data['email']
                 u.set_password(data['password'])
+                u.first_name="New"
+                u.last_name="User"
                 u.save()
+                if not hasattr(u, 'profile'):
+                    up = Profile()
+                    up.user = u
+                    up.save()
                 request.user = u
         current_user = request.user
         if social == 'fb': 
