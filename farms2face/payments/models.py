@@ -18,9 +18,8 @@ class Shipping(models.Model):
     type = models.CharField(max_length=1000)
     cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     helper = models.CharField(max_length=1000, blank=True, null=True)
-    tracking = models.CharField(max_length=1000, blank=True, null=True)
     def __str__(self):
-        return str(self.id)+" "+str(self.type)
+        return str(self.type)
     def get_days(self):
         if self.id == 1:
             return 1
@@ -80,11 +79,13 @@ class PurchaseHistory(models.Model):
     payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
     item = models.ForeignKey('home.Item', on_delete=models.CASCADE)
     type = models.CharField(max_length=10, default="buy")
-    subtype = models.CharField(max_length=10, null=True, default=None)
+    subtype = models.CharField(max_length=10, null=True, blank=True, default=None)
     shipping = models.ForeignKey(Shipping, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     ship_date = models.DateField(blank=True, null=True)
     is_fulfilled = models.BooleanField(default=False)
+    tracking = models.CharField(max_length=1000, blank=True, null=True)
+    prev_tracking = ""
     readonly_fields = ('shippingaddress_callable',)
     def __str__(self):
         fulfilled_status = "Fulfilled" if self.is_fulfilled else "Not Fulfilled"
@@ -103,7 +104,7 @@ class PurchaseHistory(models.Model):
         return fulfilled_status+" | Ordered on: "+\
             self.payment.createdte.strftime("%B %d, %Y")+\
             " | By: "+str(self.user)+" | FaceMask: "+fp_name+\
-            " | Tracking: "+str(self.shipping.tracking)
+            " | Tracking: "+str(self.tracking)
     def save(self, *args, **kwargs):
         if not self.ship_date:
             self.ship_date = datetime.now()+timedelta(days=(self.shipping.get_days()))

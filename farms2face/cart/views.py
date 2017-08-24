@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from home.models import Recipe, MixingAgent, Base, Ingredient, FacePack, CustomFacePack
 from cart.models import Cart
 from userregistration.views import init_user_login
+from django.contrib.auth.models import User
 from home.views import cart_size, get_valid_user_data
 from payments.models import *
 from userregistration.models import *
