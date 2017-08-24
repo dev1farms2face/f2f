@@ -240,14 +240,17 @@ def login_user(request):
                 u.email = data['email']
                 u.username = data['email']
                 u.set_password(data['password'])
-                u.first_name="New"
-                u.last_name="User"
                 u.save()
                 if not hasattr(u, 'profile'):
                     up = Profile()
                     up.user = u
                     up.save()
-                request.user = u
+                # New users need to be redirected to create profile
+                next = '/myaccount/account-details/'
+            else: 
+                # SignUp new user already exists
+                json_response['error'] = "exists"
+                return HttpResponse(json.dumps(json_response, ensure_ascii=False))
         current_user = request.user
         if social == 'fb': 
             social_login_url = "/login/facebook/?next=%s" % next

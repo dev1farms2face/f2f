@@ -64,7 +64,7 @@ $(document).ready(function(){
                 return;
             }
         }
-        console.log(new_user); 
+        //console.log(new_user); 
         // POST login data to server
         $.ajax({
             url: url_login,
@@ -79,9 +79,14 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                if(data != null && data['success'] == false) {
+                //console.log(data);
+                if(data != null && data['error'] == 'exists') {
+                    if(confirm("User already exists, would you like to signin instead?")) {
+                        window.location = '/signin/';
+                    } 
+                } else if(data != null && data['success'] == false) {
                     alert("Invalid email or password")
-                }else{
+                } else {
                     $('#title-panel #login').hide();
                     $('#title-panel #user').text("Welcome "+data['first_name']+"!");
                     window.location = data['next'];

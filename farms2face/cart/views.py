@@ -85,14 +85,6 @@ def checkout(request):
                         s.save()
                         payment_type = s
                 else:
-                    # New Stripe account, create charge
-                    ch = stripe.Charge.create(
-                        amount=int(total*100),
-                        currency="usd",
-                        description="Charge for "+user.email,
-                        receipt_email=user.email,
-                        source = token_id
-                    )
                     # Create Stripe customer object
                     cu = stripe.Customer.create(
                         description="Customer "+user.email,
@@ -100,6 +92,14 @@ def checkout(request):
                         source = token_id
                     ) 
                     customer_id = cu.id
+                    # New Stripe account, create charge
+                    ch = stripe.Charge.create(
+                        amount=int(total*100),
+                        currency="usd",
+                        description="Charge for "+user.email,
+                        receipt_email=user.email,
+                        customer=customer_id
+                    )
 
                     exp_date = datetime.datetime.strptime(str(ch.source.exp_year)+\
                                 "-"+str(ch.source.exp_month), '%Y-%m')
@@ -123,11 +123,25 @@ def checkout(request):
                     s.save()
                     payment_type = s
                     
+                # Don't forget, good idea to instantiate user first/last name from stripe
+                # form for cases where user created a new login and forgot to add details
+                # This is a better approach than creating a default generic user profile
+                # during user signup (aka 'New User' if you know what I mean)
+
+                names = data.get('b_name', "").split()
+                first, last = " ".join(names[0:-1]), names[-1]
+
+                if not hasattr(user, 'profile'):
+                    up = Profile()
+                    up.user = user
+                    up.save()
+                user.first_name = user.first_name or first
+                user.last_name = user.last_name or last
+                user.save()
+
                 # make a local ShippingAddress object
                 sh = ShippingAddress()
                 sh.profile = user.profile
-                names = data.get('b_name', "").split()
-                first, last = " ".join(names[0:-1]), names[-1]
                 sh.first_name = first
                 sh.last_name = last
                 sh.street1 = data.get('s_addr1', "") 
@@ -181,6 +195,7 @@ def checkout(request):
                 html_content += "%s<br>" % sh.city
                 html_content += "%s<br>" % sh.state
                 html_content += "%s<br></p>" % sh.zipcode
+                html_content += "<hr><h3>Ordered by: %s</h3>" % user.email
                 html_content += "<hr><h3>You will receive an update on accurate shipping times and tracking info in the next few days</h3>"
                 html_content_admin = html_content
                 html_content = re.sub('<a.*a>','', html_content)

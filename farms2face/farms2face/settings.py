@@ -31,16 +31,19 @@ if 'farms2face' in sys.modules:
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = '127.0.0.1'
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_HOST_PASSWORD = 'farms2face' #my gmail password
-#EMAIL_HOST_USER = 'farms2face@gmail.com' #my gmail username
-EMAIL_HOST_USER = 'no-reply@farms2face.com' #my gmail username
-#EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-EMAIL_USE_TLS = False
+if 'DEV' in os.environ:
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_PASSWORD = 'farms2face' #my gmail password
+    EMAIL_HOST_USER = 'farms2face@gmail.com' #my gmail username
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    EMAIL_PORT = 587
+else:
+    EMAIL_HOST = '127.0.0.1'
+    EMAIL_HOST_USER = 'no-reply@farms2face.com' #my gmail username
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    EMAIL_USE_TLS = False
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -54,13 +57,12 @@ SESSION_COOKIE_AGE = 10 * 60
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fpit^azx93lk^w6vq=o245=3%p%@yw+pr&x)^hmpo5p2w!%b1x'
 
-"""
-SOCIAL_AUTH_FACEBOOK_KEY = '114214335784895'
-SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f' 
-"""
-
-SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
-SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
+if 'DEV' in os.environ:
+    SOCIAL_AUTH_FACEBOOK_KEY = '114214335784895'
+    SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f' 
+else:
+    SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
+    SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
 
 # Stripe API KEY
 STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"

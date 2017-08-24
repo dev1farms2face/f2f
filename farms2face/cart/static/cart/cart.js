@@ -13,10 +13,10 @@ $(document).ready(function(){
         }
     }, 'p.remove');
     checkout = function(token_id, args) {
-        console.log(token_id);
+        //console.log(token_id);
         // POST cart remove to server
         if( is_anonymous == "True" ) {
-            console.log("/signin/new/?next=/cart/");
+            //console.log("/signin/new/?next=/cart/");
             return;
             //window.location = "/signin/new/?next=/cart/";
         }
