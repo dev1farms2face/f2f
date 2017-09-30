@@ -120,6 +120,7 @@ def home(request):
         'cart_size' : cart_size(request),
         'valid_user': get_valid_user_data(request),
         'prepacks': [p.facepack for p in PrePack.objects.all()],
+        'skin_type': request.GET.get('skin_type', None)
     }
     return render(request, "home.html", data)
 
@@ -386,12 +387,13 @@ def post_remove_cart(request):
         data = json.loads(request.POST['data'])
         facepack_id = int(data['facepack_id'])
         facepack = FacePack.objects.get(id=facepack_id)
+        # If Prepack, then no point comparing users instead just remove item from cart.
+        if PrePack.objects.filter(facepack=facepack).count() > 0:
+            user.cart_set.filter(item__id=facepack_id).delete()
+            json_response['success'] = True
         # Check if indeed cart item remove operation is done by intended user
-        if facepack.cart_set.all()[0].user == user:
-            if PrePack.objects.filter(facepack=facepack).count() > 0:
-                facepack.cart_set.all()[0].delete()
-            else:
-                facepack.delete()
+        elif facepack.cart_set.all()[0].user == user:
+            facepack.delete()
             json_response['success'] = True
         json_response['cart_size'] = user.cart_set.count()
     return HttpResponse(json.dumps(json_response, ensure_ascii=False))

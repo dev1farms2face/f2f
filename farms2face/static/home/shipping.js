@@ -28,11 +28,11 @@ var post_data = function(container) {
             location.reload();
         },
         failure: function(data) {
-            alert("Failed: Please contact sysadmin");
+            alert_custom("Failed: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -134,7 +134,7 @@ $(document).ready(function(){
             container = $(this).closest('div.shipping').find('div.address-panel');
             post_data(container);
         }else{
-            alert("Incomplete form, please correct errors");
+            alert_custom("Incomplete form, please correct errors");
         }
     });
     $('div.shipping div.address-panel p.cancel').click(function(){
@@ -175,12 +175,12 @@ $(document).ready(function(){
         url = $(this).attr('url'); 
     });
     $('div.shipping-address p.delete').click(function(){
-        if(confirm("Are you sure you want to delete this address?")) {
-            id = $(this).closest('div.shipping-address').attr('id');
-            url = $(this).attr('url'); 
-            container = $(this).closest('div.shipping').find('div.address-panel');
+        confirm_custom("Are you sure you want to delete this address?", function(this) {
+            id = this.closest('div.shipping-address').attr('id');
+            url = this.attr('url'); 
+            container = this.closest('div.shipping').find('div.address-panel');
             post_data(container);
-        }
+        }, $(this));
     });
     $('div.shipping-address div.primary input').change(function(){
         id = $(this).closest('div.shipping-address').attr('id');
@@ -205,7 +205,7 @@ $(document).ready(function(){
             url = $(this).attr('url');
             post_data(container);
         }else{
-            alert("Incomplete form, please correct errors");
+            alert_custom("Incomplete form, please correct errors");
         }
     });
     $('div.payment-types div.primary input').change(function(){
@@ -216,12 +216,12 @@ $(document).ready(function(){
         post_data(container);
     });
     $('div.payment-types p.delete').click(function(){
-        if(confirm("Are you sure you want to delete this address?")) {
-            id = $(this).closest('div.payment-type').attr('id');
-            url = $(this).attr('url'); 
-            container = $(this).closest('div.payments');
+        confirm_custom("Are you sure you want to delete this address?", function(this) {
+            id = this.closest('div.payment-type').attr('id');
+            url = this.attr('url'); 
+            container = this.closest('div.payments');
             post_data(container);
-        }
+        }, $(this));
     });
     $('div.payment-types p.edit').click(function(){
         $('div.payments p.new-payment').hide();

@@ -1,0 +1,25 @@
+div.privacy-panel {
+    padding: 200px;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+div.privacy-panel p.title {
+    color: #222;
+    font-family: 'Roboto';
+    margin-bottom: 20px;
+}
+
+div.privacy-panel p.privacy-name {
+    font-family: 'Roboto';
+    color: #444;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+div.privacy-panel p.privacy-detail {
+    font-family: 'Roboto';
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}  

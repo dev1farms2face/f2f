@@ -15,14 +15,14 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                alert("Password successfully changed! Please login again using new credentials");
+                alert_custom("Password successfully changed! Please login again using new credentials");
                 window.location = "/signin/"; 
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     };
@@ -31,9 +31,9 @@ $(document).ready(function(){
         p  = $('div.forgot-panel').find('input.pass').val();
         cp = $('div.forgot-panel').find('input.cpass').val();
         if(p != cp) {
-            alert("Passwords don't match"); 
+            alert_custom("Passwords don't match"); 
         } else if (p.length < 8 || p.length > 20) {
-            alert("Password needs to be between 8 and 20 character length");
+            alert_custom("Password needs to be between 8 and 20 character length");
         } else {
             submit_pass_change(p);
         }

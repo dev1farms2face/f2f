@@ -64,10 +64,10 @@ $(document).ready(function(){
 	        display_skin_concerns(skinconcern_list);
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -93,7 +93,7 @@ $(document).ready(function(){
             $(document).find('.skintype').removeClass('skinconcern-hover');
             if(!$(this).hasClass('skinconcern-click') &&
                 $(".skinconcerns").find(".skinconcern[selected='selected']").length == 3) {
-                //alert("Please limit your selection to 3 skin concerns only");
+                //alert_custom("Please limit your selection to 3 skin concerns only");
                 last_skinconcern.removeAttr("selected");
                 last_skinconcern.removeClass('skinconcern-click');
                 last_skinconcern.removeClass('skinconcern-hover');
@@ -160,10 +160,10 @@ $(document).ready(function(){
 	        display_facepacks(data);
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -216,10 +216,10 @@ $(document).ready(function(){
                 $('.cart-link').effect("highlight", { 'color': '#FF3898' }, 300);
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -238,10 +238,10 @@ $(document).ready(function(){
                 $('.cart-link').effect("highlight", { 'color': '#FF3898' }, 300);
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }

@@ -66,30 +66,32 @@ div.badge-panel {
 }
 div.badge-container {
         position: relative;
-        display: table;
-        background-color: red;
+        display: block;
 }
 div.badge-1-panel {
-        position: absolute;
+        display:inline-block;
         top: 40px;
-        left: 120px;
+        margin-left: 1%;
 }
 div.badge-2-panel {
-        position: absolute;
-        top: 145px;
-        left: 370px;
+        display:inline-block;
+        margin-left: 7%;
 }
 div.badge-3-panel {
-        position: absolute;
+        display:inline-block;
         top: 40px;
-        left: 610px;
+        margin-left: 7%;
 }
 div.badge-4-panel {
-        position: absolute;
-        top: 145px;
-        left: 850px;
+        display:inline-block;
+        margin-left: 7%;
 }
-#badge-1-container, #badge-2-container, #badge-3-container, #badge-4-container {
+#badge-1-container, #badge-3-container {
+        display:inline-block;
+        height:156px;
+        width:156px;
+}
+#badge-2-container, #badge-4-container {
         display:inline-block;
         height:156px;
         width:156px;
@@ -97,9 +99,10 @@ div.badge-4-panel {
 badge-1-container-override, badge-2-container-override, badge-3-container-override, badge-4-container-override {
         border-width:0px;
 }
-img.badge-1, img.badge-2, img.badge-3, img.badge-4 {
-        height:100.00%;
-        min-width:100%;
+img.badge-1, img.badge-3 {
+        width:100.00%;
+}
+img.badge-2, img.badge-4 {
         width:100.00%;
 }
 p.badge-text {
@@ -185,7 +188,6 @@ p.personal {
 #featured-collection {
         vertical-align: middle;
         margin-top: 250px;
-        padding-bottom: 50px;
 }
 #featured-collection p.featured-collection-txt {
         display: block;
@@ -193,12 +195,25 @@ p.personal {
         margin-right: auto;
         line-height: 100px;
         font-family: 'amaticsc';
-        font-size: 120px;
+        font-size: 150px;
         text-align: left;
         color: white;
-        width: 350px;
+        width: 750px;
         text-align: center;
         padding-top: 170px;
+}
+#featured-collection p.featured-collection-txt2 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 100px;
+        font-family: 'amaticsc';
+        font-size: 100px;
+        text-align: left;
+        padding-top: 10px;
+        color: white;
+        width: 750px;
+        text-align: center;
 }
 p.shop-now {
         margin-top: 20px;
@@ -224,7 +239,8 @@ p.shop-now {
         #overflow-x: hidden;
         overflow-x: hidden;
         overflow-y: hidden;
-        width: 870px;
+        width: 75%;
+        max-width: 870px;
 }
 #collections div.item {
         display:table-cell;

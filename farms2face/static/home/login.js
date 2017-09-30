@@ -16,17 +16,17 @@ $(document).ready(function(){
             },
             success: function(data) {
                 if(data == null || data['success'] == false) {
-                    alert("Invalid email or password")
+                    alert_custom("Invalid email or password")
                 } else {
-                    alert("Email sent with password reset link.");
+                    alert_custom("Email sent with password reset link.");
                     $('#myModal').hide();
                 }
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         });
 
@@ -54,17 +54,17 @@ $(document).ready(function(){
         password = $('div.login-panel input.password').val();
         if ( email == "Email" || email.trim().length == 0 || 
             password == "Password" || password.trim().length == 0) {
-            alert("Enter valid email/password");
+            alert_custom("Enter valid email/password");
             return;
         } 
         if(new_user) {
             password_confirm = $('div.login-panel input.password.confirm').val();
             if(password != password_confirm) {
-                alert("Passwords don't match, try again");
+                alert_custom("Passwords don't match, try again");
                 return;
             }
         }
-        console.log(new_user); 
+        //console.log(new_user); 
         // POST login data to server
         $.ajax({
             url: url_login,
@@ -79,19 +79,24 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                if(data != null && data['success'] == false) {
-                    alert("Invalid email or password")
-                }else{
+                //console.log(data);
+                if(data != null && data['error'] == 'exists') {
+                    confirm_custom("User already exists, would you like to signin instead?", function() {
+                        window.location = '/signin/';
+                    }, '');
+                } else if(data != null && data['success'] == false) {
+                    alert_custom("Invalid email or password")
+                } else {
                     $('#title-panel #login').hide();
                     $('#title-panel #user').text("Welcome "+data['first_name']+"!");
                     window.location = data['next'];
                 }
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         });
     }
@@ -118,7 +123,7 @@ $(document).ready(function(){
         'click': function() {
             email = $('#myModal').find('input.email').val();
             if ( email == "Email" || email.trim().length == 0)
-                alert("Enter valid (registered) email");
+                alert_custom("Enter valid (registered) email");
             else
                 forgot_pass(email);
         }

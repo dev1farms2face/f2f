@@ -14,11 +14,11 @@ $(document).ready(function(){
                 location.reload();
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
                 location.reload();
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
                 location.reload();
             }
         })

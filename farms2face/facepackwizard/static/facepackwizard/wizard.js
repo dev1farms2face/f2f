@@ -1,13 +1,13 @@
 var submit_url="/post_wizard_submit/"
 $(document).ready(function(){
-    setTimeout(
-        function() {
             $('.question-panel:first').show();
             $('.question-panel:first').find('.option').removeClass('option-selected');
             $('.question-panel:first').nextAll().hide();
             $('.show-matches').hide();
+    setTimeout(
+        function() {
             $("html, body").animate({ scrollTop: $('.question-panel:first').offset().top-130 });
-    }, 2000);
+    }, 10000);
     $('div.wizard-panel').on({
         'mouseenter': function() {
                 hr = $(this).siblings('.hr');
@@ -95,10 +95,10 @@ $(document).ready(function(){
                 window.location = "/wizard/results?"+get_params;
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }

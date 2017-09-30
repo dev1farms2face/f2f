@@ -3,10 +3,15 @@
 {% block htmlhead %}
 
 {% load static %}
+<link rel="icon" href="{% static 'home/favico.png' %}">
 <link rel="stylesheet" type="text/css"
   href="{% static 'home/base.css' %}" />
 <script type="text/javascript"
   src="{% static 'home/base.js' %}"></script>
+<script type="text/javascript"
+  src="{% static 'home/jquery.dialog.min.js' %}"></script>
+<link rel="stylesheet" type="text/css"
+  href="{% static 'home/jquery.dialog.css' %}" />
 
   {% block basehead %}
   {% endblock %}

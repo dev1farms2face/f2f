@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^subscribe/', include('subscriptions.urls')),
     url(r'^payments/', include('payments.urls')),
     url(r'^story/', include('story.urls')),
+    url(r'^reviews/$', reviews.views.review_page),
+    url(r'^reviews/(?P<skin_type>\w+)/', reviews.views.review_page),
     url(r'^faq/', home.views.faq, name='faq'),
     url(r'^disclaimer/', home.views.disclaimer, name='disclaimer'),
     url(r'^contactus/', home.views.contactus, name='contactus'),

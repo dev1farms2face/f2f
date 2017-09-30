@@ -1,3 +1,6 @@
+var alert_custom;
+var confirm_custom;
+
 $(document).ready(function(){
     var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
     var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
@@ -7,6 +10,32 @@ $(document).ready(function(){
     if ((is_chrome)&&(is_safari)) {is_safari=false;}
     if ((is_chrome)&&(is_opera)) {is_chrome=false;}
     var speed = 0.3;
+    alert_custom = function(title) {
+        dialog.alert({
+            title: title,
+            message: "",
+            button: "Close",
+            animation: "fade",
+            callback: function(value){
+                console.log(value);
+            }
+        }); 
+    }
+    confirm_custom = function(title, fn1, args1, fn2, args2) {
+        dialog.confirm({
+            title: title,
+            message: "",
+            cancel: "Cancel",
+            button: "Yes",
+            required: true,
+            callback: function(value){
+                if(value)
+                    fn1(args1);
+                else
+                    fn2(args2);
+            }
+        });
+    }
     setTimeout(function(){ 
         if(nobanner) return;
         $('div.banner').slideDown(200); 

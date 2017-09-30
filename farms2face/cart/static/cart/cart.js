@@ -8,8 +8,7 @@ $(document).ready(function(){
     $('div.cart-panel').on({
         'click': function() {
             item = $(this).closest('tr.item');
-            if(confirm("Are you sure you want to remove item from cart?"))
-                removeFromCart(item);
+            confirm_custom("Are you sure you want to remove item from cart?", removeFromCart, item);
         }
     }, 'p.remove');
     checkout = function(token_id, args) {
@@ -47,18 +46,16 @@ $(document).ready(function(){
                 if(data['success']) {
                     window.location = "/thanks/";
                 } else {
-                    //alert("Checkout Error: "+data['error']); 
-                    alert("Error: Please contact sysadmin");
+                    alert_custom("Error: Please contact sysadmin");
                     window.location = "/myaccount/shipping-&-payments/";
                 }
             },
             failure: function(data) {
-                alert("Failed: "+data['error']); 
-                //alert("Error: Please contact sysadmin");
+                alert_custom("Failed: "+data['error']); 
             },
             error: function(data) {
-                alert("Error: "+data['error']); 
-                //alert("Error: Please contact sysadmin");
+                alert_custom("Error: "+data['error']); 
+                //alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -78,10 +75,10 @@ $(document).ready(function(){
                 location.reload();    
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -102,10 +99,10 @@ $(document).ready(function(){
                 location.reload();    
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -126,10 +123,10 @@ $(document).ready(function(){
                 location.reload();    
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }

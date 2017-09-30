@@ -46,7 +46,8 @@ def checkout(request):
                 subtotal = Decimal('0.00');
                 for c in user.cart_set.all():
                     subtotal += c.item.price*c.quantity     
-                total = subtotal + shipping.cost
+                promo_discount = sum([p.discount for p in Promo.objects.filter(active=True)])
+                total = subtotal + shipping.cost - promo_discount
                 # 1. make payment
                 # Stripe charge code
                 ch = None
@@ -82,7 +83,7 @@ def checkout(request):
                         s.owner_name = data.get('b_name', "")
                         s.number = ch.source.last4
                         s.expiry = exp_date
-                        user.paymenttype_set.all().delete()
+                        # wtf?? user.paymenttype_set.all().delete()
                         s.save()
                         payment_type = s
                 else:
@@ -120,7 +121,7 @@ def checkout(request):
                     s.owner_name = data.get('b_name', "")
                     s.number = ch.source.last4
                     s.expiry = exp_date
-                    user.paymenttype_set.all().delete()
+                    # wtf?? user.paymenttype_set.all().delete()
                     s.save()
                     payment_type = s
                     
@@ -197,7 +198,7 @@ def checkout(request):
                 html_content += "%s<br>" % sh.state
                 html_content += "%s<br></p>" % sh.zipcode
                 html_content += "<hr><h3>Ordered by: %s</h3>" % user.email
-                html_content += "<hr><h3>You will receive an update on accurate shipping times and tracking info in the next few days</h3>"
+                html_content += "<hr><h3>You will receive an update with tracking info in the next few days</h3>"
                 html_content_admin = html_content
                 html_content = re.sub('<a.*a>','', html_content)
                 msg = EmailMultiAlternatives('Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, [to_email])
@@ -208,7 +209,7 @@ def checkout(request):
                 msg = EmailMultiAlternatives('Admin - Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, 
                       [i['email'] for i in User.objects.filter(is_superuser=True).values('email')])
                 msg.attach_alternative(html_content_admin, "text/html")
-                msg.send()
+                #msg.send()
                 json_response['success'] = True
         except Exception as e:
                 json_response['error'] = str(e)

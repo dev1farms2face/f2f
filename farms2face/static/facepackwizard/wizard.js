@@ -7,7 +7,7 @@ $(document).ready(function(){
             $('.question-panel:first').nextAll().hide();
             $('.show-matches').hide();
             $("html, body").animate({ scrollTop: $('.question-panel:first').offset().top-130 });
-    }, 10000);
+    }, 2000);
     $('div.wizard-panel').on({
         'mouseenter': function() {
                 hr = $(this).siblings('.hr');
@@ -95,10 +95,10 @@ $(document).ready(function(){
                 window.location = "/wizard/results?"+get_params;
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }

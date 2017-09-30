@@ -19,11 +19,11 @@ var removeReviewPic = function(ri) {
             $(ri).remove();
         },
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -51,11 +51,11 @@ var getReview = function(tr, r_id) {
             $(tr).find('img.star:eq('+(parseInt(data['rating'])-1)+')').mouseover().click();
         },
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -73,11 +73,11 @@ var saveReview = function(r) {
             location.reload();
         },
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -96,11 +96,11 @@ var deleteReview = function(tr, id) {
             location.reload();
         },
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -126,11 +126,11 @@ var saveMyAccountDetails = function(button) {
             location.reload();
         },
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         },
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
             location.reload();
         }
     })
@@ -154,10 +154,10 @@ var updatePh = function(id, key, val, url) {
             location.reload();    
         },  
         failure: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
         },  
         error: function(data) {
-            alert("Error: Please contact sysadmin");
+            alert_custom("Error: Please contact sysadmin");
         }   
     })
 }
@@ -230,10 +230,10 @@ $(document).ready(function(){
               if(result['success'])
                   location.reload();
               else
-                  alert("Invalid file. Please upload .jpg or .png");
+                  alert_custom("Invalid file. Please upload .jpg or .png");
           },
           error: function(result) {
-              alert("Error: Please contact sysadmin");
+              alert_custom("Error: Please contact sysadmin");
           }
         });
     });
@@ -242,19 +242,22 @@ $(document).ready(function(){
         $('div.photo #upload').trigger('click');
     });
     $('table.subscription-panel td.type select').on('change', function() {
-        if(confirm("Are you sure you want to change your subscription type?")) {
-            tr = $(this).closest('tr');
-            updatePh(tr.attr('id'), 'ph_qty', $(this).val(), tr.attr('url'));
-        }
+        confirm_custom("Are you sure you want to change your subscription type?", function(t) {
+            tr = t.closest('tr');
+            updatePh(tr.attr('id'), 'ph_qty', t.val(), tr.attr('url'));
+        }, $(this));
     });
     $('table.subscription-panel td.item div.ship-date input').blur(function(){
         if($(this).attr('orig') != $(this).val()) {
-            if(confirm("Are you sure you want to reset your subscription ship-date?")) {
-                tr = $(this).closest('tr');
-                updatePh(tr.attr('id'), 'ph_date', $(this).val(), tr.attr('url'));
-            }else{
-                $(this).val($(this).attr('orig'));
-            }
+            t = $(this);
+            confirm_custom("Are you sure you want to reset your subscription ship-date?", 
+            function(t){
+                tr = t.closest('tr');
+                updatePh(tr.attr('id'), 'ph_date', t.val(), tr.attr('url'));
+            }, t,
+            function(t) {
+                t.val(t.attr('orig'));
+            }, t);
         } 
     });
     $('div.myaccount-panel div.content-panel table.order-history p.review').click(function(){
@@ -271,7 +274,7 @@ $(document).ready(function(){
             newReview.find('textarea').css('width','100%');
             newReview.find('textarea').css('height','200px');
             newReview.find('p.rating-status').css('min-height','20px');
-            newReview.find('p.submit').hide();
+            //newReview.find('p.submit').hide();
             if($(this).attr('id')) {
                 getReview(newReview, $(this).attr('id'));
                 newReview.find('p.submit').text('Update Review');
@@ -293,7 +296,7 @@ $(document).ready(function(){
                 $(this).after("<p class='error'>Cannot be more than 1000 characters</p>");
             }
             submit_button = $(this).siblings('p.submit'); 
-            if(len == 0 || len > 1000) {
+            if(len > 1000) {
                 $(this).val(this_val.substring(0,1000)); 
                 submit_button.unbind('click');
                 submit_button.hide();
@@ -353,8 +356,11 @@ $(document).ready(function(){
             review_rating = $(this).siblings('div.rating').attr('rating');
             fp_id = $(this).closest('tr').prev('tr').attr('id');
             review_id = $(this).closest('tr').prev('tr').find('p.review').attr('id');
-            if(!review_rating) {
-                alert('Choose valid rating');
+            if(review_title.trim().length == 0) {
+                alert_custom('Choose valid title');
+            }
+            else if(!review_rating) {
+                alert_custom('Choose valid rating');
             } else {
                 ri_ids = [];
                 $(this).closest('tr').find('div.pic').each(function(){
@@ -373,9 +379,11 @@ $(document).ready(function(){
     }, 'p.submit');
     $('div.myaccount-panel div.content-panel table.order-history').on({
         'click': function() {
-            review_id = $(this).closest('tr').prev('tr').find('p.review').attr('id');
-            if(confirm("Are you sure you want to delete this review?"))
-                deleteReview($(this).closest('tr').prev('tr').find('p.review'), review_id);
+            t = $(this);
+            review_id = t.closest('tr').prev('tr').find('p.review').attr('id');
+            confirm_custom("Are you sure you want to delete this review?", function(t){
+                deleteReview(t.closest('tr').prev('tr').find('p.review'), review_id);
+            }, t);
         }
     }, 'p.delete');
     $('div.myaccount-panel div.content-panel table.order-history').on({
@@ -401,11 +409,11 @@ $(document).ready(function(){
                         "'><img class='review-pic' src='"+pic_url+
                         "'><div class='remove'><p>delete</p></div></div>");
                   } else {
-                      alert("Invalid file. Please upload .jpg or .png");
+                      alert_custom("Invalid file. Please upload .jpg or .png");
                   }
               },
               error: function(result) {
-                  alert("Error: Please contact sysadmin");
+                  alert_custom("Error: Please contact sysadmin");
               }
             });
         }
@@ -419,8 +427,9 @@ $(document).ready(function(){
     }, 'label.upload');
     $('div.myaccount-panel div.content-panel table.order-history').on({
         'click': function() {
-            if(confirm("Delete pic? This cannot be undone."))
-                removeReviewPic($(this).closest('div.pic'));
+            confirm_custom("Delete pic? This cannot be undone", function(t) {
+                removeReviewPic(t.closest('div.pic'));
+            }, $(this));
         }
     }, 'div.remove');
 });

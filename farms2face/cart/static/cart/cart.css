@@ -172,7 +172,7 @@ div.cart-panel div.empty-cart {
 }
 
 div.cart-panel div.empty-cart a {
-    color: #ce9a2b;
+    color: #ce9a2b !important;
     cursor: pointer;
 }
 
@@ -315,7 +315,8 @@ div.thanks-panel p.thanks {
 }
 
 div.thanks-panel p.thanks a { 
-    color: #ce9a2b;
+    color: #ce9a2b !important;
+    font-size: 22px;
 }
 
 div.thanks-panel p.thanks a:hover {

@@ -1,6 +1,7 @@
 *.pyc 
-*.swo
-*.swp
+*.sw*
+*.tgz
+*.sql
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -29,7 +29,7 @@ $(document).ready(function(){
         password = $('.register-password-input').val();
         password_confirm = $('.register-password-confirm-input').val();
         if(password != password_confirm) {
-            alert("Passwords don't match. Try again.")
+            alert_custom("Passwords don't match. Try again.")
             return;
         }
         // POST registration data to server
@@ -47,13 +47,13 @@ $(document).ready(function(){
                 })
             },
             success: function(data) {
-                alert("You're all set! Please check your e-mail to complete registration");
+                alert_custom("You're all set! Please check your e-mail to complete registration");
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
         registerDialog.dialog( "close" );
@@ -93,7 +93,7 @@ $(document).ready(function(){
             },
             success: function(data) {
                 if(data != null && data['success'] == false) {
-                    alert("Invalid email or password")
+                    alert_custom("Invalid email or password")
                 }else{
                     $('.user').text("Welcome "+data['first_name']+"!");
                     $('.login').text("Logout");
@@ -101,11 +101,11 @@ $(document).ready(function(){
                 }
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
                 loginDialog.dialog( "close" );
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
                 loginDialog.dialog( "close" );
             }
         })
@@ -127,10 +127,10 @@ $(document).ready(function(){
                 $('.user').empty();
             },
             failure: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             },
             error: function(data) {
-                alert("Error: Please contact sysadmin");
+                alert_custom("Error: Please contact sysadmin");
             }
         })
     }
@@ -153,10 +153,7 @@ $(document).ready(function(){
         if($('.login').text() == "Login") {
             loginDialog.dialog( "open" );
         } else {
-            if(!confirm("Are you sure you want to logout?")) {
-                return;
-            }
-            logoutUser();
+            confirm_custom("Are you sure you want to logout?", logoutUser, "");
         }
     });
 });
