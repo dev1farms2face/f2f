@@ -175,7 +175,7 @@ def social_user(backend, uid, user=None, *args, **kwargs):
             'new_association': False}
 
 def rename_social_anon_user(backend, uid, user=None, *args, **kwargs):
-    if user and user.username.startswith('anon_'):
+    if user and user.username.startswith('anon_') and user.email:
         objs = User.objects.filter(email=user.email)
         if len(objs) > 1:
             orig = User.objects.get(email=user.email, username=user.email)

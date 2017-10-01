@@ -209,7 +209,7 @@ def checkout(request):
                 msg = EmailMultiAlternatives('Admin - Order Confirmation #%d - Farms2Face' % ph.id, text_content, from_email, 
                       [i['email'] for i in User.objects.filter(is_superuser=True).values('email')])
                 msg.attach_alternative(html_content_admin, "text/html")
-                #msg.send()
+                msg.send()
                 json_response['success'] = True
         except Exception as e:
                 json_response['error'] = str(e)

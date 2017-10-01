@@ -435,7 +435,8 @@ def view_myaccount(request, option=None):
                             },
                             'total': { 
                                 'amount': '$'+str(py.total),
-                                'helper': 'Savings: $18/month',
+                                #'helper': 'Savings: $18/month',
+                                'helper': '',
                             },
                             'name': fp.name,
                             'base': fp.base.name,

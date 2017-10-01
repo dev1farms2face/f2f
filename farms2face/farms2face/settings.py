@@ -65,7 +65,9 @@ else:
     SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
 
 # Stripe API KEY
-STRIPE_API_KEY = "sk_test_QkFnD4Bida9PbLYf9rb8WAgI"
+
+#STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
+STRIPE_API_KEY = "sk_live_axFE7Cz2WpP1UiA1Q2kKrwis"  # Live
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
