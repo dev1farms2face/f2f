@@ -1,5 +1,3 @@
-Source code for farms2face site. Dev sandbox available here:
-
-https://txciggy.pythonanywhere.com/home
+Source code for https://www.farms2face.com
 
 Rajiv.Raja@Gmail.COM
