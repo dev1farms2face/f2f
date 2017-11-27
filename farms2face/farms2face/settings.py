@@ -66,8 +66,8 @@ else:
 
 # Stripe API KEY
 
-#STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
-STRIPE_API_KEY = "sk_live_axFE7Cz2WpP1UiA1Q2kKrwis"  # Live
+STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
+#STRIPE_API_KEY = "sk_live_axFE7Cz2WpP1UiA1Q2kKrwis"  # Live
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
