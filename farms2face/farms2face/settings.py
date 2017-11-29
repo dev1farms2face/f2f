@@ -39,11 +39,13 @@ if 'DEV' in os.environ:
     EMAIL_HOST_USER = 'farms2face@gmail.com' #my gmail username
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
     EMAIL_PORT = 587
+    DEBUG = True
 else:
     EMAIL_HOST = '127.0.0.1'
     EMAIL_HOST_USER = 'no-reply@farms2face.com' #my gmail username
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
     EMAIL_USE_TLS = False
+    DEBUG = False
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -70,7 +72,6 @@ STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
 #STRIPE_API_KEY = "sk_live_axFE7Cz2WpP1UiA1Q2kKrwis"  # Live
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-dev.us-west-1.elasticbeanstalk.com']
 
