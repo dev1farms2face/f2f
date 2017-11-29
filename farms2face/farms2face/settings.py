@@ -254,7 +254,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = '/home/ec2-user/farms2face/f2f/farms2face/files' 
 MEDIA_URL = '/images/'   
 
-STATIC_ROOT = os.path.join(BASE_DIR, "farms2face/static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "farms2face/files")
+MEDIA_ROOT = os.path.join(BASE_DIR, "files")
 MEDIA_URL = '/images/'   
