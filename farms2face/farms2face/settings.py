@@ -70,7 +70,7 @@ STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
 #STRIPE_API_KEY = "sk_live_axFE7Cz2WpP1UiA1Q2kKrwis"  # Live
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-dev.us-west-1.elasticbeanstalk.com']
 
