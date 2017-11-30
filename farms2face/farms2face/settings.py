@@ -45,7 +45,7 @@ else:
     EMAIL_HOST_USER = 'no-reply@farms2face.com' #my gmail username
     DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
     EMAIL_USE_TLS = False
-    DEBUG = False
+    DEBUG = True
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -73,7 +73,7 @@ STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-dev.us-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-env.us-west-1.elasticbeanstalk.com']
 
 # Application definition
 
