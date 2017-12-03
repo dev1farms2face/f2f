@@ -68,8 +68,9 @@ else:
 
 # Stripe API KEY
 
-#STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
-STRIPE_API_KEY = "sk_live_pm5K1fDQx174LPfMdSHV3myI"  # Live
+STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
+if 'STRIPE_API_KEY' in os.environ:
+    STRIPE_API_KEY = os.environ['STRIPE_API_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
