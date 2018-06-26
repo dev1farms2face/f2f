@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'home/forgot.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'home/forgot.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'home/parallax.min.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<script type="text/javascript">
+   var nobanner = true;
+</script>
+<div class="forgot-panel" key="{{ key }}">
+  <label>New Password:</label>
+  <input type=password class="pass"></input>
+  <br> <br> <br>
+  <label>Confirm New Password:</label>
+  <input type=password class="cpass"></input>
+  <br> <br> <br> <br>
+  <p class="submit-new-password">Submit</p>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+div.faq-panel {
+    padding: 200px;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+div.faq-panel p.title {
+    color: #88a470;
+    font-family: 'HelveticaNeue-UltraLight';
+    font-size: 36px;
+}
+
+div.faq-panel p.heading {
+    font-family: 'HelveticaNeue-Light';
+    color: #ce9a2b;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div.faq-panel p.question {
+    color: #88a470;
+    font-size: 20px;
+    margin-top: 40px;
+    width: 90%;
+}
+
+div.faq-panel p.answer {
+    font-size: 16x;
+    width: 90%;
+    margin-top: 10px;
+}

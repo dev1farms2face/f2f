@@ -1,0 +1,129 @@
+{% extends "myaccount.html" %}
+
+{% load static %}
+
+{% block myaccount-content %}
+<p class="title">ORDER HISTORY</p>
+{% if orders %}
+<table class="order-history">
+  <tr>
+    <th class="sno">SNo.</th>
+    <th class="item">Item</th>
+    <th class="price">Price</th>
+    <th class="type">Type</th>
+    <th class="quantity">Qty/Care</th>
+    <th class="shipping-cost">Shipping</th>
+    <th class="total">Total</th>
+    <th class="date">Order Date</th>
+  </tr>
+  {% for p in orders %}
+  <tr id="{{p.fp_id}}">
+    {% if p.first %}
+    <td class="first sno">{{ p.sno }}</td>
+    <td class="first item">
+      {% load common_tags %}
+      {% facepack_display p.item.id %}
+      {% if p.review %}
+      <p class='review' id='{{p.review}}'>View/Edit Review</p>
+      {% else %}
+      <p class='review'>Add Review</p>
+      {% endif %}
+    </td>
+    <td class="first price">{{ p.price }}</td>
+    {% if p.type == "buy" %}
+    <td class="first type">A-LA-CARTE</td>
+    <td class="first quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="first type">NEVER RUN OUT</td>
+    <td class="first quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
+    <td class="first shipping-type">{{ p.shipping_cost }}<br><label class="shipping">{{ p.shipping_type }}</label></td>
+    <td class="first total"><b>{{ p.total }}</b></td>
+    <td class="first date">{{ p.date }}</td>
+    {% else %}
+    <td class="sno"></td>
+    <td class="item">
+      {% load common_tags %}
+      {% facepack_display p.item.id %}
+      {% if p.review %}
+      <p class='review' id='{{p.review}}'>View/Edit Review</p>
+      {% else %}
+      <p class='review'>Add Review</p>
+      {% endif %}
+    </td>
+    <td class="price">{{ p.price }}</td>
+    {% if p.type == "buy" %}
+    <td class="type">A-LA-CARTE</td>
+    <td class="quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="type">NEVER RUN OUT</td>
+    <td class="quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
+    <td class="shipping-type"></td>
+    <td class="total"></td>
+    <td class="date"></td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="no">No order history to display</p>
+{% endif %}
+
+<div class="review-dialog">
+  <table>
+    <tr class="review">
+      <td></td>
+      <td class="review" colspan="7">
+        <h2>What do you think?</h2>
+        <br>
+        <p>Title</p>
+        <input class='title' type='text' helper='title for your review'></input>
+        <br>
+        <br>
+        <p>Details (less than 1000 words)</p>
+        <textarea helper='What do you think?'></textarea>
+        <br>
+        <br>
+        <p>How would you rate this facemask?</p>
+        <br>
+        <div class="rating">
+          <img class="star empty"
+            full_star="{% static 'facepackwizard/images/star_full.png' %}"
+            empty_star="{% static 'facepackwizard/images/star_empty.png' %}"
+            helper="Not for me"
+            src="{% static 'facepackwizard/images/star_empty.png' %}" alt="" />
+          <img class="star empty"
+            full_star="{% static 'facepackwizard/images/star_full.png' %}"
+            empty_star="{% static 'facepackwizard/images/star_empty.png' %}"
+            helper="Can do better"
+            src="{% static 'facepackwizard/images/star_empty.png' %}" alt="" />
+          <img class="star empty"
+            full_star="{% static 'facepackwizard/images/star_full.png' %}"
+            empty_star="{% static 'facepackwizard/images/star_empty.png' %}"
+            helper="Just OK"
+            src="{% static 'facepackwizard/images/star_empty.png' %}" alt="" />
+          <img class="star empty"
+            full_star="{% static 'facepackwizard/images/star_full.png' %}"
+            empty_star="{% static 'facepackwizard/images/star_empty.png' %}"
+            helper="Works well for me"
+            src="{% static 'facepackwizard/images/star_empty.png' %}" alt="" />
+          <img class="star empty"
+            full_star="{% static 'facepackwizard/images/star_full.png' %}"
+            empty_star="{% static 'facepackwizard/images/star_empty.png' %}"
+            helper="Just what I need!"
+            src="{% static 'facepackwizard/images/star_empty.png' %}" alt="" />
+        </div>
+        <br>
+        <p class="rating-status"></p>
+        <p class="submit button">Submit</p>
+        <p class="cancel button">Cancel</p>
+        <p class="delete button">Delete</p>
+        <input class="upload-review-pic" type="file" style="display:none"/>
+        <label class="upload">Add Photo</label>
+        <div class="pic-container"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+{% endblock %}

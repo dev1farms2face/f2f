@@ -1,0 +1,71 @@
+{% extends "common.html" %}
+
+{% block htmlhead %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" 
+          href="{% static 'home/style.css' %}" />
+    <script type="text/javascript" 
+          src="{% static 'home/script.js' %}"></script>
+{% endblock %}
+
+{% block mainbody %}
+    <div class="header">
+        <div class="title-panel">
+            <div class="title">Farms 2 Face</div>
+            {% if data.user_id %}
+                <div class="user" id={{data.user_id}}>Welcome {{data.first_name}}!</div>
+                <div class="login">Logout</div>
+            {% else %} 
+                <div class="user"></div>
+                <div class="login">Login</div>
+            {% endif %}
+            <div class="register">Register</div>
+        </div>
+        <div class="menu-panel">
+            <div class="menu-item selected home" link="/home/">Home</div>
+            <div class="menu-item prepacks" link="/prepacks/">Pre Packs</div>
+            <div class="menu-item custompacks" link="/wizard/">Custom Packs</div>
+            <div class="menu-item subscribe" link="/subscribe/">Subscribe</div>
+            <div class="cart-link" link="/cart/">Cart<div class="cart-count">&#123;{{data.cart_size}}&#125;</div></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block appbody %}
+    <div class="login-div"></div>
+    <div class="register-div" title="Register new user">
+      <div class="form-row">
+        <label class="register-first-name">First Name</label>
+        <input class="register-first-name-input ui-widget-content ui-corner-all" type="text">
+      </div>
+      <div class="form-row">
+        <label class="register-last-name">Last Name</label>
+        <input class="register-last-name-input ui-widget-content ui-corner-all" type="text">
+      </div>
+      <div class="form-row">
+        <label class="register-email">E-mail</label>
+        <input class="register-email-input ui-widget-content ui-corner-all" type="text">
+      </div>
+      <div class="form-row">
+        <label class="register-password">Password</label>
+        <input class="register-password-input ui-widget-content ui-corner-all" type="password">
+      </div>
+      <div class="form-row">
+        <label class="register-password-confirm">Confirm Password</label>
+        <input class="register-password-confirm-input ui-widget-content ui-corner-all" type="password">
+      </div>
+    </div>
+    <div class="login-div" title="Login existing user">
+      <div class="form-row">
+        <label class="login-email">E-mail</label>
+        <input class="login-email-input ui-widget-content ui-corner-all" type="text">
+      </div>
+      <div class="form-row">
+        <label class="login-password">Password</label>
+        <input class="login-password-input ui-widget-content ui-corner-all" type="password">
+      </div>
+    </div>
+    <div class="cart"></div>
+    <img class='home-pic' src="{% static 'home/images/avocado.jpg' %}"/>
+    <div class="app-panel"></div>
+{% endblock %}

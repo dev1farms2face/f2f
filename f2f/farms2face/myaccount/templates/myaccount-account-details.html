@@ -1,0 +1,59 @@
+{% extends "myaccount.html" %}
+
+{% load to_phone %}
+{% load static %}
+
+{% block myaccount-content %}
+<p class="title">ACCOUNT DETAILS</p>
+<table class="account details-panel">
+  <tr>
+    <td class="name">
+      <p class="label">Name:</p>
+      <input class="value" orig="{{ first_name }} {{ last_name }}" value="{{ first_name }} {{ last_name }}"/>
+      <img class="pen"
+           src="{% static 'myaccount/images/pen.jpg' %}" alt="" />
+    </td>
+    <td class="birthday">
+      <p class="label">Birthday:</p>
+      <input class="value datepicker" orig="{{ birthday }}" value="{{ birthday }}"/>
+      <img class="pen"
+           src="{% static 'myaccount/images/pen.jpg' %}" alt="" />
+    </td>
+  </tr>
+  <tr>
+    <td class="email">
+      <p class="label">Email:</p>
+      <input class="value" type="email"  orig="{{ email }}" value="{{ email }}"/>
+      <img class="pen"
+           src="{% static 'myaccount/images/pen.jpg' %}" alt="" />
+    </td>
+    <td class="gender">
+      <p class="label">Gender:</p>
+      <input class="value" orig="{{ gender }}" value="{{ gender }}"/>
+      <img class="pen"
+           src="{% static 'myaccount/images/pen.jpg' %}" alt="" />
+    </td>
+  </tr>
+  <!--
+  <tr>
+    <td class="subscription">
+      <p class="label">Subscription:</p>
+      <input class="value" orig="{{ subscription }}" value="{{ subscription }}"/>
+    </td>
+  </tr>
+  -->
+</table>
+<div class="button-panel">
+  {% if 'anon_' in user.username %}
+  <a href="/signin/">
+    <p class="button login">SIGN UP</p>
+  </a>
+  {% else %}
+  <a href="/logout/?next=/signin/">
+    <p class="button logout">LOG OUT</p>
+  </a>
+  {% endif %}
+  <p class="button save">SAVE CHANGES</p>
+  <p class="button cancel">CANCEL</p>
+</div>
+{% endblock %}

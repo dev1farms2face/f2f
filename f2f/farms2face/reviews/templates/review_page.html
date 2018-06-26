@@ -1,0 +1,112 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'reviews/review_page.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'reviews/review_page.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="review-main">
+  <p class="hear-other">Hear what people have to say about our facemasks</p>
+  <div class="filter">
+    <p class="text">Reviews based on </p>
+    <select class="skin-type">
+      {% if skin_type == "Dry" %}
+      <option value="Dry" selected="selected">Dry</option>
+      {% else %}
+      <option value="Dry">Dry</option>
+      {% endif %}
+      {% if skin_type == "Oily" %}
+      <option value="Oily" selected="selected">Oily</option>
+      {% else %}
+      <option value="Oily">Oily</option>
+      {% endif %}
+      {% if skin_type == "Normal" %}
+      <option value="Normal" selected="selected">Normal</option>
+      {% else %}
+      <option value="Normal">Normal</option>
+      {% endif %}
+    </select>
+    <p class="text"> Skin</p>
+  </div>
+  {% if count > 0 %}
+  <div class="review-panel">
+    {% if count == 1 %}
+    <p class="header">{{ count }} person rated it an average of</p>
+    {% else %}
+    <p class="header">{{ count }} people rated it an average of</p>
+    {% endif %}
+        <div class="avg-rating">
+            <p>{{ rating_avg_full|length }}.{{ rating_avg_half_dec }}</p>
+            {% for i in rating_avg_full %}
+              <img class="avg-star full" 
+                   src="{% static 'reviews/images/stars-orange-full.png' %}" alt='' />
+            {% endfor %}
+            {% if rating_avg_half %}
+              <img class="avg-star half" 
+                   src="{% static 'reviews/images/stars-orange-half.png' %}" alt='' />
+            {% endif %}
+            {% for i in rating_avg_empty %}
+              <img class="avg-star empty" 
+                   src="{% static 'reviews/images/stars-orange-empty.png' %}" alt='' />
+            {% endfor %}
+        </div>
+    {% for r in reviews %}
+    <div class="review">
+      <img class="profile" src="/images/{{ r.user_pic }}" alt="" />
+      <div class="details">
+        <div class="rating">
+          {% for i in r.rating %}
+          <div class="star full"></div>
+          {% endfor %}
+          {% for i in r.rating_neg %}
+          <div class="star empty"></div>
+          {% endfor %}
+        </div>
+        <p class="title">"{{ r.review.headline }}"</p>
+        <p class="sub-title">By {{ r.review.ph.user.first_name }} {{ r.review.ph.user.last_name }} on {{ r.review.createdte }}</p>
+        <p class="details">{{ r.review.details }}</p>
+        <div class="pic-container">
+          {% for ri in r.pics %}
+          <div class="pic" id="{{ ri.id }}">
+            <img class="thumbnail" src='{{ ri.url }}'/>
+            <div id="myModal" class="modal">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="img01"/>
+              <div class="caption"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="rating-help" id="{{ r.review.id }}">
+          <label>Was this helpful?</label>
+          <div class="useful">
+            <img src="{% static 'reviews/images/thumbs-up.png' %}" alt="" />
+            <p>{{ r.review.useful }}</p> 
+          </div>
+          <div class="not-useful">
+            <img src="{% static 'reviews/images/thumbs-down.png' %}" alt="" />
+            <p>{{ r.review.not_useful }}</p> 
+          </div>
+        </div>
+      </div>
+      {% if r.is_cfp %}
+      <div class="fp-image">
+        {% load common_tags %}
+        <p class="title">Face Mask tried:</p>
+        {% facepack_display r.fp.id %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <!-- <p class="see-more">SEE MORE</p> -->
+  {% else %}
+  <p class="no-review"><i>No reviews on this yet.</i>  <a href='/myaccount/order-history/'> You can be the first one to review!</a></p>
+  {% endif %}
+</review>
+{% endblock %}

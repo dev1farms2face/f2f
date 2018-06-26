@@ -1,0 +1,162 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'cart/cart.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'cart/cart.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="cart-panel">
+  <table class="main">
+    <tr>
+      <td>
+        <p class="header">Your Cart</p>
+        <script type="text/javascript">
+          var is_anonymous =  "{{ is_anonymous }}";
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="bottom-panel">
+          <div class="left-panel">
+            <table class="item-panel">
+              {% if cart_items %}
+              {% for c in cart_items %}
+              <tr class="item" id="{{ c.id }}" item-id="{{ c.item_id }}">
+                <td class="item-cell">
+                  {% load common_tags %}
+                  {% facepack_display c.item_id %}   
+                </td>
+                <td class="type">
+                  <select>
+                    {% if c.type == "buy" %}
+                    <option value="buy" selected="selected">Just this once</option>
+                    <option value="subscribe">Never run out</option>
+                    {% elif c.type == "subscribe" %}
+                    <option value="buy">Just this once</option>
+                    <option value="subscribe" selected="selected">Never run out</option>
+                    {% endif %}
+                  </select>
+                  {% if c.type == "buy" %}
+                  <p class="save-auto">Save with Auto Delivery</p>
+                  {% endif %}
+                </td>
+                {% if c.type == "buy" %}   
+                <td class="quantity">
+                  <img class="up"
+                       src="{% static 'cart/images/up-arrow.jpg' %}" alt="" />
+                  <p>QTY: {{ c.quantity }}</p>
+                  <img class="down"
+                       src="{% static 'cart/images/down-arrow.jpg' %}" alt="" />
+                </td>
+                {% elif c.type == "subscribe" %}
+                <td class="frequency">
+                  <select>
+                    {% if c.subtype == "regular" %}
+                    <option selected="selected" value="regular">Regular care (4 applications)</option>
+                    <option value="intense">Intense care (8 applications)</option>
+                    {% elif c.subtype == "intense" %}
+                    <option value="regular">Regular care (4 applications)</option>
+                    <option value="intense" selected="selected">Intense care (8 applications)</option>
+                    {% endif %}
+                  </select>
+                  <p>Delivered once every 4 weeks</p>
+                </td>
+                {% endif %}
+                <td class="price-cell">
+                  <p class="price">{{ c.price }}</p>
+                  <p class="remove">REMOVE</p>
+                </td> 
+              </tr>
+              {% endfor %}
+              {% else %}
+              <div class="empty-cart">
+                  ... is Empty. <a href="/home">Start Shopping!</a>
+              </div>
+              {% endif %}
+            </table>
+          </div>
+          {% if cart_items %}
+          <div class="checkout-panel">
+            <div class="subtotal-panel">
+              <p class="name">Subtotal:</p>
+              <p class="value">{{ subtotal }}</p>
+            </div>
+            <div class="shipping-panel">
+              <p class="name">Shipping:</p>
+              <select>
+                  {% for s in shipping_items %}
+                  {% if s.id == shipping_id %}
+                  <option value="{{ s.id }}" selected="selected">{{ s.type }}</option>
+                  {% else %}
+                  <option value="{{ s.id }}">{{ s.type }}</option>
+                  {% endif %}
+                  {% endfor %}
+              </select>
+              <p class="cost">{{ shipping_cost }}</p>
+            </div>
+            <p class="helper">{{ shipping_helper }}</p>
+            {% for pr in  promo %}
+            <div class="promo">
+              <p class="name">{{ pr.name }}</p>
+              <p class="discount">-{{ pr.discount }}</p>
+            </div>
+            <br>
+            {% endfor %}
+            <hr>
+            <div class="total-panel">
+              <p class="name">Total Including Tax:</p>
+              <p class="value">{{ total }}</p>
+            </div>
+            <div class="stripe">
+              <script src="https://checkout.stripe.com/checkout.js"></script>
+              <button class="checkout" id="customButton">CHECKOUT</button>
+              <script>
+                var handler = StripeCheckout.configure({
+                //key: 'pk_test_9dwFteBzkk1Wmh1ZvT1XPFIU',
+                key: 'pk_live_o74UNmpvOzvgZeKBZHMaIaQw',
+                image: "{% static 'home/images/F2F_logo_img_colour.png' %}",
+                locale: 'auto',
+                zipCode: 'true',
+                billingAddress: 'true',
+                shippingAddress: 'true',
+                token: function(token, args) {
+                  checkout(token.id, args);
+                  // You can access the token ID with `token.id`.
+                  // Get the token ID to your server-side code for use.
+                }
+              });
+              document.getElementById('customButton').addEventListener('click', function(e) {
+                if (is_anonymous=="True") {
+                  window.location = "/signin/new/?next=/cart/";
+                  return;
+                }
+                // Open Checkout with further options:
+                handler.open({
+                  name: 'Farms2Face',
+                  description: 'Payment Details',
+                  billingAddress: 'true',
+                  shippingAddress: 'true',
+                  amount: {{ total_cents }}
+                });
+                e.preventDefault();
+              });
+              // Close Checkout on page navigation:
+              window.addEventListener('popstate', function() {
+                handler.close();
+              });
+              </script>
+            </div>
+          </div>
+          {% endif %}
+        </div> 
+      </td>
+    </tr>
+  </table>
+</div>
+{% endblock %}

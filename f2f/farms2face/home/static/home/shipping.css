@@ -1,0 +1,393 @@
+div.hr {
+    display: inline-block;
+    width: 100%;
+    height: 0.5px;
+    background-color: #cae0b8;
+    margin-bottom: 10px;
+}
+
+div.shipping-addresses {
+    display: table;
+    margin-top: 20px;
+}
+
+div.shipping-addresses div.shipping-address {
+    display: table-cell;
+    padding-right: 30px;
+    padding-left: 20px;
+    border-left: 1px solid #CCC;
+    font-family: "HelveticaNeue-Light";
+    font-size: 12px;
+}
+
+div.shipping-addresses div.shipping-address div.address {
+    height: 100px;
+}
+
+div.shipping-addresses div.shipping-address p {
+}
+
+div.shipping-addresses div.shipping-address div.primary {
+    display: block;
+}
+
+div.shipping-addresses div.shipping-address div.primary input {
+    display: inline-block;
+    margin-left: -2px;
+}
+
+div.shipping-addresses div.shipping-address div.primary label {
+    display: inline-block;
+}
+
+div.shipping-addresses div.shipping-address div.links {
+    display: block;
+    width: 100%;
+}
+
+div.shipping-addresses div.shipping-address div.links p.link {
+    font-size: 12px;
+    color: #78876a;
+    display: inline-block;
+    margin: 5px 10px 10px -2px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+div.shipping-addresses div.shipping-address div.links p.link:hover {
+    color: #444;
+}
+
+/***************** ADDRESS PANEL *******/
+
+div.address-panel {
+    display:none;
+}
+
+div.address-panel p.title {
+    font-family: "HelveticaNeue-UltraLight";
+    font-size: 18px;
+    letter-spacing: 4px;
+    padding-bottom: 20px;
+}
+
+div.address-panel div.details-panel {
+    display: table;
+    width: 70%;
+    min-height: 100px;
+    margin-top: 30px;
+}
+
+div.address-panel div.details-panel div.row {
+    display: block;
+}
+
+div.address-panel div.details-panel div.entry {
+    display: inline-block;
+    white-space: nowrap;
+    padding-bottom: 15px;
+    padding-right: 25px;
+    width: 39%;
+}
+
+div.address-panel div.details-panel div.entry.street1 {
+    width: 83%;
+}
+
+div.address-panel div.details-panel div.entry.street2 {
+    width: 83%;
+}
+
+div.address-panel div.details-panel div.entry.phone {
+    width: 83%;
+}
+
+div.address-panel div.details-panel div.entry.city {
+    width: 40%;
+}
+
+div.address-panel div.details-panel div.entry.state {
+    width: 12%;
+}
+
+div.address-panel div.details-panel div.entry.zip {
+    width: 21%;
+}
+
+div.address-panel div.details-panel div.entry p.label {
+    font-family: "HelveticaNeue-Light";
+    font-size: 13px;
+    color: #444;
+    min-width: 120px; 
+    margin-bottom: 5px;
+}
+
+div.address-panel div.details-panel div.entry p.value {
+    margin-left: 20px;
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    color: #88a470;
+}
+
+div.address-panel div.details-panel div.entry input.value {
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    border: 1px solid #BBB;
+    border-radius: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    height: 30px;
+    padding: 3px 5px 3px 5px;
+}
+
+div.address-panel div.details-panel div.entry input.value.error {
+    color: #db3f4c;
+    border-color: #db3f4c;
+}
+
+
+div.address-panel div.details-panel div.entry input.value:focus {
+    color: #444;
+    outline: none; 
+    border-bottom: 1px solid #db3f4c;
+}
+
+div.address-panel div.button-panel {
+    display: block;
+    width: 100%;
+}
+
+div.address-panel p.button {
+    background-color: #88a470;
+    color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 10px 20px 10px 20px;
+    font-family: "HelveticaNeue-Light";
+    font-size: 12px;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    min-width: 100px;
+    cursor: pointer;
+    text-align: center;
+    -o-transition:.4s;
+    -ms-transition:.4s;
+    -moz-transition:.4s;
+    -webkit-transition:.4s;
+    /* ...and now for the proper property */
+    transition:.4s;
+}
+
+div.address-panel p.save {
+    display: none;
+    background-color: #db3f4c;
+}
+
+div.address-panel p.cancel {
+    background-color: #db3f4c;
+}
+
+div.address-panel p.button:hover {
+    background-color: #777;
+}
+
+
+p.no {
+   font-family: "HelveticaNeue-UltraLight";
+   font-style: italic;
+   color: #999;
+   font-size: 18px;
+}
+
+/*************** PAYMENTS *********************/
+
+div.payment-types {
+    display: table;
+    margin-top: 20px;
+}
+
+div.payment-types div.payment-type {
+    display: table-cell;
+    padding-right: 30px;
+    padding-left: 20px;
+    border-left: 1px solid #CCC;
+    font-family: "HelveticaNeue-Light";
+    font-size: 12px;
+}
+
+div.payment-types div.payment-type div.address {
+    height: 100px;
+}
+
+div.payment-types div.payment-type p {
+}
+
+div.payment-types div.payment-type div.primary {
+    display: block;
+}
+
+div.payment-types div.payment-type div.primary input {
+    display: inline-block;
+    margin-left: -2px;
+}
+
+div.payment-types div.payment-type div.primary label {
+    display: inline-block;
+}
+
+div.payment-types div.payment-type div.links {
+    display: block;
+    width: 100%;
+}
+
+div.payment-types div.payment-type div.links p.link {
+    font-size: 12px;
+    color: #78876a;
+    display: inline-block;
+    margin: 5px 10px 10px -2px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+div.payment-types div.payment-type div.links p.link:hover {
+    color: #444;
+}
+
+/********** Payment details ****/
+
+div.payments {
+    display: block;
+    margin-top: 50px;
+}
+
+div.payments div.same {
+    font-family: "HelveticaNeue-Light";
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+div.payments div.same input {
+    cursor: pointer;
+}
+
+div.payments-panel {
+    display: none;
+    margin-top: 20px;
+}
+
+div.payments div.credit-card-panel {
+    display: table;
+    width: 100%;
+    min-height: 100px;
+    margin-top: 30px;
+}
+
+div.payments div.credit-card-panel div.row {
+    display: block;
+}
+
+div.payments div.credit-card-panel div.entry {
+    display: inline-block;
+    white-space: nowrap;
+    padding-bottom: 15px;
+    padding-right: 25px;
+    width: 39%;
+}
+
+div.payments div.credit-card-panel div.entry.number {
+    width: 59%;
+}
+
+div.payments div.credit-card-panel div.entry.expiration {
+    width: 35%;
+}
+
+div.payments div.credit-card-panel div.entry.cvv {
+    width: 16%;
+}
+
+div.payments div.credit-card-panel div.entry p.label {
+    font-family: "HelveticaNeue-Light";
+    font-size: 13px;
+    color: #444;
+    min-width: 120px; 
+    margin-bottom: 5px;
+}
+
+div.payments div.credit-card-panel div.entry p.value {
+    margin-left: 20px;
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    color: #88a470;
+}
+
+div.payments div.credit-card-panel div.entry input.value {
+    font-family: "HelveticaNeue";
+    font-size: 16px;
+    border: 1px solid #BBB;
+    border-radius: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    height: 30px;
+    padding: 3px 5px 3px 5px;
+}
+
+div.payments div.credit-card-panel div.entry input.value.error {
+    color: #db3f4c;
+    border-color: #db3f4c;
+}
+
+
+div.payments div.credit-card-panel div.entry input.value:focus {
+    color: #444;
+    outline: none; 
+    border-bottom: 1px solid #db3f4c;
+}
+
+div.payments div.button-panel {
+    display: block;
+    width: 100%;
+}
+
+div.payments p.button {
+    background-color: #88a470;
+    color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 10px 20px 10px 20px;
+    font-family: "HelveticaNeue-Light";
+    font-size: 12px;
+    border-radius: 3px;
+    letter-spacing: 3px;
+    min-width: 100px;
+    cursor: pointer;
+    text-align: center;
+    -o-transition:.4s;
+    -ms-transition:.4s;
+    -moz-transition:.4s;
+    -webkit-transition:.4s;
+    /* ...and now for the proper property */
+    transition:.4s;
+}
+
+div.payments p.save {
+    display: none;
+    background-color: #db3f4c;
+}
+
+div.payments p.cancel {
+    background-color: #db3f4c;
+}
+
+div.payments p.button:hover {
+    background-color: #777;
+}
+
+
+p.no {
+   font-family: "HelveticaNeue-UltraLight";
+   font-style: italic;
+   color: #999;
+   font-size: 18px;
+}

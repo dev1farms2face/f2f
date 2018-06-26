@@ -1,0 +1,60 @@
+{% load static %}
+
+<div class="panel-0">
+  <script type="text/javascript">
+    var nobanner = false;
+  </script>
+  <div class="banner">
+    <p>Get <b>FREE SHIPPING</b> as part of our introductory offer</p>
+    <!-- <label class="cross">&#10005</label> -->
+  </div>
+  <div id="title-panel" class="title-panel-override">
+    <div class="logo-panel">
+      <a href='/home/'>
+        <img class="logo-main" 
+             src="{% static 'home/images/F2F_logo_img_colour.png' %}" alt="" />
+        <img class="logo-title" 
+             src="{% static 'home/images/F2F_logo_img_title.png' %}" alt="" />
+    </div>
+    <div class="link-panel">
+      </a>
+        <a href='/cart/'>
+        {% if cart_size %}
+        <div class='cart'><p>{{ cart_size }}</p></div>
+        {% else %}
+        <div class='cart'><p>0</p></div>
+        {% endif %}
+      </a>
+      {% if valid_user %}
+      {% if 'anon_' in user.username %}
+      <a href="/signin/?next={{ request.path }}">
+      {% else %}
+      <a href="/myaccount/account-details/">
+      {% endif %}
+        <div class='title-welcome' id='user'>
+          <label>Welcome</label>
+          {% if 'anon_' in user.username %}
+          <p>Guest!</p>
+          {% else %}
+          <p>{{ valid_user.name }}!</p>
+          {% endif %}
+          <img src="/images/{{ valid_user.picture }}" alt="" />
+        </div>
+      </a>
+      <a href="/myaccount/">
+        <label class='title-link' id='my-account'>MY ACCOUNT</label>
+      </a>
+      {% else %}
+      <a href="/signin/?next={{ request.path }}">
+        <label class='title-link' id='login'>LOGIN</label>
+      </a>
+      {% endif %}
+      <a href="/wizard/">
+        <label class='title-link' id='subscribe'>QUIZ</label>
+      </a>
+      <a href="/home/shop/">
+        <label class='title-link' id='shop'>SHOP</label>
+      </a>
+    </div>
+  </div>
+</div>

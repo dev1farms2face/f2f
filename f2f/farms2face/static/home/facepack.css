@@ -1,0 +1,81 @@
+div.image-cell {
+    display: table-cell;
+}
+
+div.image-cell img.bottle {
+    vertical-alignment: top;
+    width: 100px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+div.ingredient-cell {
+    display: table-cell;
+    vertical-align: top;
+}
+
+div.ingredient-cell p.prepack-name {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Selima';
+    color: #88a470;
+    font-size: 30px;
+    margin-top: 70px;
+    padding-right: 30px;
+}
+
+div.ingredient-cell p.made-with {
+    font-family: "HelveticaNeue-UltraLight";
+    font-size: 20px;
+    text-align: left;
+    transform: scaleX(0.9);
+    padding-left: 2px;
+    padding-top: 20px;
+    -webkit-transform-origin-x: 0;
+    color: #4e704f;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+div.ingredient-cell div.ingredient-panel {
+    display: table-cell;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+
+div.ingredient-cell div.ingredient-panel div.ingredient-item {
+    display: table-cell;
+    width: 60px;
+    padding-right: 10px;
+}
+
+div.ingredient-cell div.ingredient-panel div.ingredient-item p.name {
+    font-family: "Roboto";
+    font-size: 10px;
+    transform: scaleX(0.9);
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 0.15em;
+    text-align: center;
+    padding-bottom: 20px;
+    max-width: 90px;
+    white-space: normal;
+    margin-top: 10px;
+}
+
+div.ingredient-cell div.ingredient-panel div.ingredient-item img {
+    display: block;
+    width: 70px;
+}
+
+p.uuid {
+    display: block;
+    font-family: "Roboto";
+    font-size: 8px;
+    width: 100%;
+    text-align: left;
+    color: #88a470;
+    letter-spacing: 2px;
+}
+

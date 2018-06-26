@@ -1,0 +1,230 @@
+@font-face {
+        font-family: 'amaticsc';
+        src: url("fonts/AMATICSC-REGULAR_0.TTF") format("truetype");
+}
+
+
+@font-face {
+        font-family: 'Selima';
+        src: url("fonts/Selima.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue-UltraLight';
+        src: url("fonts/HelveticaNeue-UltraLigExt.otf") format("opentype");
+}
+
+.results-panel {
+        display: block;
+        width: 100%;
+        margin-bottom: 100px;
+        text-align: center;
+        padding-bottom: 100px;
+        padding-top: 120px;
+}
+
+div.prepack-featured {
+        display: block;
+}
+
+div.prepack-featured img.sack {
+        width: 375px;
+        vertical-align: bottom;
+        margin-top: -70px;
+}
+
+div.prepack-featured div.description {
+        display: inline-block;
+        vertical-align: top;
+        width: 350px;
+}
+
+div.prepack-featured div.description p.name {
+        font-family: 'amaticsc';
+        font-size: 50px;
+        text-align: left;
+        color: #88a470;
+}
+
+div.prepack-featured div.description p.made-with, p.highlights, p.who {
+        font-family: "Roboto";
+        color: black;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-align: left;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: left;
+}
+
+div.prepack-featured div.description div.ing {
+        display: block;
+        width: 100%;
+        margin-bottom: 120px;
+}
+
+div.prepack-featured div.description div.ing div.pic {
+        display: inline-block;
+        float: left;
+        margin-right: 20px;
+}
+
+div.prepack-featured div.description div.ing div.pic img.ing {
+        width: 50px;
+        height: 40px;
+}
+
+div.prepack-featured div.description div.ing div.pic p.name {
+        font-size: 12px;
+        font-family: "Roboto";
+        text-align: center;
+        max-width: 50px;
+}
+
+div.prepack-featured div.description p.details {
+        font-family: "Roboto";
+        font-size: 12px;
+        text-align: left;
+}
+
+
+div.prepack-featured div.purchase-panel {
+        text-align: left;
+        margin-top: 10px;
+}
+
+div.prepack-featured div.purchase-panel p.or  {
+        display: table-cell;
+        font-family: "Roboto";
+        font-size: 14px;
+        vertical-align: middle;
+        padding: 0 15px 0 15px; 
+}
+
+div.prepack-featured p.button  {
+        display: table-cell;
+        color: white;
+        font-family: "Roboto";
+        font-size: 10px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        padding: 5px 10px 5px 10px;
+        letter-spacing: 0.175em;
+        cursor: pointer;
+}
+
+
+div.prepack-featured p.button.buy-clicked  {
+        color: #88a470;
+        border: 1px solid #88a470;
+        background-color: white;
+}
+
+
+p.other-header {
+        text-align: center;
+        margin-top: 50px;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        color: #88a470;
+        font-size: 60px;
+        margin-bottom: 20px;
+}
+
+img.browse_more {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+}
+
+div.other-panel {
+        margin-left: auto;
+        margin-right: auto;
+}
+
+div.other-panel div.prepacks {
+        display: inline-block;
+        white-space:nowrap;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: 870px;
+}
+
+div.other-panel div.prepacks div.item {
+        display:table-cell;
+        width: 200px;
+        margin-top: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+}
+
+div.other-panel img.bottle {
+        width: 243px;
+        height: 385px;
+        font-family: 'amaticsc';
+        font-size: 50px;
+        text-align: left;
+        color: #88a470;
+}
+
+div.other-panel p.name {
+        font-family: 'amaticsc';
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+}
+
+div.other-panel p.description {
+        font-family: "Roboto";
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 20px;
+        white-space: normal;
+        width: 250px;
+}
+
+div.other-panel div.purchase-panel {
+}
+
+div.other-panel img.arrow {
+        width: 30px;
+        margin-bottom: 100px;
+        cursor: pointer;
+}
+
+div.other-panel div.purchase-panel p.button {
+        display: inline-block;
+        color: white;
+        font-family: "Roboto";
+        font-size: 10px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        height: 10px;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 5px 10px 5px 10px;
+}
+
+div.other-panel div.purchase-panel p.button:hover {
+        background-color: #777777;
+}
+
+div.other-panel .match div.purchase-panel p.or {
+        font-family: "Roboto";
+        font-size: 14px;
+        padding: 5px 0 5px 0; 
+}
+
+div.other-panel div.purchase-panel p.button.buy-clicked  {
+        color: #88a470;
+        border: 1px solid #88a470;
+        background-color: white;
+}

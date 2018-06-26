@@ -1,0 +1,51 @@
+{% extends "myaccount.html" %}
+
+{% load static %}
+
+{% block myaccount-content %}
+<p class="title">MY SUBSCRIPTIONS</p>
+{% if subscriptions %}
+<p class="never">Never run out!</p>
+<table class="subscription-panel">
+  <tr>
+    <th class="sno">SNo.</th>
+    <th class="item">Item</th>
+    <th class="type">Type</th>
+    <th class="quantity">Qty/Care</th>
+    <th class="cost">Cost</th>
+    <th class="total">Monthly Total</th>
+  </tr>
+  {% for p in subscriptions %}
+  <tr id="{{ p.id }}" url="{{ url_update_ph }}">
+    <td class="sno">{{ forloop.counter }}</td>
+    <td class="item">
+      <div class="ship-date">
+        <p>Ships next on:</p>
+        <input class="datepicker" orig="{{ p.ship_date }}" value="{{ p.ship_date }}"/>
+      </div>
+      <div class="item-cell">
+        {% load common_tags %}
+        {% facepack_display p.item.id %}
+      </div>
+    </td>
+    {% if p.type == "buy" %}
+    <td class="type">A-LA-CARTE</td>
+    <td class="quantity">{{ p.quantity }}</td>
+    {% elif p.type == "subscribe" %}
+    <td class="type">NEVER RUN OUT</td>
+    <td class="quantity">{{ p.subtype|upper }}</td>
+    {% endif %}
+    <td class="cost">
+      <p class="amount">{{ p.cost.amount }}</p>
+    </td>
+    <td class="total">
+      <p class="amount">{{ p.total.amount }}</p>
+      <p class="helper">{{ p.total.helper }}</p>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="no">No subscriptions to display</p>
+{% endif %}
+{% endblock %}
