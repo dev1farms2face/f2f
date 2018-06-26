@@ -1,0 +1,105 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css"
+  href="{% static 'home/facepack_match.css' %}" />
+<script type="text/javascript"
+  src="{% static 'home/facepack_match.js' %}"></script>
+
+<script type="text/javascript">
+   var r1_id = "{{ r1_id }}";
+   var r2_id = "{{ r2_id }}";
+   var r3_id = "{{ r3_id }}";
+   var o1_id = "{{ o1_id }}";
+   var o2_id = "{{ o2_id }}";
+   var o3_id = "{{ o3_id }}";
+   var b_id = "{{ b_id }}";
+   var m_id = "{{ m_id }}";
+   var qd_id = "{{ qd_id }}";
+   var mixing_agent = "{{ mixing_agent }}";
+</script>
+<div class="facepack-match" type="{{ type }}">
+  <div class="top">
+    <div class="details-panel">
+      {% if type == "primary" %}
+      <p class="made-with">is made with</p>
+      {% else %}
+      <p class="made-with">a facemask made with</p>
+      {% endif %}
+      <div class="ingredients-panel">
+        <img class="bottle"
+             src="{% static 'facepackwizard/images/bottle_'|add:type|add:'.jpg' %}" alt="" />
+        {% for r in recipes %}
+        <div class="ingredient" id="{{ r.i_id }}">
+          <img src="/images/{{ r.i_image }}" alt="" />
+          <p class="name">{{ r.i_name|upper }}</p>
+          <p class="helper-text">{{ r.i_helper }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="learn-more-panel">
+        <p><i>Learn more</i> about how these<br>ingredients help you</p>
+      </div>
+      <div class="purchase-panel">
+        {% if fp %}
+          {% if fp_type == "buy" %}
+          <p class="button a-la-carte buy-clicked" type="buy" facepack_id="{{ fp }}">ADDED TO CART</p>
+          <p class="or">- or -</p>
+          <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
+          {% elif fp_type == "subscribe" %}
+          <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+          <p class="or">- or -</p>
+          <p class="button subscribe buy-clicked" type="subscribe" facepack_id="{{ fp }}">SUBSCRIBED TO CART</p>
+          {% endif %}
+        {% else %}
+        <p class="button a-la-carte" type="buy">BUY A-LA-CARTE</p>
+        <p class="or">- or -</p>
+        <p class="button subscribe" type="subscribe">NEVER RUN OUT</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <table class="summary">
+    <tr class="ingr base">
+      <td class="heading" colspan=3>SUMMARY OF INGREDIENTS</td>
+    </tr>
+    <tr class="ingr base">
+      <td class="header">BASE</td>
+      <td class="middle"><img src="/images/{{ base.image }}" alt="" /></td>
+      <td class="right">
+        <p class="name">{{ base.name|upper }}</p>
+        <p class="helper">{{ base.description }}</p>
+      </td>
+    </tr>
+    {% for r in recipes %}
+    <tr class="ingr recipe">
+      <td class="header">INGREDIENT #{{forloop.counter}}</td>
+      <td class="middle"><img src="/images/{{ r.i_image }}" alt="" /></td>
+      <td class="right">
+        <p class="name">{{ r.i_name|upper }}</p>
+        <p class="helper">{{ r.i_description }}</p>
+      </td>
+    </tr>
+    {% endfor %}
+    <tr class="ingr mixing-agent">
+      <td class="header">MIXING AGENT</td>
+      <td class="middle"><img src="/images/{{ mixing_agent.image }}" alt="" /></td>
+      <td class="right">
+        <p class="name">{{ mixing_agent.name|upper }}</p>
+        <p class="helper">{{ mixing_agent.description }}</p>
+      </td>
+    </tr>
+    <tr class="ingr essential-oils">
+      <td class="header">ESSENTIAL OILS</td>
+      <td class="middle"><img src="/images/{{ essential_oils.image }}" alt="" /></td>
+      <td class="right">
+        <p class="name">{{ essential_oils.name|upper }}</p>
+        <p class="helper">{{ essential_oils.description }}</p>
+      </td>
+    </tr>
+    <tr class="ingr base">
+      <td class="footer" colspan=3>
+        <p class="hide-summary">HIDE SUMMARY</p>
+      </td>
+    </tr>
+  </table>
+</div>

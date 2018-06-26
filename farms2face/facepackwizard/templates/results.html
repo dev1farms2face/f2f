@@ -1,0 +1,27 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'facepackwizard/results.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'facepackwizard/results.js' %}"></script>
+{% endblock %}
+{% block basebody %}
+<div class="results-panel">
+  <p class="your-best-match">Your best match</p>
+  {% load fp_match_tag %}
+  <div class="first-match-panel">
+    {% facepack_match first %}
+  </div>
+  <p class="other-header">You also matched with</p>
+  <div class="second-match-panel">
+    {% facepack_match second %}
+  </div>
+  {% include "how_to_use.html" %}
+  {% load review_tags %}
+  {% review_tags qd_id "cfp" skin_type %}
+</div>
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />
+{% endblock %}

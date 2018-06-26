@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <script type="text/javascript"
+              src="{% static 'home/jquery-3.1.1.min.js' %}"></script>
+        <script type="text/javascript"
+              src="{% static 'home/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'home/jquery-ui-1.12.1/jquery-ui.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+        {% block htmlhead %}
+        {% endblock %}
+    </head>
+        {% csrf_token %}
+        {% block commonbody %}
+        {% endblock %}
+    </body>
+</html>
+

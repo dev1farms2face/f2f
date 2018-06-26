@@ -1,0 +1,40 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css"
+  href="{{ item.base_url }}{% static 'home/facepack.css' %}" />
+<script type="text/javascript"
+  src="{{ item.base_url }}{% static 'home/facepack.js' %}"></script>
+<div class="image-cell">
+  <img class="bottle"
+       {% if item.mandatory %}
+       src="{{ item.base_url }}{% static 'facepackwizard/images/F2F_cart_product.png' %}" alt="" />
+       {% else %}
+       src="/images/{{ item.image }}" alt="" />
+       {% endif %}
+</div>
+<div class="ingredient-cell">
+  {% if item.mandatory %}
+  <p class="made-with">Made With</p>
+  <div class="ingredient-panel">
+    {% for m in item.mandatory %}
+    <div class="ingredient-item">
+      <img src="{{ item.base_url }}/images/{{ m.image }}" alt="" />
+      <p class="name">{{ m.name|upper}}</p>
+    </div>
+    {% endfor %}
+    {% if item.optional %}
+    <div class="ingredient-item">
+      <img src="{{ item.base_url }}/images/{{ item.optional.image }}" alt="" />
+      <p class="name">{{ item.optional.name|upper }}</p>
+    </div>
+    {% endif %}
+  </div>
+  {% else %}
+  <p class="prepack-name">{{ item.name }}</p>
+  {% endif %}
+</div>
+{% if item.mandatory %}
+<p class="uuid">UUID# {{ item.name }}</p>
+{% else %}
+<p class="uuid">UUID# PP_{{ item.item_id }}</p>
+{% endif %}

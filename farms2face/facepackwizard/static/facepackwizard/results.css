@@ -1,0 +1,45 @@
+.results-panel {
+        display: block;
+        width: 100%;
+        margin-bottom: 100px;
+        text-align: center;
+        padding-bottom: 100px;
+        padding-top: 100px;
+}
+
+@font-face {
+        font-family: 'Selima';
+        src: url("fonts/Selima.otf") format("opentype");
+}
+
+@font-face {
+        font-family: 'HelveticaNeue-UltraLight';
+        src: url("fonts/HelveticaNeue-UltraLigExt.otf") format("opentype");
+}
+
+p.your-best-match {
+        font-family: 'Selima';
+        font-size: 110px;
+        color: #88a470;
+        margin-top: 30px;    
+        text-align: center;
+        transform: scaleX(1.1);
+}
+
+p.other-header {
+        text-align: center;
+        margin-top: 90px;
+        font-family: "HelveticaNeue-UltraLight", sans-serif;
+        transform: scaleX(0.9);
+        color: #88a470;
+        font-size: 60px;
+        margin-bottom: 20px;
+}
+
+div.other-panel {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+}
+

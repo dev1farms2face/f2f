@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'facepackwizard/wizard.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'facepackwizard/wizard.js' %}"></script>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block basebody %}
+<div class="gif-panel">
+  <p class="text-top">Let's find out</p>
+  <p class="text-bottom">what your skin needs!</p>
+</div>
+<div class="wizard-panel enableHover">
+  {% for q in questions %}
+  <div class="question-panel" id="{{ q.id }}" style="display:none">
+    <div class="index-top">
+      <p class="dash"></p>
+      <p class="index">{{ q.id }}</p>
+      <p class="dash"></p>
+    </div>
+    <p class="question">{{ q.name }}</p>
+    <div class="options">
+      {% for o in q.options %}
+      <div class="option-panel">
+        <div class="{{ q.multiple }} option option-{% cycle '1' '2' '3' '4' %}" id="{{ o.id }}">{{ o.name }}</div>
+        <div class="option-footer">{{ o.helper }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="why">Why do we need to know this?</p>
+    <div class="hr"></div>
+    <p class="why-footer">{{ q.why }}</p>
+  </div>
+  {% endfor %}
+  <p class="show-matches" style="display:none">SHOW MATCHES</p>
+</div>
+{% endblock %}

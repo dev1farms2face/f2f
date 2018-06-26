@@ -1,0 +1,269 @@
+div.panel-1, div.panel-3 {
+        text-align:center;
+}
+
+                             /* ~~~ DO YOU KNOW WHAT YOUR SKIN NEEDS? ~~~ */
+
+
+#woman-main-bg-panel {
+        display: table;
+        background: transparent;
+        width:100%;
+        height: 700px;
+        text-align: right;
+}
+div.woman-main-bg-panel-override {
+        background-color:#e6e7e8;
+        border-width:0px;
+}
+div.lets-find-out {
+        display: table-cell;
+        float: right;
+        margin-top: 250px;
+        margin-right: 15%;
+        width: 170px;
+        height: 170px;
+        cursor: pointer;
+        border-radius: 100%;
+        background-image: url('images/lets-find-out-normal.png');
+        -o-transition:.3s;
+        -ms-transition:.3s;
+        -moz-transition:.3s;
+        -webkit-transition:.3s;
+        /* ...and now for the proper property */
+        transition:.3s;
+}
+div.lets-find-out:hover {
+        background-image: url('images/lets-find-out-hover.png');
+}
+
+
+                                   /* ~~~ HOW DOES IT WORK? ~~~ */
+
+
+.panel-2 {
+        display:block;
+        background-image: url('images/How_does_it_work_banner_background.png');
+        background-size: 100% 100%;
+        position: absolute;
+        top: 600px;
+        height:811px;
+        width: 100%;
+        z-index: 1000;
+        text-align: center;
+}
+#how-panel {
+}
+img.how-does {
+        padding-left: 90px;
+        padding-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+}
+div.badge-panel {
+        display:inline-block;
+        margin-top: 10px; 
+}
+div.badge-container {
+        position: relative;
+        display: block;
+}
+div.badge-1-panel {
+        display:inline-block;
+        top: 40px;
+        margin-left: 1%;
+}
+div.badge-2-panel {
+        display:inline-block;
+        margin-left: 7%;
+}
+div.badge-3-panel {
+        display:inline-block;
+        top: 40px;
+        margin-left: 7%;
+}
+div.badge-4-panel {
+        display:inline-block;
+        margin-left: 7%;
+}
+#badge-1-container, #badge-3-container {
+        display:inline-block;
+        height:156px;
+        width:156px;
+}
+#badge-2-container, #badge-4-container {
+        display:inline-block;
+        height:156px;
+        width:156px;
+}
+badge-1-container-override, badge-2-container-override, badge-3-container-override, badge-4-container-override {
+        border-width:0px;
+}
+img.badge-1, img.badge-3 {
+        width:100.00%;
+}
+img.badge-2, img.badge-4 {
+        width:100.00%;
+}
+p.badge-text {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        color: #555555;
+        text-align: left;
+}
+p.badge-text span.orange {
+        color: #ce9a2b;
+} 
+p.badge-1-text {
+        margin-left: 20px;
+}
+p.badge-1-test {
+        margin-left: 20px;
+}
+p.badge-2-text {
+        margin-top: 5px;
+        margin-left: 20px;
+}
+p.badge-3-buy {
+        text-align: center;
+}
+p.badge-3-text {
+        margin-top: 5px;
+        text-align: left;
+        margin-left: 20px;
+}
+p.badge-3-subscribe {
+        margin-top: 10px;
+        text-align: center;
+}
+p.badge-4-text {
+        margin-top: 5px;
+        margin-left: 20px;
+        text-align: left;
+        width: 150px;
+}
+
+p.button {
+        display: inline-block;
+        color: white;
+        font-family: "Roboto";
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #88a470;
+        border: 1px solid #88a470;
+        vertical-align: middle;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 5px 10px 5px 10px;
+        margin-left: 10px;
+}
+
+p.button a {
+        text-decoration: none !important;
+        color: white !important;
+}
+
+p.personal {
+        font-family: "Selima";
+        color: #627254;
+        font-size: 18px;
+        margin-left: 15px;
+        margin-top: 10px;
+}
+
+
+                                   /* ~~~ FEATURED COLLECTION ~~~ */
+
+
+.panel-3 {
+        margin-top: 580px;
+        margin-bottom: -80px;
+}
+#featured-panel {
+        background-color: transparent;
+        height:840px;
+        width: 100%;
+        padding-bottom: 150px;
+}
+#featured-collection {
+        vertical-align: middle;
+        margin-top: 250px;
+}
+#featured-collection p.featured-collection-txt {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 100px;
+        font-family: 'amaticsc';
+        font-size: 150px;
+        text-align: left;
+        color: white;
+        width: 750px;
+        text-align: center;
+        padding-top: 170px;
+}
+#featured-collection p.featured-collection-txt2 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 100px;
+        font-family: 'amaticsc';
+        font-size: 100px;
+        text-align: left;
+        padding-top: 10px;
+        color: white;
+        width: 750px;
+        text-align: center;
+}
+p.shop-now {
+        margin-top: 20px;
+        text-align: center;
+        font-family: "Selima";
+        color: #fff;
+        font-size: 56px;
+}
+#collections {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 80%;
+}
+#collections img.arrow {
+        width: 30px;
+        margin-bottom: 100px; 
+        cursor: pointer;
+}
+#collections div.prepacks {
+        display: inline-block;
+        white-space:nowrap;
+        #overflow-x: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: 75%;
+        max-width: 870px;
+}
+#collections div.item {
+        display:table-cell;
+        width: 200px;
+        margin-top: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+}
+#collections img.bottle {
+        display: inline-block;
+        width: 243px;
+        height: 385px;
+}
+#collections p.name {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        color: white;
+        font-weight: 100;
+}
+#collections p.price {
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
+        color: white;
+        font-weight: 800;
+}

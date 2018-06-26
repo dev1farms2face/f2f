@@ -1,0 +1,19 @@
+div.contactus-panel {
+    padding: 200px;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+div.contactus-panel p.title {
+    color: #666;
+    font-family: 'Roboto';
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+div.contactus-panel p.contactus {
+    font-family: 'Roboto';
+    color: #444;
+    font-size: 14px;
+    margin-top: 10px;
+}

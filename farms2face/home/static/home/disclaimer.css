@@ -1,0 +1,20 @@
+div.disclaimer-panel {
+    padding: 200px;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+div.disclaimer-panel p.title {
+    color: #666;
+    font-family: 'Roboto';
+    font-size: 24px;
+    margin-bottom: 20px; 
+}
+
+div.disclaimer-panel p.disclaimer {
+    font-family: 'Roboto';
+    color: #444;
+    font-size: 14px;
+    margin-top: 10px;
+}         
+         

@@ -1,0 +1,19 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'home/contactus.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'home/contactus.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="contactus-panel">
+  <p class="title">Contact Us</p>
+  {% for i in contact %}
+    <p class="contact">{{ i }}</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="image-cell" style="display: table-cell;">
+  <img class="bottle" style="vertical-alignment: top; width: 100px; margin-right: 10px; margin-bottom: 20px;"
+       {% if item.mandatory %}
+       src="{{ item.base_url }}{% static 'facepackwizard/images/F2F_cart_product.png' %}" alt="" />
+       {% else %}
+       src="{{ item.base_url }}/images/{{ item.image }}" alt="" />
+       {% endif %}
+</div>
+<div class="ingredient-cell" style="display: table-cell; vertical-align: top;">
+  {% if item.mandatory %}
+  <p class="made-with" style="font-family: "HelveticaNeue-UltraLight"; font-size: 20px; text-align: left; transform: scaleX(0.9); padding-left: 2px; padding-top: 20px; -webkit-transform-origin-x: 0; color: #4e704f; letter-spacing: 2px; font-weight: bold; margin-bottom: 5px;">Made With</p>
+  <div class="ingredient-panel" style="display: table-cell; margin-top: 10px; padding-right: 20px;">
+    {% for m in item.mandatory %}
+    <div class="ingredient-item" style="display: table-cell; width: 60px; padding-right: 10px; ">
+      <img src="{{ item.base_url }}/images/{{ m.image }}" style="display: block; width: 70px; " alt="" />
+      <p class="name" style="font-family: "Roboto"; font-size: 10px; transform: scaleX(0.9); font-weight: bold; text-align: left; letter-spacing: 0.15em; text-align: center; padding-bottom: 20px; max-width: 90px; white-space: normal; margin-top: 10px;">{{ m.name|upper}}</p>
+    </div>
+    {% endfor %}
+    {% if item.optional %}
+    <div class="ingredient-item" style="display: table-cell; width: 60px; padding-right: 10px; ">
+      <img src="{{ item.base_url }}/images/{{ item.optional.image }}" style="display: block; width: 70px; " alt="" />
+      <p class="name" style="font-family: "Roboto"; font-size: 10px; transform: scaleX(0.9); font-weight: bold; text-align: left; letter-spacing: 0.15em; text-align: center; padding-bottom: 20px; max-width: 90px; white-space: normal; margin-top: 10px;">{{ item.optional.name|upper }}</p>
+    </div>
+    {% endif %}
+  </div>
+  {% else %}
+  <p class="prepack-name" style="display: inline-block; vertical-align: middle; font-family: 'Selima'; color: #88a470; font-size: 30px; margin-top: 70px; padding-right: 30px;">{{ item.name }}</p>
+  {% endif %}
+</div>
+{% if item.mandatory %}
+<p class="uuid" style="display: block; font-family: "Roboto"; font-size: 8px; width: 100%; text-align: left; color: #88a470; letter-spacing: 2px;">UUID# {{ item.name }}</p>
+{% else %}
+<p class="uuid" style="display: block; font-family: "Roboto"; font-size: 8px; width: 100%; text-align: left; color: #88a470; letter-spacing: 2px;">UUID# PP_{{ item.item_id }}</p>
+{% endif %}

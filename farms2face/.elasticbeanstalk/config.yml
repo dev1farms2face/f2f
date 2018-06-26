@@ -1,0 +1,21 @@
+branch-defaults:
+  default:
+    environment: farms2face-env
+    group_suffix: null
+environment-defaults:
+  farms2face-dev:
+    branch: null
+    repository: null
+global:
+  application_name: farms2face
+  branch: null
+  default_ec2_keyname: aws-eb
+  default_platform: Python 3.4
+  default_region: us-west-1
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: null
+  workspace_type: Application

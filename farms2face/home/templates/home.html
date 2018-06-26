@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block basehead %}
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'home/home.css' %}" />
+  <script type="text/javascript"
+    src="{% static 'home/home.js' %}"></script>
+  <script type="text/javascript"
+    src="{% static 'home/parallax.min.js' %}"></script>
+{% endblock %}
+
+{% block basebody %}
+<div class="panel-1">
+  <div id="woman-main-bg-panel" class="woman-main-bg-panel-override"
+       imgSrc="{% static 'home/images/F2F_Cover_DoYouKnow.jpg' %}">
+    <a href='/wizard/'>
+      <div class="lets-find-out"></div> 
+    </a>
+  </div>
+</div>
+<div class="panel-2">
+  <div id="how-panel" class="how-panel-override">
+    <div class="badge-panel">
+      <img class="how-does"
+           src="{% static 'home/images/How_does_Farms_2_Face_work.png' %}" alt="" />
+      <div class="badge-container">
+        <div class="badge-1-panel">
+          <div id="badge-1-container" class="badge-1-container-override">
+            <img class="badge-1" 
+                 src="{% static 'home/images/How_to_wash_badge_1.png' %}" alt="" />
+            <p class="badge-text badge-1-text"><span class="orange">Find your customized face mask.</span> Our proprietary algorithm will create a precise creation for your skin.</p>
+            <p class="personal">Because it's Personal!</p>
+            <br>
+            <p class="button quiz" type="subscribe"><a href='/wizard/'>Take the quiz!</a></p>
+          </div>
+        </div>
+        <div class="badge-2-panel">
+          <div id="badge-2-container" class="badge-2-container-override">
+            <img class="badge-2" 
+                 src="{% static 'home/images/How_badge_2.png' %}" alt="" />
+            <p class="badge-text badge-2-text"><span class="orange">Buy à la carte or never run out.</span> Choose the face mask routine that suits you best.</p>
+          </div>
+        </div>
+        <div class="badge-3-panel">
+          <div id="badge-3-container" class="badge-3-container-override">
+            <img class="badge-3" 
+                 src="{% static 'home/images/How_badge_3.png' %}" alt="" />
+            <p class="badge-text badge-3-text"><span class="orange">Celebrate your beautiful self.</span> Share a photo with friends and family using #myF2Flife and leave a review to help other men and women find their perfect, personalized mask.</p>
+          </div>
+        </div>
+        <div class="badge-4-panel">
+          <div id="badge-4-container" class="badge-4-container-override">
+            <img class="badge-4" 
+                 src="{% static 'home/images/How_badge_4.png' %}" alt="" />
+            <p class="badge-text badge-4-text"><span class="orange">Repeat for a glowing skin.</span> Your skin will thank you for the luxury of pure, natural and organic creations hand made exclusively for you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel-3">
+  <div id="featured-panel" class="featured-panel-override"
+       imgSrc="{% static 'home/images/Featured_Collection_banner_background.jpg' %}">
+    <div id="featured-collection" class="featured-collection-override">
+      <p class="featured-collection-txt">Presenting</p>
+      <p class="featured-collection-txt2">Our Featured Creations</p>
+      <!-- <p class="shop-now">Shop Now</p> -->
+    </div>
+    <div id="collections" class="collections-override">
+      <img class="featured-left arrow" 
+           src="{% static 'home/images/left-arrow.png' %}" alt="" />
+      <div class="prepacks">
+        {% for p in prepacks %}
+        <a href='/prepacks/{{ p.id }}/'>
+        <div class="item">
+          <img class="bottle" 
+          <img class="bottle" src="/images/{{ p.image }}" alt="" />
+          <p class="name">{{ p.name }}</p>
+          <p class="price">${{ p.price_single }}</p> 
+        </div>
+        </a>
+        {% endfor %}
+      </div>
+      <img class="featured-right arrow" 
+           src="{% static 'home/images/right-arrow.png' %}" alt="" />
+    </div>
+  </div>
+</div>
+{% endblock %}

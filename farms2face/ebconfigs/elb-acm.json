@@ -1,0 +1,22 @@
+[
+{
+  "Namespace" : "aws:elb:listener:443",
+  "OptionName" : "ListenerProtocol",
+  "Value" : "HTTPS"
+},
+{
+  "Namespace" : "aws:elb:listener:443",
+  "OptionName" : "SSLCertificateId",
+  "Value" : "arn:aws:acm:us-west-1:023678695262:certificate/a5e1418b-7e30-41a9-8d42-116e484d7363"
+},
+{
+  "Namespace" : "aws:elb:listener:443",
+  "OptionName" : "InstancePort",
+  "Value" : "80"
+},
+{
+  "Namespace" : "aws:elb:listener:443",
+  "OptionName" : "InstanceProtocol",
+  "Value" : "HTTP"
+}
+]

@@ -1,0 +1,324 @@
+div.cart-panel {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    min-height: 400px;
+    padding-top: 120px;
+    margin-bottom: 200px;
+}
+
+div.cart-panel table.main {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.cart-panel p.header {
+    font-family: "HelveticaNeue-UltraLight";
+    letter-spacing: 2px;
+    color: #88a470;
+    font-size: 72px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+div.cart-panel div.bottom-panel {
+    display: block;
+    min-height: 300px;
+    white-space: nowrap;
+}
+
+div.cart-panel div.bottom-panel div.left-panel {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.cart-panel div.bottom-panel table.item-panel {
+    width: 100%;
+    border-spacing:0;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item {
+    width: 100%;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td {
+    border-top: 2px solid #88a470;
+    padding-bottom: 20px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type {
+    vertical-align: top;
+    padding-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type select {
+    font-family: "Roboto";
+    font-weight: bold;
+    height: 20px;
+    font-size: 11px;
+    color: #444;
+    outline: none;
+    margin-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type option {
+    font-size: 12px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.type p {
+    font-family: "Roboto";
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    color: #78876a;
+    padding-left: 2px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency {
+    padding-left: 30px;
+    vertical-align: top;
+    padding-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency select {
+    font-family: "Roboto";
+    font-weight: bold;
+    height: 20px;
+    font-size: 11px;
+    color: #444;
+    outline: none;
+    margin-top: 30px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency option {
+    font-size: 12px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.frequency p {
+    font-family: "Roboto";
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    color: #78876a;
+    padding-left: 2px;
+    margin-top: 5px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity {
+    min-width: 100px;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 50px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity p {
+    font-family: "Roboto";
+    font-size: 12px;
+    min-width: 100px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.quantity img {
+    width: 9px;
+    cursor: pointer;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell {
+    padding-left: 10px;
+    text-align: right;
+    vertical-align: top;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.price {
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 2px;
+    margin-top: 60px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.remove {
+    text-align: right;
+    color: #ce9a2b;
+    width: 50px;
+    font-family: "Roboto";
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+    margin-top: 6px;
+}
+
+div.cart-panel div.bottom-panel table.item-panel tr.item td.price-cell p.perpack {
+    text-align: right;
+    color: #777;
+    width: 50px;
+    margin-top: 3px;
+    margin-bottom: -3px;
+    font-family: "Roboto";
+    font-size: 8px;
+    font-weight: bold;
+    float: right;
+}
+
+div.cart-panel div.empty-cart {
+    font-family: "Roboto";
+    color: #999;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+div.cart-panel div.empty-cart a {
+    color: #ce9a2b !important;
+    cursor: pointer;
+}
+
+a:visited {
+    color: #777;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel {
+    font-size: 12px;
+    font-family: "Roboto";
+    color: #444;
+    display: inline-block;
+    min-width: 250px;
+    max-width: 250px;
+    border: 1px solid #E7E7E7;
+    background-color: #E7E7E7;
+    margin-left: 70px;
+    padding: 20px 40px 20px 40px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.subtotal-panel{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.subtotal-panel p.name{
+    display: inline-block;
+    float: left;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.subtotal-panel p.value{
+    display: inline-block;
+    font-weight: bold;
+    float: right;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel p.name {
+    display: inline-block;
+    float: left;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel select{
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel option{
+    font-family: "Roboto";
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.shipping-panel p.cost{
+    display: inline-block;
+    float: right;
+    font-weight: bold;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel p.helper {
+    display: block;
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+    color: #888;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.promo {
+    display: block;
+    font-size: 12px;
+    color: #667a42;
+    font-weight: bold;
+    width: 100%;
+    letter-spacing: 1px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.promo p.name {
+    display: inline-block;
+    float: left;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.promo p.discount {
+    display: inline-block;
+    float: right;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.total-panel{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.total-panel p.name{
+    display: inline-block;
+    float: left;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel div.total-panel p.value{
+    display: inline-block;
+    font-weight: bold;
+    float: right;
+}
+
+div.cart-panel div.bottom-panel div.checkout-panel button.checkout {
+    font-size: 12px;
+    letter-spacing: 2px;
+    background-color: #88a470;
+    border: solid 1px #88a470;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+
+div.thanks-panel {
+    display: block;
+    width: 100%;
+    padding-top: 150px;
+    margin-bottom: 300px;
+}
+
+div.thanks-panel p.thanks {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    font-family: "HelveticaNeue-UltraLight";
+    letter-spacing: 2px;
+    color: #88a470;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.thanks-panel p.thanks a { 
+    color: #ce9a2b !important;
+    font-size: 22px;
+}
+
+div.thanks-panel p.thanks a:hover {
+    color: purple;
+}
