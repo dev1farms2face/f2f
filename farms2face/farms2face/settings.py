@@ -66,6 +66,9 @@ else:
     SOCIAL_AUTH_FACEBOOK_KEY = '1012029478898104'
     SOCIAL_AUTH_FACEBOOK_SECRET = '42eab4156d0c9d134147c1c66b75c20a'  
 
+SOCIAL_AUTH_FACEBOOK_KEY = '261475147930269'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd126ffe097f149663122b56a67587805'
+
 # Stripe API KEY
 
 STRIPE_API_KEY = "sk_test_7hvmBNodLNQanNdNLaeXIy0O"  # Test
@@ -74,7 +77,7 @@ if 'STRIPE_API_KEY' in os.environ:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-env.us-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1', '*', 'www.rajiv.com', 'www.farms2face.com', 'farms2face.com', 'farms2face-env.us-west-1.elasticbeanstalk.com']
 
 # Application definition
 
@@ -98,11 +101,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'sslserver',
 ]
 
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
+    'userregistration.backends.FacebookOauth2Custom',
+    #'social.backends.facebook.FacebookOAuth2',
     #'social.backends.google.GoogleOAuth2',
     #'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
@@ -118,7 +123,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.12'
+SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.8'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/home/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/home/'
