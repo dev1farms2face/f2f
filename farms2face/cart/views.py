@@ -224,8 +224,8 @@ def view_cart(request):
     cart_items = []
     shipping_id = int(request.GET.get('shipping')) if request.GET.get('shipping') else 4
     shipping = Shipping.objects.get(pk=shipping_id)
-    subtotal = Decimal('0.00');
-    total = Decimal('0.00');
+    subtotal = Decimal('0.00')
+    total = Decimal('0.00')
     user = request.user
     if cart_size(request) > 0:
         for c in user.cart_set.all():
