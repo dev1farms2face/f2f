@@ -161,7 +161,7 @@ def social_user(backend, uid, user=None, *args, **kwargs):
             next = req.session['next'] if 'next' in req.session else None
             logout(backend.strategy.request)
             #magic, yes magic
-            social.user.backend = "social.backends.facebook.FacebookOAuth2"
+            social.user.backend = "userregistration.backends.FacebookOauth2Custom"
             login(backend.strategy.request, social.user)
             if next:
                 backend.strategy.request.session['next'] = next
