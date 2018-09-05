@@ -59,7 +59,7 @@ SESSION_COOKIE_AGE = 10 * 60
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fpit^azx93lk^w6vq=o245=3%p%@yw+pr&x)^hmpo5p2w!%b1x'
 
-if 'DEV' in os.environ:
+if 'DEV' not in os.environ:
     SOCIAL_AUTH_FACEBOOK_KEY = '114214335784895'
     SOCIAL_AUTH_FACEBOOK_SECRET = '6205f0f214c26c2c3897b8008d6e3c6f' 
 else:
